@@ -417,12 +417,11 @@ PAGES[''] = PAGES['/'] = function() {
   return `
     <div class="hero">
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
-      <p class="hero-subtitle hero-anim" style="--hero-delay:0.3s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
-      <p class="hero-tagline hero-anim" style="--hero-delay:0.8s">Sport, fællesskab og bevægelse for hele familien</p>
-      <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:1.1s">EST. 1925</p>
-      <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:1.4s">
+      <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
+      <p class="hero-tagline hero-anim" style="--hero-delay:1.5s">Sport, fællesskab og bevægelse for hele familien</p>
+      <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:3.0s">EST. 1925</p>
+      <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:3.2s">
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
-        <!--<a href="https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1" target="_blank" rel="noopener" class="btn btn-outline">Conventus Medlems Login</a>-->
       </div>
       <div class="scroll-indicator">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
