@@ -10,21 +10,28 @@ const ICONS = {
   phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
   pdf: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2 5 5h-5V4zM9.998 14.768c.083-.335.577-.354.577-.354s.601.084 1.205.335c.085.014.168.029.252.046-.59.1-1.257.243-1.907.43-.128-.168-.24-.321-.127-.457zm5.139 1.677c-.222-.169-.662-.354-.662-.354s.478-.083.762-.083.577.098.577.211c0 .296-.677.226-.677.226zm-5.891.578s-.198.127-.226.155c-.717.423-2.022 1.127-2.306.465-.085-.197.014-.662.888-1.17.944-.55 1.636-.789 1.636-.789l.008.008zm4.517-1.043c-.492-.254-1.6-.338-2.053-.352a8.012 8.012 0 0 1-.732-.676c-.395-.45-.675-.874-.675-.874s.084-.605.112-.944c.042-.507.07-1.156-.155-1.452-.197-.267-.605-.31-.747-.253-.197.084-.31.38-.253.887.056.493.324 1.184.324 1.184s-.31.901-.732 1.833c-.423.93-.691 1.452-.691 1.452s-.873.367-1.283.649c-.662.45-1.086.944-1.142 1.283-.042.254.028.578.408.578s.93-.507 1.579-1.467c0 0 .93-.31 1.396-.437.465-.127 1.057-.253 1.057-.253s1.015.578 1.762.691c.747.113 1.241-.028 1.339-.31.099-.282-.099-.465-.514-.69z"/></svg>',
   facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
-  camera: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
-  external: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+  instagram: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>',
+  external: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>',
+  arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>'
 };
 
 // =============================================
-// DATA: Navigation
+// DATA: Navigation (matches old site order)
 // =============================================
-const NAV = [
-  { label: 'Hjem', href: '#/' },
+const UTILITY_NAV = [
   { label: 'Om VHG', children: [
     { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
     { label: 'Referat', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
-    { label: 'Kalender', href: '#/om-vhg/kalender' }
+    { label: 'Video', href: '#/om-vhg/video' },
+    { label: 'Find os', href: '#/om-vhg/find-os' }
   ]},
+  { label: 'Kontakt', href: '#/kontakt' },
+  { label: 'Cafeen', href: '#/cafeen' },
+  { label: 'Conventus Login', href: 'https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1', external: true }
+];
+
+const SPORT_NAV = [
   { label: 'Badminton', href: '#/badminton', children: [
     { label: 'Bestyrelsen', href: '#/badminton/bestyrelsen' },
     { label: 'Træningstider', href: '#/badminton/traeningstider' },
@@ -33,8 +40,8 @@ const NAV = [
   ]},
   { label: 'Bordtennis', href: '#/bordtennis', children: [
     { label: 'Bestyrelsen', href: '#/bordtennis/bestyrelsen' },
-    { label: 'Træningstider', href: '#/bordtennis/traeningstider' },
-    { label: 'Tilmelding', href: '#/bordtennis/tilmelding' }
+    { label: 'Tilmelding', href: '#/bordtennis/tilmelding' },
+    { label: 'Træningstider', href: '#/bordtennis/traeningstider' }
   ]},
   { label: 'E-sport', href: '#/e-sport', children: [
     { label: 'Bestyrelsen', href: '#/e-sport/bestyrelsen' },
@@ -44,7 +51,7 @@ const NAV = [
     { label: 'Bestyrelsen', href: '#/floorball/bestyrelsen' },
     { label: 'Tilmelding', href: '#/floorball/tilmelding' }
   ]},
-  { label: 'Fodbold', children: [
+  { label: 'Fodbold', href: '#/fodbold', children: [
     { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
     { label: 'Senior', href: '#/fodbold/senior' },
     { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
@@ -56,9 +63,9 @@ const NAV = [
   ]},
   { label: 'Håndbold', href: '#/haandbold', children: [
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
+    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
   ]},
   { label: 'Skateklub', href: '#/skateklub', children: [
@@ -69,14 +76,43 @@ const NAV = [
     { label: 'Bestyrelsen', href: '#/disc-golf/bestyrelsen' },
     { label: 'Tilmelding', href: '#/disc-golf/tilmelding' },
     { label: 'Kort & Rabataftaler', href: '#/disc-golf/kort' }
-  ]},
-  { label: 'Cafeen', href: '#/cafeen' },
-  { label: 'Conventus Login', href: 'https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1', external: true }
+  ]}
 ];
+
+// Combined NAV for sub-nav lookups
+const ALL_NAV = [...UTILITY_NAV, ...SPORT_NAV];
+
+// =============================================
+// DATA: Sport images
+// =============================================
+const SPORT_IMAGES = {
+  'badminton': 'assets/images/afdelinger/badminton.png',
+  'bordtennis': 'assets/images/afdelinger/bordtennis.png',
+  'disc-golf': 'assets/images/afdelinger/disc-golf.png',
+  'e-sport': 'assets/images/afdelinger/esport.png',
+  'floorball': 'assets/images/afdelinger/floorball.png',
+  'fodbold': 'assets/images/afdelinger/fodbold.png',
+  'gymnastik': 'assets/images/afdelinger/gym.png',
+  'haandbold': 'assets/images/afdelinger/h%C3%A5ndbold.png',
+  'skateklub': 'assets/images/afdelinger/skate.png'
+};
 
 // =============================================
 // DATA: Sports
 // =============================================
+// Which sports have a dedicated Facebook PAGE (not profile/group)
+const FB_PAGES = {
+  'badminton': null,
+  'bordtennis': null,
+  'e-sport': null,
+  'floorball': null,
+  'fodbold': 'https://www.facebook.com/VHGFodbold',
+  'gymnastik': null,
+  'haandbold': 'https://www.facebook.com/vghhandbold',
+  'skateklub': 'https://www.facebook.com/VHGSkateklub',
+  'disc-golf': null
+};
+
 const SPORTS = {
   badminton: {
     name: 'Badminton', icon: '🏸',
@@ -91,7 +127,7 @@ const SPORTS = {
   },
   bordtennis: {
     name: 'Bordtennis', icon: '🏓',
-    desc: 'Bordtennis i Vester Hassing — hyggeligt og aktivt for børn, unge og voksne. Vi spiller i hallen og der er plads til alle niveauer.',
+    desc: 'Bordtennis i VHG — hyggeligt og aktivt for børn, unge og voksne. Vi spiller i hallen og der er plads til alle niveauer.',
     facebook: 'https://www.facebook.com/profile.php?id=100054206513655',
     board: [
       { title: 'Formand', name: 'Per Kristensen', email: 'Murerper@hotmail.dk', phone: '25 58 20 05' },
@@ -113,8 +149,8 @@ const SPORTS = {
     conventus: 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=6018&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'
   },
   floorball: {
-    name: 'Floorball', icon: '🏑',
-    desc: 'Floorball i Vester Hassing — en sjov og actionfyldt sport for hele familien. Hurtigt spil, godt fællesskab.',
+    name: 'Floorball', icon: '🏒',
+    desc: 'Floorball i VHG — en sjov og actionfyldt sport for hele familien. Hurtigt spil, godt fællesskab.',
     facebook: 'https://www.facebook.com/profile.php?id=100046867541094',
     board: [
       { title: 'Formand', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
@@ -139,7 +175,7 @@ const SPORTS = {
   },
   skateklub: {
     name: 'Skateklub', icon: '🛹',
-    desc: 'Vester Hassing Skateklub — et fedt fællesskab for alle der elsker at skate. Alle aldre og niveauer er velkomne.',
+    desc: 'VHG Skateklub — et fedt fællesskab for alle der elsker at skate. Alle aldre og niveauer er velkomne.',
     facebook: 'https://www.facebook.com/VHGSkateklub',
     board: [
       { title: 'Formand', name: 'Mikael Ivan Vinther Christensen', email: 'mikael.ivan.christensen@gmail.com', phone: '23685559' },
@@ -152,7 +188,7 @@ const SPORTS = {
   },
   'disc-golf': {
     name: 'Disc Golf', icon: '🥏',
-    desc: 'Disc Golf i Vester Hassing — en udendørs sport for hele familien. Spil på vores lokale bane og nyd naturen.',
+    desc: 'Disc Golf i VHG — en udendørs sport for hele familien. Spil på vores lokale bane og nyd naturen.',
     facebook: 'https://www.facebook.com/groups/1832314803794784',
     board: [
       { title: 'Formand', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
@@ -164,7 +200,6 @@ const SPORTS = {
   }
 };
 
-// Fodbold & Håndbold data
 const FODBOLD = {
   facebook: 'https://www.facebook.com/VHGFodbold',
   board: [
@@ -274,19 +309,19 @@ const HAANDBOLD = {
 };
 
 const HOVEDBESTYRELSEN = [
-  { title: 'Formand', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599' },
-  { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk' },
-  { title: 'Kasserer', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304' },
-  { title: 'Sekretær', name: 'Anne-Britt Andersen', email: 'annebrittandersenc@gmail.com', phone: '26 11 68 70' },
-  { title: 'Suppleant', name: 'Marianne Vedel', email: 'majulle@hotmail.com' },
+  { title: 'Formand', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599', photo: 'assets/images/bestyrelse/allan-skov.jpg' },
+  { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk', photo: 'assets/images/bestyrelse/lars-jakobsen.jpg' },
+  { title: 'Kasserer', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304', photo: 'assets/images/bestyrelse/jonas-bundgaard.jpg' },
+  { title: 'Sekretær', name: 'Anne-Britt Andersen', email: 'annebrittandersenc@gmail.com', phone: '26 11 68 70', photo: 'assets/images/bestyrelse/anne-britt-andersen.jpg' },
+  { title: 'Suppleant', name: 'Marianne Vedel', email: 'majulle@hotmail.com', photo: 'assets/images/bestyrelse/marianne-vedel.jpg' },
   { title: 'Medlem (Formand håndbold)', name: 'Berit Andersen', email: 'beritandersen@hotmail.com', phone: '51 22 91 22' },
   { title: 'Medlem (Formand fodbold)', name: 'Marc Agerbo Jakobsen', email: 'agerbo100@gmail.com', phone: '30253680' },
   { title: 'Medlem (Formand badminton)', name: 'Claus René Mikkelsen', email: 'clmik8@gmail.com' },
-  { title: 'Medlem (Formand e-sport)', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795' },
-  { title: 'Medlem (Formand skateklub)', name: 'Mikael Ivan Vinther Christensen', email: 'mikael.ivan.christensen@gmail.com', phone: '23685559' },
+  { title: 'Medlem (Formand e-sport)', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795', photo: 'assets/images/bestyrelse/nikolaj-soendergaard.jpg' },
+  { title: 'Medlem (Formand skateklub)', name: 'Mikael Ivan Vinther Christensen', email: 'mikael.ivan.christensen@gmail.com', phone: '23685559', photo: 'assets/images/bestyrelse/mikael-christensen.jpg' },
   { title: 'Medlem (Formand floorball)', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
-  { title: 'Medlem (Formand gymnastik)', name: 'Inger Marie Badsberg', email: 'imbadsberg@gmail.com', phone: '20808201' },
-  { title: 'Medlem (Formand bordtennis)', name: 'Per Kristensen', email: 'Murerper@hotmail.dk', phone: '25 58 20 05' }
+  { title: 'Medlem (Formand gymnastik)', name: 'Inger Marie Badsberg', email: 'imbadsberg@gmail.com', phone: '20808201', photo: 'assets/images/bestyrelse/inger-badsberg.jpg' },
+  { title: 'Medlem (Formand bordtennis)', name: 'Per Kristensen', email: 'Murerper@hotmail.dk', phone: '25 58 20 05', photo: 'assets/images/bestyrelse/per-kristensen.jpg' }
 ];
 
 const REFERATER = [
@@ -302,11 +337,17 @@ const REFERATER = [
 // =============================================
 // HELPER FUNCTIONS
 // =============================================
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
 function personCardHTML(p) {
   let contact = '';
   if (p.email) contact += `<a href="mailto:${esc(p.email)}">${ICONS.mail}<span>${esc(p.email)}</span></a>`;
   if (p.phone) contact += `<a href="tel:${esc(p.phone.replace(/\s/g,''))}">${ICONS.phone}<span>${esc(p.phone)}</span></a>`;
-  return `<div class="person-card"><div class="person-card-header">${esc(p.title || 'Træner')}</div><div class="person-card-body"><h3>${esc(p.name)}</h3><div class="person-contact">${contact}</div></div></div>`;
+  const initials = p.name ? p.name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase() : '?';
+  const photoHTML = p.photo
+    ? `<div class="person-card-photo"><img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy"></div>`
+    : `<div class="person-card-photo"><div class="person-card-avatar">${initials}</div></div>`;
+  return `<div class="person-card">${photoHTML}<div class="person-card-header">${esc(p.title || 'Træner')}</div><div class="person-card-body"><h3>${esc(p.name)}</h3><div class="person-contact">${contact}</div></div></div>`;
 }
 
 function boardHTML(members, title) {
@@ -317,12 +358,21 @@ function conventusWidgetHTML(url, title) {
   return `<div class="section"><h2 class="section-title">${esc(title || 'Tilmelding')}</h2><div class="conventus-widget" id="conventus-area"></div></div>`;
 }
 
+function fbEmbedHTML(url, label) {
+  // Use v2.6 iframe approach — same method the user confirmed working on homepage
+  const pageUrl = encodeURIComponent(url);
+  const iframeSrc = `https://www.facebook.com/v2.6/plugins/page.php?adapt_container_width=true&app_id=&container_width=365&height=610&hide_cover=false&href=${pageUrl}&locale=da_DK&sdk=joey&show_facepile=false&show_posts=true&small_header=true&width=390px`;
+  return `<div class="section"><h2 class="section-title">Nyt fra ${esc(label)}</h2><div class="fb-embed"><iframe src="${iframeSrc}" width="365" height="610" style="border:none;overflow:hidden;max-width:100%" scrolling="no" frameborder="0" allowfullscreen="true" allow="encrypted-media" loading="lazy"></iframe></div></div>`;
+}
+
 function fbLinkHTML(url, label) {
   return `<a href="${esc(url)}" target="_blank" rel="noopener" class="fb-link-card">${ICONS.facebook}<div><strong>${esc(label || 'Følg os på Facebook')}</strong><br><small style="color:var(--gray-400)">Åbner i nyt vindue</small></div>${ICONS.external}</a>`;
 }
 
-function imagePlaceholder(text) {
-  return `<div class="image-placeholder">${ICONS.camera}<span>${esc(text || 'Billede kommer snart')}</span></div>`;
+function sportBannerHTML(key, title) {
+  const img = SPORT_IMAGES[key];
+  if (!img) return '';
+  return `<div class="sport-banner"><img src="${img}" alt="${esc(title)}" class="sport-banner-img"><div class="sport-banner-overlay"></div></div>`;
 }
 
 function pageHeader(icon, title, breadcrumb, desc) {
@@ -332,11 +382,18 @@ function pageHeader(icon, title, breadcrumb, desc) {
   return `<div class="page-header">${ic}<h1>${title}</h1>${bc}${d}</div>`;
 }
 
+function sportPageHeader(key, title, breadcrumb, desc) {
+  const img = SPORT_IMAGES[key];
+  const icon = SPORTS[key] ? SPORTS[key].icon : '';
+  const bc = breadcrumb ? `<div class="breadcrumb">${breadcrumb}</div>` : '';
+  const d = desc ? `<p>${desc}</p>` : '';
+  const imgTag = img ? `<img src="${img}" alt="${esc(title)}" class="sport-header-img" loading="lazy">` : '';
+  return `<div class="page-header sport-page-header"><div class="sport-header-img-wrap">${imgTag}</div><div class="page-header-overlay"></div><div class="page-header-content">${icon ? `<span class="page-icon">${icon}</span>` : ''}<h1>${title}</h1>${bc}${d}</div></div>`;
+}
+
 function subNavHTML(items, currentHash) {
   return `<div class="sub-nav">${items.map(i => `<a href="${i.href}" class="${currentHash === i.href.replace('#','') ? 'active' : ''}">${esc(i.label)}</a>`).join('')}</div>`;
 }
-
-function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
 // =============================================
 // PAGE RENDERERS
@@ -348,23 +405,25 @@ PAGES[''] = PAGES['/'] = function() {
   document.getElementById('video-bg').classList.add('active');
 
   const sportCards = [
-    { key: 'badminton', ...SPORTS.badminton },
-    { key: 'bordtennis', ...SPORTS.bordtennis },
-    { key: 'e-sport', ...SPORTS['e-sport'] },
-    { key: 'floorball', ...SPORTS.floorball },
-    { key: 'fodbold', name: 'Fodbold', icon: '⚽', desc: 'Fodbold for alle aldre — fra børnebold til senior. Herrer, kvinder, drenge og piger.', facebook: FODBOLD.facebook },
-    { key: 'gymnastik', ...SPORTS.gymnastik },
-    { key: 'haandbold', name: 'Håndbold', icon: '🤾', desc: 'Håndbold fra U7 til senior — stærk fællesskab og god konkurrence.', facebook: HAANDBOLD.facebook },
-    { key: 'skateklub', ...SPORTS.skateklub },
-    { key: 'disc-golf', ...SPORTS['disc-golf'] }
+    { key: 'badminton', name: 'Badminton' },
+    { key: 'bordtennis', name: 'Bordtennis' },
+    { key: 'e-sport', name: 'E-sport' },
+    { key: 'floorball', name: 'Floorball' },
+    { key: 'fodbold', name: 'Fodbold' },
+    { key: 'gymnastik', name: 'Gymnastik' },
+    { key: 'haandbold', name: 'Håndbold' },
+    { key: 'skateklub', name: 'Skateklub' },
+    { key: 'disc-golf', name: 'Disc Golf' }
   ];
 
   return `
     <div class="hero">
-      <h1>Vester Hassing<br>Gymnastik &amp; Idrætsforening</h1>
-      <p class="hero-subtitle">Sport, fællesskab og bevægelse for hele familien</p>
-      <div class="hero-cta">
-        <a href="#/om-vhg/bestyrelsen" class="btn btn-primary">Om foreningen</a>
+      <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
+      <p class="hero-subtitle hero-anim hero-anim-bottom" style="--hero-delay:0.3s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
+      <p class="hero-tagline hero-anim hero-anim-bottom" style="--hero-delay:0.8s">Sport, fællesskab og bevægelse for hele familien</p>
+      <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:1.1s">EST. 1925</p>
+      <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:1.4s">
+        <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
         <a href="https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1" target="_blank" rel="noopener" class="btn btn-outline">Conventus Medlems Login</a>
       </div>
       <div class="scroll-indicator">
@@ -374,14 +433,16 @@ PAGES[''] = PAGES['/'] = function() {
 
     <div class="container">
       <div class="section">
-        <h2 class="section-title text-center" style="display:block;text-align:center">Vores idrætsgrene</h2>
+        <h2 class="section-title section-title-center">Vores idrætsgrene</h2>
         <div class="sport-grid">
-          ${sportCards.map(s => `
-            <a href="#/${s.key === 'fodbold' ? 'fodbold/senior' : s.key === 'haandbold' ? 'haandbold' : s.key}" class="sport-card" style="color:inherit">
-              <div class="sport-card-image"><span class="sport-icon">${s.icon}</span></div>
-              <div class="sport-card-body">
-                <h3>${esc(s.name)}</h3>
-                <p>${esc(s.desc)}</p>
+          ${sportCards.map((s, i) => `
+            <a href="#/${s.key}" class="sport-card" style="--delay:${i * 0.08}s">
+              <div class="sport-card-image">
+                <img src="${SPORT_IMAGES[s.key]}" alt="${esc(s.name)}" class="sport-card-img" loading="lazy">
+                <div class="sport-card-overlay">
+                  <span class="sport-card-icon">${SPORTS[s.key].icon}</span>
+                  <h3>${esc(s.name)}</h3>
+                </div>
               </div>
             </a>
           `).join('')}
@@ -393,50 +454,58 @@ PAGES[''] = PAGES['/'] = function() {
           <div class="qi-icon">📍</div>
           <h3>Find os</h3>
           <p>Halsvej 199B<br>Vester Hassing, 9310 Vodskov</p>
+          <p><a href="#/om-vhg/find-os">Se kort &rarr;</a></p>
         </div>
         <div class="quick-info-item">
           <div class="qi-icon">☕</div>
           <h3>Cafeen</h3>
-          <p>Åben man-tor 16-19<br><a href="#/cafeen">Se mere →</a></p>
+          <p>Åben man-tor 16-19<br><a href="#/cafeen">Se mere &rarr;</a></p>
         </div>
         <div class="quick-info-item">
           <div class="qi-icon">📧</div>
           <h3>Kontakt</h3>
-          <p>formand@vhg.dk<br><a href="tel:22167599">22167599</a></p>
+          <p>vhg@vhg.dk<br><a href="#/kontakt">Find rette kontaktperson &rarr;</a></p>
         </div>
       </div>
 
-      <div class="section">
-        <h2 class="section-title">Nyt fra VHG</h2>
-        <div class="fb-embed">
-          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FVesterHassingGF&tabs=timeline&width=500&height=600&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true" width="500" height="600" style="border:none;overflow:hidden;max-width:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-        </div>
-      </div>
+      ${fbEmbedHTML('https://www.facebook.com/VesterHassingGF/', 'VHG')}
     </div>
   `;
 };
 
 // --- OM VHG: Bestyrelsen ---
-PAGES['/om-vhg/bestyrelsen'] = function() {
-  const subNav = subNavHTML([
+// Shared Om VHG sub-nav
+function omVhgSubNav(active) {
+  return subNavHTML([
     { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
     { label: 'Referat', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
-    { label: 'Kalender', href: '#/om-vhg/kalender' }
-  ], '/om-vhg/bestyrelsen');
+    { label: 'Video', href: '#/om-vhg/video' },
+    { label: 'Find os', href: '#/om-vhg/find-os' }
+  ], active);
+}
 
-  return pageHeader('🏛️', 'Hovedbestyrelsen', '<a href="#/">Hjem</a> / Om VHG', 'Vester Hassing GF\'s hovedbestyrelse har aktuelt følgende sammensætning. Har du spørgsmål, er du meget velkommen til at kontakte bestyrelsen.') +
-    `<div class="page container">${subNav}${boardHTML(HOVEDBESTYRELSEN, 'Hovedbestyrelsen')}</div>`;
+PAGES['/om-vhg/bestyrelsen'] = function() {
+  const subNav = omVhgSubNav('/om-vhg/bestyrelsen');
+
+  return pageHeader('🏛️', 'Hovedbestyrelsen', '<a href="#/">Hjem</a> / Om VHG') +
+    `<div class="page container">${subNav}
+      <div class="section">
+        <div class="kontakt-promo">
+          <div class="kontakt-promo-icon">📞</div>
+          <div>
+            <h3>Har du spørgsmål?</h3>
+            <p>For hurtigst muligt svar, kontakt den relevante afdeling direkte. Vores <a href="#/kontakt">kontaktside</a> hjælper dig med at finde den rette person.</p>
+            <a href="#/kontakt" class="btn btn-primary btn-sm" style="margin-top:0.5rem">Gå til kontaktsiden &rarr;</a>
+          </div>
+        </div>
+      </div>
+      ${boardHTML(HOVEDBESTYRELSEN, 'Hovedbestyrelsen')}</div>`;
 };
 
 // --- OM VHG: Referat ---
 PAGES['/om-vhg/referat'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
-    { label: 'Referat', href: '#/om-vhg/referat' },
-    { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
-    { label: 'Kalender', href: '#/om-vhg/kalender' }
-  ], '/om-vhg/referat');
+  const subNav = omVhgSubNav('/om-vhg/referat');
 
   const links = REFERATER.map(r =>
     `<a href="${esc(r.file)}" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Referat af VHG generalforsamling ${esc(r.year)}</a>`
@@ -448,74 +517,153 @@ PAGES['/om-vhg/referat'] = function() {
 
 // --- OM VHG: Vedtægter ---
 PAGES['/om-vhg/vedtaegter'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
-    { label: 'Referat', href: '#/om-vhg/referat' },
-    { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
-    { label: 'Kalender', href: '#/om-vhg/kalender' }
-  ], '/om-vhg/vedtaegter');
+  const subNav = omVhgSubNav('/om-vhg/vedtaegter');
 
   return pageHeader('📋', 'Vedtægter', '<a href="#/">Hjem</a> / Om VHG') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Foreningens vedtægter</h2><a href="assets/pdf/vedtaegter.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Download vedtægter (PDF)</a></div></div>`;
+    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Foreningens vedtægter</h2><p class="mb-2">Her kan du downloade VHG's vedtægter som PDF.</p><a href="assets/pdf/vedtaegter.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Download vedtægter (PDF)</a></div></div>`;
 };
 
-// --- OM VHG: Kalender ---
-PAGES['/om-vhg/kalender'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
-    { label: 'Referat', href: '#/om-vhg/referat' },
-    { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
-    { label: 'Kalender', href: '#/om-vhg/kalender' }
-  ], '/om-vhg/kalender');
+// --- OM VHG: Video ---
+PAGES['/om-vhg/video'] = function() {
+  const subNav = omVhgSubNav('/om-vhg/video');
 
-  return pageHeader('📅', 'Kalender', '<a href="#/">Hjem</a> / Om VHG') +
-    `<div class="page container">${subNav}<div class="section"><div class="info-box"><h3>Kalender</h3><p>Hold øje med foreningens aktiviteter og arrangementer her. Følg desuden med på vores <a href="https://www.facebook.com/VesterHassingGF" target="_blank" rel="noopener" style="color:var(--gold)">Facebook-side</a> for de seneste nyheder og begivenheder.</p></div>${imagePlaceholder('Eventkalender — kommer snart')}</div></div>`;
+  return pageHeader('🎬', 'Video', '<a href="#/">Hjem</a> / Om VHG') +
+    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">VHG Video</h2><p class="mb-2">En præsentation af Vester Hassing Gymnastik &amp; Idrætsforening, lavet i 2022. Der er sket meget siden — men videoen giver et fint indblik i foreningen og dens mange aktiviteter.</p><div class="video-embed"><iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FVesterHassingGF%2Fvideos%2F3274611409477036&show_text=false&width=560" width="560" height="315" style="border:none;overflow:hidden;max-width:100%" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe></div></div></div>`;
+};
+
+// --- OM VHG: Find os ---
+PAGES['/om-vhg/find-os'] = function() {
+  const subNav = omVhgSubNav('/om-vhg/find-os');
+
+  return pageHeader('📍', 'Find os', '<a href="#/">Hjem</a> / Om VHG') +
+    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Adresse</h2><div class="info-box" style="margin-bottom:1.5rem"><p><strong>VHG — Vester Hassing Gymnastik &amp; Idrætsforening</strong><br>Halsvej 199B<br>Vester Hassing, 9310 Vodskov</p></div><h2 class="section-title">Kort</h2><div class="maps-embed"><iframe src="https://maps.google.com/maps?q=Halsvej+199B,+9310+Vodskov,+Denmark&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;border-radius:var(--radius)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div>`;
+};
+
+// --- KONTAKT ---
+PAGES['/kontakt'] = function() {
+  const sportContacts = [
+    { key: 'badminton', name: 'Badminton', icon: '🏸' },
+    { key: 'bordtennis', name: 'Bordtennis', icon: '🏓' },
+    { key: 'e-sport', name: 'E-sport', icon: '🎮' },
+    { key: 'floorball', name: 'Floorball', icon: '🏒' },
+    { key: 'fodbold', name: 'Fodbold', icon: '⚽', href: '#/fodbold/bestyrelsen' },
+    { key: 'gymnastik', name: 'Gymnastik', icon: '🤸' },
+    { key: 'haandbold', name: 'Håndbold', icon: '🤾', href: '#/haandbold/bestyrelsen' },
+    { key: 'skateklub', name: 'Skateklub', icon: '🛹' },
+    { key: 'disc-golf', name: 'Disc Golf', icon: '🥏', href: '#/disc-golf/bestyrelsen' }
+  ];
+
+  return pageHeader('📞', 'Kontakt', '<a href="#/">Hjem</a>', 'For at sikre du får svar hurtigst muligt, anbefaler vi at kontakte den relevante afdeling direkte.') +
+    `<div class="page container">
+      <div class="section">
+        <h2 class="section-title">Generelle henvendelser</h2>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">${ICONS.mail}</div>
+            <h3>E-mail</h3>
+            <p><a href="mailto:vhg@vhg.dk">vhg@vhg.dk</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">${ICONS.facebook}</div>
+            <h3>Facebook</h3>
+            <p><a href="https://www.facebook.com/VesterHassingGF" target="_blank" rel="noopener">Stil spørgsmål — fællesskabet hjælper</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🏛️</div>
+            <h3>Hovedbestyrelsen</h3>
+            <p>For spørgsmål der ikke relaterer til en specifik afdeling.<br><a href="#/om-vhg/bestyrelsen">Se hovedbestyrelsen &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Kontakt en afdeling</h2>
+        <p class="mb-2">Har dit spørgsmål med en specifik idrætsgren at gøre? Kontakt afdelingens bestyrelse direkte — de kan bedst hjælpe dig.</p>
+        <div class="sport-contact-grid">
+          ${sportContacts.map(s => `
+            <a href="${s.href || '#/' + s.key + '/bestyrelsen'}" class="sport-contact-item">
+              <img src="${SPORT_IMAGES[s.key]}" alt="${esc(s.name)}" class="sport-contact-img" loading="lazy">
+              <div class="sport-contact-overlay">
+                <span class="sport-contact-name">${esc(s.name)}</span>
+                <span class="sport-contact-arrow">${ICONS.arrow}</span>
+              </div>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Cafeen & Glemt tøj</h2>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">☕</div>
+            <h3>Cafeen (Gevaldig)</h3>
+            <p>Åben man-tor 16-19.<br><a href="#/cafeen">Se cafeens side &rarr;</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">👕</div>
+            <h3>Glemt tøj</h3>
+            <p>Cafeen har nøgle til det aflåste lokale med glemt tøj i hallen. Henvendelse i cafeens åbningstid.<br>Tøj kan også være hos <strong>Vester Hassing Skole</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="info-box">
+          <h3>📍 Find os</h3>
+          <p><strong>VHG — Vester Hassing Gymnastik &amp; Idrætsforening</strong><br>
+          Halsvej 199B, Vester Hassing, 9310 Vodskov</p>
+        </div>
+      </div>
+    </div>`;
 };
 
 // --- Generic sport page ---
 function sportPage(key) {
   const s = SPORTS[key];
-  return pageHeader(s.icon, s.name, `<a href="#/">Hjem</a>`, s.desc) +
+  const fbPage = FB_PAGES[key];
+  // If the sport has a dedicated FB page, show the embed. Otherwise go to bestyrelsen.
+  if (!fbPage) {
+    return sportBoardPage(key);
+  }
+  return sportPageHeader(key, s.name, `<a href="#/">Hjem</a>`, s.desc) +
     `<div class="page container">
       ${sportSubNav(key)}
-      <div class="section">
-        ${imagePlaceholder('Aktionsbillede fra ' + s.name + ' — kommer snart')}
-      </div>
-      <div class="section">
-        ${fbLinkHTML(s.facebook, s.name + ' på Facebook')}
-      </div>
+      ${fbEmbedHTML(fbPage, s.name)}
     </div>`;
 }
 
 function sportSubNav(key) {
-  const item = NAV.find(n => (n.href||'').includes(key) || (n.children||[]).some(c => c.href.includes(key)));
+  const s = SPORTS[key];
+  const item = [...SPORT_NAV].find(n => (n.href||'').includes('#/' + key));
   if (!item || !item.children) return '';
   const hash = location.hash.replace('#','') || '/';
-  return subNavHTML(item.children, hash);
+  // Prepend 'Nyt fra XXX' link pointing to main sport page
+  const items = [{ label: 'Om ' + s.name, href: item.href }, ...item.children];
+  return subNavHTML(items, hash);
 }
 
 function sportBoardPage(key) {
   const s = SPORTS[key];
-  return pageHeader(s.icon, s.name + ' — Bestyrelsen', `<a href="#/">Hjem</a> / <a href="#/${key}">${esc(s.name)}</a>`) +
+  return sportPageHeader(key, s.name + ' — Bestyrelsen', `<a href="#/">Hjem</a> / <a href="#/${key}">${esc(s.name)}</a>`) +
     `<div class="page container">${sportSubNav(key)}${boardHTML(s.board, 'Bestyrelse — ' + s.name)}</div>`;
 }
 
 function sportTilmeldingPage(key) {
   const s = SPORTS[key];
-  return pageHeader(s.icon, s.name + ' — Tilmelding', `<a href="#/">Hjem</a> / <a href="#/${key}">${esc(s.name)}</a>`) +
+  return sportPageHeader(key, s.name + ' — Tilmelding', `<a href="#/">Hjem</a> / <a href="#/${key}">${esc(s.name)}</a>`) +
     `<div class="page container">${sportSubNav(key)}${conventusWidgetHTML(s.conventus, 'Tilmelding — ' + s.name)}</div>`;
 }
 
-// Register simple sport pages
+// Register generic sport pages
 ['badminton','bordtennis','e-sport','floorball','gymnastik','skateklub','disc-golf'].forEach(key => {
   PAGES['/' + key] = () => sportPage(key);
   PAGES['/' + key + '/bestyrelsen'] = () => sportBoardPage(key);
   PAGES['/' + key + '/tilmelding'] = () => sportTilmeldingPage(key);
 });
 
-// --- Badminton extra pages ---
+// --- Badminton extras ---
 PAGES['/badminton/traeningstider'] = function() {
-  const s = SPORTS.badminton;
   const rows = [
     ['Motionist 1', 'Onsdag 18:00-19:00'],
     ['Motionist 2', 'Onsdag 19:00-20:00'],
@@ -526,76 +674,66 @@ PAGES['/badminton/traeningstider'] = function() {
     ['Motion for mænd 65+', 'Kontakt bestyrelsen'],
     ['Motion for damer 65+', 'Kontakt bestyrelsen']
   ];
-  return pageHeader(s.icon, 'Badminton — Træningstider', '<a href="#/">Hjem</a> / <a href="#/badminton">Badminton</a>', 'Sæson 2025/2026. Se priser under tilmelding. Vedr. ledige motionistbaner, skriv direkte til formanden.') +
+  return sportPageHeader('badminton', 'Badminton — Træningstider', '<a href="#/">Hjem</a> / <a href="#/badminton">Badminton</a>', 'Sæson 2025/2026. Se priser under tilmelding. Vedr. ledige motionistbaner, skriv direkte til formanden.') +
     `<div class="page container">${sportSubNav('badminton')}<div class="section"><h2 class="section-title">Træningstider</h2><table class="training-table"><thead><tr><th>Hold</th><th>Tidspunkt</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td></tr>`).join('')}</tbody></table><p class="mt-2" style="font-size:0.85rem;color:var(--gray-500)">Opdateret 05.08.2025</p></div></div>`;
 };
 
 PAGES['/badminton/information'] = function() {
-  const s = SPORTS.badminton;
-  return pageHeader(s.icon, 'Badminton — Information', '<a href="#/">Hjem</a> / <a href="#/badminton">Badminton</a>') +
-    `<div class="page container">${sportSubNav('badminton')}<div class="section"><div class="card"><div class="card-header">Information fra Badminton</div><div class="card-body"><p>Se fanen med træningstider og opstart for de forskellige hold.</p><p>For yderligere information, kontakt badminton-bestyrelsen.</p></div></div></div></div>`;
+  return sportPageHeader('badminton', 'Badminton — Information', '<a href="#/">Hjem</a> / <a href="#/badminton">Badminton</a>') +
+    `<div class="page container">${sportSubNav('badminton')}<div class="section"><div class="card"><div class="card-header">Information fra Badminton</div><div class="card-body"><p>Se fanen med træningstider og opstart for de forskellige hold.</p><p>For yderligere information, kontakt <a href="#/badminton/bestyrelsen">badminton-bestyrelsen</a>.</p></div></div></div></div>`;
 };
 
-// --- Bordtennis extra pages ---
+// --- Bordtennis extras ---
 PAGES['/bordtennis/traeningstider'] = function() {
   const rows = [
     ['Nybegyndere og letøvede', 'Tirsdag 17:30-18:30 · Torsdag 17:30-18:30'],
     ['Øvede', 'Tirsdag 18:30-19:30 · Torsdag 18:30-19:30'],
     ['Senior', 'Tirsdag 19:30-21:30 · Torsdag 19:30-21:30']
   ];
-  return pageHeader('🏓', 'Bordtennis — Træningstider', '<a href="#/">Hjem</a> / <a href="#/bordtennis">Bordtennis</a>') +
+  return sportPageHeader('bordtennis', 'Bordtennis — Træningstider', '<a href="#/">Hjem</a> / <a href="#/bordtennis">Bordtennis</a>') +
     `<div class="page container">${sportSubNav('bordtennis')}<div class="section"><h2 class="section-title">Træningstider</h2><table class="training-table"><thead><tr><th>Hold</th><th>Tidspunkt</th></tr></thead><tbody>${rows.map(r=>`<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td></tr>`).join('')}</tbody></table></div></div>`;
 };
 
-// --- Disc Golf extra pages ---
+// --- Disc Golf extras ---
 PAGES['/disc-golf/kort'] = function() {
-  return pageHeader('🥏', 'Disc Golf — Kort & Rabataftaler', '<a href="#/">Hjem</a> / <a href="#/disc-golf">Disc Golf</a>') +
-    `<div class="page container">${sportSubNav('disc-golf')}<div class="section"><h2 class="section-title">Banekort</h2><div class="card"><div class="card-body"><img src="assets/images/disc-golf-kort.jpg" alt="Disc Golf banekort" style="width:100%;border-radius:var(--radius-sm)" onerror="this.parentElement.innerHTML='${imagePlaceholder('Banekort — kommer snart').replace(/'/g,"\\'")}'" /></div></div></div></div>`;
+  return sportPageHeader('disc-golf', 'Disc Golf — Kort & Rabataftaler', '<a href="#/">Hjem</a> / <a href="#/disc-golf">Disc Golf</a>') +
+    `<div class="page container">${sportSubNav('disc-golf')}<div class="section"><h2 class="section-title">Banekort</h2><div class="card"><div class="card-body"><img src="assets/images/disc-golf-kort.jpg" alt="Disc Golf banekort" style="width:100%;border-radius:var(--radius-sm)"></div></div></div></div>`;
 };
 
 // --- FODBOLD ---
-PAGES['/fodbold/bestyrelsen'] = function() {
-  const subNav = subNavHTML([
+function fodboldSubNav(active) {
+  return subNavHTML([
+    { label: 'Om Fodbold', href: '#/fodbold' },
     { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
     { label: 'Senior', href: '#/fodbold/senior' },
     { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
     { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
-  ], '/fodbold/bestyrelsen');
-  return pageHeader('⚽', 'Fodbold — Bestyrelsen', '<a href="#/">Hjem</a> / Fodbold') +
-    `<div class="page container">${subNav}${boardHTML(FODBOLD.board, 'Bestyrelse — Fodbold')}<div class="section">${fbLinkHTML(FODBOLD.facebook, 'VHG Fodbold på Facebook')}</div></div>`;
+  ], active);
+}
+
+PAGES['/fodbold'] = function() {
+  return sportPageHeader('fodbold', 'Fodbold', '<a href="#/">Hjem</a>', 'Fodbold for alle aldre — fra børnebold til senior. Herrer, kvinder, drenge og piger.') +
+    `<div class="page container">${fodboldSubNav('/fodbold')}${fbEmbedHTML(FODBOLD.facebook, 'VHG Fodbold')}</div>`;
+};
+
+PAGES['/fodbold/bestyrelsen'] = function() {
+  return sportPageHeader('fodbold', 'Fodbold — Bestyrelsen', '<a href="#/">Hjem</a> / <a href="#/fodbold">Fodbold</a>') +
+    `<div class="page container">${fodboldSubNav('/fodbold/bestyrelsen')}${boardHTML(FODBOLD.board, 'Bestyrelse — Fodbold')}</div>`;
 };
 
 PAGES['/fodbold/senior'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
-    { label: 'Senior', href: '#/fodbold/senior' },
-    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
-    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
-  ], '/fodbold/senior');
-  return pageHeader('⚽', 'Fodbold — Senior', '<a href="#/">Hjem</a> / Fodbold', 'Vores seniorhold for herrer og kvinder.') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Seniorhold</h2><div class="board-grid">${FODBOLD.seniorTeams.map(t => `<div class="card"><div class="card-header">${esc(t.name)}</div><div class="card-body"><p>${esc(t.desc)}</p>${imagePlaceholder('Holdbillede — ' + t.name)}</div></div>`).join('')}</div></div></div>`;
+  return sportPageHeader('fodbold', 'Fodbold — Senior', '<a href="#/">Hjem</a> / <a href="#/fodbold">Fodbold</a>', 'Vores seniorhold for herrer og kvinder.') +
+    `<div class="page container">${fodboldSubNav('/fodbold/senior')}<div class="section"><h2 class="section-title">Seniorhold</h2><div class="board-grid">${FODBOLD.seniorTeams.map(t => `<div class="card"><div class="card-header">${esc(t.name)}</div><div class="card-body"><p>${esc(t.desc)}</p></div></div>`).join('')}</div></div></div>`;
 };
 
 PAGES['/fodbold/boern-ungdom'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
-    { label: 'Senior', href: '#/fodbold/senior' },
-    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
-    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
-  ], '/fodbold/boern-ungdom');
-  return pageHeader('⚽', 'Fodbold — Børn & Ungdom', '<a href="#/">Hjem</a> / Fodbold', 'Oversigt over alle børne- og ungdomshold i VHG Fodbold.') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Hold</h2><div class="sport-grid">${FODBOLD.youthTeams.map(t => `<div class="card"><div class="card-header">${esc(t)}</div><div class="card-body"><p>Kontakt bestyrelsen for mere info om holdet.</p></div></div>`).join('')}</div></div></div>`;
+  return sportPageHeader('fodbold', 'Fodbold — Børn & Ungdom', '<a href="#/">Hjem</a> / <a href="#/fodbold">Fodbold</a>', 'Oversigt over alle børne- og ungdomshold i VHG Fodbold.') +
+    `<div class="page container">${fodboldSubNav('/fodbold/boern-ungdom')}<div class="section"><h2 class="section-title">Hold</h2><div class="sport-grid">${FODBOLD.youthTeams.map(t => `<div class="card"><div class="card-header">${esc(t)}</div><div class="card-body"><p><a href="#/fodbold/bestyrelsen">Kontakt bestyrelsen</a> for mere info.</p></div></div>`).join('')}</div></div></div>`;
 };
 
 PAGES['/fodbold/kontingent'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
-    { label: 'Senior', href: '#/fodbold/senior' },
-    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
-    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
-  ], '/fodbold/kontingent');
-  return pageHeader('⚽', 'Fodbold — Kontingent & Tilmelding', '<a href="#/">Hjem</a> / Fodbold') +
-    `<div class="page container">${subNav}
+  return sportPageHeader('fodbold', 'Fodbold — Kontingent & Tilmelding', '<a href="#/">Hjem</a> / <a href="#/fodbold">Fodbold</a>') +
+    `<div class="page container">${fodboldSubNav('/fodbold/kontingent')}
       <div class="section">
         <h2 class="section-title">Kontingenttakster</h2>
         <p class="mb-2">Gældende fra 1. august 2025. Beløb er halvårligt.</p>
@@ -613,59 +751,41 @@ PAGES['/fodbold/kontingent'] = function() {
 };
 
 // --- HÅNDBOLD ---
-PAGES['/haandbold'] = function() {
-  const subNav = subNavHTML([
+function haandboldSubNav(active) {
+  return subNavHTML([
+    { label: 'Om Håndbold', href: '#/haandbold' },
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
+    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold');
-  return pageHeader('🤾', 'Håndbold', '<a href="#/">Hjem</a>', 'Håndbold fra U7 til senior — stærkt fællesskab, god konkurrence og masser af sjov.') +
-    `<div class="page container">${subNav}
-      <div class="section">${imagePlaceholder('Aktionsbillede fra håndbold — kommer snart')}</div>
+  ], active);
+}
+
+PAGES['/haandbold'] = function() {
+  return sportPageHeader('haandbold', 'Håndbold', '<a href="#/">Hjem</a>', 'Håndbold fra U7 til senior — stærkt fællesskab, god konkurrence og masser af sjov.') +
+    `<div class="page container">${haandboldSubNav('/haandbold')}
       <div class="section">
         <h2 class="section-title">Dokumenter</h2>
-        <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1594/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Sponsorkoncept 2025</a><br>
+        <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1594/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Sponsorkoncept 2025</a>
+        <br>
         <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1597/toejkoncept-2025.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Tøjkoncept 2025</a>
       </div>
-      <div class="section">${fbLinkHTML(HAANDBOLD.facebook, 'VGH Håndbold på Facebook')}</div>
+      ${fbEmbedHTML(HAANDBOLD.facebook, 'VHG Håndbold')}
     </div>`;
 };
 
 PAGES['/haandbold/bestyrelsen'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
-    { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold/bestyrelsen');
-  return pageHeader('🤾', 'Håndbold — Bestyrelsen', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
-    `<div class="page container">${subNav}${boardHTML(HAANDBOLD.board, 'Bestyrelse — Håndbold')}</div>`;
+  return sportPageHeader('haandbold', 'Håndbold — Bestyrelsen', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/bestyrelsen')}${boardHTML(HAANDBOLD.board, 'Bestyrelse — Håndbold')}</div>`;
 };
 
 PAGES['/haandbold/traeningstider'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
-    { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold/traeningstider');
-  return pageHeader('🤾', 'Håndbold — Træningstider 2025/2026', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Træningstider</h2><table class="training-table"><thead><tr><th>Hold</th><th>Tidspunkt</th></tr></thead><tbody>${HAANDBOLD.training.map(t => `<tr><td><strong>${esc(t.hold)}</strong></td><td>${esc(t.tider)}</td></tr>`).join('')}</tbody></table></div></div>`;
+  return sportPageHeader('haandbold', 'Håndbold — Træningstider 2025/2026', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/traeningstider')}<div class="section"><h2 class="section-title">Træningstider</h2><table class="training-table"><thead><tr><th>Hold</th><th>Tidspunkt</th></tr></thead><tbody>${HAANDBOLD.training.map(t => `<tr><td><strong>${esc(t.hold)}</strong></td><td>${esc(t.tider)}</td></tr>`).join('')}</tbody></table></div></div>`;
 };
 
 PAGES['/haandbold/traenere'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
-    { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold/traenere');
-
   const groups = HAANDBOLD.trainers.map(g => `
     <div class="trainer-group">
       <h3>Håndbold — ${esc(g.group)}</h3>
@@ -680,23 +800,15 @@ PAGES['/haandbold/traenere'] = function() {
     </div>
   `).join('');
 
-  return pageHeader('🤾', 'Håndbold — Trænere', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Trænere</h2>${groups}</div></div>`;
+  return sportPageHeader('haandbold', 'Håndbold — Trænere', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/traenere')}<div class="section"><h2 class="section-title">Trænere</h2>${groups}</div></div>`;
 };
 
 PAGES['/haandbold/antibulli'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
-    { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold/antibulli');
-
-  return pageHeader('🤾', 'Antibulli politik', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>', 'Hos VGH Håndbold skaber vi stærke fællesskaber hvor der ikke er plads til mobning.') +
-    `<div class="page container">${subNav}<div class="section"><div class="card"><div class="card-body policy-content">
+  return sportPageHeader('haandbold', 'Antibulli politik', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>', 'Hos VHG Håndbold skaber vi stærke fællesskaber hvor der ikke er plads til mobning.') +
+    `<div class="page container">${haandboldSubNav('/haandbold/antibulli')}<div class="section"><div class="card"><div class="card-body policy-content">
       <h3>1. Indledning</h3>
-      <p>Hos VGH Håndbold ønsker vi at skabe et trygt og inkluderende miljø, hvor alle spillere, trænere, frivillige og forældre føler sig velkomne og respekterede. Mobning, chikane og ekskluderende adfærd accepteres ikke, og vi har en klar politik og handlingsplan for at forebygge og håndtere sådanne situationer.</p>
+      <p>Hos VHG Håndbold ønsker vi at skabe et trygt og inkluderende miljø, hvor alle spillere, trænere, frivillige og forældre føler sig velkomne og respekterede. Mobning, chikane og ekskluderende adfærd accepteres ikke, og vi har en klar politik og handlingsplan for at forebygge og håndtere sådanne situationer.</p>
       <p>Antibulli Håndbold skaber stærke fællesskaber og høj trivsel på børnenes håndboldhold. Langt de fleste børn er glade for at tage til træning, men trivsel i fritidslivet er ikke en selvfølge. Hvert femte barn har oplevet at blive mobbet, drillet eller holdt udenfor til deres fritidsaktivitet.</p>
 
       <h3>2. Definition af mobning</h3>
@@ -735,15 +847,8 @@ PAGES['/haandbold/antibulli'] = function() {
 };
 
 PAGES['/haandbold/kontingent'] = function() {
-  const subNav = subNavHTML([
-    { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
-    { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
-  ], '/haandbold/kontingent');
-  return pageHeader('🤾', 'Håndbold — Kontingent & Tilmelding', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
-    `<div class="page container">${subNav}
+  return sportPageHeader('haandbold', 'Håndbold — Kontingent & Tilmelding', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/kontingent')}
       <div class="section">
         <h2 class="section-title">Kontingenttakster</h2>
         <p class="mb-2">Kontingent pr. halve sæson.</p>
@@ -772,20 +877,36 @@ PAGES['/cafeen'] = function() {
         </div>
       </div>
       <div class="section">
-        ${imagePlaceholder('Billede af cafeen — kommer snart')}
+        <h2 class="section-title">Kontakt Gevaldig</h2>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">${ICONS.phone}</div>
+            <h3>Telefon</h3>
+            <p><a href="tel:93401330">93 40 13 30</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">${ICONS.mail}</div>
+            <h3>E-mail</h3>
+            <p><a href="mailto:Kontakt@gevaldigmad.dk">Kontakt@gevaldigmad.dk</a></p>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">${ICONS.instagram}</div>
+            <h3>Instagram</h3>
+            <p><a href="https://www.instagram.com/gevaldigcageogcatering" target="_blank" rel="noopener">@gevaldigcageogcatering</a></p>
+          </div>
+        </div>
       </div>
-      <div class="section">
-        ${fbLinkHTML('https://www.facebook.com/profile.php?id=100066490641015', 'Gevaldig (Cafeen) på Facebook')}
-      </div>
+      ${fbEmbedHTML('https://www.facebook.com/profile.php?id=100066490641015', 'Gevaldig')}
     </div>`;
 };
 
 // =============================================
 // ROUTER
 // =============================================
+let previousRoute = '/';
+
 function getRoute() {
-  const hash = location.hash.replace('#', '') || '/';
-  return hash;
+  return location.hash.replace('#', '') || '/';
 }
 
 function loadConventusWidget(url) {
@@ -830,20 +951,25 @@ function navigate() {
   const app = document.getElementById('app');
   const videoBg = document.getElementById('video-bg');
 
+  // Determine if same section (preserve scroll)
+  const prevSection = previousRoute.split('/')[1] || '';
+  const newSection = route.split('/')[1] || '';
+  const sameSection = prevSection && newSection && prevSection === newSection && route !== '/';
+
   // Hide video unless home
   videoBg.classList.toggle('active', route === '/' || route === '');
+  document.body.classList.toggle('is-home', route === '/' || route === '');
 
   // Find page renderer
   let renderer = PAGES[route];
   if (!renderer) {
-    // 404
     renderer = () => pageHeader('🔍', 'Side ikke fundet', '<a href="#/">Hjem</a>') +
-      `<div class="page container"><div class="section"><div class="info-box"><h3>404</h3><p>Siden du leder efter findes desværre ikke. <a href="#/" style="color:var(--gold)">Gå til forsiden →</a></p></div></div></div>`;
+      `<div class="page container"><div class="section"><div class="info-box"><h3>404</h3><p>Siden du leder efter findes desværre ikke. <a href="#/" style="color:var(--gold)">Gå til forsiden &rarr;</a></p></div></div></div>`;
   }
 
   app.innerHTML = renderer();
 
-  // Load Conventus widget if needed
+  // Load Conventus widgets
   const sportKey = route.split('/')[1];
   if (route.endsWith('/tilmelding') && SPORTS[sportKey]) {
     loadConventusWidget(SPORTS[sportKey].conventus);
@@ -860,62 +986,86 @@ function navigate() {
     ]);
   }
 
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Scroll: preserve if same section, otherwise go to top
+  if (!sameSection) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
 
-  // Update active nav
+  previousRoute = route;
   updateNav();
 
-  // Trigger fade-in animations
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.fade-in').forEach(el => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-      }, { threshold: 0.1 });
-      observer.observe(el);
-    });
-  });
+  // Hero fade-in animations: trigger after video has had time to load
+  if (route === '/' || route === '') {
+    const heroAnims = document.querySelectorAll('.hero-anim');
+    setTimeout(() => {
+      heroAnims.forEach(el => el.classList.add('visible'));
+    }, 1500);
+  }
 }
 
 // =============================================
-// NAVIGATION BUILD
+// NAVIGATION BUILD (Two-tier)
 // =============================================
 function buildNav() {
-  const desktopList = document.getElementById('nav-list');
-  const mobileList = document.getElementById('mobile-nav-list');
-
-  let desktopHTML = '';
-  let mobileHTML = '';
-
-  NAV.forEach((item, i) => {
+  // Utility bar
+  const utilityInner = document.getElementById('utility-bar-inner');
+  let utilHTML = '';
+  UTILITY_NAV.forEach(item => {
     if (item.external) {
-      desktopHTML += `<li><a href="${esc(item.href)}" target="_blank" rel="noopener">${esc(item.label)} ${ICONS.external}</a></li>`;
-      mobileHTML += `<li><a href="${esc(item.href)}" target="_blank" rel="noopener">${esc(item.label)}</a></li>`;
-      return;
+      utilHTML += `<a href="${esc(item.href)}" target="_blank" rel="noopener">${esc(item.label)} ${ICONS.external}</a>`;
+    } else if (item.children) {
+      utilHTML += `<div class="util-dropdown"><span class="util-trigger">${esc(item.label)}</span><div class="util-dropdown-menu">`;
+      item.children.forEach(c => { utilHTML += `<a href="${esc(c.href)}">${esc(c.label)}</a>`; });
+      utilHTML += `</div></div>`;
+    } else {
+      utilHTML += `<a href="${esc(item.href)}">${esc(item.label)}</a>`;
     }
+  });
+  utilityInner.innerHTML = utilHTML;
 
+  // Sport nav
+  const sportList = document.getElementById('sport-nav-list');
+  let sportHTML = '';
+  SPORT_NAV.forEach(item => {
+    const parentHref = item.href ? `href="${esc(item.href)}"` : '';
+    sportHTML += `<li><a ${parentHref}>${esc(item.label)}</a>`;
     if (item.children) {
-      const parentHref = item.href ? `href="${esc(item.href)}"` : '';
-      const parentTag = item.href ? 'a' : 'span';
-      desktopHTML += `<li><${parentTag} ${parentHref}>${esc(item.label)}</${parentTag}><ul class="dropdown">`;
-      item.children.forEach(c => {
-        desktopHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`;
-      });
-      desktopHTML += '</ul></li>';
+      sportHTML += '<ul class="dropdown">';
+      item.children.forEach(c => { sportHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`; });
+      sportHTML += '</ul>';
+    }
+    sportHTML += '</li>';
+  });
+  sportList.innerHTML = sportHTML;
 
-      mobileHTML += `<li><div class="mobile-parent" data-idx="${i}">${esc(item.label)}</div><ul class="mobile-sub">`;
-      if (item.href) mobileHTML += `<li><a href="${esc(item.href)}">Oversigt</a></li>`;
-      item.children.forEach(c => {
-        mobileHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`;
-      });
+  // Mobile nav
+  const mobileList = document.getElementById('mobile-nav-list');
+  let mobileHTML = '<li><a href="#/">Hjem</a></li>';
+
+  // Utility items in mobile
+  UTILITY_NAV.forEach((item, i) => {
+    if (item.external) {
+      mobileHTML += `<li><a href="${esc(item.href)}" target="_blank" rel="noopener">${esc(item.label)}</a></li>`;
+    } else if (item.children) {
+      mobileHTML += `<li><div class="mobile-parent" data-idx="u${i}">${esc(item.label)}</div><ul class="mobile-sub">`;
+      item.children.forEach(c => { mobileHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`; });
       mobileHTML += '</ul></li>';
     } else {
-      desktopHTML += `<li><a href="${esc(item.href)}">${esc(item.label)}</a></li>`;
       mobileHTML += `<li><a href="${esc(item.href)}">${esc(item.label)}</a></li>`;
     }
   });
 
-  desktopList.innerHTML = desktopHTML;
+  // Divider
+  mobileHTML += '<li class="mobile-divider"><span>Idrætsgrene</span></li>';
+
+  // Sport items in mobile
+  SPORT_NAV.forEach((item, i) => {
+    mobileHTML += `<li><div class="mobile-parent" data-idx="s${i}">${esc(item.label)}</div><ul class="mobile-sub">`;
+    if (item.href) mobileHTML += `<li><a href="${esc(item.href)}">Oversigt</a></li>`;
+    if (item.children) item.children.forEach(c => { mobileHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`; });
+    mobileHTML += '</ul></li>';
+  });
+
   mobileList.innerHTML = mobileHTML;
 
   // Mobile sub-menu toggles
@@ -934,16 +1084,20 @@ function buildNav() {
 
 function updateNav() {
   const route = getRoute();
-  document.querySelectorAll('.nav-list > li').forEach(li => {
-    const a = li.querySelector('a, span');
+  // Sport nav active state
+  document.querySelectorAll('.sport-nav-list > li').forEach(li => {
     const links = li.querySelectorAll('a');
     let isActive = false;
     links.forEach(l => {
       const href = (l.getAttribute('href') || '').replace('#', '');
       if (href && route.startsWith(href) && href !== '/') isActive = true;
-      if (href === '/' && route === '/') isActive = true;
     });
     li.classList.toggle('active', isActive);
+  });
+  // Utility nav active
+  document.querySelectorAll('.utility-inner a, .util-dropdown a').forEach(a => {
+    const href = (a.getAttribute('href') || '').replace('#', '');
+    a.classList.toggle('active', href && route.startsWith(href) && href !== '/');
   });
 }
 
@@ -976,23 +1130,40 @@ function handleScroll() {
   const header = document.getElementById('site-header');
   const backToTop = document.getElementById('back-to-top');
   const scrollY = window.scrollY;
-
   header.classList.toggle('scrolled', scrollY > 50);
   backToTop.classList.toggle('visible', scrollY > 400);
+}
+
+// =============================================
+// DARK MODE
+// =============================================
+function initDarkMode() {
+  const saved = localStorage.getItem('vhg-dark-mode');
+  if (saved === 'true' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+}
+
+function toggleDarkMode() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('vhg-dark-mode', isDark);
+  // Update toggle icon
+  const btn = document.getElementById('dark-mode-toggle');
+  if (btn) btn.innerHTML = isDark ? '☀️' : '🌙';
 }
 
 // =============================================
 // INIT
 // =============================================
 document.addEventListener('DOMContentLoaded', () => {
+  initDarkMode();
   buildNav();
   navigate();
-
   window.addEventListener('hashchange', navigate);
   window.addEventListener('scroll', handleScroll, { passive: true });
-
   document.getElementById('mobile-toggle').addEventListener('click', toggleMobileNav);
   document.getElementById('back-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+  document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
 });
