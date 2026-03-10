@@ -409,9 +409,9 @@ PAGES[''] = PAGES['/'] = function() {
     { key: 'bordtennis', name: 'Bordtennis' },
     { key: 'e-sport', name: 'E-sport' },
     { key: 'floorball', name: 'Floorball' },
-    { key: 'fodbold', name: 'Fodbold' },
+    { key: 'fodbold', name: 'Fodbold', icon: '⚽' },
     { key: 'gymnastik', name: 'Gymnastik' },
-    { key: 'haandbold', name: 'Håndbold' },
+    { key: 'haandbold', name: 'Håndbold', icon: '🤾' },
     { key: 'skateklub', name: 'Skateklub' },
     { key: 'disc-golf', name: 'Disc Golf' }
   ];
@@ -424,7 +424,7 @@ PAGES[''] = PAGES['/'] = function() {
       <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:1.1s">EST. 1925</p>
       <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:1.4s">
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
-        <a href="https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1" target="_blank" rel="noopener" class="btn btn-outline">Conventus Medlems Login</a>
+        <!--<a href="https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1" target="_blank" rel="noopener" class="btn btn-outline">Conventus Medlems Login</a>-->
       </div>
       <div class="scroll-indicator">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -440,7 +440,7 @@ PAGES[''] = PAGES['/'] = function() {
               <div class="sport-card-image">
                 <img src="${SPORT_IMAGES[s.key]}" alt="${esc(s.name)}" class="sport-card-img" loading="lazy">
                 <div class="sport-card-overlay">
-                  <span class="sport-card-icon">${SPORTS[s.key].icon}</span>
+                  <span class="sport-card-icon">${SPORTS[s.key]?.icon || s.icon || ''}</span>
                   <h3>${esc(s.name)}</h3>
                 </div>
               </div>
