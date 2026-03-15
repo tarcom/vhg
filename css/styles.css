@@ -848,6 +848,193 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 .conventus-widget iframe { border-radius: var(--radius); background: var(--white); }
 
 /* ============================================
+   WEEK CALENDAR
+   ============================================ */
+.kalender-hint {
+  text-align: center;
+  color: rgba(255,255,255,0.88);
+  font-size: 0.88rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+/* Sport toggle bar */
+.kalender-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  margin-bottom: 0.9rem;
+  padding: 0.55rem 0.9rem;
+  background: #F8FAFC;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+}
+.kalender-meta-controls {
+  display: flex;
+  align-items: stretch;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+.kalender-meta-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  padding: 0.55rem 0.9rem;
+  background: #FFF7E8;
+  border: 1px solid #F2DFC1;
+  border-radius: 10px;
+  flex: 1;
+}
+.kalender-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  cursor: pointer;
+  user-select: none;
+  flex-direction: row;
+}
+.kalender-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.kalender-toggle-track {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+  background: #D1D5DB;
+  border-radius: 999px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.kalender-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: transform 0.2s;
+}
+.kalender-toggle-input:checked ~ .kalender-toggle-track { background: var(--sport-color); }
+.kalender-toggle-input:checked ~ .kalender-toggle-track::after { transform: translateX(16px); }
+.kalender-toggle-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy-dark);
+}
+.kalender-toggle-secondary .kalender-toggle-label {
+  color: #604010;
+}
+.kalender-day-short {
+  min-width: 1ch;
+  text-align: center;
+  font-weight: 700;
+}
+.kalender-morning-toggle {
+  margin-left: auto;
+  white-space: nowrap;
+  background: #EAF2FB;
+  border: 1px solid #BFD2EA;
+  border-radius: 10px;
+  padding: 0.45rem 0.65rem;
+  align-self: center;
+}
+.kalender-morning-toggle .kalender-toggle-label {
+  color: #0B3A6E;
+  font-weight: 700;
+}
+.kalender-morning-btn { display: none; }
+.kalender-week-wrap {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0.6rem;
+  width: 100%;
+}
+.kalender-week-wrap-single {
+  grid-template-columns: 52px 1fr;
+}
+.kalender-days {
+  display: grid;
+  grid-template-columns: repeat(var(--day-count, 4), minmax(150px, 1fr));
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+.kalender-day-col {
+  min-width: 140px;
+}
+.kalender-day-header {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--navy-dark);
+  background: #EEF4FB;
+  border: 1px solid #D5E1F3;
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.kalender-time-col {
+  position: relative;
+}
+.kalender-time-mark {
+  position: absolute;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+.kalender-day-grid {
+  position: relative;
+  background: rgba(250, 252, 255, 0.8);
+  border: 1px solid #E1E8F2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.kalender-hour-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed rgba(20, 50, 90, 0.15);
+}
+.kalender-event {
+  position: absolute;
+  z-index: 3;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 63, 122, 0.15);
+  border-left: 4px solid var(--navy);
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  padding: 0.25rem 0.45rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.kalender-event-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--navy-dark);
+  display: block;
+  text-decoration: none;
+}
+.kalender-event-title:hover { color: var(--navy-light); text-decoration: underline; }
+.kalender-event-time {
+  font-size: 0.68rem;
+  color: var(--gray-500);
+}
+
+
+/* ============================================
    FOOTER
    ============================================ */
 .site-footer {
@@ -969,6 +1156,10 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   .training-table, .fee-table { font-size: 0.8rem; }
   .training-table th, .fee-table th,
   .training-table td, .fee-table td { padding: 0.4rem 0.6rem; }
+  .kalender-meta-controls { flex-direction: column; }
+  .kalender-morning-toggle { margin-left: 0; width: fit-content; }
+  .kalender-week-wrap { grid-template-columns: 44px 1fr; }
+  .kalender-days { grid-template-columns: repeat(var(--day-count, 4), minmax(120px, 1fr)); }
 }
 
 @media (max-width: 480px) {

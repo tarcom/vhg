@@ -315,6 +315,18 @@ const HAANDBOLD = {
   ]
 };
 
+const KALENDER_SPORT_COLORS = {
+  'badminton': '#1E88E5',
+  'bordtennis': '#6D4C41',
+  'e-sport': '#8E24AA',
+  'floorball': '#00897B',
+  'fodbold': '#43A047',
+  'gymnastik': '#F4511E',
+  'haandbold': '#E53935',
+  'skateklub': '#5E35B1',
+  'disc-golf': '#FB8C00'
+};
+
 const HOVEDBESTYRELSEN = [
   { title: 'Formand', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599', photo: 'assets/images/bestyrelse/allan-skov.jpg' },
   { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk', photo: 'assets/images/bestyrelse/lars-jakobsen.jpg' },
@@ -345,6 +357,305 @@ const REFERATER = [
 // HELPER FUNCTIONS
 // =============================================
 function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+function parseTimeToMinutes(value) {
+  if (!value) return null;
+  const m = String(value).trim().match(/^(\d{1,2})[:.](\d{2})$/);
+  if (!m) return null;
+  return (parseInt(m[1], 10) * 60) + parseInt(m[2], 10);
+}
+
+function minutesToClock(minutes) {
+  const h = Math.floor(minutes / 60).toString().padStart(2, '0');
+  const m = (minutes % 60).toString().padStart(2, '0');
+  return `${h}:${m}`;
+}
+
+async function loadKalenderData() {
+  const res = await fetch('assets/data/calendar-events.json?v=' + Date.now(), { cache: 'no-store' });
+  if (!res.ok) throw new Error('Kunne ikke hente kalenderdata');
+  const payload = await res.json();
+  return Array.isArray(payload.events) ? payload.events : [];
+}
+
+function parseTrainingLineToEvents(sport, sportLabel, hold, line) {
+  const dayMap = {
+    mandag: 'monday', tirsdag: 'tuesday', onsdag: 'wednesday', torsdag: 'thursday',
+    fredag: 'friday', lørdag: 'saturday', søndag: 'sunday'
+  };
+  return String(line || '')
+    .split('·')
+    .map(part => part.trim())
+    .map(part => {
+      const m = part.match(/(Mandag|Tirsdag|Onsdag|Torsdag|Fredag|Lørdag|Søndag)\s*:?[^0-9]*(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})/i);
+      if (!m) return null;
+      const weekday = dayMap[m[1].toLowerCase()] || null;
+      if (!weekday) return null;
+      const fmt = t => {
+        const [h, mm] = t.replace('.', ':').split(':');
+        return `${String(parseInt(h, 10)).padStart(2, '0')}:${mm}`;
+      };
+      return {
+        sport,
+        sport_label: sportLabel,
+        title: hold,
+        weekday,
+        start_time: fmt(m[2]),
+        end_time: fmt(m[3]),
+        period_start: null,
+        period_end: null,
+        price: null,
+        available_spots: null,
+        source_url: 'manual-fallback'
+      };
+    })
+    .filter(Boolean);
+}
+
+function ensureMissingSportFallbacks(events) {
+  const out = Array.isArray(events) ? [...events] : [];
+  const present = new Set(out.map(e => e.sport));
+
+  if (!present.has('fodbold') && Array.isArray(FODBOLD.training)) {
+    FODBOLD.training.forEach(t => {
+      out.push(...parseTrainingLineToEvents('fodbold', 'Fodbold', t.hold, t.tider));
+    });
+  }
+  if (!present.has('haandbold') && Array.isArray(HAANDBOLD.training)) {
+    HAANDBOLD.training.forEach(t => {
+      out.push(...parseTrainingLineToEvents('haandbold', 'Håndbold', t.hold, t.tider));
+    });
+  }
+  return out;
+}
+
+function getSportSignupHref(sport) {
+  const map = {
+    badminton: '#/badminton/tilmelding',
+    bordtennis: '#/bordtennis/tilmelding',
+    'e-sport': '#/e-sport/tilmelding',
+    floorball: '#/floorball/tilmelding',
+    fodbold: '#/fodbold/kontingent',
+    gymnastik: '#/gymnastik/tilmelding',
+    haandbold: '#/haandbold/kontingent',
+    skateklub: '#/skateklub/tilmelding',
+    'disc-golf': '#/disc-golf/tilmelding'
+  };
+  return map[sport] || '#/kontakt';
+}
+
+function assignLanes(dayEvents) {
+  const sorted = [...dayEvents].sort((a, b) => a.startMin - b.startMin || a.endMin - b.endMin);
+  const lanes = new Array(sorted.length).fill(0);
+  for (let i = 0; i < sorted.length; i++) {
+    const used = new Set();
+    for (let j = 0; j < i; j++) {
+      if (sorted[j].endMin > sorted[i].startMin) used.add(lanes[j]);
+    }
+    let lane = 0;
+    while (used.has(lane)) lane++;
+    lanes[i] = lane;
+  }
+  const totalLanes = new Array(sorted.length).fill(1);
+  for (let i = 0; i < sorted.length; i++) {
+    for (let j = 0; j < sorted.length; j++) {
+      if (i !== j && sorted[j].startMin < sorted[i].endMin && sorted[j].endMin > sorted[i].startMin) {
+        totalLanes[i] = Math.max(totalLanes[i], lanes[j] + 1);
+      }
+    }
+  }
+  return sorted.map((event, i) => ({ event, lane: lanes[i], totalLanes: totalLanes[i] }));
+}
+
+const MORNING_CUTOFF = 14 * 60; // 14:00
+
+const ALL_DAYS = [
+  { no: 1, name: 'Mandag', short: 'M', defaultOn: true },
+  { no: 2, name: 'Tirsdag', short: 'T', defaultOn: true },
+  { no: 3, name: 'Onsdag', short: 'O', defaultOn: true },
+  { no: 4, name: 'Torsdag', short: 'T', defaultOn: true },
+  { no: 5, name: 'Fredag', short: 'F', defaultOn: true },
+  { no: 6, name: 'Lørdag', short: 'L', defaultOn: true },
+  { no: 7, name: 'Søndag', short: 'S', defaultOn: true },
+];
+const DAY_INDEX = { monday:1, tuesday:2, wednesday:3, thursday:4, friday:5, saturday:6, sunday:7 };
+
+function renderKalender(container, rawEvents, activeSports, showMorning, activeDays, onToggleSport, onToggleMorning, onToggleDay) {
+  const events = rawEvents
+    .map(e => {
+      const weekday = DAY_INDEX[String(e.weekday || '').toLowerCase()] || null;
+      const startMin = parseTimeToMinutes(e.start_time);
+      const endMin = parseTimeToMinutes(e.end_time);
+      return { ...e, weekday, startMin, endMin, sport: e.sport || 'andet', sportLabel: e.sport_label || e.sport || 'Andet' };
+    })
+    .filter(e => e.weekday && e.weekday <= 7 && Number.isInteger(e.startMin) && Number.isInteger(e.endMin) && e.endMin > e.startMin)
+    .sort((a, b) => a.startMin - b.startMin);
+
+  if (!events.length) {
+    container.innerHTML = '<div class="info-box"><h3>Ingen kalenderdata</h3><p>Der blev ikke fundet hold med ugedag og klokkeslæt i datafilen.</p></div>';
+    return;
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const activeEvents = events.filter(e => !e.period_end || e.period_end >= today);
+  const baseVisibleEvents = activeEvents.length ? activeEvents : events;
+
+  if (!activeSports || typeof activeSports.has !== 'function') {
+    activeSports = new Set(baseVisibleEvents.map(e => e.sport));
+  }
+
+  const legendMap = new Map();
+  baseVisibleEvents.forEach(e => {
+    if (!legendMap.has(e.sport)) legendMap.set(e.sport, { key: e.sport, label: e.sportLabel });
+  });
+
+  const enabledDays = ALL_DAYS.filter(d => activeDays.has(d.no));
+
+  const visibleEvents = baseVisibleEvents
+    .filter(e => activeDays.has(e.weekday))
+    .filter(e => activeSports.has(e.sport))
+    .filter(e => showMorning || e.startMin >= MORNING_CUTOFF);
+
+  // --- Sport toggles row ---
+  const togglesHTML = `
+    <div class="kalender-toggles">
+      ${Array.from(legendMap.values()).map(item => {
+        const on = activeSports.has(item.key);
+        const col = KALENDER_SPORT_COLORS[item.key] || '#607D8B';
+        return `
+          <label class="kalender-toggle" data-sport="${esc(item.key)}">
+            <input class="kalender-toggle-input" type="checkbox" ${on ? 'checked' : ''}>
+            <span class="kalender-toggle-track" style="--sport-color:${col}"></span>
+            <span class="kalender-toggle-label">${esc(item.label)}</span>
+          </label>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  // --- Day + morning toggles (below sports) ---
+  const metaTogglesHTML = `
+    <div class="kalender-meta-controls">
+      <div class="kalender-meta-toggles">
+        ${ALL_DAYS.map(d => {
+          const on = activeDays.has(d.no);
+          return `
+            <label class="kalender-toggle kalender-toggle-secondary" data-day="${d.no}" title="${d.name}">
+              <input class="kalender-toggle-input" type="checkbox" ${on ? 'checked' : ''}>
+              <span class="kalender-toggle-track" style="--sport-color:#B8860B"></span>
+              <span class="kalender-toggle-label kalender-day-short">${d.short}</span>
+            </label>
+          `;
+        }).join('')}
+      </div>
+      <label class="kalender-toggle kalender-morning-toggle" data-morning-toggle-wrap>
+        <input class="kalender-toggle-input" type="checkbox" ${showMorning ? 'checked' : ''} data-morning-toggle>
+        <span class="kalender-toggle-track" style="--sport-color:#0B3A6E"></span>
+        <span class="kalender-toggle-label">Vis formiddagshold</span>
+      </label>
+    </div>
+  `;
+
+  if (!enabledDays.length || !visibleEvents.length) {
+    const msg = !enabledDays.length
+      ? 'Slå mindst én dag til ovenfor for at se kalender.'
+      : 'Ingen hold de valgte dage — juster dagene eller idrætsgrene ovenfor.';
+    container.innerHTML = togglesHTML + metaTogglesHTML + `<div class="info-box"><p>${msg}</p></div>`;
+    wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay);
+    return;
+  }
+
+  const dayNameByNo = Object.fromEntries(ALL_DAYS.map(d => [d.no, d.name]));
+  const earliest = Math.min(...visibleEvents.map(e => e.startMin));
+  const latest = Math.max(...visibleEvents.map(e => e.endMin));
+  const dayStart = Math.max(6 * 60, Math.floor(earliest / 30) * 30);
+  const dayEnd = Math.min(23 * 60, Math.ceil(latest / 30) * 30 + 30);
+  const pixelsPerMinute = 1.6;
+  const gridHeight = Math.max(340, Math.round((dayEnd - dayStart) * pixelsPerMinute));
+  const hourLines = [];
+  for (let t = dayStart; t <= dayEnd; t += 60) hourLines.push(t);
+
+  const laned = assignLanes([...visibleEvents].sort((a, b) => a.startMin - b.startMin || a.weekday - b.weekday));
+
+  container.innerHTML = togglesHTML + metaTogglesHTML + `
+    <div class="kalender-week-wrap kalender-week-wrap-single">
+      <div class="kalender-time-col" style="height:${gridHeight}px">
+        ${hourLines.map(t => `<div class="kalender-time-mark" style="top:${Math.round((t - dayStart) * pixelsPerMinute)}px">${minutesToClock(t)}</div>`).join('')}
+      </div>
+      <div class="kalender-day-grid kalender-single-day-grid" style="height:${gridHeight}px">
+        ${hourLines.map(t => `<div class="kalender-hour-line" style="top:${Math.round((t - dayStart) * pixelsPerMinute)}px"></div>`).join('')}
+        ${laned.map(({ event: e, lane, totalLanes }) => {
+          const top = Math.round((e.startMin - dayStart) * pixelsPerMinute);
+          const height = Math.max(26, Math.round((e.endMin - e.startMin) * pixelsPerMinute));
+          const color = KALENDER_SPORT_COLORS[e.sport] || '#607D8B';
+          const lw = (100 / totalLanes).toFixed(2);
+          const ll = (lane * 100 / totalLanes).toFixed(2);
+          const signupHref = e.signup_url || getSportSignupHref(e.sport);
+          const external = /^https?:\/\//.test(signupHref);
+          const hover = [
+            e.info_text || '',
+            e.price ? `Pris: ${e.price}` : '',
+            e.available_spots || '',
+            e.period_start && e.period_end ? `Periode: ${e.period_start} - ${e.period_end}` : ''
+          ].filter(Boolean).join(' | ');
+          return `
+            <div class="kalender-event" title="${esc(hover)}" style="top:${top}px;height:${height}px;border-left-color:${color};left:calc(4px + ${ll}%);width:calc(${lw}% - 8px)">
+              <div class="kalender-event-time">${esc(dayNameByNo[e.weekday] || '')} · ${esc(e.start_time)} - ${esc(e.end_time)}</div>
+              <a class="kalender-event-title" href="${esc(signupHref)}" ${external ? 'target="_blank" rel="noopener"' : ''}>${esc(e.title || 'Hold')}</a>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+
+  wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay);
+}
+
+function wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay) {
+  container.querySelectorAll('.kalender-toggle[data-sport]').forEach(label => {
+    label.querySelector('.kalender-toggle-input').addEventListener('change', () => {
+      onToggleSport(label.getAttribute('data-sport'));
+    });
+  });
+  container.querySelectorAll('.kalender-toggle[data-day]').forEach(label => {
+    label.querySelector('.kalender-toggle-input').addEventListener('change', () => {
+      onToggleDay(parseInt(label.getAttribute('data-day'), 10));
+    });
+  });
+  const morningInput = container.querySelector('[data-morning-toggle]');
+  if (morningInput) morningInput.addEventListener('change', onToggleMorning);
+}
+
+async function initKalenderPage(mountId = 'kalender-root') {
+  const mount = document.getElementById(mountId);
+  if (!mount) return;
+  mount.innerHTML = '<div class="info-box"><h3>Indlæser kalender...</h3><p>Henter senest cachede Conventus-data.</p></div>';
+  try {
+    const events = ensureMissingSportFallbacks(await loadKalenderData());
+    const activeSports = new Set(events.map(e => e.sport));
+    const activeDays = new Set(ALL_DAYS.filter(d => d.defaultOn).map(d => d.no));
+    let showMorning = false;
+    const rerender = () => {
+      renderKalender(mount, events, activeSports, showMorning, activeDays,
+        sportKey => {
+          if (activeSports.has(sportKey)) activeSports.delete(sportKey);
+          else activeSports.add(sportKey);
+          rerender();
+        },
+        () => { showMorning = !showMorning; rerender(); },
+        dayNo => {
+          if (activeDays.has(dayNo)) activeDays.delete(dayNo);
+          else activeDays.add(dayNo);
+          rerender();
+        }
+      );
+    };
+    rerender();
+  } catch (err) {
+    mount.innerHTML = '<div class="info-box"><h3>Kalender kunne ikke vises</h3><p>Kunne ikke hente kalenderdata. Prøv igen senere.</p></div>';
+  }
+}
 
 function personCardHTML(p) {
   let contact = '';
@@ -422,6 +733,7 @@ PAGES[''] = PAGES['/'] = function() {
       <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:3.0s">EST. 1925</p>
       <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:3.2s">
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
+        <button id="scroll-to-kalender" class="btn btn-outline">Gå til kalender ↓</button>
       </div>
       <div class="scroll-indicator">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -444,6 +756,12 @@ PAGES[''] = PAGES['/'] = function() {
             </a>
           `).join('')}
         </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title section-title-center">Ugekalender (man-fre)</h2>
+        <p class="mb-2 kalender-hint">Klik på hold for tilmelding og mere info. Hold musen over et hold for ekstra detaljer.</p>
+        <div id="home-kalender-root"></div>
       </div>
 
       <div class="quick-info">
@@ -981,6 +1299,13 @@ function navigate() {
     loadConventusIframes(document.getElementById('conventus-area'), [
       'https://www.conventus.dk/dataudv/www/abonnement.php?foreningsid=1212&abonnementsgruppe=4931&abonnementsafdeling=&vis_abonnementer=1&vis_laengde=1&vis_holdnavne=1&layout=relativ'
     ]);
+  }
+  if (route === '/' || route === '') {
+    initKalenderPage('home-kalender-root');
+    const scrollBtn = document.getElementById('scroll-to-kalender');
+    if (scrollBtn) scrollBtn.addEventListener('click', () => {
+      document.getElementById('home-kalender-root')?.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 
   // Scroll: preserve if same section, otherwise go to top
