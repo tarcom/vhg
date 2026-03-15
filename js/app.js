@@ -480,7 +480,7 @@ const ALL_DAYS = [
 ];
 const DAY_INDEX = { monday:1, tuesday:2, wednesday:3, thursday:4, friday:5, saturday:6, sunday:7 };
 
-function renderKalender(container, rawEvents, activeSports, showMorning, activeDays, onToggleSport, onToggleMorning, onToggleDay) {
+function renderKalender(container, rawEvents, activeSports, showMorning, selectedDay, onToggleSport, onToggleMorning, onChangeDay) {
   const events = rawEvents
     .map(e => {
       const weekday = DAY_INDEX[String(e.weekday || '').toLowerCase()] || null;
@@ -498,7 +498,7 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
 
   const today = new Date().toISOString().slice(0, 10);
   const activeEvents = events.filter(e => !e.period_end || e.period_end >= today);
-  const baseVisibleEvents = activeEvents.length ? activeEvents : events;
+  const baseVisibleEvents = (activeEvents.length ? activeEvents : events).filter(e => e.sport !== 'disc-golf');
 
   if (!activeSports || typeof activeSports.has !== 'function') {
     activeSports = new Set(baseVisibleEvents.map(e => e.sport));
@@ -509,10 +509,8 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
     if (!legendMap.has(e.sport)) legendMap.set(e.sport, { key: e.sport, label: e.sportLabel });
   });
 
-  const enabledDays = ALL_DAYS.filter(d => activeDays.has(d.no));
-
   const visibleEvents = baseVisibleEvents
-    .filter(e => activeDays.has(e.weekday))
+    .filter(e => e.weekday === selectedDay)
     .filter(e => activeSports.has(e.sport))
     .filter(e => showMorning || e.startMin >= MORNING_CUTOFF);
 
@@ -533,20 +531,19 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
     </div>
   `;
 
-  // --- Day + morning toggles (below sports) ---
+  // --- Day radio buttons + morning toggle (below sports) ---
   const metaTogglesHTML = `
     <div class="kalender-meta-controls">
-      <div class="kalender-meta-toggles">
-        ${ALL_DAYS.map(d => {
-          const on = activeDays.has(d.no);
-          return `
-            <label class="kalender-toggle kalender-toggle-secondary" data-day="${d.no}" title="${d.name}">
-              <input class="kalender-toggle-input" type="checkbox" ${on ? 'checked' : ''}>
-              <span class="kalender-toggle-track" style="--sport-color:#B8860B"></span>
-              <span class="kalender-toggle-label">${d.name}</span>
+      <div class="kalender-day-radio-wrap">
+        <span class="kalender-day-prefix">Vis kalender for:</span>
+        <div class="kalender-day-radios">
+          ${ALL_DAYS.map(d => `
+            <label class="kalender-day-radio ${d.no === selectedDay ? 'is-active' : ''}">
+              <input type="radio" name="kalender-day" value="${d.no}" ${d.no === selectedDay ? 'checked' : ''} data-day-radio>
+              <span>${d.name}</span>
             </label>
-          `;
-        }).join('')}
+          `).join('')}
+        </div>
       </div>
       <label class="kalender-toggle kalender-morning-toggle" data-morning-toggle-wrap>
         <input class="kalender-toggle-input" type="checkbox" ${showMorning ? 'checked' : ''} data-morning-toggle>
@@ -556,12 +553,10 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
     </div>
   `;
 
-  if (!enabledDays.length || !visibleEvents.length) {
-    const msg = !enabledDays.length
-      ? 'Slå mindst én dag til ovenfor for at se kalender.'
-      : 'Ingen hold de valgte dage — juster dagene eller idrætsgrene ovenfor.';
+  if (!visibleEvents.length) {
+    const msg = 'Ingen hold denne dag med nuværende filtre — prøv en anden dag eller juster idrætsgrene.';
     container.innerHTML = togglesHTML + metaTogglesHTML + `<div class="info-box"><p>${msg}</p></div>`;
-    wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay);
+    wireKalenderControls(container, onToggleSport, onToggleMorning, onChangeDay);
     return;
   }
 
@@ -587,11 +582,11 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
           const top = Math.round((e.startMin - dayStart) * pixelsPerMinute);
           const height = Math.max(26, Math.round((e.endMin - e.startMin) * pixelsPerMinute));
           const color = KALENDER_SPORT_COLORS[e.sport] || '#607D8B';
-          const overlapRatio = 0.28;
-          const laneWidth = 96 / (1 + ((totalLanes - 1) * (1 - overlapRatio)));
+          const overlapRatio = 0.10;
+          const laneWidth = 94 / (1 + ((totalLanes - 1) * (1 - overlapRatio)));
           const laneStep = laneWidth * (1 - overlapRatio);
           const lw = laneWidth.toFixed(2);
-          const ll = (2 + (lane * laneStep)).toFixed(2);
+          const ll = (4 + (lane * laneStep)).toFixed(2);
           const signupHref = e.signup_url || getSportSignupHref(e.sport);
           const external = /^https?:\/\//.test(signupHref);
           const hover = [
@@ -603,6 +598,7 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
           return `
             <div class="kalender-event" title="${esc(hover)}" style="top:${top}px;height:${height}px;border-left-color:${color};left:${ll}%;width:${lw}%;z-index:${10 + lane}">
               <a class="kalender-event-title" href="${esc(signupHref)}" ${external ? 'target="_blank" rel="noopener"' : ''}>${esc(e.title || 'Hold')}</a>
+              <div class="kalender-event-time">${esc(e.start_time)} - ${esc(e.end_time)}</div>
             </div>
           `;
         }).join('')}
@@ -610,20 +606,22 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
     </div>
   `;
 
-  wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay);
+  wireKalenderControls(container, onToggleSport, onToggleMorning, onChangeDay);
 }
 
-function wireKalenderControls(container, onToggleSport, onToggleMorning, onToggleDay) {
+function wireKalenderControls(container, onToggleSport, onToggleMorning, onChangeDay) {
   container.querySelectorAll('.kalender-toggle[data-sport]').forEach(label => {
     label.querySelector('.kalender-toggle-input').addEventListener('change', () => {
       onToggleSport(label.getAttribute('data-sport'));
     });
   });
-  container.querySelectorAll('.kalender-toggle[data-day]').forEach(label => {
-    label.querySelector('.kalender-toggle-input').addEventListener('change', () => {
-      onToggleDay(parseInt(label.getAttribute('data-day'), 10));
+
+  container.querySelectorAll('[data-day-radio]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) onChangeDay(parseInt(radio.value, 10));
     });
   });
+
   const morningInput = container.querySelector('[data-morning-toggle]');
   if (morningInput) morningInput.addEventListener('change', onToggleMorning);
 }
@@ -634,22 +632,44 @@ async function initKalenderPage(mountId = 'kalender-root') {
   mount.innerHTML = '<div class="info-box"><h3>Indlæser kalender...</h3><p>Henter senest cachede Conventus-data.</p></div>';
   try {
     const events = ensureMissingSportFallbacks(await loadKalenderData());
-    const activeSports = new Set(events.map(e => e.sport));
-    const activeDays = new Set(ALL_DAYS.filter(d => d.defaultOn).map(d => d.no));
+    const activeSports = new Set(events.filter(e => e.sport !== 'disc-golf').map(e => e.sport));
     let showMorning = false;
+    const jsDay = new Date().getDay(); // 0=Sunday
+    let selectedDay = jsDay === 0 ? 7 : jsDay;
+
+    // If there are no activities today, default to the next day that has activities.
+    const today = new Date().toISOString().slice(0, 10);
+    const prepared = events
+      .map(e => ({
+        ...e,
+        weekday: DAY_INDEX[String(e.weekday || '').toLowerCase()] || null,
+        startMin: parseTimeToMinutes(e.start_time),
+        endMin: parseTimeToMinutes(e.end_time),
+        sport: e.sport || 'andet'
+      }))
+      .filter(e => e.weekday && e.weekday <= 7 && e.sport !== 'disc-golf' && Number.isInteger(e.startMin) && Number.isInteger(e.endMin) && e.endMin > e.startMin);
+    const activePrepared = prepared.filter(e => !e.period_end || e.period_end >= today);
+    const baselinePrepared = activePrepared.length ? activePrepared : prepared;
+    const daysWithActivities = new Set(baselinePrepared.map(e => e.weekday));
+    if (daysWithActivities.size && !daysWithActivities.has(selectedDay)) {
+      for (let step = 1; step <= 7; step += 1) {
+        const next = ((selectedDay - 1 + step) % 7) + 1;
+        if (daysWithActivities.has(next)) {
+          selectedDay = next;
+          break;
+        }
+      }
+    }
+
     const rerender = () => {
-      renderKalender(mount, events, activeSports, showMorning, activeDays,
+      renderKalender(mount, events, activeSports, showMorning, selectedDay,
         sportKey => {
           if (activeSports.has(sportKey)) activeSports.delete(sportKey);
           else activeSports.add(sportKey);
           rerender();
         },
         () => { showMorning = !showMorning; rerender(); },
-        dayNo => {
-          if (activeDays.has(dayNo)) activeDays.delete(dayNo);
-          else activeDays.add(dayNo);
-          rerender();
-        }
+        dayNo => { selectedDay = dayNo; rerender(); }
       );
     };
     rerender();
@@ -731,10 +751,11 @@ PAGES[''] = PAGES['/'] = function() {
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
       <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
       <p class="hero-tagline hero-anim" style="--hero-delay:1.5s">Sport, fællesskab og bevægelse for hele familien</p>
-      <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:3.0s">EST. 1925</p>
-      <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:3.2s">
+      <p class="hero-est hero-anim hero-anim-bottom" style="--hero-delay:2.5s">EST. 1925</p>
+      <div class="hero-cta hero-anim hero-anim-bottom" style="--hero-delay:2.5s">
+        <button id="scroll-to-kalender" class="btn btn-outline">Kalender</button>
+        <button id="scroll-to-idraetsgrene" class="btn btn-outline">Idrætsgrene</button>
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
-        <button id="scroll-to-kalender" class="btn btn-outline">Gå til kalender ↓</button>
       </div>
       <div class="scroll-indicator">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -742,7 +763,7 @@ PAGES[''] = PAGES['/'] = function() {
     </div>
 
     <div class="container">
-      <div class="section">
+      <div class="section" id="home-idraetsgrene">
         <h2 class="section-title section-title-center">Vores idrætsgrene</h2>
         <div class="sport-grid">
           ${sportCards.map((s, i) => `
@@ -1306,6 +1327,10 @@ function navigate() {
     const scrollBtn = document.getElementById('scroll-to-kalender');
     if (scrollBtn) scrollBtn.addEventListener('click', () => {
       document.getElementById('home-kalender-root')?.scrollIntoView({ behavior: 'smooth' });
+    });
+    const sportsBtn = document.getElementById('scroll-to-idraetsgrene');
+    if (sportsBtn) sportsBtn.addEventListener('click', () => {
+      document.getElementById('home-idraetsgrene')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
