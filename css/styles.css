@@ -932,11 +932,7 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 }
 .kalender-toggle-secondary .kalender-toggle-label {
   color: #604010;
-}
-.kalender-day-short {
-  min-width: 1ch;
-  text-align: center;
-  font-weight: 700;
+  font-size: 0.74rem;
 }
 .kalender-morning-toggle {
   margin-left: auto;
@@ -1010,19 +1006,19 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 .kalender-event {
   position: absolute;
   z-index: 3;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(0, 63, 122, 0.15);
   border-left: 4px solid var(--navy);
   border-radius: 7px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.08);
-  padding: 0.25rem 0.45rem;
+  padding: 0.2rem 0.35rem;
   overflow: hidden;
   box-sizing: border-box;
 }
 .kalender-event-title {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.18;
   color: var(--navy-dark);
   display: block;
   text-decoration: none;

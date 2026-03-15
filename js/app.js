@@ -470,13 +470,13 @@ function assignLanes(dayEvents) {
 const MORNING_CUTOFF = 14 * 60; // 14:00
 
 const ALL_DAYS = [
-  { no: 1, name: 'Mandag', short: 'M', defaultOn: true },
-  { no: 2, name: 'Tirsdag', short: 'T', defaultOn: true },
-  { no: 3, name: 'Onsdag', short: 'O', defaultOn: true },
-  { no: 4, name: 'Torsdag', short: 'T', defaultOn: true },
-  { no: 5, name: 'Fredag', short: 'F', defaultOn: true },
-  { no: 6, name: 'Lørdag', short: 'L', defaultOn: true },
-  { no: 7, name: 'Søndag', short: 'S', defaultOn: true },
+  { no: 1, name: 'Mandag', defaultOn: true },
+  { no: 2, name: 'Tirsdag', defaultOn: true },
+  { no: 3, name: 'Onsdag', defaultOn: true },
+  { no: 4, name: 'Torsdag', defaultOn: true },
+  { no: 5, name: 'Fredag', defaultOn: true },
+  { no: 6, name: 'Lørdag', defaultOn: true },
+  { no: 7, name: 'Søndag', defaultOn: true },
 ];
 const DAY_INDEX = { monday:1, tuesday:2, wednesday:3, thursday:4, friday:5, saturday:6, sunday:7 };
 
@@ -543,7 +543,7 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
             <label class="kalender-toggle kalender-toggle-secondary" data-day="${d.no}" title="${d.name}">
               <input class="kalender-toggle-input" type="checkbox" ${on ? 'checked' : ''}>
               <span class="kalender-toggle-track" style="--sport-color:#B8860B"></span>
-              <span class="kalender-toggle-label kalender-day-short">${d.short}</span>
+              <span class="kalender-toggle-label">${d.name}</span>
             </label>
           `;
         }).join('')}
@@ -565,12 +565,11 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
     return;
   }
 
-  const dayNameByNo = Object.fromEntries(ALL_DAYS.map(d => [d.no, d.name]));
   const earliest = Math.min(...visibleEvents.map(e => e.startMin));
   const latest = Math.max(...visibleEvents.map(e => e.endMin));
   const dayStart = Math.max(6 * 60, Math.floor(earliest / 30) * 30);
   const dayEnd = Math.min(23 * 60, Math.ceil(latest / 30) * 30 + 30);
-  const pixelsPerMinute = 1.6;
+  const pixelsPerMinute = 1.9;
   const gridHeight = Math.max(340, Math.round((dayEnd - dayStart) * pixelsPerMinute));
   const hourLines = [];
   for (let t = dayStart; t <= dayEnd; t += 60) hourLines.push(t);
@@ -588,8 +587,11 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
           const top = Math.round((e.startMin - dayStart) * pixelsPerMinute);
           const height = Math.max(26, Math.round((e.endMin - e.startMin) * pixelsPerMinute));
           const color = KALENDER_SPORT_COLORS[e.sport] || '#607D8B';
-          const lw = (100 / totalLanes).toFixed(2);
-          const ll = (lane * 100 / totalLanes).toFixed(2);
+          const overlapRatio = 0.28;
+          const laneWidth = 96 / (1 + ((totalLanes - 1) * (1 - overlapRatio)));
+          const laneStep = laneWidth * (1 - overlapRatio);
+          const lw = laneWidth.toFixed(2);
+          const ll = (2 + (lane * laneStep)).toFixed(2);
           const signupHref = e.signup_url || getSportSignupHref(e.sport);
           const external = /^https?:\/\//.test(signupHref);
           const hover = [
@@ -599,8 +601,7 @@ function renderKalender(container, rawEvents, activeSports, showMorning, activeD
             e.period_start && e.period_end ? `Periode: ${e.period_start} - ${e.period_end}` : ''
           ].filter(Boolean).join(' | ');
           return `
-            <div class="kalender-event" title="${esc(hover)}" style="top:${top}px;height:${height}px;border-left-color:${color};left:calc(4px + ${ll}%);width:calc(${lw}% - 8px)">
-              <div class="kalender-event-time">${esc(dayNameByNo[e.weekday] || '')} · ${esc(e.start_time)} - ${esc(e.end_time)}</div>
+            <div class="kalender-event" title="${esc(hover)}" style="top:${top}px;height:${height}px;border-left-color:${color};left:${ll}%;width:${lw}%;z-index:${10 + lane}">
               <a class="kalender-event-title" href="${esc(signupHref)}" ${external ? 'target="_blank" rel="noopener"' : ''}>${esc(e.title || 'Hold')}</a>
             </div>
           `;
