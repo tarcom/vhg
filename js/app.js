@@ -1310,12 +1310,11 @@ PAGES['/haandbold/sponsor-concept'] = function() {
   return sportPageHeader('haandbold', 'Håndbold - Sponsor-concept 2025', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
     `<div class="page container">${haandboldSubNav('/haandbold/sponsor-concept')}
       <div class="section">
-        <h2 class="section-title">Sponsor-concept 2025</h2>
-        <div class="card">
-          <div class="card-body">
-            <iframe src="assets/pdf/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" title="Sponsor-concept 2025" style="width:100%;min-height:900px;border:1px solid var(--gray-300);border-radius:var(--radius-sm);background:#fff"></iframe>
-          </div>
-        </div>
+        <img src="assets/images/afdelinger/haandbold/image1.png" alt="Sponsor-concept side 1" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
+        <img src="assets/images/afdelinger/haandbold/image2.png" alt="Sponsor-concept side 2" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
+        <img src="assets/images/afdelinger/haandbold/image3.png" alt="Sponsor-concept side 3" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
+        <img src="assets/images/afdelinger/haandbold/image4.png" alt="Sponsor-concept side 4" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
+        <img src="assets/images/afdelinger/haandbold/image5.png" alt="Sponsor-concept side 5" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto;border-radius:var(--radius-sm)">
       </div>
     </div>`;
 };
