@@ -1051,7 +1051,7 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   color: var(--navy-dark);
 }
 .kalender-morning-toggle {
-  margin-left: auto;
+  margin-left: 0;
   white-space: nowrap;
   background: #EAF2FB;
   border: 1px solid #BFD2EA;
@@ -1143,6 +1143,23 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 .kalender-event-time {
   font-size: 0.68rem;
   color: var(--gray-500);
+}
+
+.cafe-menu-images {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.cafe-menu-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  flex: 0 1 auto;
 }
 
 
@@ -1311,6 +1328,10 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   .byfest-pulse-badge { top: 4.8rem; left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
   .byfest-pulse-badge img { width: 54px; height: 54px; }
   .byfest-pulse-badge span { font-size: 0.66rem; }
+  .cafe-menu-images {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {

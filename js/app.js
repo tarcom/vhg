@@ -20,6 +20,7 @@ const ICONS = {
 // =============================================
 const UTILITY_NAV = [
   { label: 'Om VHG', children: [
+    { label: 'Kalender', href: '#/kalender' },
     { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
     { label: 'Referat', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
@@ -577,7 +578,7 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
     </div>
   `;
 
-  // --- Day radio buttons + morning toggle (below sports) ---
+  // --- Day radio buttons (below sports) ---
   const metaTogglesHTML = `
     <div class="kalender-meta-controls">
       <div class="kalender-day-radio-wrap">
@@ -591,11 +592,6 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
           `).join('')}
         </div>
       </div>
-      <label class="kalender-toggle kalender-morning-toggle" data-morning-toggle-wrap>
-        <input class="kalender-toggle-input" type="checkbox" ${showMorning ? 'checked' : ''} data-morning-toggle>
-        <span class="kalender-toggle-track" style="--sport-color:#0B3A6E"></span>
-        <span class="kalender-toggle-label">Vis formiddagshold</span>
-      </label>
     </div>
   `;
 
@@ -666,9 +662,6 @@ function wireKalenderControls(container, onToggleSport, onToggleMorning, onChang
       if (radio.checked) onChangeDay(parseInt(radio.value, 10));
     });
   });
-
-  const morningInput = container.querySelector('[data-morning-toggle]');
-  if (morningInput) morningInput.addEventListener('change', onToggleMorning);
 }
 
 async function initKalenderPage(mountId = 'kalender-root') {
@@ -706,6 +699,7 @@ async function initKalenderPage(mountId = 'kalender-root') {
       }
     }
 
+    const morningInput = document.querySelector('[data-morning-toggle-home]');
     const rerender = () => {
       renderKalender(mount, events, activeSports, showMorning, selectedDay,
         sportKey => {
@@ -717,6 +711,23 @@ async function initKalenderPage(mountId = 'kalender-root') {
         dayNo => { selectedDay = dayNo; rerender(); }
       );
     };
+
+    if (morningInput) {
+      morningInput.checked = showMorning;
+      morningInput._onToggleMorning = () => {
+        showMorning = morningInput.checked;
+        rerender();
+      };
+      if (!morningInput.dataset.boundToggle) {
+        morningInput.addEventListener('change', () => {
+          if (typeof morningInput._onToggleMorning === 'function') {
+            morningInput._onToggleMorning();
+          }
+        });
+        morningInput.dataset.boundToggle = '1';
+      }
+    }
+
     rerender();
   } catch (err) {
     mount.innerHTML = '<div class="info-box"><h3>Kalender kunne ikke vises</h3><p>Kunne ikke hente kalenderdata. Prøv igen senere.</p></div>';
@@ -838,6 +849,11 @@ PAGES[''] = PAGES['/'] = function() {
         <div id="home-kalender-root"></div>
         <div class="kalender-refresh-row">
           <button id="refresh-kalender-btn" class="btn btn-primary btn-sm" type="button">Opdater kalender</button>
+          <label class="kalender-toggle kalender-morning-toggle" data-morning-toggle-wrap>
+            <input id="home-morning-toggle" class="kalender-toggle-input" type="checkbox" data-morning-toggle-home>
+            <span class="kalender-toggle-track" style="--sport-color:#0B3A6E"></span>
+            <span class="kalender-toggle-label">Vis formiddagshold</span>
+          </label>
           <span id="refresh-kalender-status" aria-live="polite"></span>
         </div>
       </div>
@@ -1308,6 +1324,15 @@ PAGES['/cafeen'] = function() {
         </div>
       </div>
       <div class="section">
+        <h2 class="section-title">Menu</h2>
+        <div class="card">
+          <div class="card-body cafe-menu-images">
+            <img src="assets/images/cafeen-menu.jpg" alt="Caféens menu" loading="lazy" class="cafe-menu-image">
+            <img src="assets/images/cafeen-menu2.jpg" alt="Caféens menu side 2" loading="lazy" class="cafe-menu-image">
+          </div>
+        </div>
+      </div>
+      <div class="section">
         <h2 class="section-title">Kontakt Gevaldig</h2>
         <div class="contact-cards">
           <div class="contact-card">
@@ -1390,6 +1415,12 @@ function navigate() {
   const route = getRoute();
   const app = document.getElementById('app');
   const videoBg = document.getElementById('video-bg');
+
+  if (route === '/kalender') {
+    pendingHomeScrollTarget = 'home-kalender-root';
+    location.hash = '#/';
+    return;
+  }
 
   if (route === '/om-vhg/sponsorer') {
     pendingHomeScrollTarget = 'home-sponsorer';
