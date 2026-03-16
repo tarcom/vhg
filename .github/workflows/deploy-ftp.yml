@@ -26,5 +26,4 @@ jobs:
             **/.git*/**
             **/.github/**
             **/old_site/**
-            **/scripts/**
             **/README.md
