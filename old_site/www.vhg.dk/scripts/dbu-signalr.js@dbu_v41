@@ -1,0 +1,148 @@
+﻿var connType = 0;
+var matchID = "";
+var poolRowTournamentID = "";
+var clubID = "";
+var connected = false;
+var isConnecting = false;
+var couldNotConnect = false;
+
+
+
+$(function () {
+    if ($(".livescoreModule").length || $(".matchpage").length) {   
+            startSignalR();
+    }
+});
+
+function startSignalR() {
+    console.log("Forsøger start af signalr...");
+    if (!isConnecting) {
+        isConnecting = true;
+        // Reference the auto-generated proxy for the hub.
+        var livescoreHub = $.connection.livescoreHub;
+
+        $.connection.hub.logging = true;
+     
+        $.connection.hub.url = "https://hubs.dbu.dk:1443/signalr/";
+        //$.connection.hub.url = "http://localhost:12003/signalr/";
+
+        if (livescoreHub != null && !couldNotConnect) {
+                // Create a function that the hub can call back to display messages.
+                livescoreHub.client.updateevents = function (data) {
+                    var dataJson = $.parseJSON(data);
+                    eventDataRecieved(dataJson);
+                };
+
+                livescoreHub.client.updatematches = function () {
+                    //var dataJson = $.parseJSON(data);
+                    //matchdataRecieved(dataJson);
+                    retrieveMatchData();
+                    //$(".livescoreSlide").append("<li>" + dataJson + "<br/>" + "</li>");
+                };
+
+                livescoreHub.client.clientaccepted = function () {
+                    initLivescore();
+                };
+
+                livescoreHub.client.updatecomments = function () {
+                    retrieveComments();
+                };
+
+
+                //connType 1 = club matches | connType 2 = single matches
+                if ($(".matchpage").length) {
+                    connType = 2;
+                }
+                if ($(".livescoreModule").length) {
+                    connType = 1;
+                }
+                if (!$(".livescoreModule").length && !$(".matchpage").length) {
+                    connType = 0;
+                }
+
+
+                var matchID = "";
+                var poolRowTournamentID = "";
+                var clubID = "";
+
+                if (connType == 2) {
+                    //for single match livescore
+                    var queryStrings = getUrlVars();
+                    matchID = queryStrings["matchid"];
+                    poolRowTournamentID = queryStrings["poolrowid"];
+                }
+                if (connType == 1) {
+                    clubID = livescoreClubId;
+                }
+
+
+                startHub();
+
+                function startHub() {
+                    if (connType != 0) {
+                        $.connection.hub.start({ jsonp: true }).done(function () {
+                            if (connType == 1) {
+                                livescoreHub.server.register(connType, clubID, "", "");
+                            }
+                            if (connType == 2) {
+                                //for single match livescore
+                                livescoreHub.server.register(connType, "", matchID, poolRowTournamentID);
+                            }
+                            if (connType == 3) {
+                                //for single match livescore
+                                livescoreHub.server.register(connType, "", "", "");
+                            }
+                            isConnecting = false;
+                        }).fail(function (e) {
+                            isConnecting = false;
+                            connectionFailed();
+                            couldNotConnect = true;
+                            console.log("SignalrError: " + e);
+                            setTimeout(function () {
+                                console.log("fail - StartSignalR()");
+                                startSignalR();
+                            }, 5000);
+                        });
+                    }
+                }
+                $.connection.hub.reconnecting(function () {
+                    connectionLost();
+                    $.connection.hub.stop();
+                   
+                });
+
+                $.connection.hub.disconnected(function () {
+                    console.log("Forbindelsen blev afbrudt. Prøver at forbinde til serveren igen...");
+                    couldNotConnect = true;
+                    setTimeout(function () {
+                        startSignalR();
+                    }, 5000); // Restart connection after 5 seconds.
+                });
+            } else {
+                connectionFailed();
+                    $.ajax({
+                        url: 'https://hubs.dbu.dk:1443/signalr/hubs',
+                        //url: 'http://localhost:12003/signalr/hubs',
+                        success: function () {
+                            couldNotConnect = false;
+                            console.log("Forbundet til livescore-serveren");
+                            isConnecting = false;
+                            startSignalR();
+                        },
+                        error: function () {
+                            couldNotConnect = true;
+                            setTimeout(function () {
+                                isConnecting = false;
+                                console.log("Kan ikke forbinde til livescore-serveren. Prøver igen...");
+                                startSignalR();
+                                
+                            }, 5000);
+                        },
+                        timeout: 5000,
+                        dataType: 'script',
+                        crossDomain: true
+                    });
+                
+            }
+    }
+}

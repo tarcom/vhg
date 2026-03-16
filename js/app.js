@@ -853,8 +853,8 @@ PAGES[''] = PAGES['/'] = function() {
       </div>
 
       <div class="section">
-        <h2 class="section-title section-title-center">Ugekalender (man-fre)</h2>
-        <p class="mb-2 kalender-hint">Klik på hold for tilmelding og mere info. Hold musen over et hold for ekstra detaljer.</p>
+        <h2 class="section-title section-title-center">Ugekalender</h2>
+        <p class="mb-2 kalender-hint">Klik på hold for tilmelding og præcis info. Kalenderen er vejledende.</p>
         <div id="home-kalender-root"></div>
         <div class="kalender-refresh-row">
           <button id="refresh-kalender-btn" class="btn btn-primary btn-sm" type="button">Opdater kalender</button>
@@ -875,7 +875,7 @@ PAGES[''] = PAGES['/'] = function() {
             <h3 style="margin-bottom:0.4rem">Kom med til byfesten</h3>
             <p>Tilmelding er åben. Sikr din plads til årets byfest og vær med til en hyggelig dag for hele familien.</p>
           </div>
-          <a href="https://www.facebook.com/VesterHassingGF/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Tilmeld dig byfesten ${ICONS.external}</a>
+          <a href="https://vhg-esport.nemtilmeld.dk/10/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Tilmeld dig byfesten ${ICONS.external}</a>
         </div>
       </div>
 
