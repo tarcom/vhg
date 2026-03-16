@@ -7,6 +7,8 @@
   --navy: #003F7A;
   --navy-dark: #001F3D;
   --navy-light: #0B5AA5;
+  --navy-electric: #1A73C9;
+  --menu-glow: rgba(42, 133, 219, 0.38);
   --gold: #F1DC4D;
   --gold-dark: #D4C136;
   --white: #FFFFFF;
@@ -118,11 +120,48 @@ ul, ol { list-style: none; }
 
 /* Main bar (sport row) */
 .main-bar {
-  background: rgba(0,63,122,0.97);
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+  background: linear-gradient(108deg, rgba(0, 40, 82, 0.99) 0%, rgba(0, 63, 122, 0.97) 38%, rgba(11, 90, 165, 0.96) 64%, rgba(26, 115, 201, 0.95) 100%);
+  background-size: 180% 180%;
+  animation: menuGradientFlow 17s ease-in-out infinite;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 3px solid var(--gold);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 10px 22px rgba(0, 20, 46, 0.34);
 }
+
+.main-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(104deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.10) 42%,
+    rgba(255,255,255,0.20) 50%,
+    rgba(255,255,255,0.10) 58%,
+    rgba(255,255,255,0) 100%);
+  transform: translateX(-130%);
+  animation: menuShimmerSweep 8.5s cubic-bezier(.4,.08,.2,1) infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-bar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -42px;
+  width: 62%;
+  height: 110px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(67, 162, 249, 0.48) 0%, rgba(42, 133, 219, 0.18) 45%, rgba(42, 133, 219, 0) 75%);
+  animation: menuGlowPulse 6.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .main-bar-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -130,30 +169,175 @@ ul, ol { list-style: none; }
   align-items: center;
   padding: 0.35rem 1.5rem;
   gap: 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* Logo — extends beyond menu bar */
 .logo-link {
   flex-shrink: 0;
   display: flex;
+  justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 4;
+  isolation: isolate;
+  width: 122px;
+  height: 122px;
+  margin: -30px 0 -30px 0;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
+
+.logo-link::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 132px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(circle at center, rgba(241, 220, 77, 0.34) 0%, rgba(55, 151, 241, 0.22) 48%, rgba(55, 151, 241, 0) 74%);
+  filter: blur(1px);
+  opacity: 0.78;
+  z-index: -1;
+  animation: logoAuraPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.logo-link::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: -22px;
+  width: 30px;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 52%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-44px) skewX(-14deg);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: logoShineSweep 7.5s ease-in-out infinite;
+}
+
 .logo {
-  height: 91px;
-  width: auto;
+  width: 84px;
+  height: 84px;
   object-fit: contain;
-  transition: height var(--transition);
-  margin: -20px 0;
+  transition: transform var(--transition), filter var(--transition);
+  margin: 0;
+  padding: 4px;
+  filter: drop-shadow(0 6px 14px rgba(0, 20, 46, 0.35));
+  transform-origin: center;
+  animation: logoFloat 5.8s ease-in-out infinite;
 }
-.site-header.scrolled .logo { height: 65px; margin: -13px 0; }
+
+.logo-link:hover .logo {
+  filter: drop-shadow(0 10px 24px rgba(9, 72, 131, 0.52));
+  transform: scale(1.04);
+}
+.site-header.scrolled .logo-link {
+  width: 98px;
+  height: 98px;
+  margin: -19px 0 -19px 0;
+}
+
+.site-header.scrolled .logo {
+  width: 68px;
+  height: 68px;
+}
 /* On homepage, logo is smaller since hero has big logo */
-body.is-home .logo { height: 62px; margin: -11px 0; }
-body.is-home .site-header.scrolled .logo { height: 55px; margin: -9px 0; }
+body.is-home .logo-link {
+  width: 108px;
+  height: 108px;
+  margin: -22px 0 -22px 0;
+}
+
+body.is-home .logo {
+  width: 74px;
+  height: 74px;
+}
+
+body.is-home .site-header.scrolled .logo-link {
+  width: 90px;
+  height: 90px;
+  margin: -16px 0 -16px 0;
+}
+
+body.is-home .site-header.scrolled .logo {
+  width: 62px;
+  height: 62px;
+}
 /* On other pages, logo is larger and extends beyond */
-body:not(.is-home) .logo { height: 104px; margin: -28px 0; }
-body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; }
+body:not(.is-home) .logo-link {
+  width: 124px;
+  height: 124px;
+  margin: -31px 0 -31px 0;
+}
+
+body:not(.is-home) .logo {
+  width: 86px;
+  height: 86px;
+}
+
+body:not(.is-home) .site-header.scrolled .logo-link {
+  width: 98px;
+  height: 98px;
+  margin: -19px 0 -19px 0;
+}
+
+body:not(.is-home) .site-header.scrolled .logo {
+  width: 68px;
+  height: 68px;
+}
+
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-0.6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes logoAuraPulse {
+  0% {
+    opacity: 0.62;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  50% {
+    opacity: 0.92;
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+  100% {
+    opacity: 0.62;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+}
+
+@keyframes logoShineSweep {
+  0%, 58% {
+    opacity: 0;
+    transform: translateX(-44px) skewX(-14deg);
+  }
+  67% {
+    opacity: 0.82;
+  }
+  83% {
+    opacity: 0;
+    transform: translateX(148px) skewX(-14deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(148px) skewX(-14deg);
+  }
+}
 
 /* Sport nav */
 .sport-nav { flex: 1; display: flex; justify-content: center; }
@@ -171,11 +355,103 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   color: rgba(255,255,255,0.88);
   font-size: 0.82rem;
   font-weight: 500;
-  transition: color var(--transition);
+  position: relative;
+  transition: color var(--transition), text-shadow var(--transition), transform var(--transition);
   white-space: nowrap;
 }
+
+.sport-nav-list > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0.58rem;
+  right: 0.58rem;
+  bottom: 0.32rem;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(241, 220, 77, 0.2), rgba(255, 245, 162, 0.95), rgba(241, 220, 77, 0.2));
+  transform: scaleX(0.22);
+  opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.sport-nav-list > li > a:hover {
+  transform: translateY(-1px);
+}
 .sport-nav-list > li > a:hover,
-.sport-nav-list > li.active > a { color: var(--gold); }
+.sport-nav-list > li.active > a {
+  color: var(--gold);
+  text-shadow: 0 0 14px rgba(241, 220, 77, 0.34);
+}
+
+.sport-nav-list > li > a:hover::after,
+.sport-nav-list > li.active > a::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+@keyframes menuGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes menuShimmerSweep {
+  0%, 52% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.78;
+  }
+  76% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+
+@keyframes menuGlowPulse {
+  0% {
+    opacity: 0.42;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.68;
+    transform: translateX(-50%) scale(1.04);
+  }
+  100% {
+    opacity: 0.42;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-bar {
+    animation: none;
+  }
+
+  .main-bar::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .main-bar::after {
+    animation: none;
+  }
+
+  .logo-link::before,
+  .logo-link::after,
+  .logo {
+    animation: none;
+  }
+
+  .sport-nav-list > li > a {
+    transform: none !important;
+  }
+}
 
 /* Sport dropdown */
 .sport-nav-list .dropdown {
