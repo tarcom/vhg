@@ -611,9 +611,60 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 .quick-info-item a { color: var(--navy-light); font-weight: 600; }
 .quick-info-item a:hover { color: var(--gold-dark); }
 
+.sponsorModuleWrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.sponsorModule.slider {
+  overflow: hidden;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid #E5E7EB;
+  box-shadow: var(--shadow-md);
+}
+
+.sponsorModule_sliderWrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  padding: 0.7rem 1rem;
+  animation: sponsorMarquee 44s linear infinite;
+  will-change: transform;
+}
+
+.sponsorSlide {
+  flex: 0 0 158px;
+  height: 84px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: relative;
+}
+
+.sponsorSlide a {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.sponsorModule.slider:hover .sponsorModule_sliderWrap {
+  animation-play-state: paused;
+}
+
+@keyframes sponsorMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
+  }
+}
+
 /* Homepage translucent panels on top of hero/video background */
 .hero ~ .container #home-byfest .info-box,
-.hero ~ .container #home-sponsorer .card,
+.hero ~ .container #home-sponsorer .sponsorModule.slider,
 .hero ~ .container .quick-info-item {
   background: rgba(0, 63, 122, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -623,8 +674,12 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 }
 
 .hero ~ .container .quick-info-item,
-.hero ~ .container #home-sponsorer .card-body {
+.hero ~ .container #home-sponsorer .sponsorModuleWrap {
   color: var(--white);
+}
+
+.hero ~ .container #home-sponsorer .sponsorModuleWrap p {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .hero ~ .container .quick-info-item p {
@@ -1361,6 +1416,15 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   .byfest-pulse-badge { top: 4.8rem; left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
   .byfest-pulse-badge img { width: 54px; height: 54px; }
   .byfest-pulse-badge span { font-size: 0.66rem; }
+  .sponsorModule_sliderWrap {
+    gap: 0.7rem;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .sponsorSlide {
+    flex-basis: 132px;
+    height: 72px;
+  }
   .cafe-menu-images {
     flex-direction: column;
     align-items: center;

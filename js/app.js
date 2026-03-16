@@ -881,10 +881,21 @@ PAGES[''] = PAGES['/'] = function() {
 
       <div class="section" id="home-sponsorer">
         <h2 class="section-title section-title-center">Tak til sponsorer</h2>
-        <div class="card">
-          <div class="card-body" style="text-align:center">
-            <p class="mb-2">VHG siger tusind tak til alle sponsorer for støtten til vores aktiviteter og medlemmer.</p>
-            <img src="assets/images/sponsorer/sponsor2019gymnastik.png" alt="Tak til sponsorer" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
+        <div class="sponsorModuleWrap">
+          <div class="sponsorModule slider" data-sponsor-module>
+            <div class="sponsorModule_sliderWrap">
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/oerum.png')"><a href="https://orumservice.dk/" target="_blank" rel="noopener" aria-label="Ørum Service"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/sparv.png')"><a href="https://www.sparekassen-vendsyssel.dk/" target="_blank" rel="noopener" aria-label="Sparekassen Vendsyssel"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/thrane-erhverv.jpg')"><a href="http://thrane-erhverv.dk/" target="_blank" rel="noopener" aria-label="Thrane Erhverv"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/maeglerhuset-300x123.png')"><a href="https://www.nybolig.dk/maeglere/aalborg/noerresundby?gclid=EAIaIQobChMIj6eQmrrE8QIVpkWoCR2DFQJ-EAAYASAAEgK7iPD_BwE" target="_blank" rel="noopener" aria-label="Mæglerhuset"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/kjaersgaard-simonsen.jpg')"><a href="http://www.ks-aps.dk/" target="_blank" rel="noopener" aria-label="Kjærsgaard Simonsen"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/nordjyske-bank-logo.png')"><a href="https://www.nordjyskebank.dk/" target="_blank" rel="noopener" aria-label="Nordjyske Bank"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/edc-logo.png')"><a href="https://www.edc.dk/" target="_blank" rel="noopener" aria-label="EDC"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/ok-logo-fallback.png')"><a href="https://www.ok.dk/" target="_blank" rel="noopener" aria-label="OK"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/limasport-logo.png')"><a href="https://limasport.dk/" target="_blank" rel="noopener" aria-label="Limasport"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/sparnord_rgb.jpg')"><a href="https://www.sparnord.dk/" target="_blank" rel="noopener" aria-label="Spar Nord"></a></div>
+              <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/hals.jpg')"><a href="https://www.xl-byg.dk/forretning/hals/" target="_blank" rel="noopener" aria-label="XL-BYG Hals"></a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1457,6 +1468,36 @@ PAGES['/cafeen'] = function() {
 let previousRoute = '/';
 let pendingHomeScrollTarget = null;
 
+function stopHomeSponsorCarousel() {
+  // No active timer is used for sponsor marquee; kept for route lifecycle symmetry.
+}
+
+function initHomeSponsorCarousel() {
+  const module = document.querySelector('#home-sponsorer [data-sponsor-module]');
+  if (!module) return;
+
+  const sliderWrap = module.querySelector('.sponsorModule_sliderWrap');
+  const slides = Array.from(module.querySelectorAll('.sponsorSlide'));
+  if (!sliderWrap || slides.length < 2) return;
+
+  if (sliderWrap.dataset.marqueeReady === '1') return;
+
+  // Duplicate slides once to enable a seamless infinite marquee loop.
+  slides.forEach(slide => {
+    sliderWrap.appendChild(slide.cloneNode(true));
+  });
+
+  requestAnimationFrame(() => {
+    const singleTrackWidth = sliderWrap.scrollWidth / 2;
+    const pixelsPerSecond = 28;
+    const durationSeconds = Math.max(30, singleTrackWidth / pixelsPerSecond);
+
+    sliderWrap.style.setProperty('--scroll-distance', `${singleTrackWidth}px`);
+    sliderWrap.style.animationDuration = `${durationSeconds}s`;
+    sliderWrap.dataset.marqueeReady = '1';
+  });
+}
+
 function scrollToSectionWithOffset(sectionId) {
   const el = document.getElementById(sectionId);
   if (!el) return;
@@ -1508,6 +1549,8 @@ function loadConventusIframes(area, urls) {
 }
 
 function navigate() {
+  stopHomeSponsorCarousel();
+
   const route = getRoute();
   const app = document.getElementById('app');
   const videoBg = document.getElementById('video-bg');
@@ -1571,6 +1614,7 @@ function navigate() {
   }
   if (route === '/' || route === '') {
     initKalenderPage('home-kalender-root');
+    initHomeSponsorCarousel();
 
     const refreshBtn = document.getElementById('refresh-kalender-btn');
     const refreshStatus = document.getElementById('refresh-kalender-status');
