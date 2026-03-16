@@ -24,7 +24,8 @@ const UTILITY_NAV = [
     { label: 'Referat', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
     { label: 'Video', href: '#/om-vhg/video' },
-    { label: 'Find os', href: '#/om-vhg/find-os' }
+    { label: 'Find os', href: '#/om-vhg/find-os' },
+    { label: 'Sponsorer', href: '#/om-vhg/sponsorer' }
   ]},
   { label: 'Kontakt', href: '#/kontakt' },
   { label: 'Facebook', href: '#/some' },
@@ -795,6 +796,10 @@ PAGES[''] = PAGES['/'] = function() {
       ${SPORT_NAV.map(item => `<a href="${esc(item.href)}">${esc(item.label)}</a>`).join('')}
     </div>
     <div class="hero">
+      <button id="scroll-to-byfest" class="byfest-pulse-badge" type="button" aria-label="Gå til byfest">
+        <img src="assets/images/byfest.png" alt="Byfest" loading="lazy">
+        <span>Byfest</span>
+      </button>
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
       <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
       <p class="hero-tagline hero-anim" style="--hero-delay:1.5s">Sport, fællesskab og bevægelse for hele familien</p>
@@ -837,7 +842,7 @@ PAGES[''] = PAGES['/'] = function() {
         </div>
       </div>
 
-      <div class="section">
+      <div class="section" id="home-byfest">
         <h2 class="section-title section-title-center">Byfest i Vester Hassing</h2>
         <div class="info-box" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
           <img src="assets/images/byfest.png" alt="Byfest i Vester Hassing" loading="lazy" style="width:min(100%, 360px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
@@ -849,7 +854,7 @@ PAGES[''] = PAGES['/'] = function() {
         </div>
       </div>
 
-      <div class="section">
+      <div class="section" id="home-sponsorer">
         <h2 class="section-title section-title-center">Tak til sponsorer</h2>
         <div class="card">
           <div class="card-body" style="text-align:center">
@@ -898,7 +903,8 @@ function omVhgSubNav(active) {
     { label: 'Referat', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
     { label: 'Video', href: '#/om-vhg/video' },
-    { label: 'Find os', href: '#/om-vhg/find-os' }
+    { label: 'Find os', href: '#/om-vhg/find-os' },
+    { label: 'Sponsorer', href: '#/om-vhg/sponsorer' }
   ], active);
 }
 
@@ -1328,6 +1334,16 @@ PAGES['/cafeen'] = function() {
 // ROUTER
 // =============================================
 let previousRoute = '/';
+let pendingHomeScrollTarget = null;
+
+function scrollToSectionWithOffset(sectionId) {
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+  const header = document.getElementById('site-header');
+  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+  const y = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+}
 
 function getRoute() {
   return location.hash.replace('#', '') || '/';
@@ -1375,6 +1391,12 @@ function navigate() {
   const app = document.getElementById('app');
   const videoBg = document.getElementById('video-bg');
 
+  if (route === '/om-vhg/sponsorer') {
+    pendingHomeScrollTarget = 'home-sponsorer';
+    location.hash = '#/';
+    return;
+  }
+
   // Redirect base sport routes to signup/contingent by default
   const ROUTE_REDIRECTS = {
     '/fodbold': '/fodbold/kontingent', '/haandbold': '/haandbold/kontingent',
@@ -1389,6 +1411,7 @@ function navigate() {
   const prevSection = previousRoute.split('/')[1] || '';
   const newSection = route.split('/')[1] || '';
   const sameSection = prevSection && newSection && prevSection === newSection && route !== '/';
+  let skipAutoTopScroll = false;
 
   // Hide video unless home
   videoBg.classList.toggle('active', route === '/' || route === '');
@@ -1449,10 +1472,23 @@ function navigate() {
     if (sportsBtn) sportsBtn.addEventListener('click', () => {
       document.getElementById('home-idraetsgrene')?.scrollIntoView({ behavior: 'smooth' });
     });
+    const byfestBtn = document.getElementById('scroll-to-byfest');
+    if (byfestBtn) byfestBtn.addEventListener('click', () => {
+      scrollToSectionWithOffset('home-byfest');
+    });
+
+    if (pendingHomeScrollTarget) {
+      const target = pendingHomeScrollTarget;
+      pendingHomeScrollTarget = null;
+      skipAutoTopScroll = true;
+      setTimeout(() => {
+        scrollToSectionWithOffset(target);
+      }, 30);
+    }
   }
 
   // Scroll: preserve if same section, otherwise go to top
-  if (!sameSection) {
+  if (!sameSection && !skipAutoTopScroll) {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
@@ -1605,6 +1641,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('hashchange', navigate);
   window.addEventListener('scroll', handleScroll, { passive: true });
   document.getElementById('mobile-toggle').addEventListener('click', toggleMobileNav);
+  document.getElementById('mobile-nav').addEventListener('click', e => {
+    if (e.target && e.target.id === 'mobile-nav') closeMobileNav();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMobileNav();
+  });
   document.getElementById('back-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });

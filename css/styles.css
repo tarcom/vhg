@@ -226,15 +226,37 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
    MOBILE NAV OVERLAY
    ============================================ */
 .mobile-nav {
-  display: none;
+  display: block;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--navy-dark);
+  background: rgba(0, 0, 0, 0.42);
   z-index: 999;
-  overflow-y: auto;
-  padding: 5rem 1.5rem 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
 }
-.mobile-nav.open { display: block; }
+.mobile-nav.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-list {
+  width: min(86vw, 360px);
+  height: 100%;
+  margin-left: auto;
+  padding: 5rem 1.5rem 2rem;
+  overflow-y: auto;
+  background: linear-gradient(180deg, rgba(0,31,61,0.98), rgba(0,63,122,0.98));
+  box-shadow: -16px 0 36px rgba(0,0,0,0.35);
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mobile-nav.open .mobile-nav-list {
+  transform: translateX(0);
+}
 .mobile-nav-list > li + li { border-top: 1px solid rgba(255,255,255,0.06); }
 .mobile-nav-list > li > a,
 .mobile-parent {
@@ -311,6 +333,46 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 
 .mobile-home-sport-strip {
   display: none;
+}
+
+.byfest-pulse-badge {
+  position: absolute;
+  top: 7.2rem;
+  left: 1rem;
+  z-index: 3;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 14px;
+  padding: 0.45rem 0.45rem 0.35rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.22rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.32);
+  animation: byfestPulse 1.8s ease-in-out infinite;
+}
+
+.byfest-pulse-badge img {
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.byfest-pulse-badge span {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.45);
+}
+
+@keyframes byfestPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.32); }
+  50% { transform: scale(1.06); box-shadow: 0 10px 24px rgba(241,220,77,0.45); }
 }
 .hero h1 {
   font-size: clamp(3.5rem, 10vw, 7rem);
@@ -936,6 +998,7 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   cursor: pointer;
   user-select: none;
   flex-direction: row;
+}
 
 .kalender-refresh-row {
   margin-top: 0.9rem;
@@ -947,9 +1010,9 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 
 #refresh-kalender-status {
   font-size: 0.86rem;
-  color: var(--white);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.45);
-}
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.75);
+  font-weight: 600;
 }
 .kalender-toggle-input {
   position: absolute;
@@ -1245,6 +1308,9 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
   .kalender-morning-toggle { margin-left: 0; width: fit-content; }
   .kalender-week-wrap { grid-template-columns: 44px 1fr; }
   .kalender-days { grid-template-columns: repeat(var(--day-count, 4), minmax(120px, 1fr)); }
+  .byfest-pulse-badge { top: 4.8rem; left: 0.75rem; }
+  .byfest-pulse-badge img { width: 54px; height: 54px; }
+  .byfest-pulse-badge span { font-size: 0.66rem; }
 }
 
 @media (max-width: 480px) {
