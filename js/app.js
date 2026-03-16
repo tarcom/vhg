@@ -631,8 +631,11 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
           const ll = (0.5 + (lane * laneStep)).toFixed(2);
           const signupHref = e.signup_url || getSportSignupHref(e.sport);
           const external = /^https?:\/\//.test(signupHref);
+          const hoverInfo = e.info_text && !String(e.info_text).toLowerCase().includes('tider fra lokal fallback')
+            ? e.info_text
+            : '';
           const hover = [
-            e.info_text || '',
+            hoverInfo,
             e.price ? `Pris: ${e.price}` : '',
             e.available_spots || '',
             e.period_start && e.period_end ? `Periode: ${e.period_start} - ${e.period_end}` : ''

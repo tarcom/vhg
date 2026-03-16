@@ -16,7 +16,7 @@ Kalendersiden bruger en cachet JSON-fil i stedet for live scrape ved hvert side-
 
 Opdater cache manuelt:
 
-python3 scripts/scrape_conventus_calendar.py
+php scripts/scrape_conventus_calendar.php
 
 Anbefaling:
 

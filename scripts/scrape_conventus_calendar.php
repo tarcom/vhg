@@ -378,7 +378,7 @@ function conventus_parse_manual_line($sport, $sportLabel, $hold, $line)
             'available_spots' => null,
             'source_url' => 'manual-fallback',
             'signup_url' => $internalSignup,
-            'info_text' => 'Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte.',
+            'info_text' => null,
         );
     }
 
