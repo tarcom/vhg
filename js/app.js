@@ -27,6 +27,7 @@ const UTILITY_NAV = [
     { label: 'Find os', href: '#/om-vhg/find-os' }
   ]},
   { label: 'Kontakt', href: '#/kontakt' },
+  { label: 'Facebook', href: '#/some' },
   { label: 'Cafeen', href: '#/cafeen' },
   { label: 'Conventus Login', href: 'https://www.conventus.dk/medlemslogin/index.php?forening=1212&msg=1', external: true }
 ];
@@ -582,11 +583,11 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
           const top = Math.round((e.startMin - dayStart) * pixelsPerMinute);
           const height = Math.max(26, Math.round((e.endMin - e.startMin) * pixelsPerMinute));
           const color = KALENDER_SPORT_COLORS[e.sport] || '#607D8B';
-          const overlapRatio = 0.10;
-          const laneWidth = 94 / (1 + ((totalLanes - 1) * (1 - overlapRatio)));
+          const overlapRatio = 0.18;
+          const laneWidth = 92 / (1 + ((totalLanes - 1) * (1 - overlapRatio)));
           const laneStep = laneWidth * (1 - overlapRatio);
           const lw = laneWidth.toFixed(2);
-          const ll = (4 + (lane * laneStep)).toFixed(2);
+          const ll = (0.5 + (lane * laneStep)).toFixed(2);
           const signupHref = e.signup_url || getSportSignupHref(e.sport);
           const external = /^https?:\/\//.test(signupHref);
           const hover = [
@@ -598,7 +599,6 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
           return `
             <div class="kalender-event" title="${esc(hover)}" style="top:${top}px;height:${height}px;border-left-color:${color};left:${ll}%;width:${lw}%;z-index:${10 + lane}">
               <a class="kalender-event-title" href="${esc(signupHref)}" ${external ? 'target="_blank" rel="noopener"' : ''}>${esc(e.title || 'Hold')}</a>
-              <div class="kalender-event-time">${esc(e.start_time)} - ${esc(e.end_time)}</div>
             </div>
           `;
         }).join('')}
@@ -869,7 +869,7 @@ PAGES['/om-vhg/video'] = function() {
   const subNav = omVhgSubNav('/om-vhg/video');
 
   return pageHeader('🎬', 'Video', '<a href="#/">Hjem</a> / Om VHG') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">VHG Video</h2><p class="mb-2">En præsentation af Vester Hassing Gymnastik &amp; Idrætsforening, lavet i 2022. Der er sket meget siden — men videoen giver et fint indblik i foreningen og dens mange aktiviteter.</p><div class="info-box"><p>Video kan ses på <a href="https://www.facebook.com/VesterHassingGF" target="_blank" rel="noopener">VHG's Facebook-side</a>.</p></div></div></div>`;
+    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">VHG Video</h2><p class="mb-2">En præsentation af Vester Hassing Gymnastik &amp; Idrætsforening, lavet i 2022. Der er sket meget siden — men videoen giver et fint indblik i foreningen og dens mange aktiviteter.</p><div class="info-box"><p>Video kan ses her: <a href="https://www.facebook.com/VesterHassingGF/videos/3274611409477036" target="_blank" rel="noopener">VHG præsentationsvideo</a>.</p></div></div></div>`;
 };
 
 // --- OM VHG: Find os ---
@@ -955,9 +955,40 @@ PAGES['/kontakt'] = function() {
     </div>`;
 };
 
+// --- SoMe ---
+PAGES['/some'] = function() {
+  const links = [
+    { name: 'VHG', url: 'https://www.facebook.com/VesterHassingGF' },
+    { name: 'Håndbold', url: 'https://www.facebook.com/vghhandbold' },
+    { name: 'Disc Golf', url: 'https://www.facebook.com/groups/1832314803794784' },
+    { name: 'Floorball', url: 'https://www.facebook.com/profile.php?id=100046867541094' },
+    { name: 'Bordtennis', url: 'https://www.facebook.com/profile.php?id=100054206513655' },
+    { name: 'E-sport', url: 'https://www.facebook.com/profile.php?id=100063446331721' },
+    { name: 'Skateklub', url: 'https://www.facebook.com/VHGSkateklub' },
+    { name: 'Fodbold', url: 'https://www.facebook.com/VHGFodbold' },
+    { name: 'Gevaldig', url: 'https://www.facebook.com/profile.php?id=100066490641015' }
+  ];
+
+  return pageHeader('📱', 'SoMe', '<a href="#/">Hjem</a>', 'Find alle vores Facebook-sider samlet ét sted.') +
+    `<div class="page container">
+      <div class="section">
+        <h2 class="section-title">Facebook</h2>
+        <div class="contact-cards">
+          ${links.map(item => `
+            <div class="contact-card">
+              <div class="contact-card-icon">${ICONS.facebook}</div>
+              <h3>${esc(item.name)}</h3>
+              <p><a href="${esc(item.url)}" target="_blank" rel="noopener">Åbn side ${ICONS.external}</a></p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>`;
+};
+
 // --- Generic sport page ---
 function sportPage(key) {
-  return sportBoardPage(key);
+  return sportTilmeldingPage(key);
 }
 
 function sportSubNav(key) {
@@ -1036,8 +1067,7 @@ function fodboldSubNav(active) {
 }
 
 PAGES['/fodbold'] = function() {
-  return sportPageHeader('fodbold', 'Fodbold — Bestyrelsen', '<a href="#/">Hjem</a> / <a href="#/fodbold">Fodbold</a>') +
-    `<div class="page container">${fodboldSubNav('/fodbold/bestyrelsen')}${boardHTML(FODBOLD.board, 'Bestyrelse — Fodbold')}</div>`;
+  return PAGES['/fodbold/kontingent']();
 };
 
 PAGES['/fodbold/bestyrelsen'] = function() {
@@ -1091,16 +1121,7 @@ function haandboldSubNav(active) {
 }
 
 PAGES['/haandbold'] = function() {
-  return sportPageHeader('haandbold', 'Håndbold — Bestyrelsen', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
-    `<div class="page container">${haandboldSubNav('/haandbold/bestyrelsen')}
-      <div class="section">
-        <h2 class="section-title">Dokumenter</h2><br>
-        <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1594/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Sponsorkoncept 2025</a>
-        <br><br>
-        <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1597/toejkoncept-2025.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Tøjkoncept 2025</a>
-      </div>
-      ${boardHTML(HAANDBOLD.board, 'Bestyrelse — Håndbold')}
-    </div>`;
+  return PAGES['/haandbold/kontingent']();
 };
 
 PAGES['/haandbold/bestyrelsen'] = function() {
@@ -1278,13 +1299,13 @@ function navigate() {
   const app = document.getElementById('app');
   const videoBg = document.getElementById('video-bg');
 
-  // Redirect base sport routes to /bestyrelsen so sub-nav highlights correctly
+  // Redirect base sport routes to signup/contingent by default
   const ROUTE_REDIRECTS = {
-    '/fodbold': '/fodbold/bestyrelsen', '/haandbold': '/haandbold/bestyrelsen',
-    '/badminton': '/badminton/bestyrelsen', '/bordtennis': '/bordtennis/bestyrelsen',
-    '/e-sport': '/e-sport/bestyrelsen', '/floorball': '/floorball/bestyrelsen',
-    '/gymnastik': '/gymnastik/bestyrelsen', '/skateklub': '/skateklub/bestyrelsen',
-    '/disc-golf': '/disc-golf/bestyrelsen',
+    '/fodbold': '/fodbold/kontingent', '/haandbold': '/haandbold/kontingent',
+    '/badminton': '/badminton/tilmelding', '/bordtennis': '/bordtennis/tilmelding',
+    '/e-sport': '/e-sport/tilmelding', '/floorball': '/floorball/tilmelding',
+    '/gymnastik': '/gymnastik/tilmelding', '/skateklub': '/skateklub/tilmelding',
+    '/disc-golf': '/disc-golf/tilmelding',
   };
   if (ROUTE_REDIRECTS[route]) { location.hash = '#' + ROUTE_REDIRECTS[route]; return; }
 
