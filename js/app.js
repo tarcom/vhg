@@ -786,6 +786,31 @@ PAGES[''] = PAGES['/'] = function() {
         <div id="home-kalender-root"></div>
       </div>
 
+      <div class="section">
+        <h2 class="section-title section-title-center">Byfest i Vester Hassing</h2>
+        <div class="info-box" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
+          <img src="assets/images/byfest.png" alt="Byfest i Vester Hassing" loading="lazy" style="width:min(100%, 360px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
+          <div>
+            <h3 style="margin-bottom:0.4rem">Kom med til byfesten</h3>
+            <p>Tilmelding er åben. Sikr din plads til årets byfest og vær med til en hyggelig dag for hele familien.</p>
+          </div>
+          <a href="https://www.facebook.com/VesterHassingGF/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Tilmeld dig byfesten ${ICONS.external}</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title section-title-center">Tak til sponsorer</h2>
+        <div class="card">
+          <div class="card-body" style="text-align:center">
+            <p class="mb-2">VHG siger tusind tak til alle sponsorer for støtten til vores aktiviteter og medlemmer.</p>
+            <img src="assets/images/sponsorer/sponsor2019gymnastik.png" alt="Tak til sponsorer" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
+            <div style="margin-top:1rem">
+              <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1594/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Læs om sponsorkoncept ${ICONS.external}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="quick-info">
         <div class="quick-info-item">
           <div class="qi-icon">📍</div>
