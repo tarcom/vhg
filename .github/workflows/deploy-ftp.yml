@@ -1,0 +1,30 @@
+name: Deploy to vhg.dk/ny
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy files to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.vhg.dk
+          username: allan@vhg.dk
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          server-dir: /public_html/ny/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/old_site/**
+            **/scripts/**
+            **/README.md

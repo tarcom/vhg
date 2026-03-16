@@ -379,6 +379,50 @@ async function loadKalenderData() {
   return Array.isArray(payload.events) ? payload.events : [];
 }
 
+async function refreshKalenderData() {
+  const callEndpoint = async method => {
+    const url = method === 'GET'
+      ? `update-calendar.php?run=1&t=${Date.now()}`
+      : 'update-calendar.php';
+    const res = await fetch(url, {
+      method,
+      headers: { Accept: 'application/json' }
+    });
+    const raw = await res.text();
+    let payload = null;
+    try {
+      payload = JSON.parse(raw);
+    } catch (_) {
+      payload = null;
+    }
+
+    if (!payload) {
+      if (raw.includes('<?php')) {
+        throw new Error('Serveren kører uden PHP. Start sitet med en PHP-server for at kunne opdatere kalenderen.');
+      }
+      throw new Error('Serveren returnerede ikke gyldig JSON fra update-calendar.php');
+    }
+
+    if (!res.ok || payload.ok !== true) {
+      const msg = payload.error || `Kunne ikke opdatere kalenderen (HTTP ${res.status})`;
+      const err = new Error(msg);
+      err.httpStatus = res.status;
+      throw err;
+    }
+
+    return payload;
+  };
+
+  try {
+    return await callEndpoint('POST');
+  } catch (err) {
+    if (err && (err.httpStatus === 501 || err.httpStatus === 405)) {
+      return callEndpoint('GET');
+    }
+    throw err;
+  }
+}
+
 function parseTrainingLineToEvents(sport, sportLabel, hold, line) {
   const dayMap = {
     mandag: 'monday', tirsdag: 'tuesday', onsdag: 'wednesday', torsdag: 'thursday',
@@ -747,6 +791,9 @@ PAGES[''] = PAGES['/'] = function() {
   ];
 
   return `
+    <div class="mobile-home-sport-strip" aria-label="Idrætsgrene genveje">
+      ${SPORT_NAV.map(item => `<a href="${esc(item.href)}">${esc(item.label)}</a>`).join('')}
+    </div>
     <div class="hero">
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
       <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
@@ -784,6 +831,10 @@ PAGES[''] = PAGES['/'] = function() {
         <h2 class="section-title section-title-center">Ugekalender (man-fre)</h2>
         <p class="mb-2 kalender-hint">Klik på hold for tilmelding og mere info. Hold musen over et hold for ekstra detaljer.</p>
         <div id="home-kalender-root"></div>
+        <div class="kalender-refresh-row">
+          <button id="refresh-kalender-btn" class="btn btn-primary btn-sm" type="button">Opdater kalender</button>
+          <span id="refresh-kalender-status" aria-live="polite"></span>
+        </div>
       </div>
 
       <div class="section">
@@ -794,7 +845,7 @@ PAGES[''] = PAGES['/'] = function() {
             <h3 style="margin-bottom:0.4rem">Kom med til byfesten</h3>
             <p>Tilmelding er åben. Sikr din plads til årets byfest og vær med til en hyggelig dag for hele familien.</p>
           </div>
-          <a href="https://www.facebook.com/VesterHassingGF/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Tilmeld dig byfesten ${ICONS.external}</a>
+          <a href="https://www.facebook.com/VesterHassingGF/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Tilmeld dig byfesten ${ICONS.external}</a>
         </div>
       </div>
 
@@ -1370,6 +1421,26 @@ function navigate() {
   }
   if (route === '/' || route === '') {
     initKalenderPage('home-kalender-root');
+
+    const refreshBtn = document.getElementById('refresh-kalender-btn');
+    const refreshStatus = document.getElementById('refresh-kalender-status');
+    if (refreshBtn) {
+      refreshBtn.addEventListener('click', async () => {
+        refreshBtn.disabled = true;
+        if (refreshStatus) refreshStatus.textContent = 'Opdaterer kalender...';
+        try {
+          const result = await refreshKalenderData();
+          await initKalenderPage('home-kalender-root');
+          const stamp = result.generated_at ? new Date(result.generated_at).toLocaleString('da-DK') : 'nu';
+          if (refreshStatus) refreshStatus.textContent = `Kalender opdateret (${stamp})`;
+        } catch (err) {
+          if (refreshStatus) refreshStatus.textContent = `Fejl: ${(err && err.message) || 'ukendt fejl'}`;
+        } finally {
+          refreshBtn.disabled = false;
+        }
+      });
+    }
+
     const scrollBtn = document.getElementById('scroll-to-kalender');
     if (scrollBtn) scrollBtn.addEventListener('click', () => {
       document.getElementById('home-kalender-root')?.scrollIntoView({ behavior: 'smooth' });
@@ -1452,12 +1523,9 @@ function buildNav() {
   // Divider
   mobileHTML += '<li class="mobile-divider"><span>Idrætsgrene</span></li>';
 
-  // Sport items in mobile
-  SPORT_NAV.forEach((item, i) => {
-    mobileHTML += `<li><div class="mobile-parent" data-idx="s${i}">${esc(item.label)}</div><ul class="mobile-sub">`;
-    if (item.href) mobileHTML += `<li><a href="${esc(item.href)}">Oversigt</a></li>`;
-    if (item.children) item.children.forEach(c => { mobileHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`; });
-    mobileHTML += '</ul></li>';
+  // Sport items in mobile (direct links)
+  SPORT_NAV.forEach(item => {
+    if (item.href) mobileHTML += `<li><a href="${esc(item.href)}">${esc(item.label)}</a></li>`;
   });
 
   mobileList.innerHTML = mobileHTML;

@@ -4,6 +4,7 @@
 old_site indeholder: wget --mirror --page-requisites --convert-links --adjust-extension --domains vhg.dk --wait=1 https://www.vhg.dk/
 
 python3 -m http.server 8000
+php -S 0.0.0.0:8000 -t /workspaces/vhg
 
 ## Kalenderdata (Conventus)
 
@@ -50,3 +51,27 @@ DEPLOY_DRY_RUN=1 FTP_HOST=ftp.vhg.dk bash scripts/deploy_vhg_ftp.sh
 Hvis du vil overskrive remote mappe manuelt:
 
 FTP_HOST=ftp.vhg.dk FTP_REMOTE_DIR=/public_html/ny bash scripts/deploy_vhg_ftp.sh
+
+## GitHub Actions auto deploy til /public_html/ny
+
+Workflow-fil:
+
+.github/workflows/deploy-ftp.yml
+
+Trigger:
+
+- Ved push til main
+- Kan også køres manuelt via workflow_dispatch
+
+Sæt denne repository secret i GitHub:
+
+- FTP_PASSWORD
+
+Server og brugernavn er hardcoded i workflowen:
+
+- server: ftp.vhg.dk
+- username: allan@vhg.dk
+
+Når secrets er sat, vil hver push til main automatisk uploade siden til:
+
+/public_html/ny/
