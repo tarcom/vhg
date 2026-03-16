@@ -424,6 +424,15 @@ function scrape_conventus_calendar_generate($outputFile)
         }
     }
 
+    // Fail fast on source errors so we do not overwrite the existing cache with partial data.
+    if (!empty($errors)) {
+        $lines = array();
+        foreach ($errors as $row) {
+            $lines[] = (isset($row['url']) ? $row['url'] : 'ukendt kilde') . ' :: ' . (isset($row['error']) ? $row['error'] : 'ukendt fejl');
+        }
+        throw new Exception("Kilde-fejl under kalender-opdatering:\n" . implode("\n", $lines));
+    }
+
     $events = conventus_unique_events(conventus_append_missing_manual_fallbacks($collected));
 
     $dayOrder = array(

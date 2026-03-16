@@ -1486,8 +1486,17 @@ function navigate() {
           const result = await refreshKalenderData();
           await initKalenderPage('home-kalender-root');
           const stamp = result.generated_at ? new Date(result.generated_at).toLocaleString('da-DK') : 'nu';
-          if (refreshStatus) refreshStatus.textContent = `Kalender opdateret (${stamp})`;
+          const sourceErrors = Array.isArray(result.errors) ? result.errors : [];
+          if (refreshStatus) {
+            if (sourceErrors.length) {
+              refreshStatus.textContent = `Kalender delvist opdateret (${stamp}) - ${sourceErrors.length} kilde-fejl`; 
+            } else {
+              refreshStatus.textContent = `Kalender opdateret (${stamp})`;
+            }
+          }
         } catch (err) {
+          // Keep full error details in browser console for debugging.
+          console.error('Kalender-opdatering fejlede:', err);
           if (refreshStatus) refreshStatus.textContent = `Fejl: ${(err && err.message) || 'ukendt fejl'}`;
         } finally {
           refreshBtn.disabled = false;
