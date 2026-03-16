@@ -36,51 +36,51 @@ const UTILITY_NAV = [
 
 const SPORT_NAV = [
   { label: 'Badminton', href: '#/badminton', children: [
+    { label: 'Tilmelding', href: '#/badminton/tilmelding' },
     { label: 'Bestyrelsen', href: '#/badminton/bestyrelsen' },
     { label: 'Træningstider', href: '#/badminton/traeningstider' },
-    { label: 'Tilmelding', href: '#/badminton/tilmelding' },
     { label: 'Information', href: '#/badminton/information' }
   ]},
   { label: 'Bordtennis', href: '#/bordtennis', children: [
-    { label: 'Bestyrelsen', href: '#/bordtennis/bestyrelsen' },
     { label: 'Tilmelding', href: '#/bordtennis/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/bordtennis/bestyrelsen' },
     { label: 'Træningstider', href: '#/bordtennis/traeningstider' }
   ]},
   { label: 'E-sport', href: '#/e-sport', children: [
-    { label: 'Bestyrelsen', href: '#/e-sport/bestyrelsen' },
-    { label: 'Tilmelding', href: '#/e-sport/tilmelding' }
+    { label: 'Tilmelding', href: '#/e-sport/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/e-sport/bestyrelsen' }
   ]},
   { label: 'Floorball', href: '#/floorball', children: [
-    { label: 'Bestyrelsen', href: '#/floorball/bestyrelsen' },
-    { label: 'Tilmelding', href: '#/floorball/tilmelding' }
+    { label: 'Tilmelding', href: '#/floorball/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/floorball/bestyrelsen' }
   ]},
   { label: 'Fodbold', href: '#/fodbold', children: [
+    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' },
     { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
     { label: 'Træningstider', href: '#/fodbold/traeningstider' },
     { label: 'Senior', href: '#/fodbold/senior' },
-    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
-    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
+    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' }
   ]},
   { label: 'Gymnastik', href: '#/gymnastik', children: [
-    { label: 'Bestyrelsen', href: '#/gymnastik/bestyrelsen' },
-    { label: 'Tilmelding', href: '#/gymnastik/tilmelding' }
+    { label: 'Tilmelding', href: '#/gymnastik/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/gymnastik/bestyrelsen' }
   ]},
   { label: 'Håndbold', href: '#/haandbold', children: [
+    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' },
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
+    { label: 'Trænere', href: '#/haandbold/traenere' }
   ]},
   { label: 'Skateklub', href: '#/skateklub', children: [
-    { label: 'Bestyrelsen', href: '#/skateklub/bestyrelsen' },
-    { label: 'Tilmelding', href: '#/skateklub/tilmelding' }
+    { label: 'Tilmelding', href: '#/skateklub/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/skateklub/bestyrelsen' }
   ]},
   { label: 'Disc Golf', href: '#/disc-golf', children: [
-    { label: 'Bestyrelsen', href: '#/disc-golf/bestyrelsen' },
     { label: 'Tilmelding', href: '#/disc-golf/tilmelding' },
+    { label: 'Bestyrelsen', href: '#/disc-golf/bestyrelsen' },
     { label: 'Kort', href: '#/disc-golf/kort' }
   ]}
 ];
@@ -1165,11 +1165,11 @@ PAGES['/disc-golf/kort'] = function() {
 // --- FODBOLD ---
 function fodboldSubNav(active) {
   return subNavHTML([
+    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' },
     { label: 'Bestyrelsen', href: '#/fodbold/bestyrelsen' },
     { label: 'Træningstider', href: '#/fodbold/traeningstider' },
     { label: 'Senior', href: '#/fodbold/senior' },
-    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' },
-    { label: 'Kontingent & Tilmelding', href: '#/fodbold/kontingent' }
+    { label: 'Børn & Ungdom', href: '#/fodbold/boern-ungdom' }
   ], active);
 }
 
@@ -1219,13 +1219,13 @@ PAGES['/fodbold/kontingent'] = function() {
 // --- HÅNDBOLD ---
 function haandboldSubNav(active) {
   return subNavHTML([
+    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' },
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
-    { label: 'Trænere', href: '#/haandbold/traenere' },
-    { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
+    { label: 'Trænere', href: '#/haandbold/traenere' }
   ], active);
 }
 
