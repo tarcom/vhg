@@ -611,6 +611,34 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
 .quick-info-item a { color: var(--navy-light); font-weight: 600; }
 .quick-info-item a:hover { color: var(--gold-dark); }
 
+/* Homepage translucent panels on top of hero/video background */
+.hero ~ .container #home-byfest .info-box,
+.hero ~ .container #home-sponsorer .card,
+.hero ~ .container .quick-info-item {
+  background: rgba(0, 63, 122, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.hero ~ .container .quick-info-item,
+.hero ~ .container #home-sponsorer .card-body {
+  color: var(--white);
+}
+
+.hero ~ .container .quick-info-item p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero ~ .container .quick-info-item a {
+  color: var(--gold);
+}
+
+.hero ~ .container .quick-info-item a:hover {
+  color: #fff3a3;
+}
+
 /* ============================================
    PAGE CONTENT
    ============================================ */
@@ -902,9 +930,14 @@ body:not(.is-home) .site-header.scrolled .logo { height: 73px; margin: -17px 0; 
    ============================================ */
 .policy-content h3 { color: var(--navy); font-size: 1rem; margin: 1.2rem 0 0.4rem; }
 .policy-content h3:first-child { margin-top: 0; }
-.policy-content p { margin-bottom: 0.5rem; }
-.policy-content ul, .policy-content ol { padding-left: 1.2rem; margin-bottom: 0.5rem; }
-.policy-content li { margin-bottom: 0.3rem; list-style: disc; }
+.policy-content {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+.policy-content p { margin-bottom: 0.75rem; }
+.policy-content ul, .policy-content ol { padding-left: 1.25rem; margin-bottom: 0.8rem; }
+.policy-content li { margin-bottom: 0.35rem; list-style: disc; }
 .policy-content ol li { list-style: decimal; }
 
 /* ============================================

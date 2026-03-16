@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-03-16T09:14:41+00:00",
+    "generated_at": "2026-03-16T09:28:53+00:00",
     "event_count": 95,
     "errors": [],
     "events": [
@@ -91,7 +91,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -106,7 +106,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -166,7 +166,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -181,7 +181,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -196,7 +196,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -361,7 +361,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -376,7 +376,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -391,7 +391,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -406,7 +406,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -421,7 +421,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -436,7 +436,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -451,7 +451,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "bordtennis",
@@ -481,7 +481,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -496,7 +496,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -526,7 +526,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -541,7 +541,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -556,7 +556,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -571,7 +571,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -586,7 +586,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -601,7 +601,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "badminton",
@@ -631,7 +631,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -646,7 +646,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "badminton",
@@ -736,7 +736,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "skateklub",
@@ -796,7 +796,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -811,7 +811,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "badminton",
@@ -841,7 +841,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -1006,7 +1006,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -1021,7 +1021,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -1036,7 +1036,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1051,7 +1051,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1066,7 +1066,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1081,7 +1081,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1096,7 +1096,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1111,7 +1111,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1126,7 +1126,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -1186,7 +1186,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "e-sport",
@@ -1231,7 +1231,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1246,7 +1246,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -1261,7 +1261,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -1276,7 +1276,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1291,7 +1291,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "fodbold",
@@ -1306,7 +1306,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/fodbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "haandbold",
@@ -1321,7 +1321,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "gymnastik",
@@ -1366,7 +1366,7 @@
             "available_spots": null,
             "source_url": "manual-fallback",
             "signup_url": "#\/haandbold\/kontingent",
-            "info_text": "Tider fra lokal fallback, da Conventus-kilden ikke udstiller træningstider direkte."
+            "info_text": null
         },
         {
             "sport": "disc-golf",

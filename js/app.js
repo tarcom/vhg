@@ -68,6 +68,8 @@ const SPORT_NAV = [
   { label: 'Håndbold', href: '#/haandbold', children: [
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
+    { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
+    { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' },
     { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
@@ -781,7 +783,11 @@ function sportPageHeader(key, title, breadcrumb, desc) {
 }
 
 function subNavHTML(items, currentHash) {
-  return `<div class="sub-nav">${items.map(i => `<a href="${i.href}" class="${currentHash === i.href.replace('#','') ? 'active' : ''}">${esc(i.label)}</a>`).join('')}</div>`;
+  return `<div class="sub-nav">${items.map(i => {
+    const active = i.href.startsWith('#') && currentHash === i.href.replace('#', '') ? 'active' : '';
+    const target = i.external ? ' target="_blank" rel="noopener"' : '';
+    return `<a href="${i.href}" class="${active}"${target}>${esc(i.label)}</a>`;
+  }).join('')}</div>`;
 }
 
 // =============================================
@@ -880,7 +886,7 @@ PAGES[''] = PAGES['/'] = function() {
             <p class="mb-2">VHG siger tusind tak til alle sponsorer for støtten til vores aktiviteter og medlemmer.</p>
             <img src="assets/images/sponsorer/sponsor2019gymnastik.png" alt="Tak til sponsorer" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
             <div style="margin-top:1rem">
-              <a href="https://156-vester-hassing-gf.euwest01.umbraco.io/media/1594/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Læs om sponsorkoncept ${ICONS.external}</a>
+              <a href="#/haandbold/sponsor-concept" class="btn btn-outline btn-sm">Læs om sponsorkoncept</a>
             </div>
           </div>
         </div>
@@ -1215,6 +1221,8 @@ function haandboldSubNav(active) {
   return subNavHTML([
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
+    { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
+    { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' },
     { label: 'Kontingent & Tilmelding', href: '#/haandbold/kontingent' }
@@ -1255,45 +1263,134 @@ PAGES['/haandbold/traenere'] = function() {
 };
 
 PAGES['/haandbold/antibulli'] = function() {
-  return sportPageHeader('haandbold', 'Antibulli politik', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>', 'Hos VHG Håndbold skaber vi stærke fællesskaber hvor der ikke er plads til mobning.') +
+  return sportPageHeader('haandbold', 'Antibulli-strategi for VGH Håndbold', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
     `<div class="page container">${haandboldSubNav('/haandbold/antibulli')}<div class="section"><div class="card"><div class="card-body policy-content">
-      <h3>1. Indledning</h3>
-      <p>Hos VHG Håndbold ønsker vi at skabe et trygt og inkluderende miljø, hvor alle spillere, trænere, frivillige og forældre føler sig velkomne og respekterede. Mobning, chikane og ekskluderende adfærd accepteres ikke, og vi har en klar politik og handlingsplan for at forebygge og håndtere sådanne situationer.</p>
-      <p>Antibulli Håndbold skaber stærke fællesskaber og høj trivsel på børnenes håndboldhold. Langt de fleste børn er glade for at tage til træning, men trivsel i fritidslivet er ikke en selvfølge. Hvert femte barn har oplevet at blive mobbet, drillet eller holdt udenfor til deres fritidsaktivitet.</p>
+      <h3>Antibulli-strategi for VGH Håndbold</h3>
+      <p><strong>1. Indledning</strong> Hos VGH Håndbold ønsker vi at skabe et trygt og inkluderende miljø, hvor alle spillere, trænere, frivillige og forældre føler sig velkomne og respekterede. Mobning, chikane og ekskluderende adfærd accepteres ikke, og vi har en klar politik og handlingsplan for at forebygge og håndtere sådanne situationer.</p>
+      <ul>
+        <li>Antibulli Håndbold skaber stærke fællesskaber og høj trivsel på børnenes håndboldhold. Langt de fleste børn er glade for at tage til træning, men trivsel i fritidslivet er ikke en selvfølge. Hvert femte barn har oplevet at blive mobbet, drillet eller holdt udenfor til deres fritidsaktivitet. For hvert tiende barn har konsekvensen været, at de måtte stoppe på holdet.</li>
+      </ul>
 
-      <h3>2. Definition af mobning</h3>
-      <p>Mobning er gentagen negativ eller skadelig adfærd, der udøves bevidst og kan omfatte:</p>
+      <p><strong>2. Definition af mobning</strong> Mobning er gentagen negativ eller skadelig adfærd, der udøves bevidst og kan omfatte:</p>
       <ul>
         <li>Fysisk mobning (slag, skub, mv.)</li>
-        <li>Verbal mobning (nedladende kommentarer, hån, trusler)</li>
-        <li>Social mobning (udelukkelse, bagtalelse)</li>
-        <li>Digital mobning (krænkende beskeder, deling af billeder uden samtykke)</li>
+        <li>Verbal mobning (nedladende kommentarer, hån, trusler, mv.)</li>
+        <li>Social mobning (udelukkelse, bagtalelse, mv.)</li>
+        <li>Digital mobning (krænkende beskeder, deling af billeder uden samtykke, mv.)</li>
       </ul>
 
-      <h3>3. Forebyggelse</h3>
-      <p>For at sikre et positivt klubmiljø arbejder vi aktivt med følgende:</p>
+      <p><strong>3. Forebyggelse</strong> For at sikre et positivt klubmiljø arbejder vi aktivt med følgende initiativer:</p>
       <ul>
-        <li><strong>Opdragelse i respekt:</strong> Trænere og ledere går forrest som gode rollemodeller.</li>
-        <li><strong>Åben dialog:</strong> Spillere, forældre og frivillige opfordres til at tale åbent om trivsel.</li>
-        <li><strong>Ens spillertøj:</strong> Alle er klædt ens til kamp med klubbens sponsorer på tøjet.</li>
-        <li><strong>Klubværdier og kodeks:</strong> Vi har klare retningslinjer for omgang.</li>
-        <li><strong>Uddannelse:</strong> Årlig præsentation af Antibulli Håndbold for frivillige.</li>
-        <li><strong>Konkrete råd og øvelser:</strong> Øvelser målrettet børn i alderen 6-12 år.</li>
-        <li><strong>Arrangementer:</strong> Jævnlige sociale arrangementer der fremmer fair play og holdånd.</li>
+        <li>Opdragelse i respekt: Trænere og ledere skal gå forrest som gode rollemodeller.</li>
+        <li>Åben dialog: Spillere, forældre og frivillige opfordres til at tale åbent om trivsel og adfærd.</li>
+        <li>Ens spillertøj: Alle i klubben er klædt ens til kamp og har alle klubbens sponsorere på tøjet. Dette skal være med at styrke fællesskab på tværs af alle hold og sikre at alle vores spillere får glæde af alle sponsorer.</li>
+        <li>Klubværdier og kodeks: Vi har klare retningslinjer for, hvordan vi omgås hinanden.</li>
+        <li>Uddannelse: En gang om året bliver klubbens frivillige præsenteret for Antibulli Håndbold og dets værktøjer.</li>
+        <li>Konkrete råd og øvelser: Antibulli Håndbold kombinerer erfaringer fra antimobbe- og trivselsindsatser med erfaringer fra håndboldverdenen og tilbyder øvelser målrettet børn i alderen 6-12 år. Alle trænere bliver introduceret til dette.</li>
+        <li>Arrangementer: Jævnligt afholdes der sociale arrangementer, der skal fremme fair play, trivsel og holdånd. Dette kan være på de enkelte hold eller på tværs af flere hold.</li>
       </ul>
 
-      <h3>4. Håndtering af mobning</h3>
+      <p><strong>4. Håndtering af mobning</strong> Hvis en situation opstår, følges denne handlingsplan:</p>
       <ol>
-        <li><strong>Observation og opsporing:</strong> Trænere er opmærksomme på tegn på mobning.</li>
-        <li><strong>Dialog med involverede:</strong> Berørte spillere kontaktes for at afdække situationen.</li>
-        <li><strong>Inddragelse af forældre:</strong> Forældre inddrages i processen ved behov.</li>
-        <li><strong>Konsekvenser og opfølgning:</strong> Advarsler, vejledning eller i yderste konsekvens eksklusion.</li>
+        <li>Observation og opsporing: Trænere og frivillige er opmærksomme på tegn på mobning.</li>
+        <li>Dialog med involverede: Den eller de berørte spillere kontaktes for at afdække situationen.</li>
+        <li>Inddragelse af forældre: Hvis det vurderes nødvendigt, inddrages forældre i processen.</li>
+        <li>Konsekvenser og opfølgning: Klubben kan give advarsler, vejledning eller i yderste konsekvens ekskludere en spiller ved gentagne overtrædelser.</li>
       </ol>
 
-      <h3>5. Ansvar og kontaktpersoner</h3>
-      <p>Alle i klubben har et fælles ansvar for at bekæmpe mobning. Kontakt:</p>
-      <p><strong>Morten Kam</strong> — Tlf. <a href="tel:61109165">61109165</a> — <a href="mailto:vhghaandbold@outlook.dk">vhghaandbold@outlook.dk</a></p>
+      <p><strong>5. Ansvar og kontaktpersoner</strong> Alle i klubben har et fælles ansvar for at bekæmpe mobning. Ved bekymring eller mistanke kan man kontakte klubbens antibulli-ansvarlige:</p>
+      <ul>
+        <li>Morten Kam (Tlf. <a href="tel:61109165">61109165</a> eller <a href="mailto:vhghaandbold@outlook.dk">vhghaandbold@outlook.dk</a>)</li>
+      </ul>
+      <p>Antibulli Håndbold arbejder med tolerance, respekt, omsorg og mod. Vi skaber stærke børnefællesskaber, hvor der ikke er plads til mobning. Vi tror på, at håndbold er for alle, og vi vil arbejde aktivt for at sikre, at vores klub er et trygt sted at være.</p>
     </div></div></div></div>`;
+};
+
+PAGES['/haandbold/sponsor-concept'] = function() {
+  return sportPageHeader('haandbold', 'Håndbold - Sponsor-concept 2025', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/sponsor-concept')}
+      <div class="section">
+        <h2 class="section-title">Sponsor-concept 2025</h2>
+        <div class="card">
+          <div class="card-body">
+            <iframe src="assets/pdf/sponsorkoncept-2025-praesentation-til-sponsorer.pdf" title="Sponsor-concept 2025" style="width:100%;min-height:900px;border:1px solid var(--gray-300);border-radius:var(--radius-sm);background:#fff"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>`;
+};
+
+PAGES['/haandbold/toej-koncept'] = function() {
+  return sportPageHeader('haandbold', 'Håndbold - Tøj-koncept 2025', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/toej-koncept')}
+      <div class="section">
+        <h2 class="section-title">Nyt tøjkoncept</h2>
+        <div class="card">
+          <div class="card-body policy-content">
+            <p>Som del af vores nye Antibulli-strategi har vi lanceret et nyt sponsorkoncept. Det betyder kort fortalt, at alle sponsorer kommer på enten alle spilleres shorts eller trøjer. Dermed sikrer vi, at alle spillere i klubben er ens klædt, hvilket vil være med til at skabe genkendelighed og fællesskab på tværs af klubbens hold.</p>
+            <p>Samtidig vil det også sikre maksimal eksponering for vores sponsorer, og den værdi det skaber for dem og dermed for klubben, vil sikre, at vi fortsat kan holde kontingenterne lave.</p>
+            <p>Tøjkonceptet indebærer at spillerne får udleveret personlig trøje og shorts, som de skal have med til kamp. Konceptet kører tre år ad gangen, og derfor skal denne trøje og disse shorts bruges til og med april 2028. Dette efterlader sikkert mange spørgsmål, og vi har forsøgt at svare på de fleste herunder:</p>
+
+            <h3>Hvordan bestiller jeg tøjet?</h3>
+            <ul>
+              <li>Tøjet kan bestilles på to måder: prøvedage i hallerne eller bestilling via mail.</li>
+              <li>Ved prøvedagene er der en repræsentant fra klubben til at tage imod bestillingen. Vi er klar over, at dette ikke rammer træning for alle hold, men det er planlagt i forhold til andet praktisk arbejde i klubben. Har man brug for prøvetid ud over nedenstående tider bedes du kontakte Morten fra bestyrelsen på tlf. 61109165.</li>
+            </ul>
+
+            <p><strong>Det er følgende dage og tidsrum:</strong></p>
+            <ul>
+              <li>Tirsdag d. 30/9 kl. 17.00-19.00 i Gandrup</li>
+              <li>Torsdag d. 2/10 kl. 17.00-18.30 i Vester Hassing</li>
+              <li>Tirsdag d. 7/10 kl. 17.00-19.00 i Gandrup</li>
+            </ul>
+
+            <p><strong>Hvis du allerede ved hvilken størrelse du skal bestille, kan bestillingen ske via mail.</strong> Følgende sendes til <a href="mailto:vhghaandbold@outlook.dk">vhghaandbold@outlook.dk</a>:</p>
+            <ul>
+              <li>Spillerens navn</li>
+              <li>Spillerens hold</li>
+              <li>Størrelse på trøje</li>
+              <li>Størrelse på shorts</li>
+              <li>Ønsket nummer</li>
+              <li>Navn der skal trykkes bagpå (koster 60 kr.)</li>
+              <li>Om der ønskes trykt nummer på shorts (koster 40 kr.)</li>
+            </ul>
+
+            <h3>Hvilket nummer kan jeg vælge?</h3>
+            <ul>
+              <li>Seniorspillere kan frit vælge nummer fra 1-99. Er der flere, der ønsker samme nummer, finder den pågældende træner en løsning.</li>
+              <li>Ungdomsspillere skal også vælge nummer fra 1-99. Ulige årgange (2009, 2011, 2013 osv.) skal vælge et ulige nummer og lige årgange (2010, 2012, 2014 osv.) skal vælge et lige nummer. Er der flere spillere der ønsker det samme nummer, bliver de fordelt via lodtrækning.</li>
+            </ul>
+
+            <h3>Kan jeg få navn trykt på trøjen?</h3>
+            <p>Ja, hvis du gerne vil have navn trykt bag på trøjen, kan du tilkøbe dette for 60 kr. Navnet skal være en del af dit rigtige navn/efternavn.</p>
+
+            <h3>Kan jeg få nummer trykt på shortsene?</h3>
+            <p>Ja, hvis du gerne vil have navn trykt foran på shortsene, kan du tilkøbe dette for 40 kr. Uden nummer vil de ligne de andre spilleres shorts.</p>
+
+            <h3>Hvad gør jeg, hvis jeg eller mit barn vokser fra trøjen, og skal bruge en anden størrelse?</h3>
+            <p>Spillere får en ny trøje og shorts hvert tredje år. Næste gang er i august 2028. Vi er klar over at nogle spillere vil vokse meget i perioden, og derfor er det muligt at købe en ny trøje eller nye shorts til en reduceret pris, hvor klubben betaler den største del og medlemmet betaler en mindre del.</p>
+            <ul>
+              <li>Medlemmets pris for en ny trøje er 225 kr.</li>
+              <li>Medlemmets pris for nye shorts er 125 kr.</li>
+            </ul>
+
+            <h3>Hvad skal jeg bestille, hvis jeg eller mit barn både står i mål og spiller ude på banen?</h3>
+            <p>Vi anbefaler at man køber den almindelige spillertrøje, og så stiller klubben overtrækstrøjer til rådighed for spillerne, når de skal stå i mål.</p>
+            <p>Alternativt kan man købe målmandstrøjen til den reducerede pris á 225 kr. og målmandsbukserne til den reducerede pris á 125 kr.</p>
+
+            <h3>Hvad sker der, hvis mit barn glemmer sin trøje til kamp?</h3>
+            <p>Vi kan desværre ikke sikre trøjer til alle der glemmer dem. Trøjerne skal derfor huskes til kamp på linje med indendørssko. Hvis man glemmer disse ting, kan vi ikke love, at spilleren stadig kan spille kamp.</p>
+
+            <h3>Hvad nu hvis mit barn starter senere i sæsonen?</h3>
+            <p>I perioden 2025-2028 får et betalende medlem udleveret ét sæt spillertøj, når denne har betalt kontingent. Hvis man starter i ugen lige inden en kamp, kan vi ikke love at tøjet er klar til kampen, men her vil klubben have et sæt lånetøj, spilleren kan bruge.</p>
+
+            <h3>Hvad sker der hvis min trøje eller shorts bliver væk eller går i stykker?</h3>
+            <p>I disse tilfælde er det muligt at købe trøje og shorts til de reducerede priser, som er nævnt ovenfor.</p>
+            <p>Vi anbefaler dog, at det forsøges at reparere trøje eller shorts inden køb af nye. Dette er som regel billigere og bedre for miljøet.</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
 };
 
 PAGES['/haandbold/kontingent'] = function() {
@@ -1301,7 +1398,7 @@ PAGES['/haandbold/kontingent'] = function() {
     `<div class="page container">${haandboldSubNav('/haandbold/kontingent')}
       <div class="section">
         <h2 class="section-title">Kontingenttakster</h2>
-        <p class="mb-2">Kontingent pr. halve sæson.</p>
+        <p class="mb-2">Kontingentet for de forskellige aldersgrupper er angivet pr. halve sæson.</p>
         <table class="fee-table"><thead><tr><th>Hold</th><th>Årgang</th><th class="amount">Takst</th></tr></thead><tbody>
           ${HAANDBOLD.fees.map(f => `<tr><td>${esc(f.hold)}</td><td>${esc(f.aargang)}</td><td class="amount">${esc(f.pris)}</td></tr>`).join('')}
         </tbody></table>
@@ -1559,7 +1656,10 @@ function buildNav() {
       utilHTML += `<a href="${esc(item.href)}" target="_blank" rel="noopener">${esc(item.label)} ${ICONS.external}</a>`;
     } else if (item.children) {
       utilHTML += `<div class="util-dropdown"><span class="util-trigger">${esc(item.label)}</span><div class="util-dropdown-menu">`;
-      item.children.forEach(c => { utilHTML += `<a href="${esc(c.href)}">${esc(c.label)}</a>`; });
+      item.children.forEach(c => {
+        const target = c.external ? ' target="_blank" rel="noopener"' : '';
+        utilHTML += `<a href="${esc(c.href)}"${target}>${esc(c.label)}</a>`;
+      });
       utilHTML += `</div></div>`;
     } else {
       utilHTML += `<a href="${esc(item.href)}">${esc(item.label)}</a>`;
@@ -1575,7 +1675,10 @@ function buildNav() {
     sportHTML += `<li><a ${parentHref}>${esc(item.label)}</a>`;
     if (item.children) {
       sportHTML += '<ul class="dropdown">';
-      item.children.forEach(c => { sportHTML += `<li><a href="${esc(c.href)}">${esc(c.label)}</a></li>`; });
+      item.children.forEach(c => {
+        const target = c.external ? ' target="_blank" rel="noopener"' : '';
+        sportHTML += `<li><a href="${esc(c.href)}"${target}>${esc(c.label)}</a></li>`;
+      });
       sportHTML += '</ul>';
     }
     sportHTML += '</li>';
