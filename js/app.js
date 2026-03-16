@@ -885,9 +885,6 @@ PAGES[''] = PAGES['/'] = function() {
           <div class="card-body" style="text-align:center">
             <p class="mb-2">VHG siger tusind tak til alle sponsorer for støtten til vores aktiviteter og medlemmer.</p>
             <img src="assets/images/sponsorer/sponsor2019gymnastik.png" alt="Tak til sponsorer" loading="lazy" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
-            <div style="margin-top:1rem">
-              <a href="#/haandbold/sponsor-concept" class="btn btn-outline btn-sm">Læs om sponsorkoncept</a>
-            </div>
           </div>
         </div>
       </div>
