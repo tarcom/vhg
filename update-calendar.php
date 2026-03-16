@@ -1,14 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
 require_once __DIR__ . '/scripts/scrape_conventus_calendar.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
 $allowGetRun = isset($_GET['run']) && (string) $_GET['run'] === '1';
-if ($method !== 'POST' && !($method === 'GET' && $allowGetRun)) {
+if ($method === 'GET' && !$allowGetRun) {
+    echo json_encode([
+        'ok' => true,
+        'message' => 'Endpoint is alive. Use POST or GET ?run=1 to refresh.',
+        'php_version' => PHP_VERSION,
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+if ($method !== 'POST' && $method !== 'GET') {
     http_response_code(405);
     echo json_encode([
         'ok' => false,
@@ -28,7 +35,13 @@ try {
         'event_count' => $result['event_count'],
         'errors' => $result['errors'],
     ], JSON_UNESCAPED_UNICODE);
-} catch (Throwable $e) {
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'ok' => false,
+        'error' => $e->getMessage(),
+    ], JSON_UNESCAPED_UNICODE);
+} catch (Error $e) {
     http_response_code(500);
     echo json_encode([
         'ok' => false,
