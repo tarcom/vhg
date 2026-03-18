@@ -448,6 +448,11 @@ body:not(.is-home) .site-header.scrolled .logo {
     animation: none;
   }
 
+  .kalender-day-radio.is-active,
+  .top-ambient-icon {
+    animation: none;
+  }
+
   .sport-nav-list > li > a {
     transform: none !important;
   }
@@ -477,6 +482,86 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 .sport-nav-list .dropdown li a:hover { background: rgba(241,220,77,0.08); color: var(--gold); }
 
+.sport-nav-list .dropdown-hold-list {
+  padding: 0.06rem 0 0.45rem;
+}
+
+.sport-nav-list .dropdown-hold-list li a.dropdown-hold-link {
+  display: block;
+  padding: 0.14rem 1rem 0.16rem 1.55rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.68rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.sport-nav-list .dropdown-hold-list li a.dropdown-hold-link:hover {
+  color: var(--gold);
+  background: rgba(241,220,77,0.06);
+}
+
+.sport-nav-list .dropdown li.signup-link-group:hover > a,
+.sport-nav-list .dropdown li.signup-link-group:hover .dropdown-hold-list li a.dropdown-hold-link {
+  color: var(--gold);
+  background: rgba(241,220,77,0.10);
+}
+
+.sport-nav-list .dropdown li.signup-link-group:hover > a {
+  box-shadow: inset 3px 0 0 rgba(241,220,77,0.92);
+}
+
+.sport-nav-list .dropdown li.signup-link-group:hover .dropdown-hold-list li a.dropdown-hold-link {
+  padding-left: 1.85rem;
+}
+
+.top-ambient-icons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: min(42vh, 380px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1102;
+}
+
+.top-ambient-icon {
+  position: absolute;
+  left: var(--x, 50%);
+  top: -28px;
+  font-size: var(--size, 1rem);
+  opacity: 0;
+  text-shadow: 0 3px 8px rgba(0, 20, 46, 0.24);
+  filter: drop-shadow(0 0 7px rgba(255, 226, 146, 0.24));
+  animation: topAmbientFall var(--dur, 10s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes topAmbientFall {
+  0% {
+    transform: translate3d(0, -28px, 0) scale(0.92);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.6;
+  }
+  24% {
+    transform: translate3d(var(--drift-x, 0px), 260px, 0) scale(1.03);
+    opacity: 0.18;
+  }
+  30% {
+    transform: translate3d(var(--drift-x, 0px), 330px, 0) scale(1.05);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(var(--drift-x, 0px), 330px, 0) scale(1.05);
+    opacity: 0;
+  }
+}
+
 /* Mobile toggle */
 .mobile-toggle {
   display: none;
@@ -493,6 +578,19 @@ body:not(.is-home) .site-header.scrolled .logo {
   background: var(--white);
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
+}
+.mobile-toggle .mobile-toggle-text {
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  line-height: 1;
+  margin-top: 2px;
 }
 .mobile-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .mobile-toggle.open span:nth-child(2) { opacity: 0; }
@@ -522,7 +620,7 @@ body:not(.is-home) .site-header.scrolled .logo {
   width: min(86vw, 360px);
   height: 100%;
   margin-left: auto;
-  padding: 5rem 1.5rem 2rem;
+  padding: 4.3rem 1.25rem 1.5rem;
   overflow-y: auto;
   background: linear-gradient(180deg, rgba(0,31,61,0.98), rgba(0,63,122,0.98));
   box-shadow: -16px 0 36px rgba(0,0,0,0.35);
@@ -537,9 +635,9 @@ body:not(.is-home) .site-header.scrolled .logo {
 .mobile-nav-list > li > a,
 .mobile-parent {
   display: block;
-  padding: 0.85rem 0;
+  padding: 0.62rem 0;
   color: rgba(255,255,255,0.9);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
 }
@@ -552,19 +650,19 @@ body:not(.is-home) .site-header.scrolled .logo {
 .mobile-parent.open::after { transform: rotate(90deg); }
 .mobile-sub {
   display: none;
-  padding: 0 0 0.5rem 1rem;
+  padding: 0 0 0.35rem 0.85rem;
 }
 .mobile-sub.open { display: block; }
 .mobile-sub li a {
   display: block;
-  padding: 0.4rem 0;
+  padding: 0.28rem 0;
   color: rgba(255,255,255,0.6);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
 }
 .mobile-sub li a:hover { color: var(--gold); }
 .mobile-divider {
-  padding: 0.8rem 0 0.3rem;
-  margin-top: 0.5rem;
+  padding: 0.55rem 0 0.2rem;
+  margin-top: 0.28rem;
 }
 .mobile-divider span {
   font-size: 0.7rem;
@@ -596,7 +694,7 @@ body:not(.is-home) .site-header.scrolled .logo {
    HERO
    ============================================ */
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 92px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -613,7 +711,7 @@ body:not(.is-home) .site-header.scrolled .logo {
 
 .byfest-pulse-badge {
   position: absolute;
-  top: 7.2rem;
+  bottom: 2.2rem;
   left: max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem));
   z-index: 3;
   border: none;
@@ -707,8 +805,20 @@ body:not(.is-home) .site-header.scrolled .logo {
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.16rem;
   animation: bounce 2s ease infinite;
-  opacity: 0.5;
+  opacity: 0.7;
+}
+.scroll-indicator span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.45);
 }
 .scroll-indicator svg { width: 32px; height: 32px; stroke: var(--white); }
 @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
@@ -1327,11 +1437,13 @@ body:not(.is-home) .site-header.scrolled .logo {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.4rem;
+  overflow: visible;
 }
 .kalender-day-radio {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   padding: 0.25rem 0.65rem;
   border: 1px solid #D8C29E;
   border-radius: 999px;
@@ -1346,10 +1458,29 @@ body:not(.is-home) .site-header.scrolled .logo {
   background: #FFF3DA;
 }
 .kalender-day-radio.is-active {
-  background: #F4DFA3;
+  background: linear-gradient(122deg, #FFE9B5 0%, #F4DFA3 56%, #F1D788 100%);
   border-color: #B8860B;
   color: #5A4013;
+  text-shadow: 0 0 8px rgba(255, 242, 196, 0.65);
+  box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.34), 0 0 36px rgba(241, 220, 77, 0.92);
+  animation: kalenderActiveDayPulse 1.06s ease-in-out infinite;
 }
+
+@keyframes kalenderActiveDayPulse {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.22), 0 0 16px rgba(241, 220, 77, 0.56);
+  }
+  50% {
+    transform: translateY(-1px) scale(1.08);
+    box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.56), 0 0 48px rgba(241, 220, 77, 1);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.22), 0 0 16px rgba(241, 220, 77, 0.56);
+  }
+}
+
 .kalender-day-radio input {
   position: absolute;
   opacity: 0;
@@ -1624,6 +1755,143 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 
 /* ============================================
+   FACEBOOK EMBED
+   ============================================ */
+.facebook-embed-wrap {
+  margin-top: 1.3rem;
+  padding: 1rem;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: var(--shadow-sm);
+}
+
+.facebook-embed-wrap h3 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--navy-dark);
+}
+
+.facebook-embed-wrap iframe {
+  width: 100%;
+  max-width: 390px;
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.facebook-embed-wrap p {
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+.facebook-embed-wrap a {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.facebook-embed-wrap a:hover {
+  color: var(--navy-light);
+  text-decoration: underline;
+}
+
+.some-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 430px);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.some-links-table-wrap {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  overflow: auto;
+}
+
+.some-links-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+.some-links-table th,
+.some-links-table td {
+  padding: 0.48rem 0.56rem;
+  border-bottom: 1px solid var(--gray-200);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.some-links-table th {
+  background: #F8FAFC;
+  color: var(--navy-dark);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.some-links-table tr:last-child td {
+  border-bottom: none;
+}
+
+.some-link-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  font-size: 0.84rem;
+  color: var(--navy-dark);
+  font-weight: 600;
+}
+
+.some-link-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: var(--navy-light);
+}
+
+.some-link-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.some-right .facebook-embed-wrap {
+  margin-top: 0;
+  position: sticky;
+  top: 110px;
+}
+
+.some-links-table .btn {
+  padding: 0.34rem 0.56rem;
+  font-size: 0.7rem;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.some-links-table .btn-outline {
+  color: var(--navy-dark);
+  border-color: rgba(0, 63, 122, 0.35);
+  background: #fff;
+}
+
+.some-links-table .btn-outline:hover {
+  color: var(--navy-light);
+  border-color: rgba(0, 63, 122, 0.62);
+  background: #F4F9FF;
+}
+
+.some-links-table .btn.is-disabled,
+.some-links-table .btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.25);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -1671,6 +1939,7 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 
 @media (max-width: 768px) {
+  .hero { min-height: calc(100vh - 76px); }
   .hero h1 { font-size: 3rem; }
   .sport-grid { grid-template-columns: repeat(2, 1fr); }
   .sport-card-image { height: 150px; }
@@ -1685,11 +1954,57 @@ body:not(.is-home) .site-header.scrolled .logo {
   .training-table th, .fee-table th,
   .training-table td, .fee-table td { padding: 0.4rem 0.6rem; }
   .kalender-meta-controls { flex-direction: column; }
-  .kalender-day-radio-wrap { align-items: flex-start; }
+  .kalender-toggles {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.32rem 0.48rem;
+    padding: 0.42rem 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .kalender-toggle {
+    flex: 0 0 auto;
+    gap: 0.32rem;
+  }
+  .kalender-toggle-track {
+    width: 32px;
+    height: 18px;
+  }
+  .kalender-toggle-track::after {
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+  }
+  .kalender-toggle-input:checked ~ .kalender-toggle-track::after {
+    transform: translateX(14px);
+  }
+  .kalender-toggle-label {
+    font-size: 0.72rem;
+  }
+  .kalender-day-radio-wrap {
+    align-items: flex-start;
+    gap: 0.35rem 0.5rem;
+    padding: 0.44rem 0.52rem;
+  }
+  .kalender-day-prefix {
+    font-size: 0.72rem;
+  }
+  .kalender-day-radios {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 0.24rem;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+  .kalender-day-radio {
+    flex: 0 1 auto;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.66rem;
+  }
   .kalender-morning-toggle { margin-left: 0; width: fit-content; }
   .kalender-week-wrap { grid-template-columns: 44px 1fr; }
   .kalender-days { grid-template-columns: repeat(var(--day-count, 4), minmax(120px, 1fr)); }
-  .byfest-pulse-badge { top: 4.8rem; left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
+  .byfest-pulse-badge { bottom: 1.25rem; left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
   .byfest-pulse-badge img { width: 54px; height: 54px; }
   .byfest-pulse-badge span { font-size: 0.66rem; }
   .sponsorModule_sliderWrap {
@@ -1705,6 +2020,18 @@ body:not(.is-home) .site-header.scrolled .logo {
     flex-direction: column;
     align-items: center;
   }
+  .facebook-embed-wrap {
+    padding: 0.75rem;
+  }
+  .facebook-embed-wrap iframe {
+    height: 640px;
+  }
+  .some-layout {
+    grid-template-columns: 1fr;
+  }
+  .some-right .facebook-embed-wrap {
+    position: static;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1716,4 +2043,15 @@ body:not(.is-home) .site-header.scrolled .logo {
   .quick-info { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .sport-contact-grid { grid-template-columns: 1fr 1fr; }
+  .kalender-toggle-label { font-size: 0.67rem; }
+  .kalender-day-prefix { font-size: 0.68rem; }
+  .kalender-day-radio { font-size: 0.62rem; padding: 0.18rem 0.38rem; }
+  .kalender-week-wrap { grid-template-columns: 40px 1fr; }
+  .kalender-time-mark { font-size: 0.62rem; }
+  .facebook-embed-wrap iframe {
+    height: 560px;
+  }
+  .some-links-table {
+    min-width: 500px;
+  }
 }

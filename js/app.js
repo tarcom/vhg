@@ -383,6 +383,65 @@ async function loadKalenderData() {
   return Array.isArray(payload.events) ? payload.events : [];
 }
 
+function getSportKeyFromHashHref(href) {
+  const m = String(href || '').match(/^#\/([^/]+)/);
+  return m ? m[1] : null;
+}
+
+function isSignupMenuLabel(label) {
+  return /tilmelding/i.test(String(label || ''));
+}
+
+function buildSportHoldLookup(events) {
+  const lookup = {};
+  if (!Array.isArray(events)) return lookup;
+
+  events.forEach(e => {
+    const sportKey = String(e && e.sport || '').trim();
+    const title = String(e && e.title || '').trim();
+    if (!sportKey || !title) return;
+
+    if (!lookup[sportKey]) lookup[sportKey] = [];
+    lookup[sportKey].push(title);
+  });
+
+  Object.keys(lookup).forEach(sportKey => {
+    const unique = [];
+    const seen = new Set();
+
+    lookup[sportKey].forEach(title => {
+      const normalized = title.toLowerCase().replace(/\s+/g, ' ').trim();
+      if (!normalized || seen.has(normalized)) return;
+      seen.add(normalized);
+      unique.push(title);
+    });
+
+    unique.sort((a, b) => a.localeCompare(b, 'da'));
+
+    // Disc Golf og Floorball deler Conventus-kilde; under Disc Golf-menuen
+    // viser vi kun Disc Golf-hold, så brugeren ikke ser Floorball-hold her.
+    if (sportKey === 'disc-golf') {
+      const discOnly = unique.filter(title => /disc\s*golf/i.test(title));
+      lookup[sportKey] = discOnly.length ? discOnly : ['Disc Golf'];
+      return;
+    }
+
+    lookup[sportKey] = unique;
+  });
+
+  return lookup;
+}
+
+async function loadSportHoldLookupForMenu() {
+  try {
+    const events = await loadKalenderData();
+    const withFallbacks = ensureMissingSportFallbacks(events);
+    return buildSportHoldLookup(withFallbacks);
+  } catch (_) {
+    return {};
+  }
+}
+
 async function refreshKalenderData() {
   const callEndpoint = async method => {
     const url = method === 'GET'
@@ -584,7 +643,6 @@ function renderKalender(container, rawEvents, activeSports, showMorning, selecte
   const metaTogglesHTML = `
     <div class="kalender-meta-controls">
       <div class="kalender-day-radio-wrap">
-        <span class="kalender-day-prefix">Vis kalender for:</span>
         <div class="kalender-day-radios">
           ${ALL_DAYS.map(d => `
             <label class="kalender-day-radio ${d.no === selectedDay ? 'is-active' : ''}">
@@ -830,6 +888,7 @@ PAGES[''] = PAGES['/'] = function() {
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
       </div>
       <div class="scroll-indicator">
+        <span>Scroll ned</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
     </div>
@@ -853,8 +912,7 @@ PAGES[''] = PAGES['/'] = function() {
       </div>
 
       <div class="section">
-        <h2 class="section-title section-title-center">Ugekalender</h2>
-        <p class="mb-2 kalender-hint">Klik på hold for tilmelding og præcis info. Kalenderen er vejledende.</p>
+        <h2 class="section-title section-title-center">Ugekalender (Vejledende)</h2>
         <div id="home-kalender-root"></div>
         <div class="kalender-refresh-row">
           <button id="refresh-kalender-btn" class="btn btn-primary btn-sm" type="button">Opdater kalender</button>
@@ -1072,8 +1130,10 @@ PAGES['/kontakt'] = function() {
 
 // --- SoMe ---
 PAGES['/some'] = function() {
+  const vhgFacebookUrl = 'https://www.facebook.com/VesterHassingGF';
+
   const links = [
-    { name: 'VHG', url: 'https://www.facebook.com/VesterHassingGF' },
+    { name: 'VHG', url: vhgFacebookUrl },
     { name: 'Håndbold', url: 'https://www.facebook.com/vghhandbold' },
     { name: 'Disc Golf', url: 'https://www.facebook.com/groups/1832314803794784' },
     { name: 'Floorball', url: 'https://www.facebook.com/profile.php?id=100046867541094' },
@@ -1084,22 +1144,110 @@ PAGES['/some'] = function() {
     { name: 'Gevaldig', url: 'https://www.facebook.com/profile.php?id=100066490641015' }
   ];
 
+  const orderedLinks = [
+    ...links.filter(item => isEmbeddableFacebookPageUrl(item.url)),
+    ...links.filter(item => !isEmbeddableFacebookPageUrl(item.url))
+  ];
+
   return pageHeader('📱', 'SoMe', '<a href="#/">Hjem</a>', 'Find alle vores Facebook-sider samlet ét sted.') +
     `<div class="page container">
       <div class="section">
         <h2 class="section-title">Facebook</h2>
-        <div class="contact-cards">
-          ${links.map(item => `
-            <div class="contact-card">
-              <div class="contact-card-icon">${ICONS.facebook}</div>
-              <h3>${esc(item.name)}</h3>
-              <p><a href="${esc(item.url)}" target="_blank" rel="noopener">Åbn side ${ICONS.external}</a></p>
+        <div class="some-layout" data-some-layout>
+          <div class="some-left">
+            <div class="some-links-table-wrap">
+              <table class="some-links-table" aria-label="Facebook links">
+                <thead>
+                  <tr>
+                    <th>Side</th>
+                    <th>Åbn i ny fane</th>
+                    <th>Vis her på siden</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${orderedLinks.map(item => `
+                    <tr>
+                      <td>
+                        <div class="some-link-name">
+                          <span class="some-link-icon" aria-hidden="true">${ICONS.facebook}</span>
+                          <span>${esc(item.name)}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="${esc(item.url)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Åbn ${ICONS.external}</a>
+                      </td>
+                      <td>
+                        ${isEmbeddableFacebookPageUrl(item.url)
+                          ? `<button type="button" class="btn btn-primary btn-sm" data-open-right="${esc(item.url)}" data-open-right-name="${esc(item.name)}">Vis her</button>`
+                          : `<button type="button" class="btn btn-primary btn-sm is-disabled" disabled title="Kan ikke vises her (Facebook profil-id/linktype)">Ikke mulig</button>`}
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
             </div>
-          `).join('')}
+          </div>
+
+          <div class="some-right">
+            <div class="facebook-embed-wrap">
+              <h3>Viser: <span id="some-active-page-name">VHG</span></h3>
+              <iframe
+                id="some-facebook-iframe"
+                title="Facebook panel"
+                src="${buildFacebookPluginIframeSrc(vhgFacebookUrl)}"
+                height="610"
+                scrolling="no"
+                frameborder="0"
+                allowtransparency="true"
+                allowfullscreen="true"
+                allow="encrypted-media">
+              </iframe>
+              <p><a id="some-open-current" href="${vhgFacebookUrl}" target="_blank" rel="noopener">Åbn den viste side i ny fane ${ICONS.external}</a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>`;
 };
+
+function buildFacebookPluginIframeSrc(facebookUrl) {
+  return 'https://www.facebook.com/v2.6/plugins/page.php'
+    + '?adapt_container_width=true'
+    + '&height=610'
+    + '&hide_cover=false'
+    + `&href=${encodeURIComponent(String(facebookUrl || '') + '/')}`
+    + '&locale=da_DK'
+    + '&sdk=joey'
+    + '&show_facepile=false'
+    + '&show_posts=true'
+    + '&small_header=true'
+    + '&width=390px';
+}
+
+function isEmbeddableFacebookPageUrl(facebookUrl) {
+  const url = String(facebookUrl || '').trim();
+  return /^https?:\/\/(www\.)?facebook\.com\/[A-Za-z0-9._-]+\/?$/i.test(url);
+}
+
+function initSoMePageInteractions(route) {
+  if (route !== '/some') return;
+
+  const iframe = document.getElementById('some-facebook-iframe');
+  const nameEl = document.getElementById('some-active-page-name');
+  const openCurrent = document.getElementById('some-open-current');
+  if (!iframe || !nameEl || !openCurrent) return;
+
+  document.querySelectorAll('[data-open-right]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const url = btn.getAttribute('data-open-right');
+      const name = btn.getAttribute('data-open-right-name') || 'Facebook';
+      if (!url) return;
+      iframe.src = buildFacebookPluginIframeSrc(url);
+      nameEl.textContent = name;
+      openCurrent.setAttribute('href', url);
+    });
+  });
+}
 
 // --- Generic sport page ---
 function sportPage(key) {
@@ -1595,6 +1743,7 @@ function navigate() {
   }
 
   app.innerHTML = renderer();
+  initSoMePageInteractions(route);
 
   // Load Conventus widgets
   const sportKey = route.split('/')[1];
@@ -1687,7 +1836,9 @@ function navigate() {
 // =============================================
 // NAVIGATION BUILD (Two-tier)
 // =============================================
-function buildNav() {
+async function buildNav() {
+  const sportHoldLookup = await loadSportHoldLookupForMenu();
+
   // Utility bar
   const utilityInner = document.getElementById('utility-bar-inner');
   let utilHTML = '';
@@ -1711,13 +1862,34 @@ function buildNav() {
   const sportList = document.getElementById('sport-nav-list');
   let sportHTML = '';
   SPORT_NAV.forEach(item => {
+    const sportKey = getSportKeyFromHashHref(item.href);
     const parentHref = item.href ? `href="${esc(item.href)}"` : '';
     sportHTML += `<li><a ${parentHref}>${esc(item.label)}</a>`;
     if (item.children) {
+      const orderedChildren = [
+        ...item.children.filter(c => !isSignupMenuLabel(c.label)),
+        ...item.children.filter(c => isSignupMenuLabel(c.label))
+      ];
+
       sportHTML += '<ul class="dropdown">';
-      item.children.forEach(c => {
+      orderedChildren.forEach(c => {
+        const signupGroup = sportKey && isSignupMenuLabel(c.label);
+        const groupClass = signupGroup ? ' class="signup-link-group"' : '';
         const target = c.external ? ' target="_blank" rel="noopener"' : '';
-        sportHTML += `<li><a href="${esc(c.href)}"${target}>${esc(c.label)}</a></li>`;
+        sportHTML += `<li${groupClass}><a href="${esc(c.href)}"${target}>${esc(c.label)}</a>`;
+
+        if (signupGroup) {
+          const holds = sportHoldLookup[sportKey] || [];
+          if (holds.length) {
+            sportHTML += '<ul class="dropdown-hold-list">';
+            holds.forEach(hold => {
+              sportHTML += `<li><a class="dropdown-hold-link" href="${esc(c.href)}"${target} title="${esc(hold)}">${esc(hold)}</a></li>`;
+            });
+            sportHTML += '</ul>';
+          }
+        }
+
+        sportHTML += '</li>';
       });
       sportHTML += '</ul>';
     }
@@ -1818,11 +1990,41 @@ function handleScroll() {
   backToTop.classList.toggle('visible', scrollY > 400);
 }
 
+function initTopAmbientIcons() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (document.querySelector('.top-ambient-icons')) return;
+
+  const symbols = [
+    ...Object.values(SPORTS).map(s => s.icon).filter(Boolean),
+    '🏅', '🏆', '🎽', '⏱️', '📋', '⭐'
+  ];
+  const count = window.innerWidth <= 768 ? 4 : 7;
+
+  const layer = document.createElement('div');
+  layer.className = 'top-ambient-icons';
+  layer.setAttribute('aria-hidden', 'true');
+
+  for (let i = 0; i < count; i += 1) {
+    const icon = document.createElement('span');
+    icon.className = 'top-ambient-icon';
+    icon.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    icon.style.setProperty('--x', `${Math.round(Math.random() * 100)}%`);
+    icon.style.setProperty('--drift-x', `${(Math.random() * 80 - 40).toFixed(0)}px`);
+    icon.style.setProperty('--size', `${(Math.random() * 0.7 + 0.85).toFixed(2)}rem`);
+    icon.style.setProperty('--dur', `${(Math.random() * 2.2 + 12.8).toFixed(2)}s`);
+    icon.style.setProperty('--delay', `${(Math.random() * 1.8).toFixed(2)}s`);
+    layer.appendChild(icon);
+  }
+
+  document.body.appendChild(layer);
+}
+
 // =============================================
 // INIT
 // =============================================
-document.addEventListener('DOMContentLoaded', () => {
-  buildNav();
+document.addEventListener('DOMContentLoaded', async () => {
+  initTopAmbientIcons();
+  await buildNav();
   navigate();
   window.addEventListener('hashchange', navigate);
   window.addEventListener('scroll', handleScroll, { passive: true });
