@@ -1131,6 +1131,7 @@ PAGES['/kontakt'] = function() {
 // --- SoMe ---
 PAGES['/some'] = function() {
   const vhgFacebookUrl = 'https://www.facebook.com/VesterHassingGF';
+  const linksOnlyMode = shouldUseFacebookLinksOnly();
 
   const links = [
     { name: 'VHG', url: vhgFacebookUrl },
@@ -1153,6 +1154,7 @@ PAGES['/some'] = function() {
     `<div class="page container">
       <div class="section">
         <h2 class="section-title">Facebook</h2>
+        ${linksOnlyMode ? '<p class="some-mobile-note">På mobil viser vi kun links til Facebook-siderne.</p>' : ''}
         <div class="some-layout" data-some-layout>
           <div class="some-left">
             <div class="some-links-table-wrap">
@@ -1161,7 +1163,7 @@ PAGES['/some'] = function() {
                   <tr>
                     <th>Side</th>
                     <th>Åbn i ny fane</th>
-                    <th>Vis her på siden</th>
+                    ${linksOnlyMode ? '' : '<th>Vis her på siden</th>'}
                   </tr>
                 </thead>
                 <tbody>
@@ -1176,11 +1178,11 @@ PAGES['/some'] = function() {
                       <td>
                         <a href="${esc(item.url)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Åbn ${ICONS.external}</a>
                       </td>
-                      <td>
+                      ${linksOnlyMode ? '' : `<td>
                         ${isEmbeddableFacebookPageUrl(item.url)
                           ? `<button type="button" class="btn btn-primary btn-sm" data-open-right="${esc(item.url)}" data-open-right-name="${esc(item.name)}">Vis her</button>`
                           : `<button type="button" class="btn btn-primary btn-sm is-disabled" disabled title="Kan ikke vises her (Facebook profil-id/linktype)">Ikke mulig</button>`}
-                      </td>
+                      </td>`}
                     </tr>
                   `).join('')}
                 </tbody>
@@ -1188,7 +1190,7 @@ PAGES['/some'] = function() {
             </div>
           </div>
 
-          <div class="some-right">
+          ${linksOnlyMode ? '' : `<div class="some-right">
             <div class="facebook-embed-wrap">
               <h3>Viser: <span id="some-active-page-name">VHG</span></h3>
               <iframe
@@ -1204,11 +1206,22 @@ PAGES['/some'] = function() {
               </iframe>
               <p><a id="some-open-current" href="${vhgFacebookUrl}" target="_blank" rel="noopener">Åbn den viste side i ny fane ${ICONS.external}</a></p>
             </div>
-          </div>
+          </div>`}
         </div>
       </div>
     </div>`;
 };
+
+function shouldUseFacebookLinksOnly() {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
+  }
+
+  // Mobile devices use links-only mode because Facebook iframe embeds are unstable on mobile browsers.
+  const mobileWidth = window.matchMedia('(max-width: 768px)').matches;
+  const coarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  return mobileWidth || coarsePointer;
+}
 
 function buildFacebookPluginIframeSrc(facebookUrl) {
   return 'https://www.facebook.com/v2.6/plugins/page.php'
@@ -1231,6 +1244,7 @@ function isEmbeddableFacebookPageUrl(facebookUrl) {
 
 function initSoMePageInteractions(route) {
   if (route !== '/some') return;
+  if (shouldUseFacebookLinksOnly()) return;
 
   const iframe = document.getElementById('some-facebook-iframe');
   const nameEl = document.getElementById('some-active-page-name');
