@@ -12,6 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate config.php
+        run: |
+          echo "<?php define('SMTP_PASS', '${{ secrets.SMTP_PASS }}');" > bestyrelsen/config.php
+
       - name: Deploy files to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
