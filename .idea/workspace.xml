@@ -4,7 +4,190 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations and enhance vedtægter section" />
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations and enhance vedtægter section">
+      <change beforePath="$PROJECT_DIR$/old_site/old_root/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/old_root/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/old_root/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old_root/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/badminton/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/badminton/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/badminton/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/badminton/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/badminton/information-fra-badminton/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/badminton/information-fra-badminton/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/badminton/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/badminton/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/badminton/traeningstider-og-opstart/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/badminton/traeningstider-og-opstart/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bordtennis/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/bordtennis/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bordtennis/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/bordtennis/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bordtennis/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/bordtennis/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bordtennis/traeningstider/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/bordtennis/traeningstider/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bundles/css/main.css@dbu_v41.css" beforeDir="false" afterPath="$PROJECT_DIR$/old/bundles/css/main.css@dbu_v41.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/bundles/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/old/bundles/js/main.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/cafeen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/cafeen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/icon_social_fb.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/icon_social_fb.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/icon_social_instagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/icon_social_instagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/icon_social_twitter.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/icon_social_twitter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_match.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_match.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_medal.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_medal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_meeting.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_meeting.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_other.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_other.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_train.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_train.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/kk_activities_trainmatch.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/kk_activities_trainmatch.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/shirt_overlay_01_48.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/shirt_overlay_01_48.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/shorts_overlay_01_48_vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/shorts_overlay_01_48_vertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/content/img/socks_overlay_01_48_vertical.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/content/img/socks_overlay_01_48_vertical.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/css/matchpage.min.css@dbu_v41.css" beforeDir="false" afterPath="$PROJECT_DIR$/old/css/matchpage.min.css@dbu_v41.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/disc-golf/bestyrelsesmedlem/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/disc-golf/bestyrelsesmedlem/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/disc-golf/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/disc-golf/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/disc-golf/kort-rabataftaler/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/disc-golf/kort-rabataftaler/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/disc-golf/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/disc-golf/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/e-sport/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/e-sport/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/e-sport/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/e-sport/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/e-sport/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/e-sport/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/floorball/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/floorball/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/floorball/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/floorball/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/floorball/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/floorball/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/boernebold-2020-2022/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/boernebold-2020-2022/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u10-drenge-2016/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u10-drenge-2016/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u10-piger-2016-2017/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u10-piger-2016-2017/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u11-drenge-2015/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u11-drenge-2015/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u12-drenge-2014/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u12-drenge-2014/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u12-piger-2014-2015/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u12-piger-2014-2015/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u7-drenge-2019/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u7-drenge-2019/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u8-drenge-2018/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u8-drenge-2018/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u8-piger-2018-2019/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u8-piger-2018-2019/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/boern/u9-drenge-2017/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/boern/u9-drenge-2017/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/kontingent/takster/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/kontingent/takster/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/kontingent/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/kontingent/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/senior/herrer/serie-2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/senior/herrer/serie-2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/senior/herrer/serie-4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/senior/herrer/serie-4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/senior/kvinder/7-mands/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/senior/kvinder/7-mands/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ugens-hjemmekampe/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ugens-hjemmekampe/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ungdom/u13-drenge-2013/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ungdom/u13-drenge-2013/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ungdom/u14-drenge-2012/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ungdom/u14-drenge-2012/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ungdom/u15-piger-2011-2013/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ungdom/u15-piger-2011-2013/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ungdom/u16-drenge-2010-2011/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ungdom/u16-drenge-2010-2011/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/fodbold/ungdom/u19-drenge-2008-2009/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/fodbold/ungdom/u19-drenge-2008-2009/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/inspirationsdag-med-dgi-sponsoreret-af-rarewine/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/inspirationsdag-med-dgi-sponsoreret-af-rarewine/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/sponsorer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/sponsorer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/store-gymnastikdag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/store-gymnastikdag/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/gymnastik/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/gymnastik/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/antibulli-politik/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/antibulli-politik/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/kontingent/takster/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/kontingent/takster/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/kontingent/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/kontingent/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/traenere/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/traenere/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/haandbold/traeningstider-for-2025-2026/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/haandbold/traeningstider-for-2025-2026/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978456.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978456.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978459.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978459.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978464.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978464.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978470.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978470.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978474.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978474.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978479.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978479.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978483.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978483.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978487.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978487.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978490.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978490.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978495.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978495.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978499.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978499.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978503.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978503.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978507.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978507.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485561&amp;matchid=978511.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485561&amp;matchid=978511.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809968.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809968.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809971.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809971.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809976.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809976.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809980.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809980.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809984.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809984.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809988.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809988.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809992.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809992.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=809997.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=809997.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810000.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810000.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810006.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810010.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810014.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810014.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810018.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810018.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/kampvisning@poolrowid=485616&amp;matchid=810022.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/kampvisning@poolrowid=485616&amp;matchid=810022.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1122/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1122/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1273/vhg-logo-2017-g.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1273/vhg-logo-2017-g.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1273/vhg-logo-2017-g.png@height=130" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1273/vhg-logo-2017-g.png@height=130" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1314/referat-fra-generalforsamling-d-21-03-2018.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1314/referat-fra-generalforsamling-d-21-03-2018.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1335/pdf.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1335/pdf.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1494/img_0577.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1494/img_0577.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1494/img_0577.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1494/img_0577.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1495/img_0587.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1495/img_0587.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1495/img_0587.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1495/img_0587.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1496/img_0597.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1496/img_0597.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1496/img_0597.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1496/img_0597.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1497/img_0613.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1497/img_0613.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1497/img_0613.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1497/img_0613.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1498/img_0614.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1498/img_0614.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1498/img_0614.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1498/img_0614.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1499/img_0616.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1499/img_0616.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1499/img_0616.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1499/img_0616.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1500/img_0618.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1500/img_0618.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1500/img_0618.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1500/img_0618.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1501/img_0619.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1501/img_0619.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1501/img_0619.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1501/img_0619.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132276582180000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1507/20200104_094246_resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1507/20200104_094246_resized.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1507/20200104_094246_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039230000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1507/20200104_094246_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039230000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1508/20200104_101006_resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1508/20200104_101006_resized.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1508/20200104_101006_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039250000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1508/20200104_101006_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039250000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1509/20200104_104802_resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1509/20200104_104802_resized.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1509/20200104_104802_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039260000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1509/20200104_104802_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039260000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1510/20200104_105613_resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1510/20200104_105613_resized.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1510/20200104_105613_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039270000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1510/20200104_105613_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039270000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1511/20200104_112315_resized.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1511/20200104_112315_resized.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1511/20200104_112315_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039280000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1511/20200104_112315_resized.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132227039280000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1517/inspirationsdag0.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1517/inspirationsdag0.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1517/inspirationsdag0.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171060000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1517/inspirationsdag0.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171060000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1518/inspirationsdag1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1518/inspirationsdag1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1518/inspirationsdag1.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171240000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1518/inspirationsdag1.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171240000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1519/inspirationsdag2.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1519/inspirationsdag2.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1519/inspirationsdag2.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171480000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1519/inspirationsdag2.jpeg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171480000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1520/inspirationsdag3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1520/inspirationsdag3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1520/inspirationsdag3.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171610000000" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1520/inspirationsdag3.jpg@anchor=center&amp;amp;mode=crop&amp;amp;width=200&amp;amp;height=200&amp;amp;rnd=132263171610000000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1527/sponsor2019gymnastik.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1527/sponsor2019gymnastik.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1538/referat.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1538/referat.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1542/referat-vhg-generalforsamling-2021_20_maj_.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1542/referat-vhg-generalforsamling-2021_20_maj_.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1558/dji_0089.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1558/dji_0089.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1569/330389369_221019120395971_1941897517941364742_n.jpg@width=560&amp;height=381&amp;mode=max" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1569/330389369_221019120395971_1941897517941364742_n.jpg@width=560&amp;height=381&amp;mode=max" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1576/referat2023.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1576/referat2023.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1581/vedtaegter.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1581/vedtaegter.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1582/generalforsamling-vhg-2024-regerat.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1582/generalforsamling-vhg-2024-regerat.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1585/0bf9ced6-eff0-4def-ab6d-0f218518417f.jpg@width=375&amp;height=531&amp;mode=max" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1585/0bf9ced6-eff0-4def-ab6d-0f218518417f.jpg@width=375&amp;height=531&amp;mode=max" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1586/d48ab2cb-8ccf-47f1-91a8-598bd83aa867.jpg@width=374&amp;height=531&amp;mode=max" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1586/d48ab2cb-8ccf-47f1-91a8-598bd83aa867.jpg@width=374&amp;height=531&amp;mode=max" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/media/1592/generalforsamling-vhg-2025.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/old/media/1592/generalforsamling-vhg-2025.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/medlems-login/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/medlems-login/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/om-vhg/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/om-vhg/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/om-vhg/kalender/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/om-vhg/kalender/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/om-vhg/referat/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/om-vhg/referat/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/ball_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/ball_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/ball_penalty_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/ball_penalty_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/ball_red_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/ball_red_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/card_r_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/card_r_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/card_ry_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/card_ry_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/card_y_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/card_y_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/notconnected.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/notconnected.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/penalty_miss.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/penalty_miss.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/profilepic.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/profilepic.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/sub_away_32x32_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/sub_away_32x32_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/sub_home_32x32_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/sub_home_32x32_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/whistle_gray_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/whistle_gray_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/whistle_green_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/whistle_green_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/resources/images/livescore/whistle_red_32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/resources/images/livescore/whistle_red_32x32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/scripts/dbu-signalr.js@dbu_v41" beforeDir="false" afterPath="$PROJECT_DIR$/old/scripts/dbu-signalr.js@dbu_v41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/scripts/jquery.signalR-2.4.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/old/scripts/jquery.signalR-2.4.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/scripts/liveScore.js@dbu_v41" beforeDir="false" afterPath="$PROJECT_DIR$/old/scripts/liveScore.js@dbu_v41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/scripts/matchpage-shirts.js" beforeDir="false" afterPath="$PROJECT_DIR$/old/scripts/matchpage-shirts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/skateklub/bestyrelsen/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/skateklub/bestyrelsen/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/skateklub/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/skateklub/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/skateklub/tilmelding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/old/skateklub/tilmelding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/themes/vanilla/images/icon_goto.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/themes/vanilla/images/icon_goto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/themes/vanilla/images/icon_goto_back.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/themes/vanilla/images/icon_goto_back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/themes/vanilla/images/icon_social_fb.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/themes/vanilla/images/icon_social_fb.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/themes/vanilla/images/icon_social_google.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/themes/vanilla/images/icon_social_google.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old_site/www.vhg.dk/themes/vanilla/images/icon_social_twitter.png" beforeDir="false" afterPath="$PROJECT_DIR$/old/themes/vanilla/images/icon_social_twitter.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/scrape_conventus_calendar.php" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +259,9 @@
       <recent name="C:\projects\vhg\assets\pdf" />
       <recent name="C:\projects\vhg\Documentation\Strategi2030" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\vhg" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -95,7 +281,7 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="21430000" />
+      <workItem from="1776342194058" duration="21882000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -209,7 +395,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776368565133</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Update workspace and app.js configurations for GO LIVE preparations and enhance vedtægter section">
+      <option name="closed" value="true" />
+      <created>1776369829211</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1776369829211</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
