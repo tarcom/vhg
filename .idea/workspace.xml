@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Documentation/Strategi2030/VHG_strategi2030.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Documentation/Strategi2030/strategi_kort.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Documentation/Strategi2030/strategi_lang.png" afterDir="false" />
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Add kalender update feature with status feedback and user interaction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestyrelsen/data/login_log.json" beforeDir="false" afterPath="$PROJECT_DIR$/bestyrelsen/data/login_log.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestyrelsen/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bestyrelsen/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,12 +99,26 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="8830000" />
+      <workItem from="1776342194058" duration="10597000" />
     </task>
+    <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
+      <option name="closed" value="true" />
+      <created>1776351282416</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1776351282416</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add VHG Bestyrelsesportal with authentication, login, and password reset features" />
+    <MESSAGE value="Add kalender update feature with status feedback and user interaction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add kalender update feature with status feedback and user interaction" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

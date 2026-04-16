@@ -913,13 +913,11 @@ PAGES[''] = PAGES['/'] = function() {
         <h2 class="section-title section-title-center">Ugekalender (Vejledende)</h2>
         <div id="home-kalender-root"></div>
         <div class="kalender-refresh-row">
-          <button id="refresh-kalender-btn" class="btn btn-primary btn-sm" type="button">Opdater kalender</button>
           <label class="kalender-toggle kalender-morning-toggle" data-morning-toggle-wrap>
             <input id="home-morning-toggle" class="kalender-toggle-input" type="checkbox" data-morning-toggle-home>
             <span class="kalender-toggle-track" style="--sport-color:#0B3A6E"></span>
             <span class="kalender-toggle-label">Vis formiddagshold</span>
           </label>
-          <span id="refresh-kalender-status" aria-live="polite"></span>
         </div>
       </div>
 

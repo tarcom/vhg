@@ -1,13 +1,9 @@
 
-RewriteEngine On
+RewriteEngine on
 
 RewriteOptions inherit
-
-# Redirect non-www til www
 RewriteCond %{HTTP_HOST} ^vhg\.dk$
 RewriteRule ^/?$ "https\:\/\/www\.vhg\.dk\/" [R=301,L]
-
-# Short URLs (legacy redirects)
 RewriteCond %{HTTP_HOST} ^vhg\.dk$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.vhg\.dk$
 RewriteRule ^tilmeld100$ "https\:\/\/vhg\.dk\/vhg100" [R=301,L]
@@ -18,14 +14,8 @@ RewriteCond %{HTTP_HOST} ^vhg\.dk$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.vhg\.dk$
 RewriteRule ^mgp$ "https\:\/\/vhg\-esport\.nemtilmeld\.dk\/12\/" [R=301,L]
 
-# SPA routing — send alle ikke-eksisterende stier til index.html
-RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
-
 # php -- BEGIN cPanel-generated handler, do not edit
-# Set the "ea-php81" package as the default "PHP" programming language.
+# Set the “ea-php81” package as the default “PHP” programming language.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
 </IfModule>

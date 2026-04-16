@@ -191,6 +191,18 @@ $logList = getLoginLog(10);
       </div>
     </div>
 
+    <div class="section-label">Administration</div>
+    <div class="cards">
+      <div class="card" id="kalender-card" style="cursor:pointer" onclick="opdaterKalender()">
+        <div class="card-icon" id="kalender-icon">🗓️</div>
+        <div class="card-body">
+          <h3>Opdater kalender</h3>
+          <p>Henter nye aktiviteter fra Conventus og opdaterer ugekalenderen på forsiden.</p>
+          <div id="kalender-status" class="card-ext"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="section-label">Nyttige links</div>
     <div class="cards">
       <a class="card" href="https://www.conventus.dk" target="_blank" rel="noopener">
@@ -247,5 +259,35 @@ $logList = getLoginLog(10);
   </footer>
 
 </div>
+<script>
+async function opdaterKalender() {
+  const card   = document.getElementById('kalender-card');
+  const status = document.getElementById('kalender-status');
+  const icon   = document.getElementById('kalender-icon');
+
+  card.style.pointerEvents = 'none';
+  icon.textContent = '⏳';
+  status.style.color = '';
+  status.textContent = 'Opdaterer…';
+
+  try {
+    const res  = await fetch('/update-calendar.php', { method: 'POST', headers: { Accept: 'application/json' } });
+    const data = await res.json();
+    if (data.ok) {
+      icon.textContent = '✅';
+      status.style.color = '#166534';
+      status.textContent = `Opdateret — ${data.event_count} aktiviteter (${data.generated_at})`;
+    } else {
+      throw new Error(data.error || 'Ukendt fejl');
+    }
+  } catch (e) {
+    icon.textContent = '❌';
+    status.style.color = '#b91c1c';
+    status.textContent = 'Fejl: ' + e.message;
+  } finally {
+    card.style.pointerEvents = '';
+  }
+}
+</script>
 </body>
 </html>
