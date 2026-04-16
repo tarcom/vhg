@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations and add scrape_conventus_calendar.php for event scraping functionality">
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations and enhance event scraping functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestyrelsen/data/password_overrides.json" beforeDir="false" afterPath="$PROJECT_DIR$/bestyrelsen/data/password_overrides.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +100,7 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="19049000" />
+      <workItem from="1776342194058" duration="20439000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -196,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776365524490</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update workspace and app.js configurations for GO LIVE preparations and enhance event scraping functionality">
+      <option name="closed" value="true" />
+      <created>1776366971073</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1776366971073</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +224,8 @@
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations" />
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and enhance promo badge functionality" />
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and add scrape_conventus_calendar.php for event scraping functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace and app.js configurations for GO LIVE preparations and add scrape_conventus_calendar.php for event scraping functionality" />
+    <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and enhance event scraping functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update workspace and app.js configurations for GO LIVE preparations and enhance event scraping functionality" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

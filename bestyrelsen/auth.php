@@ -125,44 +125,16 @@ function resetPassword(string $email): bool {
 // ---- SMTP mail ----
 
 function sendSmtpMail(string $to, string $toName, string $subject, string $body): bool {
-    $host = SMTP_HOST;
-    $port = SMTP_PORT;
-
-    // Forbind med SSL (port 465)
-    $ctx    = stream_context_create(['ssl' => ['verify_peer' => false, 'verify_peer_name' => false]]);
-    $socket = @stream_socket_client("ssl://{$host}:{$port}", $errno, $errstr, 15, STREAM_CLIENT_CONNECT, $ctx);
-    if (!$socket) return false;
-
-    $r = fn() => fgets($socket, 512);
-    $w = fn(string $cmd) => fputs($socket, $cmd . "\r\n");
-
-    $r();                                      // 220 greeting
-    $w('EHLO ' . gethostname());
-    while (($line = $r()) && $line[3] !== ' '); // læs multi-linje EHLO svar
-
-    $w('AUTH LOGIN');       $r();
-    $w(base64_encode(SMTP_USER)); $r();
-    $w(base64_encode(SMTP_PASS)); $r();        // 235 auth ok
-
-    $w('MAIL FROM:<' . SMTP_USER . '>'); $r();
-    $w('RCPT TO:<' . $to . '>');         $r();
-    $w('DATA');                           $r(); // 354
-
     $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
     $headers = implode("\r\n", [
-        'From: ' . MAIL_FROM_NAME . ' <' . SMTP_USER . '>',
-        'To: ' . $toName . ' <' . $to . '>',
+        'From: ' . MAIL_FROM_NAME . ' <' . MAIL_FROM . '>',
         'Reply-To: ' . MAIL_REPLY_TO,
-        'Subject: ' . $encodedSubject,
         'MIME-Version: 1.0',
         'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: base64',
     ]);
-
-    $w($headers . "\r\n\r\n" . $body . "\r\n.");
-    $r(); // 250 queued
-    $w('QUIT');
-    fclose($socket);
-    return true;
+    $encodedBody = base64_encode($body);
+    return (bool) mail($to, $encodedSubject, $encodedBody, $headers);
 }
 
 // ---- JSON-hjælpere ----

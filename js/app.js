@@ -1027,7 +1027,145 @@ PAGES['/om-vhg/vedtaegter'] = function() {
   const subNav = omVhgSubNav('/om-vhg/vedtaegter');
 
   return pageHeader('📋', 'Vedtægter', '<a href="#/">Hjem</a> / Om VHG') +
-    `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Foreningens vedtægter</h2><p class="mb-2">Her kan du downloade VHG's vedtægter som PDF.</p><a href="assets/pdf/vedtaegter.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Download vedtægter (PDF)</a></div></div>`;
+    `<div class="page container">${subNav}
+      <div class="section vedtaegter-wrap">
+        <h2 class="section-title">Vedtægter for Vester Hassing Gymnastikforening (VHG)</h2>
+        <p class="vedtaegter-meta">Senest revideret marts 2024 og vedtaget på generalforsamlingen den 20. marts 2024.</p>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 1</h3>
+          <p>Foreningens navn er Vester Hassing Gymnastikforening (VHG) med hjemsted i Vester Hassing, Aalborg Kommune.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 2</h3>
+          <p>Foreningens formål er at give områdets beboere kendskab til idræt og mulighed for at udvikle sig gennem idræt samt anden kulturel virksomhed, der kan bidrage til fremme af den enkeltes og fællesskabets trivsel.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 3</h3>
+          <p>Foreningen er medlem af Danmarks Idrætsforbund (DIF) og Danske Gymnastik- og idrætsforeninger (DGI). Foreningen består af aktive og passive medlemmer samt æresmedlemmer.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 4</h3>
+          <p>VHG ledes af en hovedbestyrelse (HO). Den daglige ledelse varetages af et forretningsudvalg (FU). Der er i VHG et antal idrætsaktivitetsudvalg (IU).</p>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — HO består af:
+            <ul><li>Alle i FU, se stk. 2</li><li>Formanden for hver af foreningens IU</li></ul>
+          </div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — FU består af:
+            <ul><li>Formand</li><li>Næstformand</li><li>Kasserer</li><li>Sekretær</li></ul>
+          </div>
+          <div class="vedtaegt-stk"><strong>Stk. 3</strong> — IU består som minimum af:
+            <ul><li>Formand</li><li>Næstformand</li><li>Kasserer</li></ul>
+          </div>
+          <div class="vedtaegt-stk"><strong>Stk. 4</strong> — Medlemmer i FU er på valg for 2 år ad gangen. Formand og sekretær er på valg i ulige år. Næstformand og kasserer er på valg i lige år. Øvrige valg er for 1 år ad gangen.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 5</strong> — Valgbar til bestyrelsen er alle medlemmer, der er fyldt 18 år.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 6</strong> — Intet medlem af idrætsaktivitetsudvalgene kan vælges til FU.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 7</strong> — Forretningsudvalget sørger for, at der senest i januar måned i regnskabsåret udarbejdes budget for det kommende kalenderår. Budgetforslaget skal senest i januar måned forelægges bestyrelsen til vedtagelse.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 8</strong> — Bestyrelsen kan nedsætte ad hoc-udvalg – forretningsudvalget kan som minimum besætte en af posterne i ad hoc-udvalgene.</div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 5</h3>
+          <p>Foreningen nedsætter, efter godkendelse af generalforsamlingen, udvalg i de idrætsaktiviteter, der dyrkes i foreningen. Valgene sker i henhold til § 4 og § 6.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 6</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Udvalgene fastsætter selv deres forretningsorden og arbejder selvstændig under ansvar for den samlede bestyrelse.<br><br>Udvalgsmedlemmer og bestyrelsesmedlemmer skal ikke betale kontingent. Kontingentfritagelsen er personlig og kan ikke overdrages til andre.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Aktivitetsområderne vælger et udvalg på minimum 3 medlemmer – herunder formand. Aktivitetsudvalget konstituerer sig selv med næstformand, der fungerer som suppleant for formanden i bestyrelsen.<br><br>Valg til aktivitetsudvalgene sker forud for generalforsamlingen. Indkaldelse, valg og stemmeret sker som anført i § 8.<br><br>Dagsorden for mødet skal som minimum indeholde følgende punkter:
+            <ol><li>Aflæggelse og godkendelse af beretning</li><li>Valg af udvalg. Udvalget konstituerer sig på næstkommende IU-møde, hvorefter det tidligere udvalg afgår</li></ol>
+          </div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 7</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Foreningens medlemmer, udvalgsmedlemmer og bestyrelsesmedlemmer hæfter ikke personligt for de af foreningen indgåede forpligtelser, for hvilke foreningen alene hæfter med den respektive formue – dog hæfter hovedbestyrelsens medlemmer personligt for anvendelse af kommunale tilskud.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Foreningens medlemmer har ikke nogen økonomiske forpligtelser over for foreningen ud over kontingentforpligtelsen.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 3</strong> — Foreningens medlemmer har ikke krav på nogen del af foreningens formue eller udbytte af nogen art.</div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 8</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Foreningens højeste myndighed er generalforsamlingen, der afholdes i februar/marts og indkaldes gennem foreningens medlemssystem samt på VHG's hjemmeside med mindst 3 ugers varsel.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Forslag, der ønskes behandlet på generalforsamlingen, skal være formanden i hænde senest 14 dage før. Indkomne forslag bekendtgøres ved besked gennem foreningens medlemssystem og på VHG's hjemmeside.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 3</strong> — Kun fremmødte medlemmer, der er fyldt 16 år, har stemmeret.<br><br>For medlemmer under 16 år har forældreparret stemmeret med én stemme. Har et forældrepar flere børn under 16 år i en afdeling, har disse forældre kun én stemme. Endvidere har samme forældre stemmeret til generalforsamlingen efter samme retningslinjer som ovenstående.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 4</strong> — På generalforsamlingen afgøres alle sager ved simpelt stemmeflertal. Dog kræver forslag om ændring af bestyrelsens beslutning angående udelukkelse af et medlem, samt ændringer af vedtægter, at mindst 2/3 af de afgivne gyldige stemmer er for forslaget.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 5</strong> — Der føres protokol over vedtagne beslutninger.</div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 9</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Generalforsamlingen ledes af en på generalforsamlingen valgt dirigent. Indtil dirigenten er valgt, ledes mødet af bestyrelsen.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — På den ordinære generalforsamling behandles følgende:
+            <ol>
+              <li>Aflæggelse og godkendelse af beretninger</li>
+              <li>Forelæggelse og godkendelse af det reviderede regnskab</li>
+              <li>Behandling af forslag</li>
+              <li>Valg af bestyrelse jf. § 4:
+                <ul>
+                  <li>a. Valg af hovedformand – ulige år</li>
+                  <li>b. Valg af næstformand – lige år</li>
+                  <li>c. Valg af kasserer og kasserersuppleant – lige år</li>
+                  <li>d. Valg af sekretær – ulige år</li>
+                  <li>e. Valg af suppleant. Valg af 2 revisorer og revisorsuppleant</li>
+                </ul>
+              </li>
+              <li>Eventuelt</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 10</h3>
+          <p>Ekstraordinær generalforsamling skal afholdes når flertallet af bestyrelsen finder det nødvendigt, eller når mindst 1/3 af foreningens aktive medlemmer stiller skriftligt krav herom med forslag til dagsorden.</p>
+          <p>Ekstraordinær generalforsamling skal afholdes senest 4 uger efter, at kravet herom er modtaget, og den skal indvarsles i lighed med ordinær generalforsamling.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 11</h3>
+          <p>Foreningen tegnes med underskrift af formanden - dog ved køb, salg eller pantsætning af fast ejendom samt optagelse af lån, af den samlede bestyrelse.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 12</h3>
+          <p>Forretningsudvalget har ret til at overvære udvalgsmøder i idrætsaktivitetsudvalgene – dog uden stemmeret.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 13</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Vedtagelse i hovedbestyrelsen kræver simpelt stemmeflertal. Ved stemmelighed er formandens stemme afgørende.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Bestyrelsen fastsætter selv sin forretningsorden.</div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 14</h3>
+          <p>Der føres protokol over vedtagne beslutninger. Protokollen godkendes af hovedbestyrelsen på næstfølgende møde.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 15</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Som æresmedlem kan en enstemmig bestyrelse udnævne sådanne personer, der i særlig grad har gjort sig fortjent hertil. Æresmedlemmer skal ikke betale kontingent og oppebærer fra foreningens side et uopsigeligt medlemskab.</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Medlemmer kan udelukkes af foreningen, når hovedbestyrelsen finder grund hertil. Bestyrelsens beslutning herom kan ankes til afgørelse på førstkommende generalforsamling.</div>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 16</h3>
+          <p>Foreningens regnskabsår er kalenderåret.</p>
+        </div>
+
+        <div class="vedtaegt-paragraf">
+          <h3 class="vedtaegt-heading">§ 17</h3>
+          <div class="vedtaegt-stk"><strong>Stk. 1</strong> — Foreningen kan kun opløses når mindst 2/3 af deltagerne, i to på hinanden følgende ekstraordinære generalforsamlinger, stemmer herfor. (Indkaldelse – se § 10).</div>
+          <div class="vedtaegt-stk"><strong>Stk. 2</strong> — Hvis foreningen opløses, tilfalder tilbageværende midler idræt i Vester Hassing området.</div>
+        </div>
+
+        <div class="vedtaegt-download">
+          <a href="assets/pdf/vedtaegter.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Download vedtægter som PDF</a>
+        </div>
+      </div>
+    </div>`;
 };
 
 // --- OM VHG: Video ---
