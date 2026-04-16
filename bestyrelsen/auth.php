@@ -10,7 +10,7 @@ define('MAIL_REPLY_TO',  'formand@vhg.dk');
 define('SMTP_HOST',      'mail.vhg.dk');
 define('SMTP_PORT',      465);                 // 465 = SSL, 587 = STARTTLS
 define('SMTP_USER',      'no-reply@vhg.dk');
-define('SMTP_PASS',      'vhgForever1!');
+require_once __DIR__ . '/config.php'; // SMTP_PASS defineres her — filen er ikke i git
 define('LOG_FILE',       __DIR__ . '/data/login_log.json');
 define('OVERRIDE_FILE',  __DIR__ . '/data/password_overrides.json');
 

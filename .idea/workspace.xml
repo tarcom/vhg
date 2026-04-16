@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="test" />
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="GO LIVE MOMENT!">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +96,7 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="11271000" />
+      <workItem from="1776342194058" duration="12042000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -128,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776353622775</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="GO LIVE MOMENT!">
+      <option name="closed" value="true" />
+      <created>1776354099416</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776354099416</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +149,8 @@
     <MESSAGE value="Add kalender update feature with status feedback and user interaction" />
     <MESSAGE value="Update workspace configuration and adjust SPA routing for new directory structure" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="GO LIVE MOMENT!" />
+    <option name="LAST_COMMIT_MESSAGE" value="GO LIVE MOMENT!" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
