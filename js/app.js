@@ -868,9 +868,6 @@ PAGES[''] = PAGES['/'] = function() {
   ];
 
   return `
-    <div class="mobile-home-sport-strip" aria-label="Idrætsgrene genveje">
-      ${SPORT_NAV.map(item => `<a href="${esc(item.href)}">${esc(item.label)}</a>`).join('')}
-    </div>
     <div class="hero">
       <button id="scroll-to-byfest" class="byfest-pulse-badge" type="button" aria-label="Gå til byfest">
         <img src="assets/images/byfest.png" alt="Byfest" loading="lazy">
