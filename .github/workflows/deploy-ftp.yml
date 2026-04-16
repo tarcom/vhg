@@ -1,4 +1,4 @@
-name: Deploy to vhg.dk/ny
+name: Deploy to vhg.dk
 
 on:
   push:
@@ -20,10 +20,12 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: /public_html/ny/
+          server-dir: /public_html/
           exclude: |
             **/.git*
             **/.git*/**
             **/.github/**
             **/old_site/**
             **/README.md
+            **/documentation/**
+            **/scripts/**

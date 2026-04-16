@@ -19,10 +19,10 @@ RewriteCond %{HTTP_HOST} ^www\.vhg\.dk$
 RewriteRule ^mgp$ "https\:\/\/vhg\-esport\.nemtilmeld\.dk\/12\/" [R=301,L]
 
 # SPA routing — send alle ikke-eksisterende stier til index.html
-RewriteBase /ny/
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /ny/index.html [L]
+RewriteRule . /index.html [L]
 
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the "ea-php81" package as the default "PHP" programming language.
