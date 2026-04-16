@@ -27,7 +27,7 @@ if ($method !== 'POST' && $method !== 'GET') {
 }
 
 try {
-    $scraperFile = __DIR__ . '/scripts/scrape_conventus_calendar.php';
+    $scraperFile = __DIR__ . '/scrape_conventus_calendar.php';
     if (!file_exists($scraperFile)) {
         out_json(array(
             'ok' => false,

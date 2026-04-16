@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations" />
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Update workspace and app.js configurations for GO LIVE preparations and enhance promo badge functionality" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +95,7 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="17255000" />
+      <workItem from="1776342194058" duration="17607000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -177,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776364572302</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update workspace and app.js configurations for GO LIVE preparations and enhance promo badge functionality">
+      <option name="closed" value="true" />
+      <created>1776365337961</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1776365337961</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +201,8 @@
     <MESSAGE value="Update FTP deployment configuration to generate secure SMTP password and adjust workspace settings for GO LIVE" />
     <MESSAGE value="dummy" />
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace and app.js configurations for GO LIVE preparations" />
+    <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and enhance promo badge functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update workspace and app.js configurations for GO LIVE preparations and enhance promo badge functionality" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
