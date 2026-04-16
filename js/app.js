@@ -869,7 +869,7 @@ PAGES[''] = PAGES['/'] = function() {
 
   return `
     <div class="hero">
-      <button id="scroll-to-byfest" class="byfest-pulse-badge" type="button" aria-label="Gå til byfest">
+      <button id="promo-badge" class="byfest-pulse-badge" type="button" aria-label="Byfest">
         <img src="assets/images/byfest.png" alt="Byfest" loading="lazy">
         <span>Byfest</span>
       </button>
@@ -1867,10 +1867,34 @@ function navigate() {
     if (sportsBtn) sportsBtn.addEventListener('click', () => {
       document.getElementById('home-idraetsgrene')?.scrollIntoView({ behavior: 'smooth' });
     });
-    const byfestBtn = document.getElementById('scroll-to-byfest');
-    if (byfestBtn) byfestBtn.addEventListener('click', () => {
-      scrollToSectionWithOffset('home-byfest');
-    });
+    const promoBadge = document.getElementById('promo-badge');
+    if (promoBadge) {
+      const promos = [
+        {
+          html: `<img src="assets/images/byfest.png" alt="Byfest" loading="lazy"><span>Byfest</span>`,
+          aria: 'Gå til byfest',
+          action: () => scrollToSectionWithOffset('home-byfest')
+        },
+        {
+          html: `<span class="promo-text-lines"><b>VHG</b><b>STRATEGI</b><b>2030</b></span>`,
+          aria: 'Læs VHG Strategi 2030',
+          action: () => { window.location.hash = '#/om-vhg/strategi2030'; }
+        }
+      ];
+      let promoIdx = 0;
+      promoBadge.addEventListener('click', () => promos[promoIdx].action());
+
+      setInterval(() => {
+        promoBadge.style.opacity = '0';
+        setTimeout(() => {
+          promoIdx = (promoIdx + 1) % promos.length;
+          const p = promos[promoIdx];
+          promoBadge.innerHTML = p.html;
+          promoBadge.setAttribute('aria-label', p.aria);
+          promoBadge.style.opacity = '1';
+        }, 600);
+      }, 5000);
+    }
 
     if (pendingHomeScrollTarget) {
       const target = pendingHomeScrollTarget;
