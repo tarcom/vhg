@@ -22,11 +22,12 @@ const UTILITY_NAV = [
   { label: 'Om VHG', children: [
     { label: 'Kalender', href: '#/kalender' },
     { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
-    { label: 'Referat', href: '#/om-vhg/referat' },
+    { label: 'Referater', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
     { label: 'Video', href: '#/om-vhg/video' },
     { label: 'Find os', href: '#/om-vhg/find-os' },
-    { label: 'Sponsorer', href: '#/om-vhg/sponsorer' }
+    { label: 'VHG Strategi 2030', href: '#/om-vhg/strategi2030' },
+    { label: 'Bestyrelsesportal', href: '/bestyrelsen/' }
   ]},
   { label: 'Kontakt', href: '#/kontakt' },
   { label: 'Facebook', href: '#/some' },
@@ -139,7 +140,8 @@ const SPORTS = {
       { title: 'Formand', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795' },
       { title: 'Næstformand / Kasserer', name: 'Anders Hougaard', email: 'Esport@vhg.dk', phone: '61776253' },
       { title: 'Bestyrelsesmedlem', name: 'Victor Nielsen', email: 'esport@vhg.dk', phone: '30239106' },
-      { title: 'Bestyrelsesmedlem', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304' }
+      { title: 'Bestyrelsesmedlem', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304' },
+      { title: 'Ressource person', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599' }
     ],
     conventus: 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=6018&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'
   },
@@ -148,11 +150,12 @@ const SPORTS = {
     desc: 'Floorball i VHG — en sjov og actionfyldt sport for hele familien. Hurtigt spil, godt fællesskab.',
     facebook: 'https://www.facebook.com/profile.php?id=100046867541094',
     board: [
-      { title: 'Formand', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
+      { title: 'Formand', name: 'Jimmi Kildedal', email: 'helldorf@live.dk', phone: '29471232' },
       { title: 'Næstformand', name: 'Helle Marie Rønnov', email: 'hellemarieroennov@gmail.com', phone: '42208824' },
       { title: 'Kasserer', name: 'Mikael Andersen', email: 'mikael-a@live.dk', phone: '22771815' },
       { title: 'Bestyrelsesmedlem', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304' },
-      { title: 'Bestyrelsesmedlem', name: 'Simon Simonsen', email: 'Simon@vhg.dk' }
+      { title: 'Bestyrelsesmedlem', name: 'Simon Simonsen', email: 'Simon@vhg.dk' },
+      { title: 'Ressource person', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599' }
     ],
     conventus: 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8247&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'
   },
@@ -185,12 +188,7 @@ const SPORTS = {
     name: 'Disc Golf', icon: '🥏',
     desc: 'Disc Golf i VHG — en udendørs sport for hele familien. Spil på vores lokale bane og nyd naturen.',
     facebook: 'https://www.facebook.com/groups/1832314803794784',
-    board: [
-      { title: 'Formand', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
-      { title: 'Næstformand', name: 'Helle Marie Rønnov', email: 'hellemarieroennov@gmail.com', phone: '42208824' },
-      { title: 'Kasserer', name: 'Mikael Andersen', email: 'mikael-a@live.dk', phone: '22771815' },
-      { title: 'Bestyrelsesmedlem', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304' }
-    ],
+    board: [],
     conventus: 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8247&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'
   }
 };
@@ -337,13 +335,13 @@ const HOVEDBESTYRELSEN = [
   { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk', photo: 'assets/images/bestyrelse/lars-jakobsen.jpg' },
   { title: 'Kasserer', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304', photo: 'assets/images/bestyrelse/jonas-bundgaard.jpg' },
   { title: 'Sekretær', name: 'Anne-Britt Andersen', email: 'annebrittandersenc@gmail.com', phone: '26 11 68 70', photo: 'assets/images/bestyrelse/anne-britt-andersen.jpg' },
-  { title: 'Suppleant', name: 'Marianne Vedel', email: 'majulle@hotmail.com', photo: 'assets/images/bestyrelse/marianne-vedel.jpg' },
+  { title: 'Suppleant', name: 'Helle Marie Rønnov', email: 'hellemarieroennov@gmail.com' },
   { title: 'Medlem (Formand håndbold)', name: 'Berit Andersen', email: 'beritandersen@hotmail.com', phone: '51 22 91 22' },
   { title: 'Medlem (Formand fodbold)', name: 'Marc Agerbo Jakobsen', email: 'agerbo100@gmail.com', phone: '30253680' },
   { title: 'Medlem (Formand badminton)', name: 'Claus René Mikkelsen', email: 'clmik8@gmail.com' },
   { title: 'Medlem (Formand e-sport)', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795', photo: 'assets/images/bestyrelse/nikolaj-soendergaard.jpg' },
   { title: 'Medlem (Formand skateklub)', name: 'Mikael Ivan Vinther Christensen', email: 'mikael.ivan.christensen@gmail.com', phone: '23685559', photo: 'assets/images/bestyrelse/mikael-christensen.jpg' },
-  { title: 'Medlem (Formand floorball)', name: 'Anders Bech Jensen', email: 'losan@live.dk' },
+  { title: 'Medlem (Formand floorball)', name: 'Jimmi Kildedal', email: 'helldorf@live.dk', phone: '29471232' },
   { title: 'Medlem (Formand gymnastik)', name: 'Inger Marie Badsberg', email: 'imbadsberg@gmail.com', phone: '20808201', photo: 'assets/images/bestyrelse/inger-badsberg.jpg' },
   { title: 'Medlem (Formand bordtennis)', name: 'Per Kristensen', email: 'Murerper@hotmail.dk', phone: '25 58 20 05', photo: 'assets/images/bestyrelse/per-kristensen.jpg' }
 ];
@@ -938,8 +936,7 @@ PAGES[''] = PAGES['/'] = function() {
       </div>
 
       <div class="section" id="home-sponsorer">
-        <h2 class="section-title section-title-center">Tak til sponsorer</h2>
-        <div class="sponsorModuleWrap">
+<div class="sponsorModuleWrap">
           <div class="sponsorModule slider" data-sponsor-module>
             <div class="sponsorModule_sliderWrap">
               <div class="sponsorSlide" style="background-image:url('assets/images/sponsorer/oerum.png')"><a href="https://orumservice.dk/" target="_blank" rel="noopener" aria-label="Ørum Service"></a></div>
@@ -991,11 +988,12 @@ PAGES[''] = PAGES['/'] = function() {
 function omVhgSubNav(active) {
   return subNavHTML([
     { label: 'Bestyrelsen', href: '#/om-vhg/bestyrelsen' },
-    { label: 'Referat', href: '#/om-vhg/referat' },
+    { label: 'Referater', href: '#/om-vhg/referat' },
     { label: 'Vedtægter', href: '#/om-vhg/vedtaegter' },
     { label: 'Video', href: '#/om-vhg/video' },
     { label: 'Find os', href: '#/om-vhg/find-os' },
-    { label: 'Sponsorer', href: '#/om-vhg/sponsorer' }
+    { label: 'VHG Strategi 2030', href: '#/om-vhg/strategi2030' },
+    { label: 'Bestyrelsesportal', href: '/bestyrelsen/' }
   ], active);
 }
 
@@ -1051,6 +1049,51 @@ PAGES['/om-vhg/find-os'] = function() {
 
   return pageHeader('📍', 'Find os', '<a href="#/">Hjem</a> / Om VHG') +
     `<div class="page container">${subNav}<div class="section"><h2 class="section-title">Adresse</h2><div class="info-box" style="margin-bottom:1.5rem"><p><strong>VHG — Vester Hassing Gymnastik &amp; Idrætsforening</strong><br>Halsvej 199B<br>Vester Hassing, 9310 Vodskov</p></div><h2 class="section-title">Kort</h2><div class="maps-embed"><iframe src="https://maps.google.com/maps?q=Halsvej+199B,+9310+Vodskov,+Denmark&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;border-radius:var(--radius)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div>`;
+};
+
+// --- OM VHG: VHG Strategi 2030 ---
+PAGES['/om-vhg/strategi2030'] = function() {
+  const subNav = omVhgSubNav('/om-vhg/strategi2030');
+
+  return pageHeader('🎯', 'VHG Strategi 2030', '<a href="#/">Hjem</a> / <a href="#/om-vhg/bestyrelsen">Om VHG</a>', 'Strategi for bedre rammer og stærkere fællesskab i VHG (2026–2030)') +
+    `<div class="page container">${subNav}
+
+      <div class="section">
+        <p style="font-size:1.05rem;line-height:1.8;margin-bottom:1.25rem">VHG vil i perioden 2026–2030 styrke de fysiske rammer, det sociale miljø og medlemmernes oplevelse af kvalitet og fællesskab. Strategien fokuserer både på konkrete forbedringer i nær fremtid og på større, langsigtede udviklingsprojekter. Strategien er godkendt som helhed af VHG's hovedbestyrelse d. 15. april 2026.</p>
+        <div class="info-box" style="border-left:4px solid var(--gold);padding:1.25rem 1.5rem 1.25rem 2rem">
+          <p style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;opacity:0.7;margin:0 0 0.4rem">Overordnet målsætning</p>
+          <p style="font-size:1.05rem;font-style:italic;margin:0;line-height:1.7">"At skabe flottere, mere funktionelle og mere inspirerende rammer, der understøtter trivsel, aktivitet og fællesskab for alle VHG's medlemmer."</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <img src="assets/images/strategi2030/strategi_kort.png" alt="VHG Strategi: Kortsigtede initiativer 2026–2027" loading="lazy" style="width:100%;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,0.18)">
+      </div>
+
+      <div class="section">
+        <img src="assets/images/strategi2030/strategi_lang.png" alt="VHG Strategi: Langsigtede udviklingsmål 2028–2030" loading="lazy" style="width:100%;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,0.18)">
+      </div>
+
+      <div class="section">
+        <div class="info-box" style="text-align:center">
+          <h3 style="margin-bottom:0.5rem">Strategien skaber værdi for alle</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem">
+            <div style="padding:1rem;background:rgba(241,220,77,0.08);border-radius:var(--radius)"><strong style="color:var(--gold)">Styrket oplevelse</strong><br><span style="font-size:0.9rem">Bedre rammer og mere attraktive faciliteter for alle medlemmer</span></div>
+            <div style="padding:1rem;background:rgba(241,220,77,0.08);border-radius:var(--radius)"><strong style="color:var(--gold)">Øget engagement</strong><br><span style="font-size:0.9rem">Inddragelse af unge og flere sociale muligheder</span></div>
+            <div style="padding:1rem;background:rgba(241,220,77,0.08);border-radius:var(--radius)"><strong style="color:var(--gold)">Større synlighed</strong><br><span style="font-size:0.9rem">Forbedret visuel identitet og professionel kommunikation</span></div>
+            <div style="padding:1rem;background:rgba(241,220,77,0.08);border-radius:var(--radius)"><strong style="color:var(--gold)">Fremtidssikret</strong><br><span style="font-size:0.9rem">Langsigtet udvikling der gør VHG mere konkurrencedygtig</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" style="text-align:center">
+        <a href="assets/dokumenter/VHG_strategi2030.docx" download class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;color:#111">
+          ${ICONS.pdf} Download strategidokument (Word)
+        </a>
+        <p style="font-size:0.85rem;opacity:0.6;margin-top:1.25rem">Udarbejdet af Allan Skov, Anne-Britt Andersen, Jonas Kristensen og Inger Marie Badsberg &mdash; Vester Hassing 2026</p>
+      </div>
+
+    </div>`;
 };
 
 // --- KONTAKT ---
@@ -1293,6 +1336,20 @@ function sportTilmeldingPage(key) {
   PAGES['/' + key + '/bestyrelsen'] = () => sportBoardPage(key);
   PAGES['/' + key + '/tilmelding'] = () => sportTilmeldingPage(key);
 });
+
+// Disc golf deler bestyrelse med floorball
+PAGES['/disc-golf/bestyrelsen'] = function() {
+  const s = SPORTS['disc-golf'];
+  return sportPageHeader('disc-golf', 'Disc Golf — Bestyrelsen', `<a href="#/">Hjem</a> / <a href="#/disc-golf">Disc Golf</a>`) +
+    `<div class="page container">${sportSubNav('disc-golf')}
+      <div class="section">
+        <div class="info-box">
+          <p>Disc Golf hører organisatorisk under Floorball-afdelingen og deler bestyrelse med dem.</p>
+          <p style="margin-top:0.75rem"><a href="#/floorball/bestyrelsen" class="btn btn-primary btn-sm" style="color:#111">Se Floorball-bestyrelsen &rarr;</a></p>
+        </div>
+      </div>
+    </div>`;
+};
 
 // --- Badminton extras ---
 PAGES['/badminton/traeningstider'] = function() {
