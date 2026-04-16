@@ -2248,9 +2248,39 @@ function initTopAmbientIcons() {
 }
 
 // =============================================
+// STRATEGI TICKER (global, fixed bottom)
+// =============================================
+function initStrategiTicker() {
+  if (document.querySelector('.strategi-ticker')) return;
+  const tickerText = '★\u00a0\u00a0At skabe flottere, funktionelle og inspirerende rammer for alle VHG\u2019s medlemmer\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Modernisering af toiletter og omklædningsrum i hallen\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Opgradering af café og mødelokale \u2014 flottere indretning og hyggeligere miljø\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Ny digital platform og live-kalender \u2014 altid opdateret information\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Nyt facadeskilt på hallen \u2014 professionelt og indbydende førstehåndsindtryk\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Styrkelse af frivillig-fællesskabet \u2014 frivillig fest hver 2. år\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0VHG Byfest \u2014 vi genopfinder byfesten med fokus på kultur, hygge og fællesskab\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Nyt og mere indbydende indgangsparti med flotte glaspartier og 1. sals terrasse\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Nyt motionsområde til styrketræning integreret i DUS2 lokaler\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Forskønnelse af udearealer med hyggelige udendørs miljøer, borde og bænke\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0★\u00a0\u00a0Udvidelse af café til sociale arrangementer og fællesskabsaktiviteter\u00a0\u00a0\u00a0·\u00a0\u00a0\u00a0';
+
+  const ticker = document.createElement('a');
+  ticker.href = '#/om-vhg/strategi2030';
+  ticker.className = 'strategi-ticker';
+  ticker.setAttribute('aria-label', 'Læs VHG Strategi 2030');
+  ticker.innerHTML = `
+    <div class="ticker-label">VHG 2030</div>
+    <div class="ticker-scroll-wrap">
+      <div class="ticker-track" id="strategi-ticker-track">
+        <span>${tickerText}</span>
+        <span aria-hidden="true">${tickerText}</span>
+      </div>
+    </div>`;
+  document.body.appendChild(ticker);
+
+  // Start at a random position by using a negative animation-delay
+  const track = document.getElementById('strategi-ticker-track');
+  if (track) {
+    const randomDelay = (Math.random() * 80).toFixed(2);
+    track.style.animationDelay = `-${randomDelay}s`;
+  }
+}
+
+// =============================================
 // INIT
 // =============================================
 document.addEventListener('DOMContentLoaded', async () => {
+  initStrategiTicker();
   initTopAmbientIcons();
   await buildNav();
   navigate();

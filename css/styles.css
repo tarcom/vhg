@@ -37,7 +37,7 @@
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-bottom: 32px; }
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 ul, ol { list-style: none; }
@@ -688,6 +688,67 @@ body:not(.is-home) .site-header.scrolled .logo {
   width: 100%; height: 100%;
   object-fit: cover;
   filter: brightness(0.35) saturate(0.6);
+}
+
+/* ============================================
+   STRATEGI TICKER
+   ============================================ */
+.strategi-ticker {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #f5f6fa;
+  border-top: 1px solid #e0e0e0;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  height: 32px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.strategi-ticker:hover { opacity: 1; }
+.strategi-ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-label {
+  flex-shrink: 0;
+  background: transparent;
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-right: 1px solid #ddd;
+  opacity: 0.6;
+}
+.ticker-scroll-wrap {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-scroll 80s linear infinite;
+}
+.ticker-track span {
+  display: inline-block;
+  color: #555;
+  font-size: 0.75rem;
+  padding: 0 1rem;
+}
+.ticker-track span b, .ticker-track span ★ { color: var(--gold); }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ============================================

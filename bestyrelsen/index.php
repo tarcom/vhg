@@ -228,6 +228,14 @@ $logList = getLoginLog(10);
           <p>Tilbage til den offentlige hjemmeside.</p>
         </div>
       </a>
+      <a class="card" href="/old/" target="_blank" rel="noopener">
+        <div class="card-icon">🗂️</div>
+        <div class="card-body">
+          <h3>Gammel hjemmeside</h3>
+          <p>Statisk kopi af den tidligere hjemmeside. Bemærk: siden fungerer ikke 100% — den var originalt hostet af DBU, og dynamisk indhold (login, søgning m.m.) virker ikke i denne kopi.</p>
+          <div class="card-ext">Åbner vhg.dk/old/ ↗</div>
+        </div>
+      </a>
     </div>
   </main>
 
