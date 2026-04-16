@@ -736,8 +736,12 @@ body:not(.is-home) .site-header.scrolled .logo {
   align-items: center;
   gap: 0;
   padding: 0.3rem 0.2rem;
+  width: 100%;
 }
 .promo-text-lines b {
+  display: block;
+  width: 100%;
+  text-align: center;
   font-size: 0.78rem;
   font-weight: 900;
   color: var(--gold);
