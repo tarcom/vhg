@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/auth.php';
 
-$sent  = false;
-$error = '';
+$sent      = false;
+$mailError = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = strtolower(trim($_POST['email'] ?? ''));
@@ -10,10 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user) {
         $ok = resetPassword($email);
-        // Vis altid "sendt" — afslører ikke om e-mail findes
-        $sent = true;
+        if ($ok) {
+            $sent = true;
+        } else {
+            $mailError = 'Mail-afsendelse fejlede for ' . htmlspecialchars($email) . '. '
+                       . 'PHP mail() returnerede false — tjek at serveren tillader udgående mail (cPanel → Email Deliverability).';
+        }
     } else {
-        // Bevidst samme besked — afsløre ikke om e-mail er registreret
+        // Ukendt e-mail — vis samme succesbesked (afslør ikke om adressen er registreret)
         $sent = true;
     }
 }
@@ -61,6 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       background: #dcfce7; color: #166534; border-radius: 8px;
       padding: 1rem; font-size: 0.9rem; line-height: 1.5; text-align: center;
     }
+    .mail-error {
+      background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5;
+      border-radius: 8px; padding: 1rem; font-size: 0.85rem; line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .mail-error strong { display: block; margin-bottom: 0.4rem; }
+    .mail-error code { font-size: 0.8rem; word-break: break-all; }
     .back { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; }
     .back a { color: #555; text-decoration: none; }
     .back a:hover { text-decoration: underline; }
@@ -80,13 +91,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div class="back"><a href="/bestyrelsen/login.php">&larr; Tilbage til login</a></div>
     <?php else: ?>
+      <?php if ($mailError): ?>
+        <div class="mail-error">
+          <strong>Mail kunne ikke sendes — kontakt webmaster.</strong>
+          <code><?= $mailError ?></code>
+        </div>
+      <?php endif; ?>
       <p class="desc">Indtast din registrerede e-mail. Du modtager en ny adgangskode med det samme.</p>
       <p class="desc" style="font-size:0.8rem;color:#999;margin-top:-1.25rem;margin-bottom:1.5rem;">Bemærk: Adgang er forbeholdt VHG's hovedbestyrelse.</p>
       <form method="POST" action="/bestyrelsen/forgot.php">
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email"
                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-               autocomplete="email" required autofocus placeholder="din@email.dk">
+               autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false"
+               required autofocus placeholder="din@email.dk">
         <button type="submit" class="btn">Send ny adgangskode</button>
       </form>
       <div class="back"><a href="/bestyrelsen/login.php">&larr; Tilbage til login</a></div>
