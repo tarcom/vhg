@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="back"><a href="/bestyrelsen/login.php">&larr; Tilbage til login</a></div>
     <?php else: ?>
       <p class="desc">Indtast din registrerede e-mail. Du modtager en ny adgangskode med det samme.</p>
+      <p class="desc" style="font-size:0.8rem;color:#999;margin-top:-1.25rem;margin-bottom:1.5rem;">Bemærk: Adgang er forbeholdt VHG's hovedbestyrelse.</p>
       <form method="POST" action="/bestyrelsen/forgot.php">
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email"

@@ -755,7 +755,7 @@ body:not(.is-home) .site-header.scrolled .logo {
    HERO
    ============================================ */
 .hero {
-  min-height: calc(100vh - 92px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -789,30 +789,6 @@ body:not(.is-home) .site-header.scrolled .logo {
   box-shadow: 0 6px 18px rgba(0,0,0,0.32);
   animation: byfestPulse 1.8s ease-in-out infinite;
   transition: opacity 0.6s ease;
-}
-
-.promo-text-lines {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  padding: 0.3rem 0.2rem;
-  width: 100%;
-}
-.promo-text-lines b {
-  display: block;
-  width: 100%;
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 0.08em;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-  line-height: 1.25;
-}
-.promo-text-lines b:first-child {
-  font-size: 0.65rem;
-  color: #fff;
 }
 
 .byfest-pulse-badge img {
@@ -2065,7 +2041,7 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 
 @media (max-width: 768px) {
-  .hero { min-height: calc(100vh - 76px); }
+  .hero { min-height: 100vh; }
   .hero h1 { font-size: 3rem; }
   .sport-grid { grid-template-columns: repeat(2, 1fr); }
   .sport-card-image { height: 150px; }
@@ -2079,6 +2055,9 @@ body:not(.is-home) .site-header.scrolled .logo {
   .training-table, .fee-table { font-size: 0.8rem; }
   .training-table th, .fee-table th,
   .training-table td, .fee-table td { padding: 0.4rem 0.6rem; }
+  .kalender-week-wrap,
+  .kalender-week-wrap-single { grid-template-columns: 36px 1fr; }
+  .kalender-time-mark { font-size: 0.6rem; }
   .kalender-meta-controls { flex-direction: column; }
   .kalender-toggles {
     flex-wrap: nowrap;

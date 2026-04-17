@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Rename multiple HTML and CSS files for improved organization and consistency">
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Add strategi ticker feature for enhanced user engagement and information display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestyrelsen/data/password_overrides.json" beforeDir="false" afterPath="$PROJECT_DIR$/bestyrelsen/data/password_overrides.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bestyrelsen/forgot.php" beforeDir="false" afterPath="$PROJECT_DIR$/bestyrelsen/forgot.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +104,7 @@
       <workItem from="1773821311591" duration="1916000" />
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
-      <workItem from="1776342194058" duration="23902000" />
+      <workItem from="1776342194058" duration="26709000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -231,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776370275426</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add strategi ticker feature for enhanced user engagement and information display">
+      <option name="closed" value="true" />
+      <created>1776372814735</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1776372814735</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +264,8 @@
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and enhance event scraping functionality" />
     <MESSAGE value="Update workspace and app.js configurations for GO LIVE preparations and enhance vedtægter section" />
     <MESSAGE value="Rename multiple HTML and CSS files for improved organization and consistency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename multiple HTML and CSS files for improved organization and consistency" />
+    <MESSAGE value="Add strategi ticker feature for enhanced user engagement and information display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add strategi ticker feature for enhanced user engagement and information display" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

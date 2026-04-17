@@ -736,6 +736,9 @@ async function initKalenderPage(mountId = 'kalender-root') {
     const jsDay = new Date().getDay(); // 0=Sunday
     let selectedDay = jsDay === 0 ? 7 : jsDay;
 
+    // Fri/Sat/Sun are typically quiet — fall back to Thursday
+    if (selectedDay >= 5) selectedDay = 4;
+
     // If there are no activities today, default to the next day that has activities.
     const today = new Date().toISOString().slice(0, 10);
     const prepared = events
@@ -760,7 +763,22 @@ async function initKalenderPage(mountId = 'kalender-root') {
       }
     }
 
+    const daysWithMorning = new Set(
+      baselinePrepared.filter(e => e.startMin < MORNING_CUTOFF).map(e => e.weekday)
+    );
+
     const morningInput = document.querySelector('[data-morning-toggle-home]');
+    const morningWrap = document.querySelector('[data-morning-toggle-wrap]');
+
+    const updateMorningToggle = () => {
+      const hasMorning = daysWithMorning.has(selectedDay);
+      if (morningWrap) morningWrap.style.display = hasMorning ? '' : 'none';
+      if (!hasMorning) {
+        showMorning = false;
+        if (morningInput) morningInput.checked = false;
+      }
+    };
+
     const rerender = () => {
       renderKalender(mount, events, activeSports, showMorning, selectedDay,
         sportKey => {
@@ -769,7 +787,7 @@ async function initKalenderPage(mountId = 'kalender-root') {
           rerender();
         },
         () => { showMorning = !showMorning; rerender(); },
-        dayNo => { selectedDay = dayNo; rerender(); }
+        dayNo => { selectedDay = dayNo; updateMorningToggle(); rerender(); }
       );
     };
 
@@ -789,6 +807,7 @@ async function initKalenderPage(mountId = 'kalender-root') {
       }
     }
 
+    updateMorningToggle();
     rerender();
   } catch (err) {
     mount.innerHTML = '<div class="info-box"><h3>Kalender kunne ikke vises</h3><p>Kunne ikke hente kalenderdata. Prøv igen senere.</p></div>';
@@ -2007,31 +2026,7 @@ function navigate() {
     });
     const promoBadge = document.getElementById('promo-badge');
     if (promoBadge) {
-      const promos = [
-        {
-          html: `<img src="assets/images/byfest.png" alt="Byfest" loading="lazy"><span>Byfest</span>`,
-          aria: 'Gå til byfest',
-          action: () => scrollToSectionWithOffset('home-byfest')
-        },
-        {
-          html: `<span class="promo-text-lines"><b>VHG</b><b>STRATEGI</b><b>2030</b></span>`,
-          aria: 'Læs VHG Strategi 2030',
-          action: () => { window.location.hash = '#/om-vhg/strategi2030'; }
-        }
-      ];
-      let promoIdx = 0;
-      promoBadge.addEventListener('click', () => promos[promoIdx].action());
-
-      setInterval(() => {
-        promoBadge.style.opacity = '0';
-        setTimeout(() => {
-          promoIdx = (promoIdx + 1) % promos.length;
-          const p = promos[promoIdx];
-          promoBadge.innerHTML = p.html;
-          promoBadge.setAttribute('aria-label', p.aria);
-          promoBadge.style.opacity = '1';
-        }, 600);
-      }, 5000);
+      promoBadge.addEventListener('click', () => scrollToSectionWithOffset('home-byfest'));
     }
 
     if (pendingHomeScrollTarget) {
@@ -2259,7 +2254,7 @@ function initStrategiTicker() {
   ticker.className = 'strategi-ticker';
   ticker.setAttribute('aria-label', 'Læs VHG Strategi 2030');
   ticker.innerHTML = `
-    <div class="ticker-label">VHG 2030</div>
+    <div class="ticker-label">2030 MÅL:</div>
     <div class="ticker-scroll-wrap">
       <div class="ticker-track" id="strategi-ticker-track">
         <span>${tickerText}</span>
