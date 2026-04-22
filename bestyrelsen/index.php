@@ -151,44 +151,24 @@ $logList = getLoginLog(10);
       </div>
     </div>
 
-    <div class="section-label">Referater</div>
+    <div class="section-label">Dokumenter</div>
     <div class="cards">
-      <div class="card wip">
+      <a class="card" href="https://drive.google.com/drive/folders/1vYYj9AO-u2Nz8i2WSaIc7p9cCRLp-M6l?usp=sharing" target="_blank" rel="noopener">
         <div class="card-icon">📄</div>
         <div class="card-body">
-          <h3>FU-møde referater</h3>
-          <p>Referater fra forretningsudvalgsmøder.</p>
-          <div class="badge-wip">Under construction</div>
+          <h3>Referater</h3>
+          <p>Referater fra både HO- og FU-møder. Kan læses af alle.</p>
+          <div class="card-ext">Åbner Google Drive ↗</div>
         </div>
-      </div>
-      <div class="card wip">
-        <div class="card-icon">📋</div>
-        <div class="card-body">
-          <h3>HO-møde referater</h3>
-          <p>Referater fra hovedbestyrelsesmøder.</p>
-          <div class="badge-wip">Under construction</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-label">Google Drive</div>
-    <div class="cards">
-      <div class="card wip">
+      </a>
+      <a class="card" href="https://drive.google.com/drive/folders/1L6xerM95eKxTtFzyFOK00hCGhRFrBG2f?usp=sharing" target="_blank" rel="noopener">
         <div class="card-icon">📁</div>
         <div class="card-body">
-          <h3>VHG Google Drive</h3>
-          <p>Fælles drev med alle dokumenter, billeder og filer.</p>
-          <div class="badge-wip">Under construction</div>
+          <h3>Google Drive</h3>
+          <p>Fælles drev for bestyrelsen. Kræver login med Gmail-konto.</p>
+          <div class="card-ext">Åbner Google Drive ↗</div>
         </div>
-      </div>
-      <div class="card wip">
-        <div class="card-icon">💰</div>
-        <div class="card-body">
-          <h3>Økonomi</h3>
-          <p>Regnskaber, budgetter og bilag.</p>
-          <div class="badge-wip">Under construction</div>
-        </div>
-      </div>
+      </a>
     </div>
 
     <div class="section-label">Administration</div>
