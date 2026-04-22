@@ -157,7 +157,7 @@ $logList = getLoginLog(10);
         <div class="card-icon">📄</div>
         <div class="card-body">
           <h3>Referater</h3>
-          <p>Referater fra både HO- og FU-møder. Kan læses af alle.</p>
+          <p>Referater fra både HO- og FU-møder. Kan læses af alle uden at logge ind.</p>
           <div class="card-ext">Åbner Google Drive ↗</div>
         </div>
       </a>
@@ -185,29 +185,6 @@ $logList = getLoginLog(10);
 
     <div class="section-label">Nyttige links</div>
     <div class="cards">
-      <a class="card" href="https://www.conventus.dk" target="_blank" rel="noopener">
-        <div class="card-icon">👥</div>
-        <div class="card-body">
-          <h3>Conventus</h3>
-          <p>Medlemsadministration og holdoversigter.</p>
-          <div class="card-ext">Åbner conventus.dk ↗</div>
-        </div>
-      </a>
-      <a class="card" href="https://www.dgi.dk" target="_blank" rel="noopener">
-        <div class="card-icon">🏅</div>
-        <div class="card-body">
-          <h3>DGI</h3>
-          <p>Danmarks Gymnastik og Idrætsforeninger.</p>
-          <div class="card-ext">Åbner dgi.dk ↗</div>
-        </div>
-      </a>
-      <a class="card" href="/">
-        <div class="card-icon">🌐</div>
-        <div class="card-body">
-          <h3>vhg.dk</h3>
-          <p>Tilbage til den offentlige hjemmeside.</p>
-        </div>
-      </a>
       <a class="card" href="/old/" target="_blank" rel="noopener">
         <div class="card-icon">🗂️</div>
         <div class="card-body">

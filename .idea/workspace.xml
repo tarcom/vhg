@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Add strategi ticker feature and update password handling for improved user experience">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f4103af8-ba4a-4355-b0e8-a758256c057f" name="Changes" comment="Refactor workspace configuration and update index.php content for improved clarity and organization">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,7 @@
       <workItem from="1773823253318" duration="564000" />
       <workItem from="1773899651608" duration="9000" />
       <workItem from="1776342194058" duration="28203000" />
-      <workItem from="1776836959399" duration="2573000" />
+      <workItem from="1776836959399" duration="2900000" />
     </task>
     <task id="LOCAL-00001" summary="Add VHG Bestyrelsesportal with authentication, login, and password reset features">
       <option name="closed" value="true" />
@@ -255,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776424501740</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Refactor workspace configuration and update index.php content for improved clarity and organization">
+      <option name="closed" value="true" />
+      <created>1776840761446</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1776840761446</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +287,8 @@
     <MESSAGE value="Rename multiple HTML and CSS files for improved organization and consistency" />
     <MESSAGE value="Add strategi ticker feature for enhanced user engagement and information display" />
     <MESSAGE value="Add strategi ticker feature and update password handling for improved user experience" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add strategi ticker feature and update password handling for improved user experience" />
+    <MESSAGE value="Refactor workspace configuration and update index.php content for improved clarity and organization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor workspace configuration and update index.php content for improved clarity and organization" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

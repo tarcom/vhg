@@ -1,5 +1,7 @@
 # vhg
 
+php -S localhost:8000 -t .
+
 old_site indeholder: wget --mirror --page-requisites --convert-links --adjust-extension --domains vhg.dk --wait=1 https://www.vhg.dk/
 
 ## DNS-opsætning og hosting (vigtigt at forstå)
@@ -55,7 +57,6 @@ PHP-filer kræver PHP 8.1+ — cPanel-handleren i `.htaccess` sørger for det.
 Login-dokumentation: `documentation/bestyrelse_logins.md`
 
 python3 -m http.server 8000
-php -S 0.0.0.0:8000 -t /workspaces/vhg
 
 ## Kalenderdata (Conventus)
 
