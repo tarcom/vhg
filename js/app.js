@@ -331,7 +331,7 @@ const KALENDER_SPORT_COLORS = {
 };
 
 const HOVEDBESTYRELSEN = [
-  { title: 'Formand', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599', photo: 'assets/images/bestyrelse/allan-skov-2.png' },
+  { title: 'Formand', name: 'Allan Skov', email: 'formand@vhg.dk', phone: '22167599', photo: 'assets/images/bestyrelse/allan-skov.png' },
   { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk', photo: 'assets/images/bestyrelse/lars-jakobsen.jpg' },
   { title: 'Kasserer', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304', photo: 'assets/images/bestyrelse/jonas-bundgaard.jpg' },
   { title: 'Sekretær', name: 'Anne-Britt Andersen', email: 'annebrittandersenc@gmail.com', phone: '26 11 68 70', photo: 'assets/images/bestyrelse/anne-britt-andersen.jpg' },
