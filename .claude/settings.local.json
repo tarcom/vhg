@@ -3,7 +3,33 @@
     "allow": [
       "mcp__ide__getDiagnostics",
       "Bash(python3 *)",
-      "Bash(php --version)"
+      "Bash(php --version)",
+      "Bash(php -l bestyrelsen/event-helpers.php)",
+      "Bash(php -l bestyrelsen/events.php)",
+      "Bash(php -l bestyrelsen/event-form.php)",
+      "Bash(php -l bestyrelsen/event-actions.php)",
+      "Bash(php -l events-data.php)",
+      "Bash(node *)",
+      "Bash(php -S localhost:8000 -t .)",
+      "Bash(curl -s http://localhost:8000/events-data.php)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"Status: %{http_code}\\\\nLocation: %{redirect_url}\\\\n\" http://localhost:8000/bestyrelsen/events.php)",
+      "Bash(curl -s http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"Forsiden: %{http_code}\\\\n\" http://localhost:8000/)",
+      "Bash(curl -s -o /dev/null -w \"events.php: %{http_code}\\\\n\" http://localhost:8000/bestyrelsen/events.php)",
+      "Bash(curl -s -o /dev/null -w \"event-form: %{http_code}\\\\n\" http://localhost:8000/bestyrelsen/event-form.php)",
+      "Bash(pkill -f \"php -S localhost:8000\")",
+      "Bash(php *)",
+      "Bash(pkill -f \"php -S\")",
+      "Bash(php -S 0.0.0.0:8000 -t .)",
+      "Read(//tmp/**)",
+      "Bash(sudo apt-get *)",
+      "Bash(apt-cache search *)",
+      "Bash(apt list *)",
+      "Bash(dpkg -l)",
+      "Bash(curl -s -o /dev/null -w \"Forside: %{http_code}\\\\n\" http://localhost:8000/)",
+      "Bash(curl -s \"http://localhost:8000/events-data.php\")",
+      "Bash(xargs cat *)"
     ]
   }
 }

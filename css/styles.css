@@ -770,9 +770,12 @@ body:not(.is-home) .site-header.scrolled .logo {
   display: none;
 }
 
+/* ============================================
+   BYFEST PULSE BADGE
+   ============================================ */
 .byfest-pulse-badge {
   position: absolute;
-  bottom: 2.2rem;
+  bottom: calc(2.2rem + 40px);
   left: max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem));
   z-index: 3;
   border: none;
@@ -790,14 +793,12 @@ body:not(.is-home) .site-header.scrolled .logo {
   animation: byfestPulse 1.8s ease-in-out infinite;
   transition: opacity 0.6s ease;
 }
-
 .byfest-pulse-badge img {
   width: 66px;
   height: 66px;
   object-fit: cover;
   border-radius: 10px;
 }
-
 .byfest-pulse-badge span {
   font-size: 0.73rem;
   font-weight: 700;
@@ -805,10 +806,225 @@ body:not(.is-home) .site-header.scrolled .logo {
   letter-spacing: 0.02em;
   text-shadow: 0 1px 2px rgba(0,0,0,0.45);
 }
-
 @keyframes byfestPulse {
   0%, 100% { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.32); }
   50% { transform: scale(1.06); box-shadow: 0 10px 24px rgba(241,220,77,0.45); }
+}
+
+/* ============================================
+   HERO EVENT BANNER (ekstra promovering)
+   ============================================ */
+.hero-event-banner {
+  position: absolute;
+  top: 7.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: min(400px, 92vw);
+  animation: heroBannerIn 1s cubic-bezier(0.2, 0.9, 0.3, 1) 0.5s both,
+             bannerGlow 3.5s ease-in-out 1.5s infinite;
+}
+.hero-event-banner[hidden] { display: none; }
+.hero-event-banner-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  background: linear-gradient(135deg, rgba(241, 220, 77, 0.97), rgba(212, 193, 54, 0.97));
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--navy);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.5) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.hero-event-banner-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%);
+  transform: translateX(-130%);
+  animation: bannerShimmer 4s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+.hero-event-banner-inner:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.6) inset;
+}
+.hero-event-banner-img {
+  width: 56px; height: 56px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: white;
+  position: relative; z-index: 1;
+}
+.hero-event-banner-text {
+  display: flex; flex-direction: column; gap: 0.1rem;
+  font-size: 0.85rem; line-height: 1.25; min-width: 0;
+  position: relative; z-index: 1;
+}
+.hero-event-banner-text strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.hero-event-banner-flag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero-event-banner-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Shuffle exit/enter */
+.hero-banner-exit {
+  animation: bannerContentExit 0.4s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+}
+.hero-banner-enter {
+  animation: bannerContentEnter 0.52s cubic-bezier(0.2, 0.9, 0.3, 1) forwards !important;
+}
+@keyframes bannerContentExit {
+  0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-22px) scale(0.86); filter: blur(3px); }
+}
+@keyframes bannerContentEnter {
+  0%   { opacity: 0; transform: translateY(22px) scale(0.86); filter: blur(3px); }
+  60%  { opacity: 1; transform: translateY(-5px) scale(1.03); filter: blur(0); }
+  100% { transform: translateY(0) scale(1); filter: blur(0); }
+}
+/* Initial pop-in: spring bounce from above */
+@keyframes heroBannerIn {
+  0%   { opacity: 0; transform: translate(-50%, -60px) scale(0.6) rotate(-2deg); }
+  50%  { opacity: 1; transform: translate(-50%, 10px) scale(1.07) rotate(0.5deg); }
+  70%  { transform: translate(-50%, -6px) scale(0.97) rotate(0deg); }
+  85%  { transform: translate(-50%, 4px) scale(1.01); }
+  100% { transform: translate(-50%, 0) scale(1); }
+}
+/* Ongoing glow pulse */
+@keyframes bannerGlow {
+  0%, 100% { filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3)) drop-shadow(0 0 0px rgba(241,220,77,0)); }
+  50%       { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.25)) drop-shadow(0 0 22px rgba(241,220,77,0.55)); }
+}
+/* Shimmer sweep */
+@keyframes bannerShimmer {
+  0%, 100% { transform: translateX(-130%); }
+  30%, 70% { transform: translateX(130%); }
+}
+@media (max-width: 600px) {
+  .hero-event-banner { top: 6rem; width: calc(100vw - 1.5rem); }
+  .byfest-pulse-badge { bottom: calc(1.25rem + 40px); left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
+  .byfest-pulse-badge img { width: 54px; height: 54px; }
+  .byfest-pulse-badge span { font-size: 0.66rem; }
+  .hero-event-banner-img { width: 44px; height: 44px; }
+  .hero-event-banner-text strong { font-size: 0.85rem; }
+  .hero-event-banner-date { font-size: 0.72rem; }
+  .hero-event-banner-flag { font-size: 0.6rem; }
+}
+
+/* ============================================
+   HOME EVENTS CAROUSEL
+   ============================================ */
+.events-carousel { position: relative; }
+.event-slide {
+  display: none;
+  animation: eventSlideIn 0.5s ease;
+}
+.event-slide.is-active { display: block; }
+@keyframes eventSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.event-card {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: stretch;
+}
+.event-card-media { position: relative; background: #0a1628; }
+.event-card-main {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+  aspect-ratio: 4/3;
+  max-height: 320px;
+}
+.event-card-body {
+  padding: 1.4rem 1.6rem;
+  display: flex; flex-direction: column; gap: 0.7rem;
+  justify-content: center;
+}
+.event-card-title { font-size: 1.4rem; font-weight: 800; color: var(--navy); line-height: 1.2; }
+.event-card-title-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.event-card-title-link:hover { color: var(--gold-dark, #D4C136); }
+.event-card-meta {
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1rem;
+  font-size: 0.85rem; color: var(--text-muted, #555); font-weight: 600;
+}
+.event-card-desc {
+  font-size: 0.95rem; line-height: 1.55; color: var(--text);
+  white-space: pre-wrap;
+}
+.event-card-creator {
+  font-size: 0.82rem; color: var(--text-muted, #666); margin-top: auto;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.event-card-contact {
+  display: inline-block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-decoration: none;
+  border: 1.5px solid var(--navy);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  width: fit-content;
+  transition: background 0.15s, color 0.15s;
+}
+.event-card-contact:hover {
+  background: var(--navy);
+  color: var(--gold);
+}
+
+.event-dots {
+  display: flex; justify-content: center; gap: 0.5rem;
+  margin-top: 1rem;
+}
+.event-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 22, 40, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.event-dot:hover { background: rgba(10, 22, 40, 0.5); }
+.event-dot.is-active { background: var(--gold); transform: scale(1.25); }
+
+@media (max-width: 720px) {
+  .event-card { grid-template-columns: 1fr; }
+  .event-card-main { aspect-ratio: 16/10; max-height: none; }
+  .event-card-body { padding: 1.1rem 1.2rem; }
+  .event-card-title { font-size: 1.2rem; }
 }
 .hero h1 {
   font-size: clamp(3.5rem, 10vw, 7rem);
@@ -864,6 +1080,75 @@ body:not(.is-home) .site-header.scrolled .logo {
   margin-bottom: 2rem;
 }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+/* ============================================
+   NOW IN HALL — kompakt strimmel under hero-CTA
+   ============================================ */
+.now-in-hall {
+  margin-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  max-width: min(680px, 92vw);
+  padding: 0.5rem 0.85rem;
+  background: rgba(10, 22, 40, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(241, 220, 77, 0.35);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.95);
+  font-size: 0.82rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.now-in-hall[hidden] { display: none; }
+.now-in-hall-label {
+  flex-shrink: 0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--gold);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.now-in-hall-label::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52,211,153,0.6);
+  animation: now-pulse 1.6s ease-out infinite;
+}
+@keyframes now-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(52,211,153,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(52,211,153,0); }
+  100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+}
+.now-in-hall-track {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  min-width: 0;
+}
+.now-in-hall-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.now-in-hall.is-scrolling .now-in-hall-text {
+  animation: now-marquee 22s linear infinite;
+  padding-left: 100%;
+}
+@keyframes now-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+@media (max-width: 600px) {
+  .now-in-hall { font-size: 0.76rem; padding: 0.45rem 0.7rem; gap: 0.55rem; }
+  .now-in-hall-label { font-size: 0.62rem; }
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -2109,9 +2394,6 @@ body:not(.is-home) .site-header.scrolled .logo {
   .kalender-morning-toggle { margin-left: 0; width: fit-content; }
   .kalender-week-wrap { grid-template-columns: 44px 1fr; }
   .kalender-days { grid-template-columns: repeat(var(--day-count, 4), minmax(120px, 1fr)); }
-  .byfest-pulse-badge { bottom: 1.25rem; left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
-  .byfest-pulse-badge img { width: 54px; height: 54px; }
-  .byfest-pulse-badge span { font-size: 0.66rem; }
   .sponsorModule_sliderWrap {
     gap: 0.7rem;
     padding: 0.55rem 0.8rem;

@@ -381,6 +381,214 @@ async function loadKalenderData() {
   return Array.isArray(payload.events) ? payload.events : [];
 }
 
+const WEEKDAY_KEYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+function isEventActiveNow(event, now = new Date()) {
+  if (!event || !event.weekday || !event.start_time || !event.end_time) return false;
+  const todayKey = WEEKDAY_KEYS[now.getDay()];
+  if (event.weekday !== todayKey) return false;
+
+  const today = now.toISOString().slice(0, 10);
+  if (event.period_start && today < event.period_start) return false;
+  if (event.period_end && today > event.period_end) return false;
+
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const toMin = (s) => {
+    const [h, m] = String(s).split(':').map(Number);
+    return (h || 0) * 60 + (m || 0);
+  };
+  return nowMin >= toMin(event.start_time) && nowMin <= toMin(event.end_time);
+}
+
+async function loadEventsData() {
+  try {
+    const res = await fetch('events-data.php?v=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) return [];
+    const payload = await res.json();
+    return Array.isArray(payload.events) ? payload.events : [];
+  } catch (e) {
+    console.warn('Kunne ikke hente events-data:', e);
+    return [];
+  }
+}
+
+let homeEventsCarouselTimer = null;
+let heroBannerTimer = null;
+let heroBannerIdx = 0;
+
+function stopHomeEventsCarousel() {
+  if (homeEventsCarouselTimer) { clearInterval(homeEventsCarouselTimer); homeEventsCarouselTimer = null; }
+}
+function stopHeroBannerTimer() {
+  if (heroBannerTimer) { clearInterval(heroBannerTimer); heroBannerTimer = null; }
+}
+
+function buildHeroBannerInner(ev) {
+  const bannerHref = (ev.link || '').trim();
+  const tag = bannerHref ? 'a' : 'div';
+  const attrs = bannerHref ? ` href="${esc(bannerHref)}" target="_blank" rel="noopener"` : '';
+  const img = (ev.billeder && ev.billeder[0])
+    ? `<img class="hero-event-banner-img" src="${esc(ev.billeder[0])}" alt="">`
+    : '';
+  return `<${tag}${attrs} class="hero-event-banner-inner">
+    ${img}
+    <div class="hero-event-banner-text">
+      <span class="hero-event-banner-flag">⭐ Aktuelt</span>
+      <strong>${esc(ev.titel || '')}</strong>
+      <span class="hero-event-banner-date">Klik for mere info →</span>
+    </div>
+    ${img}
+  </${tag}>`;
+}
+
+function attachHeroBannerClick(heroBanner, ev) {
+  if (!(ev.link || '').trim()) {
+    const inner = heroBanner.querySelector('.hero-event-banner-inner');
+    if (inner) { inner.style.cursor = 'pointer'; inner.addEventListener('click', () => scrollToSectionWithOffset('home-events')); }
+  }
+}
+
+function transitionHeroBanner(heroEvents, heroBanner) {
+  const old = heroBanner.querySelector('.hero-event-banner-inner');
+  if (old) old.classList.add('hero-banner-exit');
+  setTimeout(() => {
+    heroBannerIdx = (heroBannerIdx + 1) % heroEvents.length;
+    heroBanner.innerHTML = buildHeroBannerInner(heroEvents[heroBannerIdx]);
+    const inner = heroBanner.querySelector('.hero-event-banner-inner');
+    if (inner) inner.classList.add('hero-banner-enter');
+    attachHeroBannerClick(heroBanner, heroEvents[heroBannerIdx]);
+  }, 380);
+}
+
+function renderEventCard(ev) {
+  const imgs = Array.isArray(ev.billeder) ? ev.billeder : [];
+  const main = imgs[0] || '';
+  const beskrivelse = (ev.beskrivelse || '').trim();
+  const created = (ev.oprettet_af_navn || '').trim();
+  const createdRole = (ev.oprettet_af_rolle || '').trim();
+  const createdEmail = (ev.oprettet_af_email || '').trim();
+  const eventLink = (ev.link || '').trim();
+  const titleHtml = eventLink
+    ? `<a class="event-card-title-link" href="${esc(eventLink)}" target="_blank" rel="noopener">${esc(ev.titel || '')}</a>`
+    : esc(ev.titel || '');
+  const contactLine = created
+    ? `<div class="event-card-creator">
+        <span>${esc(created)}${createdRole ? `, ${esc(createdRole)}` : ''}</span>
+        ${createdEmail ? `<a class="event-card-contact" href="mailto:${esc(createdEmail)}">Kontakt arrangør</a>` : ''}
+       </div>`
+    : '';
+  return `
+    <article class="event-card">
+      ${main ? `<div class="event-card-media"><img class="event-card-main" src="${esc(main)}" alt="${esc(ev.titel || '')}" loading="lazy"></div>` : ''}
+      <div class="event-card-body">
+        <h3 class="event-card-title">${titleHtml}</h3>
+        <div class="event-card-meta">
+          <span>📅 ${esc(ev.dato_label || '')}</span>
+        </div>
+        ${beskrivelse ? `<p class="event-card-desc">${esc(beskrivelse)}</p>` : ''}
+        ${contactLine}
+      </div>
+    </article>
+  `;
+}
+
+async function initHomeEvents() {
+  const section = document.getElementById('home-events');
+  const carousel = document.getElementById('home-events-carousel');
+  const heroBanner = document.getElementById('hero-event-banner');
+  if (!section || !carousel) return;
+
+  stopHomeEventsCarousel();
+  stopHeroBannerTimer();
+
+  const events = await loadEventsData();
+
+  // Hero-banner: alle events med ekstra_promovering shuffler
+  const heroEvents = events.filter(e => e.ekstra_promovering);
+  if (heroBanner) {
+    if (heroEvents.length > 0) {
+      heroBannerIdx = 0;
+      heroBanner.innerHTML = buildHeroBannerInner(heroEvents[0]);
+      heroBanner.hidden = false;
+      attachHeroBannerClick(heroBanner, heroEvents[0]);
+      if (heroEvents.length > 1) {
+        heroBannerTimer = setInterval(() => transitionHeroBanner(heroEvents, heroBanner), 10000);
+      }
+    } else {
+      heroBanner.hidden = true;
+      heroBanner.innerHTML = '';
+    }
+  }
+
+  // Karrusel
+  if (!events.length) { section.hidden = true; carousel.innerHTML = ''; return; }
+  section.hidden = false;
+  carousel.innerHTML = events.map((ev, i) =>
+    `<div class="event-slide${i === 0 ? ' is-active' : ''}" data-slide-index="${i}">${renderEventCard(ev)}</div>`
+  ).join('') + (events.length > 1 ? `
+    <div class="event-dots">
+      ${events.map((_, i) => `<button type="button" class="event-dot${i === 0 ? ' is-active' : ''}" data-dot="${i}" aria-label="Vis event ${i + 1}"></button>`).join('')}
+    </div>
+  ` : '');
+
+  if (events.length > 1) {
+    let current = 0;
+    const slides = carousel.querySelectorAll('.event-slide');
+    const dots = carousel.querySelectorAll('.event-dot');
+    const show = (idx) => {
+      slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+      current = idx;
+    };
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        show(parseInt(dot.dataset.dot, 10));
+        stopHomeEventsCarousel();
+      });
+    });
+    homeEventsCarouselTimer = setInterval(() => {
+      show((current + 1) % events.length);
+    }, 5000);
+  }
+}
+
+async function initNowInHall() {
+  const wrap = document.getElementById('now-in-hall');
+  const text = document.getElementById('now-in-hall-text');
+  if (!wrap || !text) return;
+  try {
+    const events = await loadKalenderData();
+    const now = new Date();
+    const active = events.filter(e => isEventActiveNow(e, now));
+    if (!active.length) { wrap.hidden = true; return; }
+
+    const seen = new Set();
+    const titles = [];
+    active.forEach(e => {
+      const t = (e.title || '').trim();
+      const key = t.toLowerCase();
+      if (!t || seen.has(key)) return;
+      seen.add(key);
+      titles.push(t);
+    });
+    if (!titles.length) { wrap.hidden = true; return; }
+
+    text.textContent = titles.join('  ·  ');
+    wrap.hidden = false;
+
+    // Aktiver scroll-animation kun hvis tekst er bredere end container
+    requestAnimationFrame(() => {
+      const track = wrap.querySelector('.now-in-hall-track');
+      if (!track) return;
+      const overflow = text.scrollWidth > track.clientWidth + 4;
+      wrap.classList.toggle('is-scrolling', overflow);
+    });
+  } catch (err) {
+    console.warn('Kunne ikke vise "Lige nu i hallen":', err);
+    wrap.hidden = true;
+  }
+}
+
 function getSportKeyFromHashHref(href) {
   const m = String(href || '').match(/^#\/([^/]+)/);
   return m ? m[1] : null;
@@ -888,6 +1096,7 @@ PAGES[''] = PAGES['/'] = function() {
 
   return `
     <div class="hero">
+      <div id="hero-event-banner" class="hero-event-banner" hidden></div>
       <button id="promo-badge" class="byfest-pulse-badge" type="button" aria-label="Byfest">
         <img src="assets/images/byfest.png" alt="Byfest" loading="lazy">
         <span>Byfest</span>
@@ -900,6 +1109,10 @@ PAGES[''] = PAGES['/'] = function() {
         <button id="scroll-to-kalender" class="btn btn-outline">Kalender</button>
         <button id="scroll-to-idraetsgrene" class="btn btn-outline">Idrætsgrene</button>
         <a href="#/kontakt" class="btn btn-primary">Kontakt os</a>
+      </div>
+      <div id="now-in-hall" class="now-in-hall hero-anim hero-anim-bottom" style="--hero-delay:3s" hidden>
+        <span class="now-in-hall-label">Lige nu i hallen</span>
+        <div class="now-in-hall-track"><span id="now-in-hall-text" class="now-in-hall-text"></span></div>
       </div>
       <div class="scroll-indicator">
         <span>Scroll ned</span>
@@ -947,6 +1160,11 @@ PAGES[''] = PAGES['/'] = function() {
           </div>
           <a href="https://vhg-esport.nemtilmeld.dk/10/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Tilmeld dig byfesten ${ICONS.external}</a>
         </div>
+      </div>
+
+      <div class="section" id="home-events" hidden>
+        <h2 class="section-title section-title-center" id="home-events-heading">Aktuelt i VHG</h2>
+        <div id="home-events-carousel" class="events-carousel"></div>
       </div>
 
       <div class="section" id="home-sponsorer">
@@ -1987,6 +2205,8 @@ function navigate() {
   if (route === '/' || route === '') {
     initKalenderPage('home-kalender-root');
     initHomeSponsorCarousel();
+    initNowInHall();
+    initHomeEvents();
 
     const refreshBtn = document.getElementById('refresh-kalender-btn');
     const refreshStatus = document.getElementById('refresh-kalender-status');
@@ -2221,7 +2441,7 @@ function initTopAmbientIcons() {
     ...Object.values(SPORTS).map(s => s.icon).filter(Boolean),
     '🏅', '🏆', '🎽', '⏱️', '📋', '⭐'
   ];
-  const count = window.innerWidth <= 768 ? 4 : 7;
+  const count = window.innerWidth <= 768 ? 2 : 4;
 
   const layer = document.createElement('div');
   layer.className = 'top-ambient-icons';
@@ -2235,7 +2455,7 @@ function initTopAmbientIcons() {
     icon.style.setProperty('--drift-x', `${(Math.random() * 80 - 40).toFixed(0)}px`);
     icon.style.setProperty('--size', `${(Math.random() * 0.7 + 0.85).toFixed(2)}rem`);
     icon.style.setProperty('--dur', `${(Math.random() * 2.2 + 12.8).toFixed(2)}s`);
-    icon.style.setProperty('--delay', `${(Math.random() * 1.8).toFixed(2)}s`);
+    icon.style.setProperty('--delay', `${(20 + Math.random() * 4).toFixed(2)}s`);
     layer.appendChild(icon);
   }
 

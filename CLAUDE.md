@@ -11,6 +11,7 @@ Hosted on Netgiganten (`ftp.vhg.dk`) under `public_html/`. PHP 8.1+ is required 
 ## Local development
 
 ```bash
+
 php -S localhost:8000 -t .
 # or
 python3 -m http.server 8000

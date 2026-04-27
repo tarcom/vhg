@@ -1,0 +1,46 @@
+[
+    {
+        "id": "a57d7de0e55359f1",
+        "titel": "Ny 2030 Strategi for VHG",
+        "beskrivelse": "Se de store tiltag VHG planlægger frem mod 2030",
+        "start_dato": "",
+        "start_tid": "",
+        "slut_dato": "2026-05-10",
+        "slut_tid": "",
+        "promover_dage_for": 3,
+        "ekstra_promovering": true,
+        "link": "https:\/\/ubiquitous-happiness-59w595wwvj3wp5-8000.app.github.dev\/#\/om-vhg\/strategi2030",
+        "billeder": [
+            "bfc3fcd7f080fbf8.jpg"
+        ],
+        "oprettet_af_email": "formand@vhg.dk",
+        "oprettet_af_navn": "Allan Skov",
+        "oprettet_af_rolle": "Formand",
+        "oprettet_at": "2026-04-26T11:49:10+00:00",
+        "opdateret_af_navn": "Allan Skov",
+        "opdateret_af_rolle": "Formand",
+        "opdateret_at": "2026-04-26T11:49:10+00:00"
+    },
+    {
+        "id": "e9c17fc5167486e8",
+        "titel": "test",
+        "beskrivelse": "test 123",
+        "start_dato": "2026-05-13",
+        "start_tid": "16:53",
+        "slut_dato": "2026-05-13",
+        "slut_tid": "18:59",
+        "promover_dage_for": 312,
+        "ekstra_promovering": true,
+        "link": "",
+        "billeder": [
+            "a1426c77f86ea821.jpg"
+        ],
+        "oprettet_af_email": "formand@vhg.dk",
+        "oprettet_af_navn": "Allan Skov",
+        "oprettet_af_rolle": "Formand",
+        "oprettet_at": "2026-04-26T11:52:52+00:00",
+        "opdateret_af_navn": "Allan Skov",
+        "opdateret_af_rolle": "Formand",
+        "opdateret_at": "2026-04-26T11:53:49+00:00"
+    }
+]

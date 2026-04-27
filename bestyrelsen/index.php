@@ -173,6 +173,14 @@ $logList = getLoginLog(10);
 
     <div class="section-label">Administration</div>
     <div class="cards">
+      <a class="card" href="/bestyrelsen/events.php">
+        <div class="card-icon">📣</div>
+        <div class="card-body">
+          <h3>Special events</h3>
+          <p>Promover stævner, kampe og andre store aktiviteter på forsiden af vhg.dk.</p>
+          <div class="card-ext">Opret &amp; rediger &rarr;</div>
+        </div>
+      </a>
       <div class="card" id="kalender-card" style="cursor:pointer" onclick="opdaterKalender()">
         <div class="card-icon" id="kalender-icon">🗓️</div>
         <div class="card-body">

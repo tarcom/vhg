@@ -29,3 +29,8 @@ jobs:
             **/README.md
             **/documentation/**
             **/scripts/**
+            bestyrelsen/data/events.json
+            bestyrelsen/data/login_log.json
+            assets/events/*.jpg
+            assets/events/*.jpeg
+            assets/events/*.png
