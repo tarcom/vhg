@@ -347,6 +347,7 @@ const HOVEDBESTYRELSEN = [
 ];
 
 const REFERATER = [
+  { year: '2026', file: 'assets/pdf/generalforsamling-2026.pdf' },
   { year: '2025', file: 'assets/pdf/generalforsamling-vhg-2025.pdf' },
   { year: '2024', file: 'assets/pdf/generalforsamling-vhg-2024-regerat.pdf' },
   { year: '2023', file: 'assets/pdf/referat2023.pdf' },
