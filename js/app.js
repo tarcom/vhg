@@ -335,7 +335,7 @@ const HOVEDBESTYRELSEN = [
   { title: 'Næstformand', name: 'Lars Jakobsen', email: 'lkj@evt.dk', photo: 'assets/images/bestyrelse/lars-jakobsen.jpg' },
   { title: 'Kasserer', name: 'Jonas Bundgaard Kristensen', email: 'jonsekristensen@hotmail.com', phone: '22769304', photo: 'assets/images/bestyrelse/jonas-bundgaard.jpg' },
   { title: 'Sekretær', name: 'Anne-Britt Andersen', email: 'annebrittandersenc@gmail.com', phone: '26 11 68 70', photo: 'assets/images/bestyrelse/anne-britt-andersen.jpg' },
-  { title: 'Suppleant', name: 'Helle Marie Rønnov', email: 'hellemarieroennov@gmail.com', phone: '42208824' },
+  { title: 'Suppleant', name: 'Helle Marie Rønnov', email: 'hellemarieroennov@gmail.com', phone: '42208824', photo: 'assets/images/bestyrelse/HelleMarie.jpg' },
   { title: 'Medlem (Formand håndbold)', name: 'Berit Andersen', email: 'beritandersen@hotmail.com', phone: '51 22 91 22' },
   { title: 'Medlem (Formand fodbold)', name: 'Marc Agerbo Jakobsen', email: 'agerbo100@gmail.com', phone: '30253680' },
   { title: 'Medlem (Formand badminton)', name: 'Claus René Mikkelsen', email: 'clmik8@gmail.com' },
