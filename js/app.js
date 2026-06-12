@@ -1157,9 +1157,9 @@ PAGES[''] = PAGES['/'] = function() {
           <img src="assets/images/byfest.png" alt="Byfest i Vester Hassing" loading="lazy" style="width:min(100%, 360px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
           <div>
             <h3 style="margin-bottom:0.4rem">Kom med til byfesten</h3>
-            <p>Tilmelding er åben. Sikr din plads til årets byfest og vær med til en hyggelig dag for hele familien.</p>
+            <p>Tilmelding er lukket — vi ses til årets byfest! Bordplanen er nu klar: find dit navn og se hvilket bord du sidder ved.</p>
           </div>
-          <a href="https://vhg-esport.nemtilmeld.dk/10/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Tilmeld dig byfesten ${ICONS.external}</a>
+          <a href="bordplan.html" class="btn btn-primary btn-sm" style="color:#111">Se bordplanen ${ICONS.external}</a>
         </div>
       </div>
 

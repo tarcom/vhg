@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bordplan · VH Byfest 2026</title>
+<meta name="description" content="Bordplan til VH Byfest 2026 — find dit bord og dit selskab.">
+<link rel="icon" href="assets/images/favicon.ico">
+<style>
+  :root{
+    --navy:#003F7A; --navy-dark:#001F3D; --navy-light:#0B5AA5; --navy-electric:#1A73C9;
+    --gold:#F1DC4D; --gold-dark:#D4C136; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    color:#fff; min-height:100vh;
+    background:linear-gradient(160deg,#001F3D 0%,#003F7A 45%,#0B5AA5 100%);
+    background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--gold)}
+
+  /* ---- festive top bar / confetti ---- */
+  .confetti{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+  .confetti i{
+    position:absolute;top:-12px;width:10px;height:14px;opacity:.85;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-20px) rotate(0)}
+    100%{transform:translateY(105vh) rotate(540deg)}
+  }
+
+  .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 1.1rem 4rem}
+
+  header.hero{text-align:center;padding:1.6rem 0 .6rem}
+  .eyebrow{
+    display:inline-block;letter-spacing:.32em;font-size:.72rem;font-weight:700;
+    text-transform:uppercase;color:var(--gold);
+    border:1px solid rgba(241,220,77,.45);border-radius:999px;padding:.4rem 1rem;margin-bottom:1rem;
+  }
+  h1{
+    font-size:clamp(2.4rem,7vw,4.4rem);line-height:1;font-weight:800;letter-spacing:-.02em;
+    background:linear-gradient(180deg,#fff 0%,var(--gold) 130%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 4px 30px rgba(241,220,77,.18);
+  }
+  .hero p.sub{margin-top:.9rem;font-size:1.05rem;color:#cfe1f5;max-width:560px;margin-inline:auto}
+  .sparkle{filter:drop-shadow(0 0 6px rgba(241,220,77,.7))}
+
+  /* ---- search ---- */
+  .search-card{
+    background:rgba(255,255,255,.07);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.14);border-radius:18px;
+    padding:1.3rem;margin:2rem auto 1rem;max-width:620px;
+    box-shadow:0 18px 50px rgba(0,0,0,.32);
+  }
+  .search-card label{display:block;font-weight:700;margin-bottom:.6rem;color:var(--gold)}
+  .search-row{position:relative}
+  #search{
+    width:100%;padding:.95rem 1.1rem .95rem 2.9rem;border-radius:12px;border:none;
+    font-size:1.05rem;background:#fff;color:#102a45;font-weight:500;
+  }
+  #search:focus{outline:3px solid var(--gold)}
+  .search-row::before{content:"";position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:16px;height:16px;border:2px solid #6b8aa5;border-radius:50%;box-shadow:9px 9px 0 -7px #6b8aa5;pointer-events:none}
+  #result{margin-top:1rem}
+  .hit{
+    display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;
+    background:linear-gradient(120deg,rgba(241,220,77,.16),rgba(241,220,77,.04));
+    border:1px solid rgba(241,220,77,.4);border-radius:12px;padding:.85rem 1rem;margin-bottom:.55rem;
+    animation:pop .25s ease;
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .hit .who{font-weight:700;font-size:1.05rem}
+  .hit .grp{color:#cfe1f5;font-size:.9rem}
+  .badge-table{
+    margin-left:auto;background:var(--gold);color:var(--navy-dark);font-weight:800;
+    border-radius:10px;padding:.5rem .9rem;font-size:.95rem;white-space:nowrap;
+    box-shadow:0 4px 14px rgba(241,220,77,.35);
+  }
+  .muted{color:#a9c2de;font-size:.92rem;text-align:center;padding:.4rem 0}
+
+  /* ---- hall map ---- */
+  .section-title{
+    text-align:center;font-size:1.7rem;font-weight:800;margin:3rem 0 1.2rem;
+  }
+  .section-title small{display:block;font-weight:500;font-size:.95rem;color:#a9c2de;margin-top:.3rem}
+  .map-card{
+    background:#fff;border-radius:18px;padding:.8rem;box-shadow:0 18px 50px rgba(0,0,0,.4);
+    overflow:hidden;
+  }
+  .map-card img{width:100%;height:auto;display:block;border-radius:10px;cursor:zoom-in}
+  .map-hint{text-align:center;color:#a9c2de;font-size:.85rem;margin-top:.6rem}
+
+  /* ---- tables grid ---- */
+  .tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem;margin-top:1.4rem}
+  .table-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);
+    border-radius:16px;padding:1.1rem 1.15rem 1.25rem;
+    box-shadow:0 12px 34px rgba(0,0,0,.28);transition:transform .15s,border-color .15s;
+  }
+  .table-card:hover{transform:translateY(-3px);border-color:rgba(241,220,77,.5)}
+  .table-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem;padding-bottom:.8rem;border-bottom:1px dashed rgba(255,255,255,.18)}
+  .table-num{
+    flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    font-weight:800;font-size:1.3rem;color:var(--navy-dark);
+    background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+    box-shadow:0 6px 16px rgba(241,220,77,.3);
+  }
+  .table-head h3{font-size:1.15rem}
+  .table-head .cnt{color:#a9c2de;font-size:.85rem;font-weight:500}
+  .group{margin-bottom:.7rem}
+  .group:last-child{margin-bottom:0}
+  .group > .g-name{
+    font-weight:700;color:var(--gold);font-size:.95rem;display:flex;align-items:center;gap:.4rem;
+  }
+  .group > .g-name .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+  .group ul{list-style:none;margin:.25rem 0 0 1.1rem;padding:0;
+    columns:2;column-gap:1rem}
+  .group ul li{font-size:.86rem;color:#dde9f6;padding:.08rem 0;break-inside:avoid}
+  .uden{font-size:.72rem;color:var(--navy-dark);background:#ffd9a8;border-radius:6px;padding:.05rem .4rem;font-weight:700;margin-left:.35rem}
+
+  footer{text-align:center;margin-top:3rem;color:#9fb8d4;font-size:.85rem}
+  footer a{font-weight:600}
+  .back{display:inline-block;margin-top:1.4rem;color:var(--gold);text-decoration:none;font-weight:700}
+  .back:hover{text-decoration:underline}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(0,10,25,.92);display:none;z-index:50;
+    align-items:center;justify-content:center;padding:1rem;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:95vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+
+  @media(max-width:520px){
+    .group ul{columns:1}
+    .badge-table{margin-left:0}
+  }
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Vester Hassing · 2026</span>
+    <h1><span class="sparkle">✨</span> Bordplan <span class="sparkle">✨</span><br>VH Byfest</h1>
+    <p class="sub">Velkommen til årets fest! Find dit navn herunder, så viser vi med det samme hvilket bord du sidder ved.</p>
+  </header>
+
+  <div class="search-card">
+    <label for="search">🔎 Søg efter dit navn</label>
+    <div class="search-row">
+      <input id="search" type="search" placeholder="Skriv fornavn eller efternavn…" autocomplete="off" autofocus>
+    </div>
+    <div id="result"><p class="muted">Begynd at skrive for at finde dit bord…</p></div>
+  </div>
+
+  <h2 class="section-title">Sådan ser hallen ud
+    <small>Indgang og bar mod nord · scene mod syd</small>
+  </h2>
+  <div class="map-card">
+    <img src="assets/byfest2026/bordplan.png" alt="Oversigt over hallen med bord 1-6, bar og scene" id="mapImg">
+  </div>
+  <p class="map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>
+
+  <h2 class="section-title">Alle borde
+    <small>Selskaber er fordelt på 6 borde</small>
+  </h2>
+  <div class="tables" id="tables"></div>
+
+  <footer>
+    <p>Vi glæder os til en festlig aften! 🎉 Spørgsmål? Kontakt festudvalget.</p>
+    <a class="back" href="/">← Tilbage til vhg.dk</a>
+  </footer>
+</div>
+
+<div class="lb" id="lb"><img src="assets/byfest2026/bordplan.png" alt="Bordplan i stor størrelse"></div>
+
+<script>
+/* ---------- Data: borde -> grupper -> personer ---------- */
+const TABLES = [
+  { nr:1, groups:[
+    {name:"Gruppe 3", people:["Rikke Leth","Christian Leth"]},
+    {name:"Gruppe 2", uden:true, people:["Mogens Kildedal Pedersen","Isa Therese Bucio","Christina Nielsen","Charlie Nielsen"]},
+    {name:"Senior badminton", people:["Charlotte Dehn","Katrine Nørgaard","Anders Hvedhaven","Lars Westergren","Claus Mikkelsen","Lars Ole Olsen","Nancy Olsen","Jane Jensen","Philip Jørgensen","Philip Jørgensen","Morten Strøm","Morten Strøm"]},
+    {name:"Madsen", people:["Flemming Madsen","Britta Brønnerup Madsen","Kaj Madsen","Marianne Madsen","Erik Andersen","Inge Andersen","Heinrich Svalø","Lone Svalø","Gitte Svalø","Christian Svalø"]},
+    {name:"Madsbøl", people:["Mette Madsbøl","Søren Madsbøl","Anne-britt Andersen","Mikael Andersen","Mette Marie Abildgaard","Jens Martin Jacobsen","Karina Flyger","Christian Holt Flyger","Mette Fly Nielsen","Henrik Nielsen"]},
+    {name:"Konsortiet", people:["Bent Christensen","Gitte Christensen","Claus Nielsen","Dorthe Nielsen","Lars Madsen","Bente Madsen","Bjarne Jensen","Helle Jensen","Majbritt Jensen","Torben Jensen"]},
+    {name:"Larsen & Co.", people:["Mette Nielsen","Jan Larsen"]},
+    {name:"Holst", people:["Jørgen Holst","Hanne Holst"], uden:true},
+    {name:"Christian Phillip", people:["Emil Phillip","Dorte Phillip","Christian Phillip"]},
+  ]},
+  { nr:2, groups:[
+    {name:"Kernen", people:["Carina Holst","Simon Holst","Sarah Røhl","Rune Aaholm","Rikke Buttery","Neil Buttery"]},
+    {name:"Keld Karlsen", people:["Pia Bisgaard","Keld Karlsen"]},
+    {name:"Kaviarklubben", people:["Julie Ottzen","Simon Ottzen","Ann Østergaard","Jeppe Brink"]},
+    {name:"Ja", people:["Alf Carlsen","Kirsten Merete Frandsen","Lene Kvist","Finn Koren Mouritzen","Emma Ulrikke Lorentzen"]},
+    {name:"Fynbo Steensgaard", people:["Camilla Hansen","Tim Johansen","Sara Guldbech Steensgaard","Kristian Guldbech Steensgaard"]},
+    {name:"Godt og blandet", people:["Jacob Volstrup","Ingrid Lindenborg","Rikke Dahl","Jesper Sudergaard","Anne Birch","Simon Schøning"]},
+    {name:"Kaltoft", people:["Marianne Kaltoft","Tue Jørgensen","Lærke Nielsen","Frederik Nielsen","Iman Aziz","Alex Winther","Kristina Stidsholt","Annsophie Köhler","Mikkel Mispel","Sarah Sofia Oddermose","Tara Steinfeld","Oliver Nielsen","Nikoline Bjørn","Anders Bjørn","Rikke Ejlertsen","Jens-Ole Ejlertsen"]},
+    {name:"Groben", people:["Sheila Behnke","Rasmus Kiel"]},
+    {name:"Wild cats", people:["Gitte Lykke","Martin Lykke","Christina Holm Madsen","Kasper Madsen","Sabina Dyg Lunde","Jesper Dyg Lunde","Michelle Falck","Niklas Falck"]},
+    {name:"Winde-Hertz", people:["Morten Hertz","Sandra Hertz","Camilla Winde","Jacob Winde"]},
+  ]},
+  { nr:3, groups:[
+    {name:"Det gode selskab", people:["Birgitte Gaarn","Jan Gaarn","Lene Poulsen","Helle Poulsen","Pernille Andersen","Jan Andersen"]},
+    {name:"Flemming Madsen", people:["Bentha Hougaard","Brian Hougaard","Jonna Clemmensen","Hanne Mellergaard","Poul Clemmensen","Kent Laursen","Christel Laursen"]},
+    {name:"Tina Sloth", people:["Tina Sloth Dahl","Morten Dahl","Brian Bjerg","Lena Buch","Dorte Simonsen","Peter Simonsen","Trine Hoff","Trine Hoff","Mariann Tousgaard","Anders Nielsen","Per Simonsen","Rikke Pedersen","Rikke Broen","Kristian Jensen","Hanne Munk","Thommas Gram Christensen","Mette Svenningsen","Heino Hansen","Henrik Pedersen"]},
+    {name:"Lene Christiansen / Mikkel Hansen", people:["Erik Brink Pedersen","Lene Christiansen","Brian Stoffersen","Lars Christensen","Betinna Christensen","Carina Brix Jensen","Henrik Müller Jensen","Lotte Kidmose","Lotte Busk Pedersen","Mikkel Hansen","Maria Alberte Sørensen","Michael Madsen","Marlene Madsen"]},
+    {name:"Ladegaard bordet", people:["Morten Juliussen","Dorthe Juliussen","Dorrit Christensen","Palle Christensen","Johnny Ladegaard","Jette Ladegaard","Rikke Pryssing","Mads Schjøtt"]},
+  ]},
+  { nr:4, groups:[
+    {name:"Legeaftalen", people:["Nanna Birk Larsen","Marc Madsen","Ane Krogh Overgaard","Tommy Krogh Overgaard","Helle Krogh Hansen","Lars Krogh Reinholdt"]},
+    {name:"Tine & Lasse (Holst)", people:["Morten Dahl","Gitte Dahl"]},
+    {name:"Bakkedraget", people:["Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum"]},
+    {name:"Butler-Refsgaard", people:["Uffe Refsgaard","Randi Refsgaard","Anne Mette Butler","Jakob Butler"]},
+    {name:"Caviarklubben", people:["Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald"]},
+    {name:"CMJ", people:["Christine Nielsen","Christine Nielsen"]},
+    {name:"De tørstige tøsser", people:["Christina Brix","Louise Ladegaard","Camilla Andersen","Michelle Schjøtt","Louise Ladegaard"]},
+    {name:"Fredrik Kristensen", people:["Kim Andreasen","Fredrik Kristensen","Kasper Jakobsen","Jonas Worm","Kristian Worm","Markus Mølgaard","Kasper Steen","Kristian Eliasen","Frederik Solberg","Jonas Christensen","Victoria Fiedler","Rasmus Lynnerup","Pia Helmer Kristensen","Pia Helmer Kristensen","Pia Helmer Kristensen","Sylvester Funke"]},
+    {name:"Dennis, Rune, Niels mv.", people:["Amalie Thorvald","Emma Vegeberg","Dennis Christensen","Rune Carlsen","Niels Jakobsen"]},
+  ]},
+  { nr:5, groups:[
+    {name:"Floorball damer", people:["Louise Kruse Ledet","Helle Vinter","Julie Bech Hjelm","Mira Lønvad","Rune Batsberg","Kristine Justesen Lind"]},
+    {name:"Floorball herre", people:["Anders Bech Jensen","Jimmi Kildedal","Allan Nørgaard Skov","Lasse Ledet","Lasse Thomsen","Jonas Kristensen","Thomas Lyk"]},
+    {name:"Uglerne", people:["Jesper Nielsen","Jesper Nielsen","Jesper Nielsen","Jesper Nielsen","Karina Sommer","Allan Mortensen","Gitte Funke","Lars Jakobsen","Pernille Jakobsen"]},
+    {name:"Håndbold senior", people:["Morten Kam Dahl Nielsen","Julie Ballegaard Leer","Dorte Mikkelsen","Louise Ottzen Dueholm","Pernille Kam Dahl Dueholm","Morten Kam Dahl Dueholm","Jette Skov","Carla Pedersen","Sofie Pilegaard","Katrine Svenningsen"]},
+    {name:"Fodbold herre", people:["Johan Poulstrup","Hussein El Hek","Frederik Abildgaard","Kasper Larsen","Sebastian Gyde","Marcus Jessen","Mathias Pilegaard"]},
+    {name:"Vi lukker festen igen", people:["Ane Rasmussen","Emilie Almskov Jakobsen","Lærke Kristiansen","Amalie Gudiksen","Anne Hejgendorf","Laura Sahl","Pia Vestergaard Nielsen","Trine Faulkner","Kathrine Søndergaard Svenningsen","Anne Toft","Sissel Bülow Jakobsen","Nina Jørgensen","Mette Meldgaard Jessen","Gry Steensgaard"]},
+    {name:"Gruppe 1", people:["Morten Winther","Janni Dorff Hansen","Inge Gregersen","Finn Besser","Zitta Dahl Holm","Tanja Hammerholt","Carina Ørum Jacobsen","Martin Ørum Jacobsen"]},
+  ]},
+  { nr:6, groups:[
+    {name:"Hvolgårdens bedste naboer", people:["Anita Clemmensen","Dennis Clemmensen","Mette Johansen","Thomas Andersen","Martin Quintero","Regine Jensen","Thomas Pedersen","Anette Elleren Pedersen","Mikael Offersen","Louise Offersen","Jette Bækgaard","Jonas Søvind Walsted"]},
+    {name:"VH Gang 98/99", people:["Jesper Christiansen","Lise Kristensen","Sebastian Kristensen","Nils Kristensen","Simone Ottzen","Sarah Vangsted","Tobias Heskjær","Kristian Dalgaard","Martine Veisene","Laura Nyby","Thor Toft Sørensen","Magnus Thøgersen","Rebecca Fjordbak","Gabriel Ayoub","Ditte Simonsen"]},
+    {name:"Skateklub", people:["Bjarke Aastrup Poulsen","Camilla Bersang Aastrup","Mikael Ivan Vinther Christensen","Anne Posborg Bjørn","Anders Badsberg Larsen","Annika Frandsen","Jesper Rasmussen","Rasmus Bjerg Jensen","Camilla Tilm","Bjarne Pedersen","Nicolai Thomsen","Mikkel Rokkjær","Anne Krogh","Birgitte Landgaard","Christina Derosche","Mikkel Ramsgaard","Linette Nielsen"]},
+    {name:"Party-klubben", people:["Louise Schou Thomsen","Jakob Frilev Thomsen","Heidi Bach Rosenbeck","Kim Svanholm Rosenbeck","Annemette Elkjær Maul","Casper Maul","Jeppe Fuglsang Larsen","Mette Fuglsang Grøn"]},
+    {name:"HAVH", people:["Carl Emil Rise Andersen","Jonas Svenningsen","Kristian Staurup Lassen","Patrick Malik Tousgaard","Christian Kam Dahl Nielsen"]},
+  ]},
+];
+
+/* ---------- Render tables ---------- */
+const tablesEl = document.getElementById('tables');
+TABLES.forEach(t=>{
+  const count = t.groups.reduce((s,g)=>s+g.people.length,0);
+  const groupsHtml = t.groups.map(g=>`
+    <div class="group">
+      <div class="g-name"><span class="dot"></span>${g.name}${g.uden?'<span class="uden">uden spisning</span>':''}</div>
+      <ul>${g.people.map(p=>`<li>${p}</li>`).join('')}</ul>
+    </div>`).join('');
+  const card = document.createElement('div');
+  card.className='table-card';
+  card.innerHTML = `
+    <div class="table-head">
+      <div class="table-num">${t.nr}</div>
+      <div><h3>Bord ${t.nr}</h3><span class="cnt">${count} gæster · ${t.groups.length} selskaber</span></div>
+    </div>
+    ${groupsHtml}`;
+  tablesEl.appendChild(card);
+});
+
+/* ---------- Build search index ---------- */
+const INDEX = [];
+TABLES.forEach(t=>t.groups.forEach(g=>{
+  const seen = new Set();
+  g.people.forEach(p=>{
+    const key = p.toLowerCase();
+    if(seen.has(key)) return; // collapse duplicate names within same group
+    seen.add(key);
+    INDEX.push({name:p, group:g.name, nr:t.nr, uden:!!g.uden});
+  });
+}));
+
+const norm = s => s.toLowerCase()
+  .replace(/æ/g,'ae').replace(/ø/g,'o').replace(/å/g,'a')
+  .replace(/[^a-z0-9 ]/g,'').trim();
+
+const input = document.getElementById('search');
+const result = document.getElementById('result');
+
+function search(q){
+  const nq = norm(q);
+  if(!nq){ result.innerHTML='<p class="muted">Begynd at skrive for at finde dit bord…</p>'; return; }
+  const terms = nq.split(/\s+/);
+  const hits = INDEX.filter(r=>{
+    const n = norm(r.name);
+    return terms.every(t=>n.includes(t));
+  }).sort((a,b)=>a.name.localeCompare(b.name,'da'));
+
+  if(!hits.length){
+    result.innerHTML='<p class="muted">Ingen gæster fundet — prøv et andet navn, eller spørg festudvalget. 🙂</p>';
+    return;
+  }
+  result.innerHTML = hits.slice(0,40).map(h=>`
+    <div class="hit">
+      <div>
+        <div class="who">${h.name}</div>
+        <div class="grp">${h.group}${h.uden?' · uden spisning':''}</div>
+      </div>
+      <div class="badge-table">🪑 Bord ${h.nr}</div>
+    </div>`).join('') + (hits.length>40?'<p class="muted">Forfin din søgning for at se flere…</p>':'');
+}
+let tmo;
+input.addEventListener('input',e=>{clearTimeout(tmo);tmo=setTimeout(()=>search(e.target.value),90);});
+
+/* ---------- Lightbox ---------- */
+const lb=document.getElementById('lb');
+document.getElementById('mapImg').addEventListener('click',()=>lb.classList.add('open'));
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open');});
+
+/* ---------- Confetti ---------- */
+(function(){
+  const c=document.getElementById('confetti');
+  const colors=['#F1DC4D','#1A73C9','#fff','#D4C136','#0B5AA5'];
+  for(let i=0;i<26;i++){
+    const s=document.createElement('i');
+    s.style.left=Math.random()*100+'%';
+    s.style.background=colors[i%colors.length];
+    s.style.animationDuration=(6+Math.random()*7)+'s';
+    s.style.animationDelay=(-Math.random()*10)+'s';
+    s.style.opacity=(0.4+Math.random()*0.5).toFixed(2);
+    if(Math.random()>.5)s.style.borderRadius='50%';
+    c.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
