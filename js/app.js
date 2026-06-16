@@ -71,6 +71,7 @@ const SPORT_NAV = [
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
+    { label: 'Sponsor af frivillige', href: 'assets/pdf/sponsor-af-frivillige-2026.pdf', external: true },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' }
@@ -1821,6 +1822,7 @@ function haandboldSubNav(active) {
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
+    { label: 'Sponsor af frivillige', href: 'assets/pdf/sponsor-af-frivillige-2026.pdf', external: true },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' }
