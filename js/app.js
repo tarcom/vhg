@@ -1886,6 +1886,89 @@ const BYFEST_TABLES = [
   ]},
 ];
 
+// Bordplan 2025: 100-års jubilæum (lørdag 14. juni 2025) — borde -> selskaber -> personer
+const JUBILEE_2025_TABLES = [
+  { nr:1, groups:[
+    {name:"65+", people:["Sonja Jensen","Flemming Jensen","Harry Pedersen","Tove Pedersen","John Jensen","Iben jensen","Povl Erik Rasmussen","Lilian Rasmussen","Eigil Jørgensen","Britta Jørgensen","Inga Gaarn","Kirsten Jørgensen","Poul Erik Jørgensen","Ilse Tvorup Jørgensen","Per Træholt","bente sørensen","Leif Sørensen"]},
+    {name:"65+ æresmedlemmer", people:["Einar Larsen","Elsebeth Larsen","Lisbeth Fischer","Tage Fischer","Ninna E Jensen","Vagn Jensen","Kirsten Flou","Grethe Kibsgaard","Bent Jensen","Jørhen Flou"]},
+    {name:"Bestyrelsen", people:["Laila Christensen"]},
+    {name:"Bordtennis", people:["Søren Roesdahl"]},
+    {name:"Ellen Mørk", people:["Karl Erik Pedersen","Inge Pedersen","Ellen Mørk","Hans Mørk","Lisbeth Timra","Arne Tomra","Kirsten Jakobsen","Flemming Jakobsen","Anna Svenningsen"]},
+  ]},
+  { nr:2, groups:[
+    {name:"mor Inge", people:["Jan Larsen","Mette Nielsen","Inge Brøndum Pedersen","Henrik Meldgaard Pedersen","Bente Ottzen","Henrik Ottzen","Lone Ottzen","Jens Arne Christensen","Heidi Lund Larsen","Mickey Larsen","Janne Winkel","Jens Winkel","Susanne Windfeldt","Kim Windfeldt","Svend Pedersen","Annemette Pedersen","John Overgaard Rasmussen","Tove Marie Rasmussen","Jan Rømer","Berit Fischer"]},
+    {name:"Senior badminton", people:["Finn Besser","Morten Strøm Pedersen","Helle Flindt Pedersen","Ole H Pedersen","Dorthe Nøhr","Lars Ole Olsen","Nancy Olsen","Johannes Jensen","Jane Jensen","Katrine Andersen","Torben Valsted","Lene Valsted","Claus Mikkelsen","Anders Hvedhaven","Tina Pedersen","Charlotte Dehn","Jakob Vinkler","Pia Mikkelsen","Lars Westergren"]},
+  ]},
+  { nr:3, groups:[
+    {name:"Fam svendsen", people:["Vicky Svendsen","Jacob Svendsen","Helle Larsen","Brian Larsen"]},
+    {name:"Klub 1841", people:["Brian Stoffersen","Niels Reimer","Lene Christiansen","Peter Dahl","Erik Dahl Offenhäuser","Lars Christensen","Betinna Christensen","Johnny Aaen","Marianne Svenstrup","Lissi Dahl"]},
+    {name:"Madsen", people:["Camilla Derosche","Camilla Derosche","Heinrich Svalø","Lone Svalø","Lise Jørgensen","Flemming Jørgensen","Flemming Madsen","Britta Madsen","Kaj Madsen","Marianne Madsen","Christian Svalø","Gitte Molbech svalø","Inge Nejsum","Erik Andersen","Jonna Clemmensen","poul Clemmensen","Hanne Mellergaard"]},
+    {name:"Gruppe 2", people:["Catia Simonsen","Henrik Simonsen","Michael Madsen","Marlene Madsen","Inger Marie Badsberg","Rikke Pedersen","Inger Poulstrup"]},
+  ]},
+  { nr:4, groups:[
+    {name:"Susanne Larsen", people:["Susanne Larsen","Lotte busk Brink Pedersen","Erik Brink Pedersen","Thomas Pilegaard","Lise Pilegaard","Pia Trampedach","Michael Trampedach","Mariann Lyngholm","Brian Christiansen","Naja Skovlyk","John Skovlyk","Patricia Ottzen","Lone Kalstrup","Thomas Juul Jørgensen","Lone Ravnholt"]},
+    {name:"De tørstige tøser", people:["Louise Ladegaard","Camilla Andersen","Christina Brix","Camilla Næss-Schmidt"]},
+    {name:"Den fordrukne kerne", people:["Maria Grøn","Mads Sørensen","Sarah Röhl","Rune Aaholm Jensen","Anja Møller","Søren Møller","Neil Buttery","Rikke Buttery","Dorthe Andersen","Dennis Andersen","Bo Pretzmann","Linda Pretzmann","Carina Holst","Simon Holst"]},
+    {name:"Fodbold årgang 1979", people:["Bo Vilhelmsen","Ole Christiansen","Kristian Gjerløv-Juel","Claus Knudsen","Jan Toftdahl"]},
+  ]},
+  { nr:5, groups:[
+    {name:"Flou", people:["Lars Flou","Søren Flou","Jacob Jensen","Stefan Fischer","Søren Engelbrecht Jensen","Christian Villum","Klaus Winther","Dennis Christensen","Ann Olesen","Niels Skov Jakobsen","Rune Carlsen","Rasmus Jeppesen","Ruddi Andersen","Claus Tomra","Claus Syndergaard","Kasper Jakobsen","Anders Flou","Uffe Jensen","Arne jakobsen","Morten Brandborg"]},
+    {name:"Godt & blandet", people:["Jacob Volstrup","Ingrid Lindenborg","Anne Birch","Rikke Dahl","Louise Sauer","Anne Birch","Jonas Schou","Helle Krogh","Lars Krogh","Martin Vester hassing","Jesper Sudergaard"]},
+    {name:"Louise Lund Hansen", people:["Johnny Ladegaard","Jette Ladegaard","Louise Lund-Hansen","Danni Lund-Hansen","Jon Batsberg","Christine Batsberg"]},
+  ]},
+  { nr:6, groups:[
+    {name:"Jysk phone rep", people:["Søren Derosche","Trine Hoff","Mette Svenningsen","Heino Hedelund Hansen","Dorte Simonsen","Peter Simonsen","Tina Dahl","Morten Dahl","Mette Emborg","Jesper Emborg","Lone Svenningsen","Henrik Pedersen","Dorthe Dencker","Dorthe Dencker","Ulla Vilhelmsen","Pia Kristensen","Pia Kristensen","Pia Kristensen","Pia Kristensen","Pia Kristensen","Pia Kristensen","Lone Nymann","Jørgen Schrøder","Jannie Andersen","Brian Bjerg","Lena Buch","Kristian Højer Jensen","Jesper Flügel Emborg","Benny Nielsen","Mette Nielsen","Mariann Tousgaard","Anders Nielsen","Pia Brix"]},
+    {name:"Gruppe 1", people:["Morten Winther","Carsten Nielsen","Maiken Nielsen","Mikkel Hansen","Mikkel Hansen"]},
+  ]},
+  { nr:7, groups:[
+    {name:"Dame senior", people:["Janni dorff Hansen","Lissa And","Christina Berger","Sarah Ha","Anja Larsen","Christine Stu"]},
+    {name:"Floorball dame", people:["Lotte Jelsbak Lynge","Louise kruse Ledet","Kristine Justesen Lind","Julie Bech Hjelm","Dorthe Nielsen","Rikke Ejlertsen","Helle Marie Rønnov Marie"]},
+    {name:"Floorball herre", people:["Jan Lund Kristensen","Charlotte Kristensen","Palle Ingvardsen Mathiesen","Michael Lynge","Søren Larsen","Brian Starcke","Patrick Stjerneby","Anders Bech Jensen","Thomas Lyk","Jacob Kildedal","Lasse Ledet","Jimmi Kildedal","Simon poulsen","Heidi Atzen","Lasse Thomsen"]},
+    {name:"Hvolgårdens Festteam", people:["Jonas Søvind Walsted","Jette Bækgaard","Anette Elleren Pedersen","Louise Amtoft Offersen","Martin Quintero","Mette Albertsen Johansen","Mikael Fahlberg Offersen","Regine Elisabeth Jensen","Thomas Andersen","Thomas Pedersen"]},
+  ]},
+  { nr:8, groups:[
+    {name:"Skateklubben", people:["Daniel Tvorup Træholt","Camilla Porsborg","Bjarke Aastrup Poulsen","Mikael Christensen","Rasmus Jensen","Jesper Rasmussen","Mikkel Ramsgaard","Martin Bach","Anders Badsberg","Rikke Bøgh skovgaard","Nick Bøgh skovgaard","Jacob Anders Jensen","Jacob Jørgensen","Tanja Jørgensen","Camilla Bersang Aastrup","Diana Guldbæk","Chris Christensen","Anne Bjørn","Lasse Christensen","Louise Fleinert","Camilla Tilm","nicolai thomsen","Christina Bach Derosche","Marie Louise Munk Hansen","Morten Rokkjær","Mette E. Jensen","Anne Krogh","Johanne Landgaard","Katrine Landgaard","Annika Frandsen","Kathrine Søndergaard Svenningsen","Michelle Klitgaard","Niklas Falck Christensen","Rikke Prien","Tobias Larsen","Linette Klokkerholm","Maiken Træholt","Mattias Lykke Jørgensen","Karina Mortensen","Henrik Jensen","Helle Lybæk","Morten Lybæk","Kasper Lykkegaard Andersen","Nanna Larsen"]},
+  ]},
+  { nr:9, groups:[
+    {name:"Bente Hyldig", people:["Dagny Gajhede","Søren Gajhede","Bente Hylling Sørensen","Knud Poulsen","Ingrid Kristiansen","Ole Kristiansen","Bente Møller","Bente Møller"]},
+    {name:"Brix", people:["Carina Brix Jensen","Henrik Müller Jensen","Lis Brix"]},
+    {name:"Butler-Refsgaard Alliancen", people:["Anne Mette Butler","Jakob Butler","Randi Helmer Refsgaard","Uffe Refsgaard"]},
+    {name:"Fredrik H. Kristensens bordet", people:["Fredrik Kristensen","Jonas Worm-Larsen","Jonas Mørk Christensen","Kasper Agerbo Jakobsen","Kim Andreasen","Sebastian Simonsen","Mathias Bæhrenz"]},
+    {name:"Linda Davidsen", people:["Linda Davidsen","Hans Jørn Andersen","Annie Larsen","Britta Andersen","Joan Diget","Peter Andersen","Poul Erik Gudiksen","Lene Gudiksen"]},
+  ]},
+  { nr:10, groups:[
+    {name:"Drosselvej", people:["Heidi Bach Rosenbeck","Kim Rosenbeck","Anne Mette Elkjær Maul","Casper Elkjær Maul","Louise Thomsen","Jakob Frilev thomsen","Christina Østerballe","Christian Østerballe","Jesper Schjøtt","Tina Ulrick","Hanne Munk","Thommas Gram Christensen","Jette Haagen Olesen","Jeppe Fuglsang Larsen","Mette Fuglsang Grøn","Birgitte Gregersen"]},
+    {name:"Evaluerings konsortiet", people:["Dorthe Nielsen","Claus Nielsen","Dorthe nielsen","majbrit jensen","lars madsen","Bente Madsen","Helle jensen","Bjarne jensen","Gitte Christensen","Bent Christensen"]},
+    {name:"Holst/Toft Jensen", people:["Jørgen Holst","Hanne Holst","Ulla Toft Jensen","Søren Toft Jensen"]},
+  ]},
+  { nr:11, groups:[
+    {name:"Guldbech Steensgaard", people:["Sara Guldbech Steensgaard","Kristian Guldbech Steensgaard","Marinne Kaltoft","Tue Jørgensen","Sarah Villadsen","Sabina Lunde","Jesper Lunde","Mikkel Mispel"]},
+    {name:"Kim & Karin", people:["Karin Tranholm Nørgaard","Kim Tranholm Nørgaard","Michael Rytter Jensen","Britta Kristensen","Jette Kristensen","Leo Christensen","Ane Elsnab","Poul Hansen","Marlene Rosenmeier Jensen","Martin Rosenmeier Jensen","Hanne Sigsgaard","Per Sigsgaard"]},
+    {name:"VH tøserne", people:["Heidi Nygaard","Janni Abel","Maria Martinsen","Michelle Fruensgaard","Ane-Stine Korgaard","Mette Schou"]},
+    {name:"Ørumservice", people:["Thomas Ørum","Tina Ørum","Filuca Ørum","Mathias Riis"]},
+  ]},
+  { nr:12, groups:[
+    {name:"Jydetrioen", people:["Pernille Grønvald nielsen","Stefanie Bella Kjærsgaard Ovesen"]},
+    {name:"Gruppe 3", people:["Nicolai Trampedach","Mikkel Hansen","Christian Westergren","Astrid Westergren","Julia Normann Østergård","Thomas Normann Østergård"]},
+    {name:"Gruppe 4", people:["Marc Agerbo Jakobsen","Joakim Hjorth","Jesper Christiansen","Katrine Svenningsen","Emilie Ishøi","Louise Skaarup","Monika Busk","Kirstine Riis","Lars Sørensen"]},
+    {name:"Gruppe 5", people:["Jeppe Thomsen","Mathias Pilegaard","Kasper Larsen","Casper Marquardt Gregersen","Marcus Jessen","Kristian Worm-Larsen","Rasmus Lynnerup","Kristian Eliasen"]},
+    {name:"Gruppe 6", people:["thomas poulsen","klaus larsen","Michael Sørig","Michael Sørig","Michael Sørig"]},
+  ]},
+  { nr:13, groups:[
+    {name:"Grønvald", people:["Kasper Grønvald","Jeanette Grønvald","Martin Simonsen","Signe Simonsen"]},
+    {name:"HA VH", people:["Carl Emil Rise Hansen","Nikolaj Birk Larsen","Simon Lind","Søren Nielsen"]},
+    {name:"Poulsen og venner", people:["Lars 1 Poulsen","Lars 2 Poulsen","Lars 3 Poulsen","Lars 4 Poulsen","Lars 5 Poulsen","Lars 6 Poulsen"]},
+    {name:"Swinger klubben", people:["Anita Clemmensen","Dennis Clemmensen","Heidi Sørensen","Dany Nielsen"]},
+    {name:"Turgruppen - 6 personer", people:["Stella Tousgaard","Morten Tousgaard","Karsten Brogaard Jensen","Lotte Jensen","Anni  Houen Jensen","Anders Houen Jensen","Lars Christensen"]},
+    {name:"Uglerne", people:["Lars Klitgaard Jakobsen","Pernille Stampe Jakobsen","Kristian Jensen","Mette Baade","Karina Sommer","Jesper Nielsen","Maria Toft petersen"]},
+  ]},
+  { nr:14, groups:[
+    {name:"AB og venne familien", people:["Anne-britt Andersen"]},
+    {name:"Allan & Jette", people:["Allan Nørgaard Skov","JETTE Skov"]},
+    {name:"Håndbold senior", people:["Morten Kam","Jacob Madsen","Christian Kam Dahl Nielsen","Dorte Mikkelsen","Kristina Batsberg Nielsen","Johanne G. Batsberg","Caroline Normann","Louise Ottzen Dueholm","Søren Dueholm","Pernille Kam Dahl Dueholm","Morten Dueholm","Berit Andersen","Sofie Pilegaard","Kamilla Hoffmann","Sara Devantie Thomsen","Philip Nielsen","Max Tousgard","Andreas Krogh","Rasmus Skannerup Hansen","Julie Leer","Emma Pihl","Jacob Starcke","Christian Reimer","Oscar Kristensen"]},
+  ]},
+];
+
 PAGES['/byfest/galleri'] = function() {
   const imgs = Array.from({ length: 14 }, (_, i) => `byfest2026-${String(i + 1).padStart(2, '0')}.jpg`);
   const base = 'assets/images/byfest2026/galleri';
@@ -1943,7 +2026,7 @@ PAGES['/byfest/galleri'] = function() {
       </section>
 
       <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra Byfest 2026</small></h2>
+        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn — vi viser dit bord til både 100-års jubilæet 2025 og byfest 2026</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
           <div class="byfest-search-row">
@@ -1952,7 +2035,10 @@ PAGES['/byfest/galleri'] = function() {
           <div id="byfest-search-result"><p class="byfest-muted">Begynd at skrive for at finde dit bord…</p></div>
         </div>
 
-        <h2 class="byfest-sec-title">Bordplanen som den så ud i 2026 <small>Indgang og bar mod nord · scene mod syd</small></h2>
+        <h2 class="byfest-sec-title">🎂 Bordplan · 100-års jubilæum 2025 <small>Lørdag den 14. juni 2025 · selskaber fordelt på 14 borde</small></h2>
+        <div class="byfest-tables" id="jubilee-tables"></div>
+
+        <h2 class="byfest-sec-title">🎈 Bordplan · Byfest 2026 <small>Indgang og bar mod nord · scene mod syd</small></h2>
         <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item" data-index="14"><img src="assets/byfest2026/bordplan.png" alt="Bordplan over hallen med bord 1-6, bar og scene (Byfest 2026)" loading="lazy"></a>
         <p class="byfest-map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>
 
@@ -2318,11 +2404,11 @@ function initByfestGallery() {
   document.addEventListener('keydown', byfestLbKeyHandler);
 }
 
-// Render the byfest table cards
-function renderByfestTables() {
-  const el = document.getElementById('byfest-tables');
+// Render a set of table cards into a container
+function renderTablesInto(elId, tables) {
+  const el = document.getElementById(elId);
   if (!el) return;
-  el.innerHTML = BYFEST_TABLES.map(t => {
+  el.innerHTML = tables.map(t => {
     const count = t.groups.reduce((s, g) => s + g.people.length, 0);
     const groupsHtml = t.groups.map(g => `
       <div class="byfest-group">
@@ -2339,46 +2425,75 @@ function renderByfestTables() {
   }).join('');
 }
 
-// Name search across the byfest tables
+// Render both seating plans (2025 jubilee + 2026 byfest)
+function renderByfestTables() {
+  renderTablesInto('jubilee-tables', JUBILEE_2025_TABLES);
+  renderTablesInto('byfest-tables', BYFEST_TABLES);
+}
+
+// Name search across both years — aggregated per person
 function initByfestSearch() {
   const input = document.getElementById('byfest-search');
   const result = document.getElementById('byfest-search-result');
   if (!input || !result) return;
 
-  const index = [];
-  BYFEST_TABLES.forEach(t => t.groups.forEach(g => {
-    const seen = new Set();
-    g.people.forEach(p => {
-      const key = p.toLowerCase();
-      if (seen.has(key)) return; // collapse duplicate names within same group
-      seen.add(key);
-      index.push({ name: p, group: g.name, nr: t.nr, uden: !!g.uden });
-    });
-  }));
-
   const norm = s => s.toLowerCase()
     .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
     .replace(/[^a-z0-9 ]/g, '').trim();
+
+  // Build a per-person record keyed by normalized full name, collecting
+  // every table placement across both years.
+  const people = new Map();
+  const addYear = (tables, yearKey) => {
+    tables.forEach(t => t.groups.forEach(g => {
+      const seen = new Set();
+      g.people.forEach(p => {
+        const k = norm(p);
+        if (!k) return;
+        const dedup = g.name + '|' + t.nr; // collapse duplicate names within same selskab
+        if (seen.has(k + dedup)) return;
+        seen.add(k + dedup);
+        if (!people.has(k)) people.set(k, { name: p, key: k, y2025: [], y2026: [] });
+        people.get(k)[yearKey].push({ group: g.name, nr: t.nr, uden: !!g.uden });
+      });
+    }));
+  };
+  addYear(JUBILEE_2025_TABLES, 'y2025');
+  addYear(BYFEST_TABLES, 'y2026');
+  const index = Array.from(people.values());
+
+  const fmt = arr => arr
+    .map(p => `<span class="byfest-place">🪑 Bord ${p.nr} · ${p.group}${p.uden ? ' · uden spisning' : ''}</span>`)
+    .join('');
+
+  const renderHit = h => {
+    const both = h.y2025.length && h.y2026.length;
+    let badge;
+    if (both) badge = '<span class="byfest-status both">🎉 Med til begge fester</span>';
+    else if (h.y2025.length) badge = '<span class="byfest-status only">🎂 Kun jubilæum 2025</span>';
+    else badge = '<span class="byfest-status only">🎈 Kun byfest 2026</span>';
+    const lines = [];
+    if (h.y2025.length) lines.push(`<div class="byfest-year-line"><span class="byfest-yr yr-2025">2025</span><span class="byfest-places">${fmt(h.y2025)}</span></div>`);
+    if (h.y2026.length) lines.push(`<div class="byfest-year-line"><span class="byfest-yr yr-2026">2026</span><span class="byfest-places">${fmt(h.y2026)}</span></div>`);
+    return `<div class="byfest-hit byfest-hit-multi">
+      <div class="byfest-who">${h.name}${badge}</div>
+      <div class="byfest-year-lines">${lines.join('')}</div>
+    </div>`;
+  };
 
   const runSearch = q => {
     const nq = norm(q);
     if (!nq) { result.innerHTML = '<p class="byfest-muted">Begynd at skrive for at finde dit bord…</p>'; return; }
     const terms = nq.split(/\s+/);
     const hits = index
-      .filter(r => { const n = norm(r.name); return terms.every(t => n.includes(t)); })
+      .filter(r => terms.every(t => r.key.includes(t)))
       .sort((a, b) => a.name.localeCompare(b.name, 'da'));
     if (!hits.length) {
       result.innerHTML = '<p class="byfest-muted">Ingen gæster fundet — prøv et andet navn, eller spørg festudvalget. 🙂</p>';
       return;
     }
-    result.innerHTML = hits.slice(0, 40).map(h => `
-      <div class="byfest-hit">
-        <div>
-          <div class="byfest-who">${h.name}</div>
-          <div class="byfest-grp">${h.group}${h.uden ? ' · uden spisning' : ''}</div>
-        </div>
-        <div class="byfest-badge-table">🪑 Bord ${h.nr}</div>
-      </div>`).join('') + (hits.length > 40 ? '<p class="byfest-muted">Forfin din søgning for at se flere…</p>' : '');
+    result.innerHTML = hits.slice(0, 40).map(renderHit).join('') +
+      (hits.length > 40 ? '<p class="byfest-muted">Forfin din søgning for at se flere…</p>' : '');
   };
 
   let tmo;
