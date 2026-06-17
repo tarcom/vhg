@@ -1167,7 +1167,7 @@ PAGES[''] = PAGES['/'] = function() {
             </div>
           </div>
           <div style="flex-basis:100%;text-align:center;margin-top:0.6rem">
-            <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/images/byfest2026/galleri/byfest2026-08.jpg" title="Klik for at se galleriet med lyd" style="width:min(100%,560px);height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.25);cursor:pointer"></video>
+            <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/video/byfest2026-video-poster.jpg" title="Klik for at se galleriet med lyd" style="width:min(100%,560px);height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.25);cursor:pointer"></video>
             <p style="font-size:0.82rem;opacity:0.85;margin-top:0.4rem">🔊 Klik på videoen for at se hele galleriet med lyd</p>
           </div>
         </div>
@@ -1831,7 +1831,7 @@ PAGES['/byfest/galleri'] = function() {
   return pageHeader('🎉', 'Byfest 2026 — billeder & video', '<a href="#/">Hjem</a> / Byfest', 'Gensyn med en fantastisk byfest. Klik på et billede for at se det stort.') +
     `<div class="page container">
       <div class="section">
-        <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="metadata" poster="${base}/byfest2026-08.jpg" style="width:min(100%,900px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)"></video>
+        <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="auto" poster="assets/video/byfest2026-video-poster.jpg" style="width:min(100%,900px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)"></video>
         <p style="text-align:center;margin-top:1.2rem"><a href="#/" class="btn btn-outline-dark btn-sm">← Tilbage til forsiden</a></p>
       </div>
       <div class="section">
@@ -1839,7 +1839,11 @@ PAGES['/byfest/galleri'] = function() {
         <div class="byfest-gallery-grid">
           ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
         </div>
-        <p style="text-align:center;margin-top:1.6rem"><a href="bordplan.html" class="btn btn-outline-dark btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a></p>
+      </div>
+      <div class="section">
+        <h2 class="section-title section-title-center">Bordplan 2026</h2>
+        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item"><img src="assets/byfest2026/bordplan.png" alt="Bordplan fra byfesten 2026" loading="lazy"></a>
+        <p style="text-align:center;margin-top:0.8rem;opacity:0.85;font-size:0.9rem">Klik for at se bordplanen i stort format.</p>
       </div>
       <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
         <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
@@ -2140,6 +2144,16 @@ function initByfestPromoMedia() {
 // Byfest gallery lightbox
 let byfestLbKeyHandler = null;
 function initByfestGallery() {
+  // Start the gallery video automatically once when the page opens.
+  // Try with sound first (allowed when arriving via a click); fall back to muted.
+  const galleryVideo = document.querySelector('.byfest-gallery-video');
+  if (galleryVideo) {
+    galleryVideo.play().catch(() => {
+      galleryVideo.muted = true;
+      galleryVideo.play().catch(() => {});
+    });
+  }
+
   const lb = document.getElementById('byfest-lightbox');
   if (!lb) return;
   const items = Array.from(document.querySelectorAll('.byfest-gallery-item'));
