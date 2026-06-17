@@ -1832,14 +1832,14 @@ PAGES['/byfest/galleri'] = function() {
     `<div class="page container">
       <div class="section">
         <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="metadata" poster="${base}/byfest2026-08.jpg" style="width:min(100%,900px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)"></video>
-        <p style="text-align:center;margin-top:1.2rem"><a href="#/" class="btn btn-outline btn-sm">← Tilbage til forsiden</a></p>
+        <p style="text-align:center;margin-top:1.2rem"><a href="#/" class="btn btn-outline-dark btn-sm">← Tilbage til forsiden</a></p>
       </div>
       <div class="section">
         <h2 class="section-title section-title-center">Billeder fra byfesten</h2>
         <div class="byfest-gallery-grid">
           ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
         </div>
-        <p style="text-align:center;margin-top:1.6rem"><a href="bordplan.html" class="btn btn-outline btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a></p>
+        <p style="text-align:center;margin-top:1.6rem"><a href="bordplan.html" class="btn btn-outline-dark btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a></p>
       </div>
       <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
         <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>

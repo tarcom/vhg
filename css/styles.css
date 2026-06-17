@@ -1273,6 +1273,9 @@ body:not(.is-home) .site-header.scrolled .logo {
 .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(241,220,77,0.3); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+/* Dark variant for light backgrounds */
+.btn-outline-dark { background: transparent; color: var(--navy); border: 2px solid rgba(0,63,122,0.35); }
+.btn-outline-dark:hover { border-color: var(--navy); color: var(--navy-light); background: rgba(0,63,122,0.06); }
 .btn-sm { padding: 0.5rem 1.2rem; font-size: 0.82rem; }
 
 /* ============================================
