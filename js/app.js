@@ -1156,19 +1156,21 @@ PAGES[''] = PAGES['/'] = function() {
 
       <div class="section" id="home-byfest">
         <h2 class="section-title section-title-center">Byfest i Vester Hassing</h2>
-        <div class="info-box" style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
-          <img src="assets/images/byfest_ny.png" alt="VHG Byfest 2027 — lørdag den 12. juni" loading="lazy" style="width:min(100%, 300px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);flex-shrink:0;margin:0 auto">
-          <div style="flex:1;min-width:280px">
-            <h3 style="margin-bottom:0.4rem">Byfest 2027 — lørdag den 12. juni</h3>
-            <p style="margin-bottom:0.9rem">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
+        <div class="info-box byfest-home-box">
+          <img class="byfest-home-poster" src="assets/images/byfest_ny.png" alt="VHG Byfest 2027 — lørdag den 12. juni" loading="lazy">
+          <div class="byfest-home-content">
+            <div>
+              <h3 style="margin-bottom:0.4rem">Byfest 2027 — lørdag den 12. juni</h3>
+              <p style="margin:0">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
+            </div>
             <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
               <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
               <a href="#/byfest/galleri" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
             </div>
-          </div>
-          <div style="flex-basis:100%;text-align:center;margin-top:0.6rem">
-            <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/video/byfest2026-video-poster.jpg" title="Klik for at se galleriet med lyd" style="width:min(100%,560px);height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.25);cursor:pointer"></video>
-            <p style="font-size:0.82rem;opacity:0.85;margin-top:0.4rem">🔊 Klik på videoen for at se hele galleriet med lyd</p>
+            <div class="byfest-home-video">
+              <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/video/byfest2026-video-poster.jpg" title="Klik for at se galleriet med lyd"></video>
+              <p style="font-size:0.82rem;opacity:0.85;margin:0.4rem 0 0">🔊 Klik på videoen for at se hele galleriet med lyd</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1825,34 +1827,127 @@ PAGES['/fodbold/kontingent'] = function() {
 };
 
 // --- BYFEST GALLERI ---
+// Bordplan 2026: borde -> selskaber -> personer (porteret fra den gamle bordplan-side)
+const BYFEST_TABLES = [
+  { nr:1, groups:[
+    {name:"Gruppe 3", people:["Rikke Leth","Christian Leth"]},
+    {name:"Gruppe 2", uden:true, people:["Mogens Kildedal Pedersen","Isa Therese Bucio","Christina Nielsen","Charlie Nielsen"]},
+    {name:"Senior badminton", people:["Charlotte Dehn","Katrine Nørgaard","Anders Hvedhaven","Lars Westergren","Claus Mikkelsen","Lars Ole Olsen","Nancy Olsen","Jane Jensen","Philip Jørgensen","Philip Jørgensen","Morten Strøm","Morten Strøm"]},
+    {name:"Madsen", people:["Flemming Madsen","Britta Brønnerup Madsen","Kaj Madsen","Marianne Madsen","Erik Andersen","Inge Andersen","Heinrich Svalø","Lone Svalø","Gitte Svalø","Christian Svalø"]},
+    {name:"Madsbøl", people:["Mette Madsbøl","Søren Madsbøl","Anne-britt Andersen","Mikael Andersen","Mette Marie Abildgaard","Jens Martin Jacobsen","Karina Flyger","Christian Holt Flyger","Mette Fly Nielsen","Henrik Nielsen"]},
+    {name:"Konsortiet", people:["Bent Christensen","Gitte Christensen","Claus Nielsen","Dorthe Nielsen","Lars Madsen","Bente Madsen","Bjarne Jensen","Helle Jensen","Majbritt Jensen","Torben Jensen"]},
+    {name:"Larsen & Co.", people:["Mette Nielsen","Jan Larsen"]},
+    {name:"Holst", people:["Jørgen Holst","Hanne Holst"], uden:true},
+    {name:"Christian Phillip", people:["Emil Phillip","Dorte Phillip","Christian Phillip"]},
+  ]},
+  { nr:2, groups:[
+    {name:"Kernen", people:["Carina Holst","Simon Holst","Sarah Røhl","Rune Aaholm","Rikke Buttery","Neil Buttery"]},
+    {name:"Keld Karlsen", people:["Pia Bisgaard","Keld Karlsen"]},
+    {name:"Kaviarklubben", people:["Julie Ottzen","Simon Ottzen","Ann Østergaard","Jeppe Brink"]},
+    {name:"Ja", people:["Alf Carlsen","Kirsten Merete Frandsen","Lene Kvist","Finn Koren Mouritzen","Emma Ulrikke Lorentzen"]},
+    {name:"Fynbo Steensgaard", people:["Camilla Hansen","Tim Johansen","Sara Guldbech Steensgaard","Kristian Guldbech Steensgaard"]},
+    {name:"Godt og blandet", people:["Jacob Volstrup","Ingrid Lindenborg","Rikke Dahl","Jesper Sudergaard","Anne Birch","Simon Schøning"]},
+    {name:"Kaltoft", people:["Marianne Kaltoft","Tue Jørgensen","Lærke Nielsen","Frederik Nielsen","Iman Aziz","Alex Winther","Kristina Stidsholt","Annsophie Köhler","Mikkel Mispel","Sarah Sofia Oddermose","Tara Steinfeld","Oliver Nielsen","Nikoline Bjørn","Anders Bjørn","Rikke Ejlertsen","Jens-Ole Ejlertsen"]},
+    {name:"Groben", people:["Sheila Behnke","Rasmus Kiel"]},
+    {name:"Wild cats", people:["Gitte Lykke","Martin Lykke","Christina Holm Madsen","Kasper Madsen","Sabina Dyg Lunde","Jesper Dyg Lunde","Michelle Falck","Niklas Falck"]},
+    {name:"Winde-Hertz", people:["Morten Hertz","Sandra Hertz","Camilla Winde","Jacob Winde"]},
+  ]},
+  { nr:3, groups:[
+    {name:"Det gode selskab", people:["Birgitte Gaarn","Jan Gaarn","Lene Poulsen","Helle Poulsen","Pernille Andersen","Jan Andersen"]},
+    {name:"Flemming Madsen", people:["Bentha Hougaard","Brian Hougaard","Jonna Clemmensen","Hanne Mellergaard","Poul Clemmensen","Kent Laursen","Christel Laursen"]},
+    {name:"Tina Sloth", people:["Tina Sloth Dahl","Morten Dahl","Brian Bjerg","Lena Buch","Dorte Simonsen","Peter Simonsen","Trine Hoff","Trine Hoff","Mariann Tousgaard","Anders Nielsen","Per Simonsen","Rikke Pedersen","Rikke Broen","Kristian Jensen","Hanne Munk","Thommas Gram Christensen","Mette Svenningsen","Heino Hansen","Henrik Pedersen"]},
+    {name:"Lene Christiansen / Mikkel Hansen", people:["Erik Brink Pedersen","Lene Christiansen","Brian Stoffersen","Lars Christensen","Betinna Christensen","Carina Brix Jensen","Henrik Müller Jensen","Lotte Kidmose","Lotte Busk Pedersen","Mikkel Hansen","Maria Alberte Sørensen","Michael Madsen","Marlene Madsen"]},
+    {name:"Ladegaard bordet", people:["Morten Juliussen","Dorthe Juliussen","Dorrit Christensen","Palle Christensen","Johnny Ladegaard","Jette Ladegaard","Rikke Pryssing","Mads Schjøtt"]},
+  ]},
+  { nr:4, groups:[
+    {name:"Legeaftalen", people:["Nanna Birk Larsen","Marc Madsen","Ane Krogh Overgaard","Tommy Krogh Overgaard","Helle Krogh Hansen","Lars Krogh Reinholdt"]},
+    {name:"Tine & Lasse (Holst)", people:["Morten Dahl","Gitte Dahl"]},
+    {name:"Bakkedraget", people:["Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum","Thomas Ørum"]},
+    {name:"Butler-Refsgaard", people:["Uffe Refsgaard","Randi Refsgaard","Anne Mette Butler","Jakob Butler"]},
+    {name:"Caviarklubben", people:["Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald","Kasper Grønvald"]},
+    {name:"CMJ", people:["Christine Nielsen","Christine Nielsen"]},
+    {name:"De tørstige tøsser", people:["Christina Brix","Louise Ladegaard","Camilla Andersen","Michelle Schjøtt","Louise Ladegaard"]},
+    {name:"Fredrik Kristensen", people:["Kim Andreasen","Fredrik Kristensen","Kasper Jakobsen","Jonas Worm","Kristian Worm","Markus Mølgaard","Kasper Steen","Kristian Eliasen","Frederik Solberg","Jonas Christensen","Victoria Fiedler","Rasmus Lynnerup","Pia Helmer Kristensen","Pia Helmer Kristensen","Pia Helmer Kristensen","Sylvester Funke"]},
+    {name:"Dennis, Rune, Niels mv.", people:["Amalie Thorvald","Emma Vegeberg","Dennis Christensen","Rune Carlsen","Niels Jakobsen"]},
+  ]},
+  { nr:5, groups:[
+    {name:"Floorball damer", people:["Louise Kruse Ledet","Helle Vinter","Julie Bech Hjelm","Mira Lønvad","Rune Batsberg","Kristine Justesen Lind"]},
+    {name:"Floorball herre", people:["Anders Bech Jensen","Jimmi Kildedal","Allan Nørgaard Skov","Lasse Ledet","Lasse Thomsen","Jonas Kristensen","Thomas Lyk"]},
+    {name:"Uglerne", people:["Jesper Nielsen","Jesper Nielsen","Jesper Nielsen","Jesper Nielsen","Karina Sommer","Allan Mortensen","Gitte Funke","Lars Jakobsen","Pernille Jakobsen"]},
+    {name:"Håndbold senior", people:["Morten Kam Dahl Nielsen","Julie Ballegaard Leer","Dorte Mikkelsen","Louise Ottzen Dueholm","Pernille Kam Dahl Dueholm","Morten Kam Dahl Dueholm","Jette Skov","Carla Pedersen","Sofie Pilegaard","Katrine Svenningsen"]},
+    {name:"Fodbold herre", people:["Johan Poulstrup","Hussein El Hek","Frederik Abildgaard","Kasper Larsen","Sebastian Gyde","Marcus Jessen","Mathias Pilegaard"]},
+    {name:"Vi lukker festen igen", people:["Ane Rasmussen","Emilie Almskov Jakobsen","Lærke Kristiansen","Amalie Gudiksen","Anne Hejgendorf","Laura Sahl","Pia Vestergaard Nielsen","Trine Faulkner","Kathrine Søndergaard Svenningsen","Anne Toft","Sissel Bülow Jakobsen","Nina Jørgensen","Mette Meldgaard Jessen","Gry Steensgaard"]},
+    {name:"Gruppe 1", people:["Morten Winther","Janni Dorff Hansen","Inge Gregersen","Finn Besser","Zitta Dahl Holm","Tanja Hammerholt","Carina Ørum Jacobsen","Martin Ørum Jacobsen"]},
+  ]},
+  { nr:6, groups:[
+    {name:"Hvolgårdens bedste naboer", people:["Anita Clemmensen","Dennis Clemmensen","Mette Johansen","Thomas Andersen","Martin Quintero","Regine Jensen","Thomas Pedersen","Anette Elleren Pedersen","Mikael Offersen","Louise Offersen","Jette Bækgaard","Jonas Søvind Walsted"]},
+    {name:"VH Gang 98/99", people:["Jesper Christiansen","Lise Kristensen","Sebastian Kristensen","Nils Kristensen","Simone Ottzen","Sarah Vangsted","Tobias Heskjær","Kristian Dalgaard","Martine Veisene","Laura Nyby","Thor Toft Sørensen","Magnus Thøgersen","Rebecca Fjordbak","Gabriel Ayoub","Ditte Simonsen"]},
+    {name:"Skateklub", people:["Bjarke Aastrup Poulsen","Camilla Bersang Aastrup","Mikael Ivan Vinther Christensen","Anne Posborg Bjørn","Anders Badsberg Larsen","Annika Frandsen","Jesper Rasmussen","Rasmus Bjerg Jensen","Camilla Tilm","Bjarne Pedersen","Nicolai Thomsen","Mikkel Rokkjær","Anne Krogh","Birgitte Landgaard","Christina Derosche","Mikkel Ramsgaard","Linette Nielsen"]},
+    {name:"Party-klubben", people:["Louise Schou Thomsen","Jakob Frilev Thomsen","Heidi Bach Rosenbeck","Kim Svanholm Rosenbeck","Annemette Elkjær Maul","Casper Maul","Jeppe Fuglsang Larsen","Mette Fuglsang Grøn"]},
+    {name:"HAVH", people:["Carl Emil Rise Andersen","Jonas Svenningsen","Kristian Staurup Lassen","Patrick Malik Tousgaard","Christian Kam Dahl Nielsen"]},
+  ]},
+];
+
 PAGES['/byfest/galleri'] = function() {
   const imgs = Array.from({ length: 14 }, (_, i) => `byfest2026-${String(i + 1).padStart(2, '0')}.jpg`);
   const base = 'assets/images/byfest2026/galleri';
-  return pageHeader('🎉', 'Byfest 2026 — billeder & video', '<a href="#/">Hjem</a> / Byfest', 'Gensyn med en fantastisk byfest. Klik på et billede for at se det stort.') +
-    `<div class="page container">
-      <div class="section">
-        <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="auto" poster="assets/video/byfest2026-video-poster.jpg" style="width:min(100%,900px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)"></video>
-        <p style="text-align:center;margin-top:1.2rem"><a href="#/" class="btn btn-outline-dark btn-sm">← Tilbage til forsiden</a></p>
-      </div>
-      <div class="section">
-        <h2 class="section-title section-title-center">Billeder fra byfesten</h2>
+  return `<div class="byfest-fest">
+    <div class="byfest-confetti" id="byfest-confetti" aria-hidden="true"></div>
+    <div class="byfest-fest-wrap">
+      <header class="byfest-fest-hero">
+        <span class="byfest-eyebrow">Vester Hassing · Byfest 2026</span>
+        <h1><span class="byfest-sparkle">✨</span> Byfest 2026 <span class="byfest-sparkle">✨</span></h1>
+        <p class="byfest-sub">Gensyn med en fantastisk aften — se billeder og video, og find dit bord i bordplanen.</p>
+        <a href="#/" class="byfest-back">← Tilbage til forsiden</a>
+      </header>
+
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Video fra festen <small>Skru op for lyden 🔊</small></h2>
+        <div class="byfest-video-card">
+          <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="auto" poster="assets/video/byfest2026-video-poster.jpg"></video>
+        </div>
+      </section>
+
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Billeder <small>Klik for at se i stort format</small></h2>
         <div class="byfest-gallery-grid">
           ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
         </div>
-      </div>
-      <div class="section">
-        <h2 class="section-title section-title-center">Bordplan 2026</h2>
-        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item"><img src="assets/byfest2026/bordplan.png" alt="Bordplan fra byfesten 2026" loading="lazy"></a>
-        <p style="text-align:center;margin-top:0.8rem;opacity:0.85;font-size:0.9rem">Klik for at se bordplanen i stort format.</p>
-      </div>
-      <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
-        <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
-        <button class="byfest-lb-prev" type="button" aria-label="Forrige billede">&#10094;</button>
-        <img class="byfest-lb-img" src="" alt="">
-        <button class="byfest-lb-next" type="button" aria-label="Næste billede">&#10095;</button>
-      </div>
-    </div>`;
+      </section>
+
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn, så viser vi bordet</small></h2>
+        <div class="byfest-search-card">
+          <label for="byfest-search">Søg efter dit navn</label>
+          <div class="byfest-search-row">
+            <input id="byfest-search" type="search" placeholder="Skriv fornavn eller efternavn…" autocomplete="off">
+          </div>
+          <div id="byfest-search-result"><p class="byfest-muted">Begynd at skrive for at finde dit bord…</p></div>
+        </div>
+
+        <h2 class="byfest-sec-title">Sådan ser hallen ud <small>Indgang og bar mod nord · scene mod syd</small></h2>
+        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item" data-index="14"><img src="assets/byfest2026/bordplan.png" alt="Bordplan over hallen med bord 1-6, bar og scene" loading="lazy"></a>
+        <p class="byfest-map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>
+
+        <h2 class="byfest-sec-title">Alle borde <small>Selskaber er fordelt på 6 borde</small></h2>
+        <div class="byfest-tables" id="byfest-tables"></div>
+      </section>
+
+      <footer class="byfest-fest-footer">
+        <p>Vi glæder os til næste fest! 🎉 Spørgsmål? Kontakt festudvalget.</p>
+        <a href="#/" class="byfest-back">← Tilbage til vhg.dk</a>
+      </footer>
+    </div>
+
+    <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
+      <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
+      <button class="byfest-lb-prev" type="button" aria-label="Forrige billede">&#10094;</button>
+      <img class="byfest-lb-img" src="" alt="">
+      <button class="byfest-lb-next" type="button" aria-label="Næste billede">&#10095;</button>
+    </div>
+  </div>`;
 };
+
 
 // --- HÅNDBOLD ---
 function haandboldSubNav(active) {
@@ -2154,6 +2249,10 @@ function initByfestGallery() {
     });
   }
 
+  renderByfestTables();
+  initByfestSearch();
+  initByfestConfetti();
+
   const lb = document.getElementById('byfest-lightbox');
   if (!lb) return;
   const items = Array.from(document.querySelectorAll('.byfest-gallery-item'));
@@ -2190,6 +2289,90 @@ function initByfestGallery() {
     else if (e.key === 'ArrowRight') show(idx + 1);
   };
   document.addEventListener('keydown', byfestLbKeyHandler);
+}
+
+// Render the byfest table cards
+function renderByfestTables() {
+  const el = document.getElementById('byfest-tables');
+  if (!el) return;
+  el.innerHTML = BYFEST_TABLES.map(t => {
+    const count = t.groups.reduce((s, g) => s + g.people.length, 0);
+    const groupsHtml = t.groups.map(g => `
+      <div class="byfest-group">
+        <div class="byfest-g-name"><span class="byfest-dot"></span>${g.name}${g.uden ? '<span class="byfest-uden">uden spisning</span>' : ''}</div>
+        <ul>${g.people.map(p => `<li>${p}</li>`).join('')}</ul>
+      </div>`).join('');
+    return `<div class="byfest-table-card">
+      <div class="byfest-table-head">
+        <div class="byfest-table-num">${t.nr}</div>
+        <div><h3>Bord ${t.nr}</h3><span class="byfest-cnt">${count} gæster · ${t.groups.length} selskaber</span></div>
+      </div>
+      ${groupsHtml}
+    </div>`;
+  }).join('');
+}
+
+// Name search across the byfest tables
+function initByfestSearch() {
+  const input = document.getElementById('byfest-search');
+  const result = document.getElementById('byfest-search-result');
+  if (!input || !result) return;
+
+  const index = [];
+  BYFEST_TABLES.forEach(t => t.groups.forEach(g => {
+    const seen = new Set();
+    g.people.forEach(p => {
+      const key = p.toLowerCase();
+      if (seen.has(key)) return; // collapse duplicate names within same group
+      seen.add(key);
+      index.push({ name: p, group: g.name, nr: t.nr, uden: !!g.uden });
+    });
+  }));
+
+  const norm = s => s.toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
+    .replace(/[^a-z0-9 ]/g, '').trim();
+
+  const runSearch = q => {
+    const nq = norm(q);
+    if (!nq) { result.innerHTML = '<p class="byfest-muted">Begynd at skrive for at finde dit bord…</p>'; return; }
+    const terms = nq.split(/\s+/);
+    const hits = index
+      .filter(r => { const n = norm(r.name); return terms.every(t => n.includes(t)); })
+      .sort((a, b) => a.name.localeCompare(b.name, 'da'));
+    if (!hits.length) {
+      result.innerHTML = '<p class="byfest-muted">Ingen gæster fundet — prøv et andet navn, eller spørg festudvalget. 🙂</p>';
+      return;
+    }
+    result.innerHTML = hits.slice(0, 40).map(h => `
+      <div class="byfest-hit">
+        <div>
+          <div class="byfest-who">${h.name}</div>
+          <div class="byfest-grp">${h.group}${h.uden ? ' · uden spisning' : ''}</div>
+        </div>
+        <div class="byfest-badge-table">🪑 Bord ${h.nr}</div>
+      </div>`).join('') + (hits.length > 40 ? '<p class="byfest-muted">Forfin din søgning for at se flere…</p>' : '');
+  };
+
+  let tmo;
+  input.addEventListener('input', e => { clearTimeout(tmo); tmo = setTimeout(() => runSearch(e.target.value), 90); });
+}
+
+// Festive confetti inside the byfest page
+function initByfestConfetti() {
+  const c = document.getElementById('byfest-confetti');
+  if (!c) return;
+  const colors = ['#F1DC4D', '#1A73C9', '#fff', '#D4C136', '#0B5AA5'];
+  for (let i = 0; i < 26; i++) {
+    const s = document.createElement('i');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.background = colors[i % colors.length];
+    s.style.animationDuration = (6 + Math.random() * 7) + 's';
+    s.style.animationDelay = (-Math.random() * 10) + 's';
+    s.style.opacity = (0.4 + Math.random() * 0.5).toFixed(2);
+    if (Math.random() > 0.5) s.style.borderRadius = '50%';
+    c.appendChild(s);
+  }
 }
 
 function initHomeSponsorCarousel() {

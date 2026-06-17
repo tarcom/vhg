@@ -822,9 +822,103 @@ body:not(.is-home) .site-header.scrolled .logo {
   50% { transform: scale(1.06); box-shadow: 0 10px 24px rgba(241,220,77,0.45); }
 }
 
+/* Forsidens byfest-sektion: poster til venstre, tekst + knapper + video til højre */
+.byfest-home-box {
+  display: flex;
+  gap: 1.8rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.byfest-home-poster {
+  width: min(100%, 300px);
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+  align-self: center;
+  margin: 0 auto;
+}
+.byfest-home-content {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.byfest-home-video { margin-top: 0.2rem; }
+.byfest-home-video video {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .byfest-home-box { gap: 1.1rem; }
+  .byfest-home-video { text-align: center; }
+  .byfest-home-video video { margin: 0 auto; }
+}
+
 /* ============================================
-   BYFEST GALLERI
+   BYFEST GALLERI (festlig side: video, billeder, bordplan)
    ============================================ */
+.byfest-fest {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(160deg, #001F3D 0%, #003F7A 45%, #0B5AA5 100%);
+}
+.byfest-fest-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.4rem 1.1rem 4rem;
+}
+
+/* confetti (fixed so it keeps falling across the viewport while scrolling) */
+.byfest-confetti { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.byfest-confetti i {
+  position: absolute; top: -14px; width: 10px; height: 14px; opacity: .85;
+  animation: byfestFall linear infinite;
+}
+@keyframes byfestFall {
+  0% { transform: translateY(-20px) rotate(0); }
+  100% { transform: translateY(105vh) rotate(540deg); }
+}
+
+/* hero */
+.byfest-fest-hero { text-align: center; padding: 1rem 0 .6rem; }
+.byfest-eyebrow {
+  display: inline-block; letter-spacing: .3em; font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; color: var(--gold);
+  border: 1px solid rgba(241,220,77,.45); border-radius: 999px; padding: .4rem 1rem; margin-bottom: 1rem;
+}
+.byfest-fest-hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1; font-weight: 800; letter-spacing: -.02em;
+  background: linear-gradient(180deg, #fff 0%, var(--gold) 130%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.byfest-sparkle { filter: drop-shadow(0 0 6px rgba(241,220,77,.7)); -webkit-text-fill-color: initial; }
+.byfest-sub { margin: .9rem auto 1.2rem; font-size: 1.05rem; color: #cfe1f5; max-width: 560px; }
+.byfest-back { display: inline-block; color: var(--gold); text-decoration: none; font-weight: 700; }
+.byfest-back:hover { text-decoration: underline; }
+
+/* sections + titles */
+.byfest-fest-section { margin-top: 2.6rem; }
+.byfest-sec-title { text-align: center; font-size: 1.6rem; font-weight: 800; margin: 0 0 1.2rem; color: #fff; }
+.byfest-sec-title small { display: block; font-weight: 500; font-size: .92rem; color: #a9c2de; margin-top: .3rem; }
+
+/* video */
+.byfest-video-card { max-width: 900px; margin: 0 auto; }
+.byfest-video-card video {
+  width: 100%; height: auto; display: block; border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.4);
+}
+
+/* photo grid */
 .byfest-gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -834,9 +928,9 @@ body:not(.is-home) .site-header.scrolled .logo {
   display: block;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
 }
 .byfest-gallery-item img {
   width: 100%;
@@ -847,15 +941,80 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 .byfest-gallery-item:hover img { transform: scale(1.07); }
 
-/* Bordplan as a wide, uncropped item that still gets the lightbox + zoom effect */
+/* bordplan map as a wide white card that still opens in the lightbox */
 .byfest-bordplan-item {
   aspect-ratio: auto;
   max-width: 1000px;
   margin: 0 auto;
+  background: #fff;
+  padding: .6rem;
+  cursor: zoom-in;
 }
-.byfest-bordplan-item img {
-  height: auto;
-  object-fit: contain;
+.byfest-bordplan-item img { height: auto; object-fit: contain; border-radius: 8px; }
+.byfest-map-hint { text-align: center; color: #a9c2de; font-size: .85rem; margin-top: .6rem; }
+
+/* search */
+.byfest-search-card {
+  background: rgba(255,255,255,.07); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.14); border-radius: 18px;
+  padding: 1.3rem; margin: 0 auto 2.4rem; max-width: 620px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.32);
+}
+.byfest-search-card label { display: block; font-weight: 700; margin-bottom: .6rem; color: var(--gold); }
+.byfest-search-row { position: relative; }
+#byfest-search {
+  width: 100%; padding: .95rem 1.1rem; border-radius: 12px; border: none;
+  font-size: 1.05rem; background: #fff; color: #102a45; font-weight: 500;
+}
+#byfest-search:focus { outline: 3px solid var(--gold); }
+#byfest-search-result { margin-top: 1rem; }
+.byfest-hit {
+  display: flex; align-items: center; gap: .9rem; flex-wrap: wrap;
+  background: linear-gradient(120deg, rgba(241,220,77,.16), rgba(241,220,77,.04));
+  border: 1px solid rgba(241,220,77,.4); border-radius: 12px; padding: .85rem 1rem; margin-bottom: .55rem;
+  animation: byfestPop .25s ease;
+}
+@keyframes byfestPop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.byfest-who { font-weight: 700; font-size: 1.05rem; }
+.byfest-grp { color: #cfe1f5; font-size: .9rem; }
+.byfest-badge-table {
+  margin-left: auto; background: var(--gold); color: var(--navy-dark); font-weight: 800;
+  border-radius: 10px; padding: .5rem .9rem; font-size: .95rem; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(241,220,77,.35);
+}
+.byfest-muted { color: #a9c2de; font-size: .92rem; text-align: center; padding: .4rem 0; }
+
+/* tables grid */
+.byfest-tables { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; margin-top: 1.4rem; }
+.byfest-table-card {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+  border-radius: 16px; padding: 1.1rem 1.15rem 1.25rem;
+  box-shadow: 0 12px 34px rgba(0,0,0,.28); transition: transform .15s, border-color .15s;
+}
+.byfest-table-card:hover { transform: translateY(-3px); border-color: rgba(241,220,77,.5); }
+.byfest-table-head { display: flex; align-items: center; gap: .7rem; margin-bottom: .9rem; padding-bottom: .8rem; border-bottom: 1px dashed rgba(255,255,255,.18); }
+.byfest-table-num {
+  flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+  font-weight: 800; font-size: 1.3rem; color: var(--navy-dark);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  box-shadow: 0 6px 16px rgba(241,220,77,.3);
+}
+.byfest-table-head h3 { font-size: 1.15rem; color: #fff; }
+.byfest-cnt { color: #a9c2de; font-size: .85rem; font-weight: 500; }
+.byfest-group { margin-bottom: .7rem; }
+.byfest-group:last-child { margin-bottom: 0; }
+.byfest-g-name { font-weight: 700; color: var(--gold); font-size: .95rem; display: flex; align-items: center; gap: .4rem; }
+.byfest-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+.byfest-group ul { list-style: none; margin: .25rem 0 0 1.1rem; padding: 0; columns: 2; column-gap: 1rem; }
+.byfest-group ul li { font-size: .86rem; color: #dde9f6; padding: .08rem 0; break-inside: avoid; }
+.byfest-uden { font-size: .72rem; color: var(--navy-dark); background: #ffd9a8; border-radius: 6px; padding: .05rem .4rem; font-weight: 700; margin-left: .35rem; }
+
+.byfest-fest-footer { text-align: center; margin-top: 3rem; color: #9fb8d4; font-size: .9rem; }
+.byfest-fest-footer .byfest-back { margin-top: 1rem; }
+
+@media (max-width: 520px) {
+  .byfest-group ul { columns: 1; }
+  .byfest-badge-table { margin-left: 0; }
 }
 
 .byfest-lightbox {
