@@ -1101,7 +1101,6 @@ PAGES[''] = PAGES['/'] = function() {
       <div id="hero-event-banner" class="hero-event-banner" hidden></div>
       <button id="promo-badge" class="byfest-pulse-badge" type="button" aria-label="Byfest">
         <img src="assets/images/byfest_ny_small.png" alt="Byfest" loading="lazy">
-        <span>Byfest</span>
       </button>
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
       <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
