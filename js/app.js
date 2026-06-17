@@ -71,7 +71,7 @@ const SPORT_NAV = [
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
-    { label: 'Sponsor af frivillige', href: 'assets/pdf/sponsor-af-frivillige-2026.pdf', external: true },
+    { label: 'Sponsor af frivillige', href: '#/haandbold/sponsor-frivillige' },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' }
@@ -1822,7 +1822,7 @@ function haandboldSubNav(active) {
     { label: 'Bestyrelsen', href: '#/haandbold/bestyrelsen' },
     { label: 'Antibulli politik', href: '#/haandbold/antibulli' },
     { label: 'Sponsor-concept', href: '#/haandbold/sponsor-concept' },
-    { label: 'Sponsor af frivillige', href: 'assets/pdf/sponsor-af-frivillige-2026.pdf', external: true },
+    { label: 'Sponsor af frivillige', href: '#/haandbold/sponsor-frivillige' },
     { label: 'Tøj-koncept', href: '#/haandbold/toej-koncept' },
     { label: 'Træningstider', href: '#/haandbold/traeningstider' },
     { label: 'Trænere', href: '#/haandbold/traenere' }
@@ -1915,6 +1915,17 @@ PAGES['/haandbold/sponsor-concept'] = function() {
         <img src="assets/images/afdelinger/haandbold/image3.png" alt="Sponsor-concept side 3" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
         <img src="assets/images/afdelinger/haandbold/image4.png" alt="Sponsor-concept side 4" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto 1rem;border-radius:var(--radius-sm)">
         <img src="assets/images/afdelinger/haandbold/image5.png" alt="Sponsor-concept side 5" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto;border-radius:var(--radius-sm)">
+      </div>
+    </div>`;
+};
+
+PAGES['/haandbold/sponsor-frivillige'] = function() {
+  const pages = [1, 2, 3, 4, 5, 6];
+  return sportPageHeader('haandbold', 'Håndbold — Sponsor af frivillige 2026', '<a href="#/">Hjem</a> / <a href="#/haandbold">Håndbold</a>') +
+    `<div class="page container">${haandboldSubNav('/haandbold/sponsor-frivillige')}
+      <div class="section">
+        ${pages.map((n, i) => `<img src="assets/images/afdelinger/haandbold/sponsor-frivillige/side-${n}.png" alt="Sponsor af frivillige side ${n}" loading="lazy" style="width:100%;height:auto;display:block;margin:0 auto ${i === pages.length - 1 ? '0' : '1rem'};border-radius:var(--radius-sm)">`).join('\n        ')}
+        <p style="margin-top:1.5rem"><a href="assets/pdf/sponsor-af-frivillige-2026.pdf" target="_blank" rel="noopener" class="pdf-link">${ICONS.pdf} Åbn som PDF</a></p>
       </div>
     </div>`;
 };
