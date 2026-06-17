@@ -1100,7 +1100,7 @@ PAGES[''] = PAGES['/'] = function() {
     <div class="hero">
       <div id="hero-event-banner" class="hero-event-banner" hidden></div>
       <button id="promo-badge" class="byfest-pulse-badge" type="button" aria-label="Byfest">
-        <img src="assets/images/byfest.png" alt="Byfest" loading="lazy">
+        <img src="assets/images/byfest_ny_small.png" alt="Byfest" loading="lazy">
         <span>Byfest</span>
       </button>
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
@@ -1154,13 +1154,16 @@ PAGES[''] = PAGES['/'] = function() {
 
       <div class="section" id="home-byfest">
         <h2 class="section-title section-title-center">Byfest i Vester Hassing</h2>
-        <div class="info-box" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
-          <img src="assets/images/byfest.png" alt="Byfest i Vester Hassing" loading="lazy" style="width:min(100%, 360px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15)">
-          <div>
-            <h3 style="margin-bottom:0.4rem">Kom med til byfesten</h3>
-            <p>Tilmelding er lukket — vi ses til årets byfest! Bordplanen er nu klar: find dit navn og se hvilket bord du sidder ved.</p>
+        <div class="info-box" style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+          <img src="assets/images/byfest_ny.png" alt="VHG Byfest 2027 — lørdag den 12. juni" loading="lazy" style="width:min(100%, 300px);height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.15);flex-shrink:0;margin:0 auto">
+          <div style="flex:1;min-width:280px">
+            <h3 style="margin-bottom:0.4rem">Byfest 2027 — lørdag den 12. juni</h3>
+            <p style="margin-bottom:0.9rem">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
+              <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
+              <a href="bordplan.html" class="btn btn-outline btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a>
+            </div>
           </div>
-          <a href="bordplan.html" class="btn btn-primary btn-sm" style="color:#111">Se bordplanen ${ICONS.external}</a>
         </div>
       </div>
 
