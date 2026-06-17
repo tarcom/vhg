@@ -857,8 +857,14 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 @media (max-width: 700px) {
   .byfest-home-box { gap: 1.1rem; }
+  .byfest-home-poster { width: min(70%, 220px); }
   .byfest-home-video { text-align: center; }
   .byfest-home-video video { margin: 0 auto; }
+  /* Vis videoen tidligere på mobil (lige under overskriften) */
+  .byfest-home-title { order: 1; }
+  .byfest-home-video { order: 2; }
+  .byfest-home-cta { order: 3; }
+  .byfest-home-desc { order: 4; }
 }
 
 /* ============================================

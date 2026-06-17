@@ -1159,15 +1159,13 @@ PAGES[''] = PAGES['/'] = function() {
         <div class="info-box byfest-home-box">
           <img class="byfest-home-poster" src="assets/images/byfest_ny.png" alt="VHG Byfest 2027 — lørdag den 12. juni" loading="lazy">
           <div class="byfest-home-content">
-            <div>
-              <h3 style="margin-bottom:0.4rem">Byfest 2027 — lørdag den 12. juni</h3>
-              <p style="margin:0">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
-            </div>
-            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
+            <h3 class="byfest-home-title" style="margin:0">Byfest 2027 — lørdag den 12. juni</h3>
+            <p class="byfest-home-desc" style="margin:0">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
+            <div class="byfest-home-cta" style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
               <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
               <a href="#/byfest/galleri" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
             </div>
-            <div class="byfest-home-video">
+            <div class="byfest-home-video hero-anim hero-anim-bottom">
               <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/video/byfest2026-video-poster.jpg" title="Klik for at se galleriet med lyd"></video>
               <p style="font-size:0.82rem;opacity:0.85;margin:0.4rem 0 0">🔊 Klik på videoen for at se hele galleriet med lyd</p>
             </div>
@@ -1916,7 +1914,7 @@ PAGES['/byfest/galleri'] = function() {
       </section>
 
       <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn, så viser vi bordet</small></h2>
+        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra Byfest 2026</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
           <div class="byfest-search-row">
@@ -1925,11 +1923,11 @@ PAGES['/byfest/galleri'] = function() {
           <div id="byfest-search-result"><p class="byfest-muted">Begynd at skrive for at finde dit bord…</p></div>
         </div>
 
-        <h2 class="byfest-sec-title">Sådan ser hallen ud <small>Indgang og bar mod nord · scene mod syd</small></h2>
-        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item" data-index="14"><img src="assets/byfest2026/bordplan.png" alt="Bordplan over hallen med bord 1-6, bar og scene" loading="lazy"></a>
+        <h2 class="byfest-sec-title">Bordplanen som den så ud i 2026 <small>Indgang og bar mod nord · scene mod syd</small></h2>
+        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item" data-index="14"><img src="assets/byfest2026/bordplan.png" alt="Bordplan over hallen med bord 1-6, bar og scene (Byfest 2026)" loading="lazy"></a>
         <p class="byfest-map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>
 
-        <h2 class="byfest-sec-title">Alle borde <small>Selskaber er fordelt på 6 borde</small></h2>
+        <h2 class="byfest-sec-title">Alle borde <small>Byfest 2026 · selskaber fordelt på 6 borde</small></h2>
         <div class="byfest-tables" id="byfest-tables"></div>
       </section>
 
