@@ -756,6 +756,7 @@ body:not(.is-home) .site-header.scrolled .logo {
    ============================================ */
 .hero {
   min-height: 100vh;
+  min-height: 100svh; /* mobil: brug den altid-synlige skærmhøjde, så bund-elementer ikke skæres af */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -790,8 +791,12 @@ body:not(.is-home) .site-header.scrolled .logo {
   gap: 0.22rem;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.32);
-  animation: byfestPulse 1.8s ease-in-out infinite;
+  animation: byfestPulse 1.8s ease-in-out infinite, byfestBadgeIn 0.8s ease 1.3s both;
   transition: opacity 0.6s ease;
+}
+@keyframes byfestBadgeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 .byfest-badge-media {
   position: relative;
@@ -1191,7 +1196,7 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 @media (max-width: 600px) {
   .hero-event-banner { top: 6rem; width: min(360px, 78vw); }
-  .byfest-pulse-badge { bottom: calc(1.25rem + 40px); left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
+  .byfest-pulse-badge { bottom: calc(2rem + 40px + env(safe-area-inset-bottom, 0px)); left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
   .byfest-badge-media { width: 104px; }
   .hero-event-banner-img { width: 44px; height: 44px; }
   .hero-event-banner-text strong { font-size: 0.85rem; }
