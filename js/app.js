@@ -1929,6 +1929,20 @@ PAGES['/byfest/galleri'] = function() {
       </section>
 
       <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Året før: 100-års jubilæum 2025 🎂 <small>Lørdag den 14. juni 2025 — en fest for byen og for VHG gennem 100 år</small></h2>
+        <ol class="byfest-program">
+          <li class="byfest-program-item"><span class="byfest-program-time">15.00</span><span class="byfest-program-text">🎹 <strong>John Mogensen Jam</strong> — vi åbnede dørene og lagde stille ud.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">18.00</span><span class="byfest-program-text">🎤 <strong>Velkomst</strong> til festen.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">18.30</span><span class="byfest-program-text">🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">19.30</span><span class="byfest-program-text">🎶 <strong>Queen of Denmark</strong> — på scenen.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">21.30</span><span class="byfest-program-text">🎸 <strong>Ole Gas Band</strong> — Gasolin’ og Kim Larsen-klassikere.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">22.30</span><span class="byfest-program-text">🌭 <strong>Pølsevognen</strong> åbnede.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">00.00</span><span class="byfest-program-text">🎧 <strong>DJ Beat4U</strong> tog os videre ud i nattefesten.</span></li>
+        </ol>
+        <p class="byfest-program-host">🎙 Konferencier: <strong>Niels Skovmand</strong>. En fest for byen — en fest for VHG gennem 100 år. 🎉</p>
+      </section>
+
+      <section class="byfest-fest-section">
         <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra Byfest 2026</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
