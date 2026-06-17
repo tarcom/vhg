@@ -1100,7 +1100,10 @@ PAGES[''] = PAGES['/'] = function() {
     <div class="hero">
       <div id="hero-event-banner" class="hero-event-banner" hidden></div>
       <button id="promo-badge" class="byfest-pulse-badge" type="button" aria-label="Byfest">
-        <img src="assets/images/byfest_ny_small.png" alt="Byfest" loading="lazy">
+        <span class="byfest-badge-media">
+          <video id="byfest-badge-video" class="byfest-badge-video" src="assets/video/byfest2026-badge.mp4" muted loop playsinline preload="auto" aria-hidden="true"></video>
+          <img class="byfest-badge-img" src="assets/images/byfest_ny_small.png" alt="Byfest" loading="lazy">
+        </span>
       </button>
       <img src="assets/images/logo.png" alt="VHG" class="hero-logo hero-anim hero-anim-top">
       <p class="hero-subtitle hero-anim" style="--hero-delay:1.0s">Vester Hassing Gymnastik &amp; Idrætsforening</p>
@@ -1160,8 +1163,13 @@ PAGES[''] = PAGES['/'] = function() {
             <p style="margin-bottom:0.9rem">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
             <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
               <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
+              <a href="#/byfest/galleri" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
               <a href="bordplan.html" class="btn btn-outline btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a>
             </div>
+          </div>
+          <div style="flex-basis:100%;text-align:center;margin-top:0.6rem">
+            <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/images/byfest2026/galleri/byfest2026-08.jpg" title="Klik for at se galleriet med lyd" style="width:min(100%,560px);height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.25);cursor:pointer"></video>
+            <p style="font-size:0.82rem;opacity:0.85;margin-top:0.4rem">🔊 Klik på videoen for at se hele galleriet med lyd</p>
           </div>
         </div>
       </div>
@@ -1817,6 +1825,31 @@ PAGES['/fodbold/kontingent'] = function() {
     </div>`;
 };
 
+// --- BYFEST GALLERI ---
+PAGES['/byfest/galleri'] = function() {
+  const imgs = Array.from({ length: 14 }, (_, i) => `byfest2026-${String(i + 1).padStart(2, '0')}.jpg`);
+  const base = 'assets/images/byfest2026/galleri';
+  return pageHeader('🎉', 'Byfest 2026 — billeder & video', '<a href="#/">Hjem</a> / Byfest', 'Gensyn med en fantastisk byfest. Klik på et billede for at se det stort.') +
+    `<div class="page container">
+      <div class="section">
+        <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="metadata" poster="${base}/byfest2026-08.jpg" style="width:min(100%,900px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.18)"></video>
+        <p style="text-align:center;margin-top:1.2rem"><a href="#/" class="btn btn-outline btn-sm">← Tilbage til forsiden</a></p>
+      </div>
+      <div class="section">
+        <h2 class="section-title section-title-center">Billeder fra byfesten</h2>
+        <div class="byfest-gallery-grid">
+          ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
+        </div>
+      </div>
+      <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
+        <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
+        <button class="byfest-lb-prev" type="button" aria-label="Forrige billede">&#10094;</button>
+        <img class="byfest-lb-img" src="" alt="">
+        <button class="byfest-lb-next" type="button" aria-label="Næste billede">&#10095;</button>
+      </div>
+    </div>`;
+};
+
 // --- HÅNDBOLD ---
 function haandboldSubNav(active) {
   return subNavHTML([
@@ -2077,6 +2110,74 @@ function stopHomeSponsorCarousel() {
   // No active timer is used for sponsor marquee; kept for route lifecycle symmetry.
 }
 
+// Byfest promo media: looping badge teaser (alternating video/poster) + section video on scroll
+function initByfestPromoMedia() {
+  const badgeMedia = document.querySelector('#promo-badge .byfest-badge-media');
+  const badgeVideo = document.getElementById('byfest-badge-video');
+  if (badgeVideo) {
+    badgeVideo.play().catch(() => {});
+  }
+  if (badgeMedia) {
+    setInterval(() => badgeMedia.classList.toggle('show-img'), 3500);
+  }
+
+  const secVideo = document.getElementById('byfest-section-video');
+  if (secVideo) {
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) secVideo.play().catch(() => {});
+          else secVideo.pause();
+        });
+      }, { threshold: 0.35 });
+      io.observe(secVideo);
+    }
+    // Clicking the muted teaser opens the gallery (where it plays with sound)
+    secVideo.addEventListener('click', () => { location.hash = '#/byfest/galleri'; });
+  }
+}
+
+// Byfest gallery lightbox
+let byfestLbKeyHandler = null;
+function initByfestGallery() {
+  const lb = document.getElementById('byfest-lightbox');
+  if (!lb) return;
+  const items = Array.from(document.querySelectorAll('.byfest-gallery-item'));
+  const lbImg = lb.querySelector('.byfest-lb-img');
+  let idx = 0;
+
+  const show = i => {
+    idx = (i + items.length) % items.length;
+    lbImg.src = items[idx].getAttribute('href');
+    lbImg.alt = items[idx].querySelector('img')?.alt || '';
+    lb.hidden = false;
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    lb.hidden = true;
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  };
+
+  items.forEach((a, i) => a.addEventListener('click', e => { e.preventDefault(); show(i); }));
+  lb.querySelector('.byfest-lb-close').addEventListener('click', close);
+  lb.querySelector('.byfest-lb-prev').addEventListener('click', () => show(idx - 1));
+  lb.querySelector('.byfest-lb-next').addEventListener('click', () => show(idx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  // Replace any previous handler so listeners don't stack across visits
+  if (byfestLbKeyHandler) document.removeEventListener('keydown', byfestLbKeyHandler);
+  byfestLbKeyHandler = e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  };
+  document.addEventListener('keydown', byfestLbKeyHandler);
+}
+
 function initHomeSponsorCarousel() {
   const module = document.querySelector('#home-sponsorer [data-sponsor-module]');
   if (!module) return;
@@ -2201,6 +2302,7 @@ function navigate() {
 
   app.innerHTML = renderer();
   initSoMePageInteractions(route);
+  if (route === '/byfest/galleri') initByfestGallery();
 
   // Load Conventus widgets
   const sportKey = route.split('/')[1];
@@ -2264,6 +2366,7 @@ function navigate() {
     if (promoBadge) {
       promoBadge.addEventListener('click', () => scrollToSectionWithOffset('home-byfest'));
     }
+    initByfestPromoMedia();
 
     if (pendingHomeScrollTarget) {
       const target = pendingHomeScrollTarget;
