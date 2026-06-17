@@ -1914,6 +1914,21 @@ PAGES['/byfest/galleri'] = function() {
       </section>
 
       <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Aftenens program <small>Sådan forløb byfesten lørdag den 13. juni 2026</small></h2>
+        <ol class="byfest-program">
+          <li class="byfest-program-item"><span class="byfest-program-time">15.00</span><span class="byfest-program-text">🚪 <strong>Dørene åbnede</strong> — DJ Jimi Rosa satte stemningen fra start.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">16.00</span><span class="byfest-program-text">🎤 <strong>BITTERMOON</strong> — fede covers, der kickstartede festen.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">18.15</span><span class="byfest-program-text">🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">19.30</span><span class="byfest-program-text">🎸 <strong>OLE GAS BAND</strong> — hyldede Gasolin’ og Kim Larsen med de største klassikere.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">21.30</span><span class="byfest-program-text">🎶 <strong>DJ Jimi Rosa</strong> holdt gang i festen.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">22.15</span><span class="byfest-program-text">💥 <strong>WE ARE THE 90’s</strong> — kæmpe nostalgi og hits, ingen kunne stå stille til.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">00.30</span><span class="byfest-program-text">🎧 <strong>DJ Jimi Rosa</strong> fyrede op til nattefest.</span></li>
+          <li class="byfest-program-item"><span class="byfest-program-time">02.00</span><span class="byfest-program-text">🙌 <strong>Tak for i år</strong> — og tak for en uforglemmelig aften!</span></li>
+        </ol>
+        <p class="byfest-program-host">🎙 Konferencier: <strong>Niels Skovmand</strong> — kendt fra radioen, sørgede for grin, energi og festlig stemning hele aftenen.</p>
+      </section>
+
+      <section class="byfest-fest-section">
         <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra Byfest 2026</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
