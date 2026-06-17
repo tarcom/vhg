@@ -1195,11 +1195,11 @@ body:not(.is-home) .site-header.scrolled .logo {
   30%, 70% { transform: translateX(130%); }
 }
 @media (max-width: 600px) {
-  /* Mobil: ryk hele hero-indholdet op til toppen, og vis byfest-badgen
-     som det allerøverste (in-flow over logoet) i stedet for i bunden. */
-  .hero { justify-content: flex-start; padding-top: 6rem; padding-bottom: 2.5rem; }
-  .hero-event-banner { position: static; left: auto; transform: none; animation: none; margin: 0 auto 0.9rem; width: min(360px, 90vw); }
-  .byfest-pulse-badge { position: static; align-self: center; left: auto; right: auto; top: auto; bottom: auto; margin: 0 0 1rem; }
+  /* Mobil: behold badgen i hjørnet, men skub hero-indholdet en anelse op
+     og løft badgen lidt fra bunden, så den ikke skæres af. */
+  .hero { padding-bottom: 5rem; }
+  .hero-event-banner { top: 6rem; width: min(360px, 78vw); }
+  .byfest-pulse-badge { bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); left: max(1rem, calc((100vw - var(--max-width)) / 2 + 1.5rem)); }
   .byfest-badge-media { width: 104px; }
   .hero-event-banner-img { width: 44px; height: 44px; }
   .hero-event-banner-text strong { font-size: 0.85rem; }
