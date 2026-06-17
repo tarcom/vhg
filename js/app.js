@@ -1164,7 +1164,6 @@ PAGES[''] = PAGES['/'] = function() {
             <div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
               <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
               <a href="#/byfest/galleri" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
-              <a href="bordplan.html" class="btn btn-outline btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a>
             </div>
           </div>
           <div style="flex-basis:100%;text-align:center;margin-top:0.6rem">
@@ -1840,6 +1839,7 @@ PAGES['/byfest/galleri'] = function() {
         <div class="byfest-gallery-grid">
           ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
         </div>
+        <p style="text-align:center;margin-top:1.6rem"><a href="bordplan.html" class="btn btn-outline btn-sm">Se bordplanen fra 2026 ${ICONS.external}</a></p>
       </div>
       <div id="byfest-lightbox" class="byfest-lightbox" hidden aria-hidden="true">
         <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
