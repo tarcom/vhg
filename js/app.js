@@ -1982,8 +1982,9 @@ const BYFEST_YEARS = {
     galleryBase: 'assets/images/byfest2026/galleri',
     galleryPrefix: 'byfest2026-',
     galleryCount: 14,
-    galleryVideo: 'assets/video/byfest2026-gallery.mp4',
-    videoPoster: 'assets/video/byfest2026-video-poster.jpg',
+    galleryVideos: [
+      { src: 'assets/video/byfest2026-gallery.mp4', poster: 'assets/video/byfest2026-video-poster.jpg' },
+    ],
     programTitle: 'Sådan forløb byfesten lørdag den 13. juni 2026',
     program: [
       ['15.00', '🚪 <strong>Dørene åbnede</strong> — DJ Jimi Rosa satte stemningen fra start.'],
@@ -2011,8 +2012,12 @@ const BYFEST_YEARS = {
     galleryBase: 'assets/images/byfest2025/galleri',
     galleryPrefix: 'byfest2025-',
     galleryCount: 26,
-    galleryVideo: '',       // sæt sti når 2025-videoen er uploadet
-    videoPoster: '',
+    galleryVideos: [
+      { src: 'assets/video/byfest2025-01.mp4', poster: 'assets/images/byfest2025/byfest2025-01-poster.jpg' },
+      { src: 'assets/video/byfest2025-02.mp4', poster: 'assets/images/byfest2025/byfest2025-02-poster.jpg' },
+      { src: 'assets/video/byfest2025-03.mp4', poster: 'assets/images/byfest2025/byfest2025-03-poster.jpg' },
+      { src: 'assets/video/byfest2025-04.mp4', poster: 'assets/images/byfest2025/byfest2025-04-poster.jpg' },
+    ],
     programTitle: 'Sådan forløb jubilæumsfesten lørdag den 14. juni 2025',
     program: [
       ['15.00', '🎹 <strong>John Mogensen Jam</strong> — vi åbnede dørene og lagde stille ud.'],
@@ -2049,11 +2054,13 @@ function renderByfestYear(year) {
     ? Array.from({ length: c.galleryCount }, (_, i) => `${c.galleryPrefix}${String(i + 1).padStart(2, '0')}.jpg`)
     : [];
 
-  const videoSection = c.galleryVideo ? `
+  const vids = c.galleryVideos || [];
+  const multiVid = vids.length > 1;
+  const videoSection = vids.length ? `
       <section class="byfest-fest-section">
         <h2 class="byfest-sec-title">Video fra festen <small>Skru op for lyden 🔊</small></h2>
-        <div class="byfest-video-card">
-          <video class="byfest-gallery-video" src="${c.galleryVideo}" controls playsinline preload="auto"${c.videoPoster ? ` poster="${c.videoPoster}"` : ''}></video>
+        <div class="${multiVid ? 'byfest-video-grid' : 'byfest-video-card'}">
+          ${vids.map(v => `<video class="byfest-gallery-video" src="${v.src}" controls playsinline preload="${multiVid ? 'none' : 'auto'}"${v.poster ? ` poster="${v.poster}"` : ''}></video>`).join('')}
         </div>
       </section>` : '';
 
