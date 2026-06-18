@@ -1163,7 +1163,7 @@ PAGES[''] = PAGES['/'] = function() {
             <p class="byfest-home-desc" style="margin:0">Vi gentager succesen! Efter en uforglemmelig 100-års jubilæumsfest i 2025 og byfest i 2026 skruer vi op for volumen igen. Lørdag den 12. juni 2027 forvandles hallen til årets største dansegulv med live-musik, lækker mad, kolde drikke og masser af festglade mennesker. Billet 350,- inkl. spisning. Programmet er ikke på plads endnu — men det bliver fantastisk. Billetterne er allerede sat til salg, og mange røg afsted allerede under byfesten 2026.</p>
             <div class="byfest-home-cta" style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
               <a href="https://vhg.nemtilmeld.dk/28/" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="color:#111">Køb billet ${ICONS.external}</a>
-              <a href="#/byfest/galleri" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
+              <a href="#/byfest/2026" class="btn btn-primary btn-sm" style="color:#111">📸 Se billeder &amp; video</a>
             </div>
             <div class="byfest-home-video hero-anim hero-anim-bottom">
               <video id="byfest-section-video" src="assets/video/byfest2026-section.mp4" muted loop playsinline preload="none" poster="assets/video/byfest2026-video-poster.jpg" title="Klik for at se galleriet med lyd"></video>
@@ -1969,64 +1969,138 @@ const JUBILEE_2025_TABLES = [
   ]},
 ];
 
-PAGES['/byfest/galleri'] = function() {
-  const imgs = Array.from({ length: 14 }, (_, i) => `byfest2026-${String(i + 1).padStart(2, '0')}.jpg`);
-  const base = 'assets/images/byfest2026/galleri';
+// Per-year content for the byfest sub-pages. Media (gallery/video) is
+// config-driven — add 2025 photos/video by dropping files in the folders
+// below and bumping galleryCount / setting galleryVideo.
+const BYFEST_YEARS = {
+  '2026': {
+    key: '2026',
+    eyebrow: 'Vester Hassing · Byfest 2026',
+    title: 'Byfest 2026',
+    sparkle: true,
+    sub: 'Gensyn med en fantastisk aften — se billeder og video, og find dit bord i bordplanen.',
+    galleryBase: 'assets/images/byfest2026/galleri',
+    galleryPrefix: 'byfest2026-',
+    galleryCount: 14,
+    galleryVideo: 'assets/video/byfest2026-gallery.mp4',
+    videoPoster: 'assets/video/byfest2026-video-poster.jpg',
+    programTitle: 'Sådan forløb byfesten lørdag den 13. juni 2026',
+    program: [
+      ['15.00', '🚪 <strong>Dørene åbnede</strong> — DJ Jimi Rosa satte stemningen fra start.'],
+      ['16.00', '🎤 <strong>BITTERMOON</strong> — fede covers, der kickstartede festen.'],
+      ['18.15', '🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.'],
+      ['19.30', '🎸 <strong>OLE GAS BAND</strong> — hyldede Gasolin’ og Kim Larsen med de største klassikere.'],
+      ['21.30', '🎶 <strong>DJ Jimi Rosa</strong> holdt gang i festen.'],
+      ['22.15', '💥 <strong>WE ARE THE 90’s</strong> — kæmpe nostalgi og hits, ingen kunne stå stille til.'],
+      ['00.30', '🎧 <strong>DJ Jimi Rosa</strong> fyrede op til nattefest.'],
+      ['02.00', '🙌 <strong>Tak for i år</strong> — og tak for en uforglemmelig aften!'],
+    ],
+    host: '🎙 Konferencier: <strong>Niels Skovmand</strong> — kendt fra radioen, sørgede for grin, energi og festlig stemning hele aftenen.',
+    tables: BYFEST_TABLES,
+    tablesNote: 'selskaber fordelt på 6 borde',
+    bordplanImg: 'assets/byfest2026/bordplan.png',
+    bordplanAlt: 'Bordplan over hallen med bord 1-6, bar og scene (Byfest 2026)',
+    bordplanNote: 'Indgang og bar mod nord · scene mod syd',
+  },
+  '2025': {
+    key: '2025',
+    eyebrow: 'Vester Hassing · 100-års jubilæum 2025',
+    title: '100-års jubilæum 2025',
+    sparkle: true,
+    sub: 'Lørdag den 14. juni 2025 — en fest for byen og for VHG gennem 100 år. Se billeder, video og find dit bord.',
+    galleryBase: 'assets/images/byfest2025/galleri',
+    galleryPrefix: 'byfest2025-',
+    galleryCount: 0,        // sættes når 2025-billederne er uploadet
+    galleryVideo: '',       // sæt sti når 2025-videoen er uploadet
+    videoPoster: '',
+    programTitle: 'Sådan forløb jubilæumsfesten lørdag den 14. juni 2025',
+    program: [
+      ['15.00', '🎹 <strong>John Mogensen Jam</strong> — vi åbnede dørene og lagde stille ud.'],
+      ['18.00', '🎤 <strong>Velkomst</strong> til festen.'],
+      ['18.30', '🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.'],
+      ['19.30', '🎶 <strong>Queen of Denmark</strong> — på scenen.'],
+      ['21.30', '🎸 <strong>Ole Gas Band</strong> — Gasolin’ og Kim Larsen-klassikere.'],
+      ['22.30', '🌭 <strong>Pølsevognen</strong> åbnede.'],
+      ['00.00', '🎧 <strong>DJ Beat4U</strong> tog os videre ud i nattefesten.'],
+    ],
+    host: '🎙 Konferencier: <strong>Niels Skovmand</strong>. En fest for byen — en fest for VHG gennem 100 år. 🎉',
+    tables: JUBILEE_2025_TABLES,
+    tablesNote: 'selskaber fordelt på 14 borde',
+    bordplanImg: '',        // der findes ingen hal-tegning fra 2025
+    bordplanAlt: '',
+    bordplanNote: '',
+  },
+};
+
+// Year switcher (følger sitets undersides-mønster med en sub-nav)
+function byfestYearNav(active) {
+  const items = [
+    { key: '2026', label: '🎈 Byfest 2026', href: '#/byfest/2026' },
+    { key: '2025', label: '🎂 100-års jubilæum 2025', href: '#/byfest/2025' },
+  ];
+  return `<nav class="byfest-yearnav">${items.map(i =>
+    `<a href="${i.href}" class="${active === i.key ? 'active' : ''}">${i.label}</a>`).join('')}</nav>`;
+}
+
+function renderByfestYear(year) {
+  const c = BYFEST_YEARS[year];
+  const hasGallery = c.galleryCount > 0;
+  const imgs = hasGallery
+    ? Array.from({ length: c.galleryCount }, (_, i) => `${c.galleryPrefix}${String(i + 1).padStart(2, '0')}.jpg`)
+    : [];
+
+  const videoSection = c.galleryVideo ? `
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Video fra festen <small>Skru op for lyden 🔊</small></h2>
+        <div class="byfest-video-card">
+          <video class="byfest-gallery-video" src="${c.galleryVideo}" controls playsinline preload="auto"${c.videoPoster ? ` poster="${c.videoPoster}"` : ''}></video>
+        </div>
+      </section>` : '';
+
+  const gallerySection = hasGallery ? `
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Billeder <small>Klik for at se i stort format</small></h2>
+        <div class="byfest-gallery-grid">
+          ${imgs.map((f, i) => `<a href="${c.galleryBase}/${f}" class="byfest-gallery-item"><img src="${c.galleryBase}/thumbs/${f}" alt="${c.title} billede ${i + 1}" loading="lazy"></a>`).join('')}
+        </div>
+      </section>` : `
+      <section class="byfest-fest-section">
+        <h2 class="byfest-sec-title">Billeder &amp; video</h2>
+        <p class="byfest-muted">📸 Billeder og video fra ${c.title} kommer snart…</p>
+      </section>`;
+
+  const programHTML = c.program.map(([t, txt]) =>
+    `<li class="byfest-program-item"><span class="byfest-program-time">${t}</span><span class="byfest-program-text">${txt}</span></li>`).join('');
+
+  const bordplanBlock = c.bordplanImg ? `
+        <h2 class="byfest-sec-title">Bordplan over hallen${c.bordplanNote ? ` <small>${c.bordplanNote}</small>` : ''}</h2>
+        <a href="${c.bordplanImg}" class="byfest-gallery-item byfest-bordplan-item"><img src="${c.bordplanImg}" alt="${c.bordplanAlt}" loading="lazy"></a>
+        <p class="byfest-map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>` : '';
+
   return `<div class="byfest-fest">
     <div class="byfest-confetti" id="byfest-confetti" aria-hidden="true"></div>
     <div class="byfest-fest-wrap">
       <header class="byfest-fest-hero">
-        <span class="byfest-eyebrow">Vester Hassing · Byfest 2026</span>
-        <h1><span class="byfest-sparkle">✨</span> Byfest 2026 <span class="byfest-sparkle">✨</span></h1>
-        <p class="byfest-sub">Gensyn med en fantastisk aften — se billeder og video, og find dit bord i bordplanen.</p>
+        <span class="byfest-eyebrow">${c.eyebrow}</span>
+        <h1><span class="byfest-sparkle">✨</span> ${c.title} <span class="byfest-sparkle">✨</span></h1>
+        <p class="byfest-sub">${c.sub}</p>
         <a href="#/" class="byfest-back">← Tilbage til forsiden</a>
       </header>
 
-      <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">Video fra festen <small>Skru op for lyden 🔊</small></h2>
-        <div class="byfest-video-card">
-          <video class="byfest-gallery-video" src="assets/video/byfest2026-gallery.mp4" controls playsinline preload="auto" poster="assets/video/byfest2026-video-poster.jpg"></video>
-        </div>
-      </section>
+      ${byfestYearNav(year)}
+      ${videoSection}
+      ${gallerySection}
 
       <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">Billeder <small>Klik for at se i stort format</small></h2>
-        <div class="byfest-gallery-grid">
-          ${imgs.map((f, i) => `<a href="${base}/${f}" class="byfest-gallery-item" data-index="${i}"><img src="${base}/thumbs/${f}" alt="Byfest 2026 billede ${i + 1}" loading="lazy"></a>`).join('')}
-        </div>
-      </section>
-
-      <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">Aftenens program <small>Sådan forløb byfesten lørdag den 13. juni 2026</small></h2>
+        <h2 class="byfest-sec-title">Aftenens program <small>${c.programTitle}</small></h2>
         <ol class="byfest-program">
-          <li class="byfest-program-item"><span class="byfest-program-time">15.00</span><span class="byfest-program-text">🚪 <strong>Dørene åbnede</strong> — DJ Jimi Rosa satte stemningen fra start.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">16.00</span><span class="byfest-program-text">🎤 <strong>BITTERMOON</strong> — fede covers, der kickstartede festen.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">18.15</span><span class="byfest-program-text">🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">19.30</span><span class="byfest-program-text">🎸 <strong>OLE GAS BAND</strong> — hyldede Gasolin’ og Kim Larsen med de største klassikere.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">21.30</span><span class="byfest-program-text">🎶 <strong>DJ Jimi Rosa</strong> holdt gang i festen.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">22.15</span><span class="byfest-program-text">💥 <strong>WE ARE THE 90’s</strong> — kæmpe nostalgi og hits, ingen kunne stå stille til.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">00.30</span><span class="byfest-program-text">🎧 <strong>DJ Jimi Rosa</strong> fyrede op til nattefest.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">02.00</span><span class="byfest-program-text">🙌 <strong>Tak for i år</strong> — og tak for en uforglemmelig aften!</span></li>
+          ${programHTML}
         </ol>
-        <p class="byfest-program-host">🎙 Konferencier: <strong>Niels Skovmand</strong> — kendt fra radioen, sørgede for grin, energi og festlig stemning hele aftenen.</p>
+        <p class="byfest-program-host">${c.host}</p>
       </section>
 
       <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">Året før: 100-års jubilæum 2025 🎂 <small>Lørdag den 14. juni 2025 — en fest for byen og for VHG gennem 100 år</small></h2>
-        <ol class="byfest-program">
-          <li class="byfest-program-item"><span class="byfest-program-time">15.00</span><span class="byfest-program-text">🎹 <strong>John Mogensen Jam</strong> — vi åbnede dørene og lagde stille ud.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">18.00</span><span class="byfest-program-text">🎤 <strong>Velkomst</strong> til festen.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">18.30</span><span class="byfest-program-text">🍴 <strong>Stor buffet</strong> fra Gæstgivergården i Gandrup.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">19.30</span><span class="byfest-program-text">🎶 <strong>Queen of Denmark</strong> — på scenen.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">21.30</span><span class="byfest-program-text">🎸 <strong>Ole Gas Band</strong> — Gasolin’ og Kim Larsen-klassikere.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">22.30</span><span class="byfest-program-text">🌭 <strong>Pølsevognen</strong> åbnede.</span></li>
-          <li class="byfest-program-item"><span class="byfest-program-time">00.00</span><span class="byfest-program-text">🎧 <strong>DJ Beat4U</strong> tog os videre ud i nattefesten.</span></li>
-        </ol>
-        <p class="byfest-program-host">🎙 Konferencier: <strong>Niels Skovmand</strong>. En fest for byen — en fest for VHG gennem 100 år. 🎉</p>
-      </section>
-
-      <section class="byfest-fest-section">
-        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn — vi viser dit bord til både 100-års jubilæet 2025 og byfest 2026</small></h2>
+        <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra ${c.title}</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
           <div class="byfest-search-row">
@@ -2034,15 +2108,9 @@ PAGES['/byfest/galleri'] = function() {
           </div>
           <div id="byfest-search-result"><p class="byfest-muted">Begynd at skrive for at finde dit bord…</p></div>
         </div>
+        ${bordplanBlock}
 
-        <h2 class="byfest-sec-title">🎂 Bordplan · 100-års jubilæum 2025 <small>Lørdag den 14. juni 2025 · selskaber fordelt på 14 borde</small></h2>
-        <div class="byfest-tables" id="jubilee-tables"></div>
-
-        <h2 class="byfest-sec-title">🎈 Bordplan · Byfest 2026 <small>Indgang og bar mod nord · scene mod syd</small></h2>
-        <a href="assets/byfest2026/bordplan.png" class="byfest-gallery-item byfest-bordplan-item" data-index="14"><img src="assets/byfest2026/bordplan.png" alt="Bordplan over hallen med bord 1-6, bar og scene (Byfest 2026)" loading="lazy"></a>
-        <p class="byfest-map-hint">Tryk på billedet for at se det i stor størrelse 🔍</p>
-
-        <h2 class="byfest-sec-title">Alle borde <small>Byfest 2026 · selskaber fordelt på 6 borde</small></h2>
+        <h2 class="byfest-sec-title">Alle borde <small>${c.title} · ${c.tablesNote}</small></h2>
         <div class="byfest-tables" id="byfest-tables"></div>
       </section>
 
@@ -2059,7 +2127,12 @@ PAGES['/byfest/galleri'] = function() {
       <button class="byfest-lb-next" type="button" aria-label="Næste billede">&#10095;</button>
     </div>
   </div>`;
-};
+}
+
+PAGES['/byfest/2026'] = () => renderByfestYear('2026');
+PAGES['/byfest/2025'] = () => renderByfestYear('2025');
+// Bevar gamle links (forside, QR, delte URLs) — peg på seneste fest
+PAGES['/byfest'] = PAGES['/byfest/galleri'] = PAGES['/byfest/2026'];
 
 
 // --- HÅNDBOLD ---
@@ -2345,13 +2418,16 @@ function initByfestPromoMedia() {
       io.observe(secVideo);
     }
     // Clicking the muted teaser opens the gallery (where it plays with sound)
-    secVideo.addEventListener('click', () => { location.hash = '#/byfest/galleri'; });
+    secVideo.addEventListener('click', () => { location.hash = '#/byfest/2026'; });
   }
 }
 
 // Byfest gallery lightbox
 let byfestLbKeyHandler = null;
-function initByfestGallery() {
+function initByfestPage(year) {
+  const c = BYFEST_YEARS[year];
+  if (!c) return;
+
   // Start the gallery video automatically once when the page opens.
   // Try with sound first (allowed when arriving via a click); fall back to muted.
   const galleryVideo = document.querySelector('.byfest-gallery-video');
@@ -2362,8 +2438,8 @@ function initByfestGallery() {
     });
   }
 
-  renderByfestTables();
-  initByfestSearch();
+  renderTablesInto('byfest-tables', c.tables);
+  initYearSearch(c.tables);
   initByfestConfetti();
 
   const lb = document.getElementById('byfest-lightbox');
@@ -2426,13 +2502,8 @@ function renderTablesInto(elId, tables) {
 }
 
 // Render both seating plans (2025 jubilee + 2026 byfest)
-function renderByfestTables() {
-  renderTablesInto('jubilee-tables', JUBILEE_2025_TABLES);
-  renderTablesInto('byfest-tables', BYFEST_TABLES);
-}
-
-// Name search across both years — aggregated per person
-function initByfestSearch() {
+// Name search within a single year's seating plan
+function initYearSearch(tables) {
   const input = document.getElementById('byfest-search');
   const result = document.getElementById('byfest-search-result');
   if (!input || !result) return;
@@ -2441,59 +2512,38 @@ function initByfestSearch() {
     .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
     .replace(/[^a-z0-9 ]/g, '').trim();
 
-  // Build a per-person record keyed by normalized full name, collecting
-  // every table placement across both years.
-  const people = new Map();
-  const addYear = (tables, yearKey) => {
-    tables.forEach(t => t.groups.forEach(g => {
-      const seen = new Set();
-      g.people.forEach(p => {
-        const k = norm(p);
-        if (!k) return;
-        const dedup = g.name + '|' + t.nr; // collapse duplicate names within same selskab
-        if (seen.has(k + dedup)) return;
-        seen.add(k + dedup);
-        if (!people.has(k)) people.set(k, { name: p, key: k, y2025: [], y2026: [] });
-        people.get(k)[yearKey].push({ group: g.name, nr: t.nr, uden: !!g.uden });
-      });
-    }));
-  };
-  addYear(JUBILEE_2025_TABLES, 'y2025');
-  addYear(BYFEST_TABLES, 'y2026');
-  const index = Array.from(people.values());
-
-  const fmt = arr => arr
-    .map(p => `<span class="byfest-place">🪑 Bord ${p.nr} · ${p.group}${p.uden ? ' · uden spisning' : ''}</span>`)
-    .join('');
-
-  const renderHit = h => {
-    const both = h.y2025.length && h.y2026.length;
-    let badge;
-    if (both) badge = '<span class="byfest-status both">🎉 Med til begge fester</span>';
-    else if (h.y2025.length) badge = '<span class="byfest-status only">🎂 Kun jubilæum 2025</span>';
-    else badge = '<span class="byfest-status only">🎈 Kun byfest 2026</span>';
-    const lines = [];
-    if (h.y2025.length) lines.push(`<div class="byfest-year-line"><span class="byfest-yr yr-2025">2025</span><span class="byfest-places">${fmt(h.y2025)}</span></div>`);
-    if (h.y2026.length) lines.push(`<div class="byfest-year-line"><span class="byfest-yr yr-2026">2026</span><span class="byfest-places">${fmt(h.y2026)}</span></div>`);
-    return `<div class="byfest-hit byfest-hit-multi">
-      <div class="byfest-who">${h.name}${badge}</div>
-      <div class="byfest-year-lines">${lines.join('')}</div>
-    </div>`;
-  };
+  const index = [];
+  tables.forEach(t => t.groups.forEach(g => {
+    const seen = new Set();
+    g.people.forEach(p => {
+      const key = norm(p);
+      if (!key) return;
+      const dedup = g.name + '|' + t.nr; // collapse duplicate names within same selskab
+      if (seen.has(key + dedup)) return;
+      seen.add(key + dedup);
+      index.push({ name: p, group: g.name, nr: t.nr, uden: !!g.uden });
+    });
+  }));
 
   const runSearch = q => {
     const nq = norm(q);
     if (!nq) { result.innerHTML = '<p class="byfest-muted">Begynd at skrive for at finde dit bord…</p>'; return; }
     const terms = nq.split(/\s+/);
     const hits = index
-      .filter(r => terms.every(t => r.key.includes(t)))
+      .filter(r => { const n = norm(r.name); return terms.every(t => n.includes(t)); })
       .sort((a, b) => a.name.localeCompare(b.name, 'da'));
     if (!hits.length) {
       result.innerHTML = '<p class="byfest-muted">Ingen gæster fundet — prøv et andet navn, eller spørg festudvalget. 🙂</p>';
       return;
     }
-    result.innerHTML = hits.slice(0, 40).map(renderHit).join('') +
-      (hits.length > 40 ? '<p class="byfest-muted">Forfin din søgning for at se flere…</p>' : '');
+    result.innerHTML = hits.slice(0, 40).map(h => `
+      <div class="byfest-hit">
+        <div>
+          <div class="byfest-who">${h.name}</div>
+          <div class="byfest-grp">${h.group}${h.uden ? ' · uden spisning' : ''}</div>
+        </div>
+        <div class="byfest-badge-table">🪑 Bord ${h.nr}</div>
+      </div>`).join('') + (hits.length > 40 ? '<p class="byfest-muted">Forfin din søgning for at se flere…</p>' : '');
   };
 
   let tmo;
@@ -2641,7 +2691,8 @@ function navigate() {
 
   app.innerHTML = renderer();
   initSoMePageInteractions(route);
-  if (route === '/byfest/galleri') initByfestGallery();
+  if (route === '/byfest/2025') initByfestPage('2025');
+  else if (route === '/byfest/2026' || route === '/byfest/galleri' || route === '/byfest') initByfestPage('2026');
 
   // Load Conventus widgets
   const sportKey = route.split('/')[1];
