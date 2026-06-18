@@ -2010,7 +2010,7 @@ const BYFEST_YEARS = {
     sub: 'Lørdag den 14. juni 2025 — en fest for byen og for VHG gennem 100 år. Se billeder, video og find dit bord.',
     galleryBase: 'assets/images/byfest2025/galleri',
     galleryPrefix: 'byfest2025-',
-    galleryCount: 0,        // sættes når 2025-billederne er uploadet
+    galleryCount: 26,
     galleryVideo: '',       // sæt sti når 2025-videoen er uploadet
     videoPoster: '',
     programTitle: 'Sådan forløb jubilæumsfesten lørdag den 14. juni 2025',
@@ -2026,8 +2026,8 @@ const BYFEST_YEARS = {
     host: '🎙 Konferencier: <strong>Niels Skovmand</strong>. En fest for byen — en fest for VHG gennem 100 år. 🎉',
     tables: JUBILEE_2025_TABLES,
     tablesNote: 'selskaber fordelt på 14 borde',
-    bordplanImg: '',        // der findes ingen hal-tegning fra 2025
-    bordplanAlt: '',
+    bordplanImg: 'assets/images/byfest2025/bordplanen.png',
+    bordplanAlt: 'Bordplan over hallen til VHG 100-års jubilæum 2025',
     bordplanNote: '',
   },
 };
