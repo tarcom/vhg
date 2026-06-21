@@ -1264,6 +1264,38 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 
 /* ============================================
+   HERO — robust ved lav skærmhøjde / zoom
+   Browser-zoom (og store skærm-/skrift-indstillinger på fx Samsung) mindsker
+   den effektive CSS-px-højde, så disse height-media queries fanger "for meget
+   zoom" og forhindrer, at logo, video-badge, knapper og scroll-pil lægger sig
+   oven i hinanden. Logo + tekst + knapper ligger i normal flow og kan ikke
+   overlappe hinanden — det er de flydende elementer (byfest-badge og scroll-
+   pil), der får plads-tilpasning her.
+   ============================================ */
+@media (max-height: 760px) {
+  .hero { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+  .hero-logo { max-height: clamp(96px, 17vh, 180px); margin-bottom: 0.5rem; }
+  .hero-subtitle { margin-bottom: 0.4rem; }
+  .hero-tagline { margin-bottom: 1.1rem; }
+  .hero-est { margin-bottom: 0.9rem; }
+  .byfest-badge-media { width: 100px; }
+  .byfest-pulse-badge { bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-height: 600px) {
+  .hero-logo { max-height: clamp(72px, 15vh, 130px); }
+  .hero-subtitle { font-size: clamp(0.9rem, 2.2vw, 1.15rem); }
+  .hero-tagline { font-size: clamp(0.82rem, 1.6vw, 1rem); margin-bottom: 0.8rem; }
+  .hero-est { margin-bottom: 0.6rem; letter-spacing: 0.2em; }
+  .byfest-badge-media { width: 84px; }
+  .scroll-indicator { display: none; } /* dekorativ — fjern når der ikke er plads */
+}
+@media (max-height: 480px) {
+  /* Helt cramped (kraftig zoom): skjul den flydende byfest-badge. Byfest er
+     stadig tilgængelig som sektion længere nede og via menuen. */
+  .byfest-pulse-badge { display: none; }
+}
+
+/* ============================================
    HOME EVENTS CAROUSEL
    ============================================ */
 .events-carousel { position: relative; }
