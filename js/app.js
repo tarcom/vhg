@@ -47,7 +47,7 @@ const SPORT_NAV = [
     { label: 'Bestyrelsen', href: '#/bordtennis/bestyrelsen' },
     { label: 'Træningstider', href: '#/bordtennis/traeningstider' }
   ]},
-  { label: 'E-sport', href: '#/e-sport', children: [
+  { label: 'eSport', href: '#/e-sport', children: [
     { label: 'Tilmelding', href: '#/e-sport/tilmelding' },
     { label: 'Bestyrelsen', href: '#/e-sport/bestyrelsen' }
   ]},
@@ -134,8 +134,8 @@ const SPORTS = {
     conventus: 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8246&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'
   },
   'e-sport': {
-    name: 'E-sport', icon: '🎮',
-    desc: 'E-sport i VHG — gaming-fællesskab for alle aldre. Kom og vær med til spændende turneringer og fælles gaming-aftener.',
+    name: 'eSport', icon: '🎮',
+    desc: 'eSport i VHG — gaming-fællesskab for alle aldre. Kom og vær med til spændende turneringer og fælles gaming-aftener.',
     facebook: 'https://www.facebook.com/profile.php?id=100063446331721',
     board: [
       { title: 'Formand', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795' },
@@ -340,7 +340,7 @@ const HOVEDBESTYRELSEN = [
   { title: 'Medlem (Formand håndbold)', name: 'Berit Andersen', email: 'beritandersen@hotmail.com', phone: '51 22 91 22' },
   { title: 'Medlem (Formand fodbold)', name: 'Marc Agerbo Jakobsen', email: 'agerbo100@gmail.com', phone: '30253680' },
   { title: 'Medlem (Formand badminton)', name: 'Claus René Mikkelsen', email: 'clmik8@gmail.com' },
-  { title: 'Medlem (Formand e-sport)', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795', photo: 'assets/images/bestyrelse/nikolaj-soendergaard.jpg' },
+  { title: 'Medlem (Formand eSport)', name: 'Nikolaj Søndergaard Sørensen', email: 'Nikolaj0299@gmail.com', phone: '29253795', photo: 'assets/images/bestyrelse/nikolaj-soendergaard.jpg' },
   { title: 'Medlem (Formand skateklub)', name: 'Mikael Ivan Vinther Christensen', email: 'mikael.ivan.christensen@gmail.com', phone: '23685559', photo: 'assets/images/bestyrelse/mikael-christensen.jpg' },
   { title: 'Medlem (Formand floorball)', name: 'Jimmi Kildedal', email: 'helldorf@live.dk', phone: '29471232' },
   { title: 'Medlem (Formand gymnastik)', name: 'Inger Marie Badsberg', email: 'imbadsberg@gmail.com', phone: '20808201', photo: 'assets/images/bestyrelse/inger-badsberg.jpg' },
@@ -1087,7 +1087,7 @@ PAGES[''] = PAGES['/'] = function() {
   const sportCards = [
     { key: 'badminton', name: 'Badminton' },
     { key: 'bordtennis', name: 'Bordtennis' },
-    { key: 'e-sport', name: 'E-sport' },
+    { key: 'e-sport', name: 'eSport' },
     { key: 'floorball', name: 'Floorball' },
     { key: 'fodbold', name: 'Fodbold', icon: '⚽' },
     { key: 'gymnastik', name: 'Gymnastik' },
@@ -1482,7 +1482,7 @@ PAGES['/kontakt'] = function() {
   const sportContacts = [
     { key: 'badminton', name: 'Badminton', icon: '🏸' },
     { key: 'bordtennis', name: 'Bordtennis', icon: '🏓' },
-    { key: 'e-sport', name: 'E-sport', icon: '🎮' },
+    { key: 'e-sport', name: 'eSport', icon: '🎮' },
     { key: 'floorball', name: 'Floorball', icon: '🏒' },
     { key: 'fodbold', name: 'Fodbold', icon: '⚽', href: '#/fodbold/bestyrelsen' },
     { key: 'gymnastik', name: 'Gymnastik', icon: '🤸' },
@@ -1563,7 +1563,7 @@ PAGES['/some'] = function() {
     { name: 'Disc Golf', url: 'https://www.facebook.com/groups/1832314803794784' },
     { name: 'Floorball', url: 'https://www.facebook.com/profile.php?id=100046867541094' },
     { name: 'Bordtennis', url: 'https://www.facebook.com/profile.php?id=100054206513655' },
-    { name: 'E-sport', url: 'https://www.facebook.com/profile.php?id=100063446331721' },
+    { name: 'eSport', url: 'https://www.facebook.com/profile.php?id=100063446331721' },
     { name: 'Skateklub', url: 'https://www.facebook.com/VHGSkateklub' },
     { name: 'Fodbold', url: 'https://www.facebook.com/VHGFodbold' },
     { name: 'Gevaldig', url: 'https://www.facebook.com/profile.php?id=100066490641015' }

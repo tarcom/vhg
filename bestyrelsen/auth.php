@@ -30,7 +30,7 @@ $USERS = [
     'beritandersen@hotmail.com'            => ['hash' => '$2b$12$TVBKjBgS1/t4xxpVjuKqxe/vkhDLH1Xi1T0czhsc7CGZOV7n.WRCm', 'name' => 'Berit Andersen',              'role' => 'Formand håndbold'],
     'agerbo100@gmail.com'                  => ['hash' => '$2b$12$/T4WOiYj60psz30F2PdbRuolQ8UhT0ztG4pA1qKZJzEqpo61dT7eS', 'name' => 'Marc Agerbo Jakobsen',        'role' => 'Formand fodbold'],
     'clmik8@gmail.com'                     => ['hash' => '$2b$12$dSkQ3MKdHUP.qZuWIrAi9.H7zSoNS5gP3JS8Eue30c3brYpqQF8TW', 'name' => 'Claus René Mikkelsen',        'role' => 'Formand badminton'],
-    'nikolaj0299@gmail.com'                => ['hash' => '$2b$12$Aw63Iv10XrmVz6VupN032Oq/souuuBAdFv6s05p6RWMrKHsaeq07q', 'name' => 'Nikolaj Søndergaard Sørensen', 'role' => 'Formand e-sport'],
+    'nikolaj0299@gmail.com'                => ['hash' => '$2b$12$Aw63Iv10XrmVz6VupN032Oq/souuuBAdFv6s05p6RWMrKHsaeq07q', 'name' => 'Nikolaj Søndergaard Sørensen', 'role' => 'Formand eSport'],
     'mikael.ivan.christensen@gmail.com'    => ['hash' => '$2b$12$0z5swkJJBOIRENMcBXwQ4OLrcKY7VfSEL3jMEcP.XqvrJVfBg1dPO', 'name' => 'Mikael Ivan Vinther Christensen', 'role' => 'Formand skateklub'],
     'helldorf@live.dk'                     => ['hash' => '$2b$12$apqXWrdlCXr/wREIX62v2.ScatZ3T1yTOLsG7xCxY78wwq4HCdBM.', 'name' => 'Jimmi Kildedal',              'role' => 'Formand floorball'],
     'imbadsberg@gmail.com'                 => ['hash' => '$2b$12$nd..udxs8FMSVsWrUeWZ2.3ktTP.LFc5fXD2AERGkiZvKGKo/Mu5y', 'name' => 'Inger Marie Badsberg',         'role' => 'Formand gymnastik'],
