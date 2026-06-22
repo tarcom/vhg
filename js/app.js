@@ -2002,6 +2002,12 @@ const BYFEST_YEARS = {
     bordplanImg: 'assets/byfest2026/bordplan.png',
     bordplanAlt: 'Bordplan over hallen med bord 1-6, bar og scene (Byfest 2026)',
     bordplanNote: 'Indgang og bar mod nord · scene mod syd',
+    // Photo booth-galleriet er dynamisk (kan udvides/skjules via PHP-backend i /photobooth).
+    photoBooth: {
+      listUrl: 'photobooth/list.php',
+      thumbUrl: 'photobooth/thumb.php',
+      deleteUrl: 'photobooth/delete.php',
+    },
   },
   '2025': {
     key: '2025',
@@ -2057,7 +2063,7 @@ function renderByfestYear(year) {
   const vids = c.galleryVideos || [];
   const multiVid = vids.length > 1;
   const videoSection = vids.length ? `
-      <section class="byfest-fest-section">
+      <section class="byfest-fest-section" id="byfest-video">
         <h2 class="byfest-sec-title">Video fra festen <small>Skru op for lyden 🔊</small></h2>
         <div class="${multiVid ? 'byfest-video-grid' : 'byfest-video-card'}">
           ${vids.map(v => `<video class="byfest-gallery-video" src="${v.src}" controls playsinline preload="${multiVid ? 'none' : 'auto'}"${v.poster ? ` poster="${v.poster}"` : ''}></video>`).join('')}
@@ -2065,7 +2071,7 @@ function renderByfestYear(year) {
       </section>` : '';
 
   const gallerySection = hasGallery ? `
-      <section class="byfest-fest-section">
+      <section class="byfest-fest-section" id="byfest-billeder">
         <h2 class="byfest-sec-title">Billeder <small>Klik for at se i stort format</small></h2>
         <div class="byfest-gallery-grid">
           ${imgs.map((f, i) => `<a href="${c.galleryBase}/${f}" class="byfest-gallery-item"><img src="${c.galleryBase}/thumbs/${f}" alt="${c.title} billede ${i + 1}" loading="lazy"></a>`).join('')}
@@ -2075,6 +2081,32 @@ function renderByfestYear(year) {
         <h2 class="byfest-sec-title">Billeder &amp; video</h2>
         <p class="byfest-muted">📸 Billeder og video fra ${c.title} kommer snart…</p>
       </section>`;
+
+  // Photo booth: dynamisk galleri der hentes via fetch (kan udvides/skjules over tid).
+  const photoBoothSection = c.photoBooth ? `
+      <section class="byfest-fest-section" id="byfest-photobooth">
+        <h2 class="byfest-sec-title">📸 Photo booth <small>Billeder fra vores photo booth — klik for stort format</small></h2>
+        <p class="byfest-pb-intro">Er du med på et billede, du helst ikke vil have liggende offentligt? Åbn billedet og tryk på <strong>🗑 Slet billede</strong> — så fjernes det med det samme.</p>
+        <div class="byfest-pb-status" id="byfest-pb-status">Henter billeder…</div>
+        <div class="byfest-pb-grid" id="byfest-pb-grid" hidden></div>
+      </section>` : '';
+
+  // Indholdsfortegnelse (TOC) — bygges af de sektioner, der faktisk findes på siden.
+  const tocItems = [
+    ['byfest-program', '📋 Program'],
+    c.tables ? ['byfest-find', '🔎 Find dit bord'] : null,
+    vids.length ? ['byfest-video', '🎬 Video'] : null,
+    hasGallery ? ['byfest-billeder', '🖼️ Billeder'] : null,
+    c.photoBooth ? ['byfest-photobooth', '📸 Photo booth'] : null,
+  ].filter(Boolean);
+  const tocHTML = `
+      <nav class="byfest-toc" aria-label="Indhold på siden">
+        <span class="byfest-toc-label">På denne side:</span>
+        <ul>
+          ${tocItems.map(([id, label]) =>
+            `<li><button type="button" class="byfest-toc-link" data-target="${id}">${label}</button></li>`).join('')}
+        </ul>
+      </nav>`;
 
   const programHTML = c.program.map(([t, txt]) =>
     `<li class="byfest-program-item"><span class="byfest-program-time">${t}</span><span class="byfest-program-text">${txt}</span></li>`).join('');
@@ -2095,10 +2127,11 @@ function renderByfestYear(year) {
       </header>
 
       ${byfestYearNav(year)}
+      ${tocHTML}
       ${videoSection}
       ${gallerySection}
 
-      <section class="byfest-fest-section">
+      <section class="byfest-fest-section" id="byfest-program">
         <h2 class="byfest-sec-title">Aftenens program <small>${c.programTitle}</small></h2>
         <ol class="byfest-program">
           ${programHTML}
@@ -2106,7 +2139,7 @@ function renderByfestYear(year) {
         <p class="byfest-program-host">${c.host}</p>
       </section>
 
-      <section class="byfest-fest-section">
+      <section class="byfest-fest-section" id="byfest-find">
         <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra ${c.title}</small></h2>
         <div class="byfest-search-card">
           <label for="byfest-search">Søg efter dit navn</label>
@@ -2120,6 +2153,7 @@ function renderByfestYear(year) {
         <h2 class="byfest-sec-title">Alle borde <small>${c.title} · ${c.tablesNote}</small></h2>
         <div class="byfest-tables" id="byfest-tables"></div>
       </section>
+      ${photoBoothSection}
 
       <footer class="byfest-fest-footer">
         <p>Vi glæder os til næste fest! 🎉 Spørgsmål? Kontakt festudvalget.</p>
@@ -2485,6 +2519,148 @@ function initByfestPage(year) {
     else if (e.key === 'ArrowRight') show(idx + 1);
   };
   document.addEventListener('keydown', byfestLbKeyHandler);
+
+  // Indholdsfortegnelse: blød scroll til de enkelte sektioner
+  document.querySelectorAll('.byfest-toc-link').forEach(btn =>
+    btn.addEventListener('click', () => scrollToSectionWithOffset(btn.dataset.target)));
+
+  // Photo booth-galleri (dynamisk liste + slet-funktion)
+  if (c.photoBooth) initPhotoBooth(c);
+}
+
+// Dynamisk photo booth-galleri: henter aktuel billedliste via PHP, viser
+// thumbnails i et grid og lader enhver bruger fjerne (blødt slette) et billede.
+let pbKeyHandler = null;
+function initPhotoBooth(c) {
+  const pb = c.photoBooth;
+  const grid = document.getElementById('byfest-pb-grid');
+  const statusEl = document.getElementById('byfest-pb-status');
+  if (!grid || !statusEl) return;
+
+  let photos = [];
+  let base = 'assets/images/byfest2026/photoBooth';
+  let idx = 0;
+
+  // Ryd evt. lightbox/keyhandler fra et tidligere besøg (SPA — undgå dubletter)
+  document.querySelectorAll('.byfest-pb-lightbox').forEach(el => el.remove());
+  if (pbKeyHandler) document.removeEventListener('keydown', pbKeyHandler);
+
+  // Dedikeret lightbox med slet-knap
+  const lb = document.createElement('div');
+  lb.className = 'byfest-lightbox byfest-pb-lightbox';
+  lb.hidden = true;
+  lb.innerHTML = `
+    <button class="byfest-lb-close" type="button" aria-label="Luk">&times;</button>
+    <button class="byfest-lb-prev" type="button" aria-label="Forrige billede">&#10094;</button>
+    <figure class="byfest-pb-figure">
+      <img class="byfest-lb-img" src="" alt="">
+      <figcaption class="byfest-pb-caption">
+        <button type="button" class="byfest-pb-delete">🗑 Slet billede</button>
+        <span class="byfest-pb-count"></span>
+      </figcaption>
+    </figure>
+    <button class="byfest-lb-next" type="button" aria-label="Næste billede">&#10095;</button>`;
+  document.body.appendChild(lb);
+
+  const lbImg = lb.querySelector('.byfest-lb-img');
+  const countEl = lb.querySelector('.byfest-pb-count');
+  const delBtn = lb.querySelector('.byfest-pb-delete');
+
+  const show = i => {
+    if (!photos.length) return close();
+    idx = (i + photos.length) % photos.length;
+    lbImg.src = `${base}/${photos[idx]}`;
+    lbImg.alt = `Photo booth-billede ${idx + 1}`;
+    countEl.textContent = `${idx + 1} / ${photos.length}`;
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    lb.hidden = true;
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  };
+
+  lb.querySelector('.byfest-lb-close').addEventListener('click', close);
+  lb.querySelector('.byfest-lb-prev').addEventListener('click', () => show(idx - 1));
+  lb.querySelector('.byfest-lb-next').addEventListener('click', () => show(idx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  delBtn.addEventListener('click', () => requestDelete(photos[idx]));
+
+  pbKeyHandler = e => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(idx - 1);
+    else if (e.key === 'ArrowRight') show(idx + 1);
+  };
+  document.addEventListener('keydown', pbKeyHandler);
+
+  const render = () => {
+    grid.innerHTML = photos.map((f, i) =>
+      `<button type="button" class="byfest-pb-item" data-idx="${i}" aria-label="Photo booth-billede ${i + 1}">
+         <img src="${pb.thumbUrl}?f=${encodeURIComponent(f)}" alt="Photo booth-billede ${i + 1}" loading="lazy">
+       </button>`).join('');
+    grid.querySelectorAll('.byfest-pb-item').forEach(btn =>
+      btn.addEventListener('click', () => show(Number(btn.dataset.idx))));
+  };
+
+  function requestDelete(file) {
+    if (!file) return;
+    // Bekræftelse 1
+    if (!confirm('Vil du fjerne dette billede fra photo booth-galleriet?\n\nDet bliver fjernet fra hjemmesiden med det samme.')) return;
+    // Bekræftelse 2 — skriv SLET
+    const typed = window.prompt('Sidste bekræftelse:\n\nSkriv ordet SLET (med store bogstaver) for at fjerne billedet:');
+    if (typed === null) return;
+    if (typed.trim().toUpperCase() !== 'SLET') {
+      alert('Billedet blev IKKE fjernet — du skrev ikke SLET.');
+      return;
+    }
+    delBtn.disabled = true;
+    fetch(pb.deleteUrl, { method: 'POST', body: new URLSearchParams({ file, confirm: 'SLET' }) })
+      .then(r => r.json().then(j => ({ ok: r.ok, j })).catch(() => ({ ok: false, j: {} })))
+      .then(({ ok, j }) => {
+        if (ok && j.ok) {
+          photos = photos.filter(p => p !== file);
+          render();
+          pbToast('✅ Billedet er fjernet. Tak — beskeden er sendt videre.');
+          if (photos.length) show(Math.min(idx, photos.length - 1));
+          else { close(); statusEl.hidden = false; grid.hidden = true; statusEl.textContent = 'Der er ingen billeder i galleriet længere.'; }
+        } else if (j && j.error === 'rate_limited') {
+          alert('Der er fjernet mange billeder på kort tid fra dette netværk. Prøv igen om lidt.');
+        } else {
+          alert('Beklager — billedet kunne ikke fjernes lige nu. Prøv igen senere.');
+        }
+      })
+      .catch(() => alert('Beklager — billedet kunne ikke fjernes lige nu. Prøv igen senere.'))
+      .finally(() => { delBtn.disabled = false; });
+  }
+
+  statusEl.textContent = 'Henter billeder…';
+  fetch(pb.listUrl, { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      photos = Array.isArray(data.photos) ? data.photos : [];
+      if (data.base) base = data.base;
+      if (!photos.length) { statusEl.textContent = 'Der er ingen billeder i galleriet endnu.'; return; }
+      statusEl.hidden = true;
+      grid.hidden = false;
+      render();
+    })
+    .catch(() => { statusEl.textContent = '⚠️ Kunne ikke hente billederne. Prøv at genindlæse siden.'; });
+}
+
+function pbToast(msg) {
+  let t = document.getElementById('byfest-pb-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'byfest-pb-toast';
+    t.className = 'byfest-pb-toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 4000);
 }
 
 // Render a set of table cards into a container

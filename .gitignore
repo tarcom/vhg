@@ -1,2 +1,14 @@
 bestyrelsen/config.php
 assets/events/
+
+# Photo booth — runtime-data (skabes på serveren, hører ikke i git).
+# .htaccess + .gitkeep beholdes, så de beskyttede mapper findes ved deploy.
+photobooth/cache/*
+photobooth/quarantine/*
+photobooth/data/*
+!photobooth/cache/.gitkeep
+!photobooth/cache/.htaccess
+!photobooth/quarantine/.gitkeep
+!photobooth/quarantine/.htaccess
+!photobooth/data/.gitkeep
+!photobooth/data/.htaccess

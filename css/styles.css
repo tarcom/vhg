@@ -1130,6 +1130,83 @@ body:not(.is-home) .site-header.scrolled .logo {
 }
 
 /* ============================================
+   INDHOLDSFORTEGNELSE (TOC)
+   ============================================ */
+.byfest-toc {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: .55rem; margin: 0 auto 2.4rem; max-width: 820px;
+  padding: 1rem 1.1rem; border-radius: 16px;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+}
+.byfest-toc-label { font-weight: 700; color: var(--gold); font-size: .9rem; margin-right: .3rem; }
+.byfest-toc ul { display: contents; list-style: none; margin: 0; padding: 0; }
+.byfest-toc-link {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .5rem 1rem; border-radius: 999px; font-weight: 700; font-size: .92rem;
+  color: #e7eef7; cursor: pointer;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  transition: background .15s, border-color .15s, transform .15s, color .15s;
+}
+.byfest-toc-link:hover {
+  background: rgba(241,220,77,.16); border-color: rgba(241,220,77,.5);
+  transform: translateY(-2px); color: #fff;
+}
+
+/* ============================================
+   PHOTO BOOTH-GALLERI
+   ============================================ */
+.byfest-pb-intro {
+  max-width: 640px; margin: -.4rem auto 1.4rem; text-align: center;
+  color: #cdd9e8; font-size: .96rem; line-height: 1.5;
+}
+.byfest-pb-status { text-align: center; color: #a9c2de; font-size: .95rem; padding: 1.2rem 0; }
+.byfest-pb-status[hidden] { display: none; }
+.byfest-pb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.byfest-pb-grid[hidden] { display: none; }
+.byfest-pb-item {
+  display: block; padding: 0; border: none; background: none;
+  aspect-ratio: 1 / 1; overflow: hidden; border-radius: 10px; cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+}
+.byfest-pb-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.3s ease;
+}
+.byfest-pb-item:hover img { transform: scale(1.07); }
+
+/* lightbox-figur med slet-knap */
+.byfest-pb-figure {
+  margin: 0; display: flex; flex-direction: column; align-items: center; gap: .9rem;
+}
+.byfest-pb-caption {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center;
+}
+.byfest-pb-count { color: #cdd9e8; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.byfest-pb-delete {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: #c0392b; color: #fff; font-weight: 700; font-size: .95rem;
+  border: none; border-radius: 999px; padding: .6rem 1.2rem; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(192,57,43,.4); transition: background .15s, transform .15s;
+}
+.byfest-pb-delete:hover { background: #e04434; transform: translateY(-1px); }
+.byfest-pb-delete:disabled { opacity: .6; cursor: progress; }
+
+/* bekræftelses-toast */
+.byfest-pb-toast {
+  position: fixed; left: 50%; bottom: 1.6rem; transform: translate(-50%, 1.5rem);
+  z-index: 1100; max-width: 90vw;
+  background: #1b2a3a; color: #fff; font-weight: 600; font-size: .95rem;
+  padding: .85rem 1.3rem; border-radius: 12px; border: 1px solid rgba(241,220,77,.4);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+}
+.byfest-pb-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ============================================
    HERO EVENT BANNER (ekstra promovering)
    ============================================ */
 .hero-event-banner {
