@@ -3,7 +3,7 @@
 $CONVENTUS_SOURCES = array(
     array('sport' => 'badminton', 'sport_label' => 'Badminton', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8191&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
     array('sport' => 'bordtennis', 'sport_label' => 'Bordtennis', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8246&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
-    array('sport' => 'e-sport', 'sport_label' => 'E-sport', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=6018&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
+    array('sport' => 'e-sport', 'sport_label' => 'eSport', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=6018&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
     array('sport' => 'floorball', 'sport_label' => 'Floorball', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=8247&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
     array('sport' => 'gymnastik', 'sport_label' => 'Gymnastik', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=7250&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
     array('sport' => 'skateklub', 'sport_label' => 'Skateklub', 'url' => 'https://www.conventus.dk/dataudv/www/holdoversigt2.php?foreningsid=1212&afdelingsid=61583&kolone1_width=35&kolone2_width=25&min_height=250&handelsbetingelser=1&skjul_nyt_medlem=0&skjul_allerede_medlem=0'),
@@ -140,6 +140,12 @@ function conventus_extract_document_write($raw)
     return html_entity_decode($txt, ENT_QUOTES | ENT_HTML5, 'UTF-8');
 }
 
+function conventus_normalize_esport($value)
+{
+    // Normalisér Conventus' varierende stavning (E-sport / Esport / ESport) til "eSport".
+    return preg_replace('/\bE-?[Ss]port\b/u', 'eSport', $value);
+}
+
 function conventus_strip_tags_clean($value)
 {
     $value = preg_replace('/<br\s*\/?\s*>/i', ' ', $value);
@@ -205,7 +211,7 @@ function conventus_parse_events_from_html($source, $html)
         if (!preg_match('/<span\s+class=["\']pull-left["\']>(.*?)<\/span>/is', $panel, $titleMatch)) {
             continue;
         }
-        $title = conventus_strip_tags_clean($titleMatch[1]);
+        $title = conventus_normalize_esport(conventus_strip_tags_clean($titleMatch[1]));
 
         $price = null;
         if (preg_match('/<span\s+class=["\']pull-right["\']>(.*?)<\/span>/is', $panel, $priceMatch)) {
