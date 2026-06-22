@@ -2094,10 +2094,10 @@ function renderByfestYear(year) {
   // Indholdsfortegnelse (TOC) — bygges af de sektioner, der faktisk findes på siden.
   const tocItems = [
     ['byfest-program', '📋 Program'],
+    c.photoBooth ? ['byfest-photobooth', '📸 Photo booth'] : null,
     c.tables ? ['byfest-find', '🔎 Find dit bord'] : null,
     vids.length ? ['byfest-video', '🎬 Video'] : null,
     hasGallery ? ['byfest-billeder', '🖼️ Billeder'] : null,
-    c.photoBooth ? ['byfest-photobooth', '📸 Photo booth'] : null,
   ].filter(Boolean);
   const tocHTML = `
       <nav class="byfest-toc" aria-label="Indhold på siden">
@@ -2138,6 +2138,7 @@ function renderByfestYear(year) {
         </ol>
         <p class="byfest-program-host">${c.host}</p>
       </section>
+      ${photoBoothSection}
 
       <section class="byfest-fest-section" id="byfest-find">
         <h2 class="byfest-sec-title">🔎 Find dit bord <small>Søg dit navn i bordplanen fra ${c.title}</small></h2>
@@ -2153,7 +2154,6 @@ function renderByfestYear(year) {
         <h2 class="byfest-sec-title">Alle borde <small>${c.title} · ${c.tablesNote}</small></h2>
         <div class="byfest-tables" id="byfest-tables"></div>
       </section>
-      ${photoBoothSection}
 
       <footer class="byfest-fest-footer">
         <p>Vi glæder os til næste fest! 🎉 Spørgsmål? Kontakt festudvalget.</p>
